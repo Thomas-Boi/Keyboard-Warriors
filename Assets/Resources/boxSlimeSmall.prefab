@@ -200,7 +200,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2232839929913890780}
   - component: {fileID: -6613293949457687764}
-  - component: {fileID: 4180271052693701329}
+  - component: {fileID: 5052823487153765050}
   m_Layer: 0
   m_Name: boxSlimeSmall
   m_TagString: Untagged
@@ -238,12 +238,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Baby Cube Slime
   level: 1
-  health: 30
-  mana: 50
-  attack: 7
-  defense: 5
+  health: 18
+  mana: 30
+  attack: 4
+  defense: 3
   isEnemy: 1
---- !u!54 &4180271052693701329
+--- !u!54 &5052823487153765050
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -13,6 +13,7 @@ public class Spawner : MonoBehaviour
         {
             GameObject go = Instantiate(Resources.Load(prefab), transform.position, transform.rotation) as GameObject;
             enemy = go.GetComponent<Character>();
+            enemy.parent = this;
         }
         else
         {

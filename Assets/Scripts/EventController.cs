@@ -5,16 +5,19 @@ using UnityEngine;
 
 public class EventController : MonoBehaviour
 {
-    public Spawner spawn1;
-    public Spawner spawn2;
-    public Spawner spawn3;
+    public List<Spawner> spawners;
 
-    // turn 0 = Player Team
-    // turn 1 = Enemy Team
-    // turn ??? = Maybe damage from like sandstorm or something idk
-    public int turn = 1; 
+
+    public List<Character> players;
+
+    // true = player turn
+    // false = not player turn
+    public bool playerTurn = false;
 
     public int waveNum;
+
+
+    public string menu = "";
 
     // Start is called before the first frame update
     void Start()
@@ -27,14 +30,31 @@ public class EventController : MonoBehaviour
         switch(wave)
         {
             case 1:
-                spawn1.spawn("boxSlime");
-                spawn2.spawn("boxSlimeSmall");
-                spawn3.spawn("boxSlimeSmall");
+                spawners[0].spawn("boxSlime");
+                spawners[1].spawn("boxSlimeSmall");
+                spawners[2].spawn("boxSlimeSmall");
                 break;
 
             default:
                 UnityEngine.Debug.Log("Invalid Wave");
                 break;
+        }
+    }
+
+
+    public void nextTurn()
+    {
+        if (playerTurn)
+        {
+
+        }
+
+        else {
+
+            foreach (Spawner spawner in spawners)
+            {
+                spawner.enemy.selectSkill();
+            }
         }
     }
 
