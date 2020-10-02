@@ -51,7 +51,7 @@ public class EventController : MonoBehaviour
         UnityEngine.Debug.Log(playerTurn);
         if (playerTurn)
         {
-            battleMenu.SetActive(true);
+            //battleMenu.SetActive(true);
             turnNum++;
             if (turnNum >= players.Count)
             {
@@ -61,17 +61,20 @@ public class EventController : MonoBehaviour
         } 
         else if (!playerTurn)
         {
-            spawners[turnNum].enemy.selectSkill();
-            turnNum++;
-            if (turnNum >= spawners.Count(x => x.isOccupied))
+            if (turnNum >= spawners.Count)
             {
                 turnNum = 0;
                 playerTurn = true;
+                nextTurn();
             }
-            nextTurn();
+            else if (spawners[turnNum].isOccupied)
+            {
+                spawners[turnNum++].enemy.selectSkill();
+            }
+
         }
 
-
+        
         
     }
 

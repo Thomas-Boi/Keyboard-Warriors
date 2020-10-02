@@ -125,8 +125,6 @@ public class Character : MonoBehaviour
 
     public void useSkill(string skill, Character target)
     {
-        
-        //todo: make this read from a file/database instead of a switch/case statement
         switch (skill)
         {
             case "basicAttack":
@@ -142,6 +140,7 @@ public class Character : MonoBehaviour
         UnityEngine.Debug.Log(skill);
         UnityEngine.Debug.Log(target.characterName);
         UnityEngine.Debug.Log(target.health);
+        controller.nextTurn();
     }
 
 }
