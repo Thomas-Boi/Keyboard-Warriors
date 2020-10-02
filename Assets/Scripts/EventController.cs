@@ -7,21 +7,19 @@ using UnityEngine;
 public class EventController : MonoBehaviour
 {
     public List<Spawner> spawners;
-
-
     public List<Character> players;
+    public GameObject battleMenu;
+
 
     // true = player turn
     // false = not player turn
-    public bool playerTurn = false;
+    public bool playerTurn;
     //turn number within each team.
     // 0 = player1, 1 = player2
     public int turnNum = 0;
 
     public int waveNum;
-
-
-    public string menu = "";
+    
 
     // Start is called before the first frame update
     void Start()
@@ -37,7 +35,9 @@ public class EventController : MonoBehaviour
                 spawners[0].spawn("boxSlime");
                 spawners[1].spawn("boxSlimeSmall");
                 spawners[2].spawn("boxSlimeSmall");
+                nextTurn();
                 break;
+                
 
             default:
                 UnityEngine.Debug.Log("Invalid Wave");
@@ -48,25 +48,31 @@ public class EventController : MonoBehaviour
 
     public void nextTurn()
     {
+        UnityEngine.Debug.Log(playerTurn);
         if (playerTurn)
         {
-
-        }
-
-        else {
-
-            foreach (Spawner spawner in spawners)
+            battleMenu.SetActive(true);
+            turnNum++;
+            if (turnNum >= players.Count)
             {
-                spawner.enemy.selectSkill();
+                turnNum = 0;
+                playerTurn = false;
             }
+        } 
+        else if (!playerTurn)
+        {
+            spawners[turnNum].enemy.selectSkill();
+            turnNum++;
+            if (turnNum >= spawners.Count(x => x.isOccupied))
+            {
+                turnNum = 0;
+                playerTurn = true;
+            }
+            nextTurn();
         }
 
-        turnNum++;
-        if ((playerTurn && turnNum > players.Count) || (!playerTurn && turnNum > spawners.Count(i => i.isOccupied)))
-        {
-            turnNum = 0;
-            playerTurn = !playerTurn;
-        }
+
+        
     }
 
 

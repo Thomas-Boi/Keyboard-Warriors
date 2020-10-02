@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 
@@ -13,6 +14,7 @@ public class Character : MonoBehaviour
     public float attack;
     public float defense;
     public string skills; // see useSkill method
+    public bool isTargetable = false;
     public bool isEnemy = true;
     private EventController controller;
     public Spawner parent;
@@ -27,7 +29,7 @@ public class Character : MonoBehaviour
     void OnMouseEnter()
     {
 
-        if (controller.playerTurn && isEnemy)
+        if (true)
         {
             transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             transform.position = transform.position + new Vector3(0, 0.3f, 0);
@@ -68,6 +70,7 @@ public class Character : MonoBehaviour
     // AI skill selection
     public void selectSkill()
     {
+
         //todo: make this read from a file/database instead of a switch/case statement
         Dictionary<string, int> choices = new Dictionary<string, int>();
         switch (skills)
@@ -94,11 +97,13 @@ public class Character : MonoBehaviour
 
         if (enemies.Contains(skill))
         {
-            foreach(Character player in controller.players)
+            
+            foreach (Character player in controller.players)
             {
                 if (player.health > 0) // check if player is alive
                 {
                     choices.Add(player, 1);
+                    
                 }
                 
             }
@@ -120,6 +125,7 @@ public class Character : MonoBehaviour
 
     public void useSkill(string skill, Character target)
     {
+        
         //todo: make this read from a file/database instead of a switch/case statement
         switch (skill)
         {
@@ -130,7 +136,12 @@ public class Character : MonoBehaviour
                 target.health -= (int)Math.Floor(attack * 1.2);
                 break;
 
+
+                
         }
+        UnityEngine.Debug.Log(skill);
+        UnityEngine.Debug.Log(target.characterName);
+        UnityEngine.Debug.Log(target.health);
     }
 
 }

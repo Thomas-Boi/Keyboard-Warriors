@@ -242,7 +242,10 @@ MonoBehaviour:
   mana: 50
   attack: 7
   defense: 5
+  skills: slime
+  isTargetable: 0
   isEnemy: 1
+  parent: {fileID: 0}
 --- !u!54 &-3943172529852730756
 Rigidbody:
   m_ObjectHideFlags: 0
