@@ -277,7 +277,7 @@ MonoBehaviour:
   players:
   - {fileID: 10706985}
   battleMenu: {fileID: 1407815628}
-  playerTurn: 0
+  playerTurn: 1
   turnNum: 0
   waveNum: 1
 --- !u!4 &17280699
