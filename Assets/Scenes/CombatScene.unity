@@ -237,7 +237,9 @@ MonoBehaviour:
   mana: 100
   attack: 10
   defense: 5
+  skills: 
   isEnemy: 0
+  parent: {fileID: 0}
 --- !u!1 &17280697
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,11 +269,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49525ccef7998ae4dad90b7c6588043d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawn1: {fileID: 908947094}
-  spawn2: {fileID: 1260224465}
-  spawn3: {fileID: 102828808}
-  turn: 0
+  spawners:
+  - {fileID: 908947094}
+  - {fileID: 1260224465}
+  - {fileID: 102828808}
+  players:
+  - {fileID: 10706985}
+  playerTurn: 1
   waveNum: 1
+  menu: 
 --- !u!4 &17280699
 Transform:
   m_ObjectHideFlags: 0

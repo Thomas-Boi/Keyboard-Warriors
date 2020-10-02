@@ -68,6 +68,7 @@ public class Character : MonoBehaviour
     // AI skill selection
     public void selectSkill()
     {
+        //todo: make this read from a file/database instead of a switch/case statement
         Dictionary<string, int> choices = new Dictionary<string, int>();
         switch (skills)
         {
@@ -88,6 +89,8 @@ public class Character : MonoBehaviour
         //targeting types
         string[] enemies = { "basicAttack", "slimeyAttack" };
         string[] allies = { };
+
+
 
         if (enemies.Contains(skill))
         {
@@ -117,7 +120,17 @@ public class Character : MonoBehaviour
 
     public void useSkill(string skill, Character target)
     {
+        //todo: make this read from a file/database instead of a switch/case statement
+        switch (skill)
+        {
+            case "basicAttack":
+                target.health -= attack;
+                break;
+            case "slimeyAttack":
+                target.health -= (int)Math.Floor(attack * 1.2);
+                break;
 
+        }
     }
 
 }

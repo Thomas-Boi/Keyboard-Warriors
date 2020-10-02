@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using UnityEngine;
 
 public class EventController : MonoBehaviour
@@ -13,6 +14,9 @@ public class EventController : MonoBehaviour
     // true = player turn
     // false = not player turn
     public bool playerTurn = false;
+    //turn number within each team.
+    // 0 = player1, 1 = player2
+    public int turnNum = 0;
 
     public int waveNum;
 
@@ -56,6 +60,14 @@ public class EventController : MonoBehaviour
                 spawner.enemy.selectSkill();
             }
         }
+
+        turnNum++;
+        if ((playerTurn && turnNum > players.Count) || (!playerTurn && turnNum > spawners.Count(i => i.isOccupied)))
+        {
+            turnNum = 0;
+            playerTurn = !playerTurn;
+        }
     }
+
 
 }
