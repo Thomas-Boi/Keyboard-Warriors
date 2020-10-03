@@ -238,6 +238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Baby Cube Slime
   level: 1
+  maxHealth: 18
   health: 18
   mana: 30
   attack: 4
@@ -246,6 +247,7 @@ MonoBehaviour:
   isTargetable: 0
   isEnemy: 1
   parent: {fileID: 0}
+  healthBar: {fileID: 0}
 --- !u!54 &5052823487153765050
 Rigidbody:
   m_ObjectHideFlags: 0

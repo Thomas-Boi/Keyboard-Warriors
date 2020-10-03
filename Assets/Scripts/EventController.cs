@@ -35,6 +35,12 @@ public class EventController : MonoBehaviour
                 spawners[0].spawn("boxSlime");
                 spawners[1].spawn("boxSlimeSmall");
                 spawners[2].spawn("boxSlimeSmall");
+
+                // this is a temporary solution to getting the enemy health bars, will find a better way later
+                spawners[0].enemy.healthBar = GameObject.Find("E1HealthBar").GetComponent<HealthBar>();
+                spawners[1].enemy.healthBar = GameObject.Find("E2HealthBar").GetComponent<HealthBar>();
+                spawners[2].enemy.healthBar = GameObject.Find("E3HealthBar").GetComponent<HealthBar>();
+
                 nextTurn();
                 break;
                 

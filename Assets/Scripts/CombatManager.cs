@@ -10,14 +10,14 @@ public class CombatManager : MonoBehaviour
 
     // reference to the playable character
     private Character player;
+    //private Character player2;
+    //private Character player3;
 
     // Reference to the UI buttons
     public Button attackButton;
     public Button skillButton;
     public Button tacticsButton;
     public Button itemButton;
-
-    public HealthBar p1HealthBar;
 
     void Awake()
     {
@@ -34,10 +34,13 @@ public class CombatManager : MonoBehaviour
         itemButton.onClick.AddListener(() => UseItems());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (player.health <= 0) {
+            player.health = 0;
+
+            // display text to say you lost battle
+        }
     }
 
     // Player's basic attack
@@ -65,7 +68,9 @@ public class CombatManager : MonoBehaviour
     public void UseItems()
     {
         Debug.Log("Healing Item");
-
+        // set amount of health back
+        float heal = player.health + 8;
+        player.SetCharacterHealth(heal);
 
         controller.nextTurn();
     }
@@ -88,7 +93,7 @@ public class CombatManager : MonoBehaviour
                     target = hit.transform.gameObject.GetComponent<Character>();
                     if (target.isEnemy)
                     {
-                        //Debug.Log(target.name);
+                        Debug.Log(target.name);
                         player.useSkill("basicAttack", target);
                         targetting = false;
                     }
@@ -96,7 +101,7 @@ public class CombatManager : MonoBehaviour
 
             }
 
-            yield return new WaitForEndOfFrame();
+            yield return null;
             
         }
         
