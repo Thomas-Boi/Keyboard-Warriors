@@ -9,21 +9,31 @@ public class Character : MonoBehaviour
 {
     public string characterName;
     public float level;
+    public float maxHealth;
     public float health;
     public float mana;
     public float attack;
     public float defense;
     public string skills; // see useSkill method
+
     public bool isTargetable = false;
     public bool isEnemy = true;
+
     private EventController controller;
     public Spawner parent;
-    
+
+    public HealthBar healthBar;
 
     void Awake()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
 
+    }
+
+    void Start()
+    {
+        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(health);
     }
 
     void OnMouseEnter()
@@ -122,6 +132,12 @@ public class Character : MonoBehaviour
         useSkill(skill, chooseRandom(choices));
     }
 
+    // Set this character's current health
+    public void SetCharacterHealth(float health)
+    {
+        healthBar.SetHealth(health);
+    }
+
 
     public void useSkill(string skill, Character target)
     {
@@ -129,9 +145,11 @@ public class Character : MonoBehaviour
         {
             case "basicAttack":
                 target.health -= attack;
+                target.SetCharacterHealth(target.health);
                 break;
             case "slimeyAttack":
                 target.health -= (int)Math.Floor(attack * 1.2);
+                target.SetCharacterHealth(target.health);
                 break;
 
 
