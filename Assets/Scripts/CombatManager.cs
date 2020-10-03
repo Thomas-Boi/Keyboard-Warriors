@@ -17,6 +17,8 @@ public class CombatManager : MonoBehaviour
     public Button tacticsButton;
     public Button itemButton;
 
+    public HealthBar p1HealthBar;
+
     void Awake()
     {
         player = GameObject.Find("Character").GetComponent<Character>();
@@ -49,18 +51,23 @@ public class CombatManager : MonoBehaviour
     private void UseSkills()
     {
         Debug.Log("Skills");
+        //controller.nextTurn();
     }
 
     // Will bring up the tactics sub-menu
     public void UseTactics()
     {
         Debug.Log("Tactics");
+        //controller.nextTurn();
     }
 
-    // For the time being, uses only a single item that heals the player
+    // For the time being, uses only a single item that heals the player for a set amount
     public void UseItems()
     {
-        Debug.Log("Item");
+        Debug.Log("Healing Item");
+
+
+        controller.nextTurn();
     }
 
     // For player to select target
@@ -89,7 +96,7 @@ public class CombatManager : MonoBehaviour
 
             }
 
-            yield return null;
+            yield return new WaitForEndOfFrame();
             
         }
         
