@@ -21,7 +21,7 @@ public class CombatManager : MonoBehaviour
 
     void Awake()
     {
-        player = GameObject.Find("Character").GetComponent<Character>();
+        player = GameObject.Find("Player").GetComponent<Character>();
         controller = GameObject.Find("EventController").GetComponent<EventController>();
     }
 
@@ -79,6 +79,14 @@ public class CombatManager : MonoBehaviour
     private IEnumerator StartEnemyTarget()
     {
         bool targetting = true;
+        foreach (Spawner spawn in controller.spawners)
+        {
+            if (spawn.isOccupied)
+            {
+                spawn.enemy.isTargetable = true;
+            }
+        }
+
         while (targetting)
         {
 
@@ -91,10 +99,18 @@ public class CombatManager : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, 100))
                 {
                     target = hit.transform.gameObject.GetComponent<Character>();
-                    if (target.isEnemy)
+                    if (target.isEnemy && target.parent.isOccupied)
                     {
                         Debug.Log(target.name);
-                        player.useSkill("basicAttack", target);
+                        StartCoroutine(player.useSkill("basicAttack", target));
+                        foreach (Spawner spawn in controller.spawners)
+                        {
+                            if (spawn.isOccupied)
+                            {
+                                spawn.enemy.isTargetable = false;
+                                spawn.enemy.resetScale();
+                            }
+                        }
                         targetting = false;
                     }
                 }
