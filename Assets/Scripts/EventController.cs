@@ -8,6 +8,7 @@ public class EventController : MonoBehaviour
 {
     public List<Spawner> spawners;
     public List<Character> players;
+    public List<HealthBar> healthbars;
     public GameObject battleMenu;
 
 
@@ -36,10 +37,13 @@ public class EventController : MonoBehaviour
                 spawners[1].spawn("boxSlimeSmall");
                 spawners[2].spawn("boxSlimeSmall");
 
-                // this is a temporary solution to getting the enemy health bars, will find a better way later
-                spawners[0].enemy.healthBar = GameObject.Find("E1HealthBar").GetComponent<HealthBar>();
-                spawners[1].enemy.healthBar = GameObject.Find("E2HealthBar").GetComponent<HealthBar>();
-                spawners[2].enemy.healthBar = GameObject.Find("E3HealthBar").GetComponent<HealthBar>();
+                for (int i = 0; i < spawners.Count; i++)
+                {
+                    if (spawners[i].isOccupied)
+                    {
+                        spawners[i].enemy.healthBar = healthbars[i];
+                    } 
+                }
 
                 nextTurn();
                 break;
@@ -54,11 +58,10 @@ public class EventController : MonoBehaviour
 
     public void nextTurn()
     {
-        UnityEngine.Debug.Log(playerTurn);
+        turnNum++;
         if (playerTurn)
         {
             //battleMenu.SetActive(true);
-            turnNum++;
             if (turnNum >= players.Count)
             {
                 turnNum = 0;
@@ -67,21 +70,36 @@ public class EventController : MonoBehaviour
         } 
         else if (!playerTurn)
         {
-            if (turnNum >= spawners.Count)
+            if (turnNum-1 >= spawners.Count)
             {
                 turnNum = 0;
                 playerTurn = true;
                 nextTurn();
             }
-            else if (spawners[turnNum].isOccupied)
+            else if (spawners[turnNum-1].isOccupied)
             {
-                spawners[turnNum++].enemy.selectSkill();
+                spawners[turnNum-1].enemy.selectSkill();
+            }
+            else
+            {
+                nextTurn();
             }
 
         }
 
         
         
+    }
+
+    public void checkLife()
+    {
+        for (int i = 0; i < spawners.Count; i++)
+        {
+            if (spawners[i].enemy.health <= 0)
+            {
+                spawners[i].kill();
+            }
+        }
     }
 
 

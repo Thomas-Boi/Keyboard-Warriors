@@ -39,7 +39,7 @@ public class Character : MonoBehaviour
     void OnMouseEnter()
     {
 
-        if (isEnemy)
+        if (isTargetable)
         {
             transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             transform.position = transform.position + new Vector3(0, 0.3f, 0);
@@ -52,12 +52,17 @@ public class Character : MonoBehaviour
     // ...and the mesh finally turns white when the mouse moves away.
     void OnMouseExit()
     {
-        if (isEnemy)
+        if (isTargetable)
         {
-            transform.localScale = new Vector3(1, 1, 1);
-            transform.position = parent.transform.position;
+            resetScale();
         }
         
+    }
+
+    public void resetScale()
+    {
+        transform.localScale = new Vector3(1, 1, 1);
+        transform.position = parent.transform.position;
     }
 
     public static T chooseRandom<T>(Dictionary<T, int> dict)
@@ -129,7 +134,7 @@ public class Character : MonoBehaviour
             }
         }
 
-        useSkill(skill, chooseRandom(choices));
+        StartCoroutine(useSkill(skill, chooseRandom(choices)));
     }
 
     // Set this character's current health
@@ -139,25 +144,42 @@ public class Character : MonoBehaviour
     }
 
 
-    public void useSkill(string skill, Character target)
+    public IEnumerator waitForAnim(string animation)
     {
+        GetComponent<Animator>().Play(animation, 0, 0);
+        yield return new WaitForSeconds(1);
+    }
+
+
+
+    public IEnumerator useSkill(string skill, Character target)
+    {
+        //todo: Make animation stuff a function
         switch (skill)
         {
             case "basicAttack":
                 target.health -= attack;
                 target.SetCharacterHealth(target.health);
+                GetComponent<Animator>().Play("Base Layer.attack", 0, 0);
+                yield return new WaitForSeconds(.5f);
                 break;
             case "slimeyAttack":
                 target.health -= (int)Math.Floor(attack * 1.2);
                 target.SetCharacterHealth(target.health);
+                GetComponent<Animator>().Play("Base Layer.attack", 0, 0);
+                yield return new WaitForSeconds(.5f);
                 break;
 
 
                 
         }
+
+        
+        
         UnityEngine.Debug.Log(skill);
         UnityEngine.Debug.Log(target.characterName);
         UnityEngine.Debug.Log(target.health);
+        controller.checkLife();
         controller.nextTurn();
     }
 
