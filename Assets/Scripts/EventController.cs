@@ -11,6 +11,7 @@ public class EventController : MonoBehaviour
     public List<HealthBar> healthbars;
     public GameObject battleMenu;
     public GameObject winUIPrefab;
+    public GameObject loseUIPrefab;
     public GameObject HUD;
 
 
@@ -93,7 +94,7 @@ public class EventController : MonoBehaviour
         
     }
 
-    public void checkLife()
+    public bool checkLife()
     {
         for (int i = 0; i < spawners.Count; i++)
         {
@@ -102,11 +103,26 @@ public class EventController : MonoBehaviour
                 spawners[i].kill();
             }
         }
+        if (players.Sum(p => p.health) <= 0)
+        {
+            displayPlayerLose();
+            return false;
+        }
+        if (spawners.Sum(s => s.enemy.health) <= 0)
+        {
+            displayPlayerWin();
+            return false;
+        }
+        return true;
     }
 
     private void displayPlayerWin()
     {
         GameObject wonPanel = Instantiate(winUIPrefab, HUD.transform);
+    }
+    private void displayPlayerLose()
+    {
+        GameObject losePanel = Instantiate(loseUIPrefab, HUD.transform);
     }
 
 }

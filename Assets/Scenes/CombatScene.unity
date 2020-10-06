@@ -164,6 +164,7 @@ MonoBehaviour:
   - {fileID: 1603635910}
   battleMenu: {fileID: 0}
   winUIPrefab: {fileID: 8095278216333887196, guid: f30ab9a281d2f514fa7a9c05fb8f0231, type: 3}
+  loseUIPrefab: {fileID: 8095278216333887196, guid: 2bf709932c76fab45ac250d86418fa68, type: 3}
   HUD: {fileID: 163542427}
   playerTurn: 1
   turnNum: 0
@@ -710,10 +711,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3363e1fa80cfd3408578960449d6069, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   attackButton: {fileID: 1861234417}
-  skillButton: {fileID: 0}
-  tacticsButton: {fileID: 0}
-  itemButton: {fileID: 0}
+  skillButton: {fileID: 490867027}
+  tacticsButton: {fileID: 1318521484}
+  itemButton: {fileID: 1110348143}
+--- !u!114 &490867027 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8774665295404327226, guid: 895f8ba5aa41b5a4d8acdb9971a40fb9, type: 3}
+  m_PrefabInstance: {fileID: 100274675}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1208,6 +1221,17 @@ PrefabInstance:
       objectReference: {fileID: 1873912630}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+--- !u!114 &1110348143 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4715402490628193954, guid: 895f8ba5aa41b5a4d8acdb9971a40fb9, type: 3}
+  m_PrefabInstance: {fileID: 100274675}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1162555038 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5277409120752393303, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
@@ -1389,6 +1413,17 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260224463}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1318521484 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4050809279690149423, guid: 895f8ba5aa41b5a4d8acdb9971a40fb9, type: 3}
+  m_PrefabInstance: {fileID: 100274675}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1395105961
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class CombatManager : MonoBehaviour
     private EventController controller;
 
     // reference to the playable character
-    private Character player;
+    public Character player;
     //private Character player2;
     //private Character player3;
 
@@ -69,7 +69,8 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Healing Item");
         // set amount of health back
-        float heal = player.health + 8;
+        float heal = player.health + 15;
+        Debug.Log(heal);
         player.SetCharacterHealth(heal);
 
         controller.nextTurn();
@@ -99,7 +100,7 @@ public class CombatManager : MonoBehaviour
                 if (Physics.Raycast(ray, out hit, 100))
                 {
                     target = hit.transform.gameObject.GetComponent<Character>();
-                    if (target.isEnemy && target.parent.isOccupied)
+                    if (target && target.isEnemy && target.parent.isOccupied)
                     {
                         Debug.Log(target.name);
                         StartCoroutine(player.useSkill("basicAttack", target));
