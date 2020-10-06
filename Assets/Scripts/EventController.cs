@@ -10,6 +10,8 @@ public class EventController : MonoBehaviour
     public List<Character> players;
     public List<HealthBar> healthbars;
     public GameObject battleMenu;
+    public GameObject winUIPrefab;
+    public GameObject HUD;
 
 
     // true = player turn
@@ -102,6 +104,9 @@ public class EventController : MonoBehaviour
         }
     }
 
-
+    private void displayPlayerWin()
+    {
+        GameObject wonPanel = Instantiate(winUIPrefab, HUD.transform);
+    }
 
 }
