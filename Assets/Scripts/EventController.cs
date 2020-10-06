@@ -108,7 +108,7 @@ public class EventController : MonoBehaviour
             displayPlayerLose();
             return false;
         }
-        if (spawners.Sum(s => s.enemy.health) <= 0)
+        if (spawners.Count(s => s.isOccupied) <= 0)
         {
             displayPlayerWin();
             return false;
