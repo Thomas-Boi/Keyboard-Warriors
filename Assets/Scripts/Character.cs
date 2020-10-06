@@ -141,6 +141,7 @@ public class Character : MonoBehaviour
     public void SetCharacterHealth(float health)
     {
         healthBar.SetHealth(health);
+        this.health = health;
     }
 
 
@@ -179,8 +180,10 @@ public class Character : MonoBehaviour
         UnityEngine.Debug.Log(skill);
         UnityEngine.Debug.Log(target.characterName);
         UnityEngine.Debug.Log(target.health);
-        controller.checkLife();
-        controller.nextTurn();
+        if (controller.checkLife())
+        {
+            controller.nextTurn();
+        }
     }
 
 }
