@@ -98,7 +98,7 @@ public class EventController : MonoBehaviour
     {
         for (int i = 0; i < spawners.Count; i++)
         {
-            if (spawners[i].enemy.health <= 0)
+            if (spawners[i].isOccupied && spawners[i].enemy.health <= 0)
             {
                 spawners[i].kill();
             }
