@@ -212,8 +212,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: PStressBar
       objectReference: {fileID: 0}
+    - target: {fileID: 4790153833416782739, guid: 651419f4f2876f848ac04496f611f931, type: 3}
+      propertyPath: m_Value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5940010471142179961, guid: 651419f4f2876f848ac04496f611f931, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5940010471142179961, guid: 651419f4f2876f848ac04496f611f931, type: 3}
+      propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
