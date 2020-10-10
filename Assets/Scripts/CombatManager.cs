@@ -12,11 +12,7 @@ public class CombatManager : MonoBehaviour
     public Character player;
     public Character player2;
 
-    // TODO: on certain turn number switch current controlled player over to the next one
-    private Character currentPlayer;
-
     // Reference to the UI buttons
-    
     public Button skillButton;
     public Button tacticsButton;
     public Button itemButton;
@@ -47,8 +43,6 @@ public class CombatManager : MonoBehaviour
 
 
     }
-
-    // Player's basic attack
     
 
     // Will bring up the skills sub-menu

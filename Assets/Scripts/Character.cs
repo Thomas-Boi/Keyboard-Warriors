@@ -210,12 +210,14 @@ public class Character : MonoBehaviour
                 
         }
 
-        //StartCoroutine(controller.DisplayDamage(target, damage));
+        StartCoroutine(controller.DisplayDamage(target, damage));
+
 
         if (!isEnemy)
         {
             UnityEngine.Debug.Log("Player Stress: " + stress);
         }
+
         UnityEngine.Debug.Log(skill);
         UnityEngine.Debug.Log(target.characterName);
         UnityEngine.Debug.Log(target.health);

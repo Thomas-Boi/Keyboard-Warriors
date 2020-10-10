@@ -156,10 +156,15 @@ public class EventController : MonoBehaviour
         return true;
     }
 
-    // TODO: display damage on the HUD according to target object
+    
     public IEnumerator DisplayDamage(Character target, float damage)
     {
+        // get position of target
         Vector3 charPosition = target.getCharacterPosition();
+        //UnityEngine.Debug.Log(charPosition);
+
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
+        //UnityEngine.Debug.Log(screenPosition);
 
         GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
         textObj.transform.SetParent(HUD.transform);
@@ -168,31 +173,23 @@ public class EventController : MonoBehaviour
         damageText.text = damage.ToString();
         damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
         damageText.color = Color.black;
-        damageText.fontSize = 40;
+        damageText.fontSize = 35;
         damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
         damageText.verticalOverflow = VerticalWrapMode.Overflow;
 
+        textObj.transform.position = screenPosition;
 
-        damageText.transform.position = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(.5f);
 
-        yield return new WaitForSeconds(2.0f);
-
+        Destroy(textObj);
     }
-
-
-
-
-
-
-
-
-
 
 
     private void displayPlayerWin()
     {
         GameObject wonPanel = Instantiate(winUIPrefab, HUD.transform);
     }
+
     private void displayPlayerLose()
     {
         GameObject losePanel = Instantiate(loseUIPrefab, HUD.transform);
