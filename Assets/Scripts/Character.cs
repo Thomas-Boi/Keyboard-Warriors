@@ -31,6 +31,7 @@ public class Character : MonoBehaviour
     void Awake()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
+
         
     }
 
@@ -68,6 +69,18 @@ public class Character : MonoBehaviour
         }
         
     }
+
+    void OnMouseOver()
+    {
+        if (Input.GetMouseButtonDown(0) && isTargetable)
+        {
+
+            resetScale();
+            StartCoroutine(useSkill(controller.players[controller.turnNum], this, controller.selectedSkill));
+            isTargetable = false;
+        }
+    }
+
 
     public void resetScale()
     {
@@ -149,7 +162,7 @@ public class Character : MonoBehaviour
             }
         }
 
-        StartCoroutine(useSkill(skill, chooseRandom(choices)));
+        StartCoroutine(useSkill(this, chooseRandom(choices), skill));
     }
 
     // Set this character's current health
@@ -171,7 +184,7 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(1);
     }
 
-    public IEnumerator useSkill(string skill, Character target)
+    public IEnumerator useSkill(Character user, Character target, string skill)
     {
         float damage = 0;
 
@@ -179,19 +192,19 @@ public class Character : MonoBehaviour
         switch (skill)
         {
             case "basicAttack":
-                damage = attack;
+                damage = user.attack;
 
                 target.health -= damage;
                 target.SetCharacterHealth(target.health);
-                GetComponent<Animator>().Play("Base Layer.attack", 0, 0);
+                user.GetComponent<Animator>().Play("Base Layer.attack", 0, 0);
                 yield return new WaitForSeconds(.5f);
                 break;
             case "slimeyAttack":
-                damage = (int)Math.Floor(attack * 1.2);
+                damage = (int)Math.Floor(user.attack * 1.2);
 
                 target.health -= damage;
                 target.SetCharacterHealth(target.health);
-                GetComponent<Animator>().Play("Base Layer.attack", 0, 0);
+                user.GetComponent<Animator>().Play("Base Layer.attack", 0, 0);
                 yield return new WaitForSeconds(.5f);
                 break;
                 

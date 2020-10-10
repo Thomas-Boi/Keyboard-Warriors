@@ -21,6 +21,9 @@ public class CombatManager : MonoBehaviour
     public Button tacticsButton;
     public Button itemButton;
 
+
+
+
     void Awake()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
@@ -45,8 +48,15 @@ public class CombatManager : MonoBehaviour
     private void UseAttack()
     {
         Debug.Log("Attack");
-        StartCoroutine(StartEnemyTarget());
+        controller.selectedSkill = "basicAttack";
 
+        foreach (Spawner spawn in controller.spawners)
+        {
+            if (spawn.isOccupied)
+            {
+                spawn.enemy.isTargetable = true;
+            }
+        }
     }
 
     // Will bring up the skills sub-menu
@@ -74,56 +84,56 @@ public class CombatManager : MonoBehaviour
     }
 
     // For player to select target
-    private IEnumerator StartEnemyTarget()
-    {
-        bool targetting = true;
-        foreach (Spawner spawn in controller.spawners)
-        {
-            if (spawn.isOccupied)
-            {
-                spawn.enemy.isTargetable = true;
-            }
-        }
+    //private IEnumerator StartEnemyTarget()
+    //{
+    //    bool targetting = true;
+    //    foreach (Spawner spawn in controller.spawners)
+    //    {
+    //        if (spawn.isOccupied)
+    //        {
+    //            spawn.enemy.isTargetable = true;
+    //        }
+    //    }
 
-        while (targetting)
-        {
+    //    while (targetting)
+    //    {
 
-            if (Input.GetMouseButtonDown(0))
-            {
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                Character target;
+    //        if (Input.GetMouseButtonDown(0))
+    //        {
+    //            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    //            RaycastHit hit;
+    //            Character target;
 
-                if (Physics.Raycast(ray, out hit, 100))
-                {
-                    target = hit.transform.gameObject.GetComponent<Character>();
-                    if (target && target.isEnemy && target.parent.isOccupied)
-                    {
-                        Debug.Log(target.name);
-                        StartCoroutine(player.useSkill("basicAttack", target));
+    //            if (Physics.Raycast(ray, out hit, 100))
+    //            {
+    //                target = hit.transform.gameObject.GetComponent<Character>();
+    //                if (target && target.isEnemy && target.parent.isOccupied)
+    //                {
+    //                    Debug.Log(target.name);
+    //                    StartCoroutine(player.useSkill("basicAttack", target));
 
-                        // when attacking, player's stress increases
-                        float stress = player.stress;
-                        stress += 20;
-                        player.SetCharacterStress(stress);
+    //                    // when attacking, player's stress increases
+    //                    float stress = player.stress;
+    //                    stress += 20;
+    //                    player.SetCharacterStress(stress);
 
-                        foreach (Spawner spawn in controller.spawners)
-                        {
-                            if (spawn.isOccupied)
-                            {
-                                spawn.enemy.isTargetable = false;
-                                spawn.enemy.resetScale();
-                            }
-                        }
-                        targetting = false;
-                    }
-                }
+    //                    foreach (Spawner spawn in controller.spawners)
+    //                    {
+    //                        if (spawn.isOccupied)
+    //                        {
+    //                            spawn.enemy.isTargetable = false;
+    //                            spawn.enemy.resetScale();
+    //                        }
+    //                    }
+    //                    targetting = false;
+    //                }
+    //            }
 
-            }
+    //        }
 
-            yield return null;
+    //        yield return null;
             
-        }
+    //    }
         
-    }
+    //}
 }

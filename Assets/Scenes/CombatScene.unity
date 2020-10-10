@@ -158,6 +158,7 @@ MonoBehaviour:
   - {fileID: 102828808}
   players:
   - {fileID: 1512567447}
+  - {fileID: 208201394}
   healthbars:
   - {fileID: 33849963}
   - {fileID: 1967631450}
@@ -168,6 +169,7 @@ MonoBehaviour:
   HUD: {fileID: 163542427}
   playerTurn: 1
   turnNum: 0
+  selectedSkill: 
   waveNum: 1
 --- !u!4 &17280699
 Transform:

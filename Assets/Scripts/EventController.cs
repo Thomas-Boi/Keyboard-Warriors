@@ -21,7 +21,7 @@ public class EventController : MonoBehaviour
     //turn number within each team.
     // 0 = player1, 1 = player2
     public int turnNum = -1;
-
+    public string selectedSkill = "";
     public int waveNum;
     
 
