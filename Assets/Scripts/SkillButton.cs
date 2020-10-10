@@ -17,9 +17,14 @@ public class SkillButton : MonoBehaviour
 
         controller = GameObject.Find("EventController").GetComponent<EventController>();
         GetComponent<Button>().onClick.AddListener(() => targetSkill());
-        gameObject.SetActive(false);
+        
     }
 
+
+    void Awake()
+    {
+        gameObject.SetActive(false);
+    }
 
     public void spawnButton(string skill, string alias)
     {
