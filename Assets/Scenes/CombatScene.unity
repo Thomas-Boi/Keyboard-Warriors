@@ -176,7 +176,7 @@ MonoBehaviour:
   - {fileID: 1937797393}
   - {fileID: 579059546}
   - {fileID: 603385228}
-  battleMenu: {fileID: 0}
+  battleMenu: {fileID: 1047038768}
   winUIPrefab: {fileID: 8095278216333887196, guid: f30ab9a281d2f514fa7a9c05fb8f0231, type: 3}
   loseUIPrefab: {fileID: 8095278216333887196, guid: 2bf709932c76fab45ac250d86418fa68, type: 3}
   HUD: {fileID: 163542427}
@@ -501,6 +501,7 @@ MonoBehaviour:
   skillButton: {fileID: 1010489913}
   tacticsButton: {fileID: 1041499699}
   itemButton: {fileID: 642760735}
+  tacticsMenuPrefab: {fileID: 2600181943511187382, guid: 7b2271be0184f1141b908e5247939d60, type: 3}
 --- !u!114 &208201394 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
@@ -1425,6 +1426,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1047038768 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2600181943511187382, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
+  m_PrefabInstance: {fileID: 1539639515}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1047907533
 PrefabInstance:
   m_ObjectHideFlags: 0

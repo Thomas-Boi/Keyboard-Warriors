@@ -21,7 +21,11 @@ public class CombatManager : MonoBehaviour
     public Button tacticsButton;
     public Button itemButton;
 
+    // references to menu prefabs
+    public GameObject tacticsMenuPrefab;
 
+    // references to menus
+    private GameObject tacticsMenu;
 
 
     void Awake()
@@ -51,12 +55,21 @@ public class CombatManager : MonoBehaviour
     private void UseSkills()
     {
         Debug.Log("Skills");
+        // tacticsMenu.GetComponent<Renderer>().enabled = false;
     }
 
     // Will bring up the tactics sub-menu
     public void UseTactics()
     {
         Debug.Log("Tactics");
+        //if (tacticsMenu == null)
+        //{
+        //    tacticsMenu = Instantiate(tacticsMenuPrefab, transform);
+        //}
+        //else
+        //{
+        //    tacticsMenu.GetComponent<Renderer>().enabled = true;
+        //}
     }
 
     // For the time being, uses only a single item that heals the player for a set amount
