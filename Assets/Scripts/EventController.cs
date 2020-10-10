@@ -100,6 +100,7 @@ public class EventController : MonoBehaviour
 
     public void nextTurn()
     {
+        
         turnNum++;
         if (playerTurn)
         {

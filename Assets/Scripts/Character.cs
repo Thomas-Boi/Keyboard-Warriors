@@ -187,7 +187,7 @@ public class Character : MonoBehaviour
     public IEnumerator useSkill(Character user, Character target, string skill)
     {
         float damage = 0;
-
+        controller.hideSkills();
         //todo: Make animation stuff a function
         switch (skill)
         {
