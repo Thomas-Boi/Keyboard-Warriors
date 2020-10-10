@@ -20,7 +20,7 @@ public class EventController : MonoBehaviour
     public bool playerTurn;
     //turn number within each team.
     // 0 = player1, 1 = player2
-    public int turnNum = 0;
+    public int turnNum = -1;
 
     public int waveNum;
     
@@ -33,7 +33,8 @@ public class EventController : MonoBehaviour
 
     public void startWave(int wave)
     {
-        switch(wave)
+        turnNum = -1;
+        switch (wave)
         {
             case 1:
                 spawners[0].spawn("boxSlime");
@@ -64,24 +65,23 @@ public class EventController : MonoBehaviour
         turnNum++;
         if (playerTurn)
         {
-            //battleMenu.SetActive(true);
             if (turnNum >= players.Count)
             {
                 turnNum = 0;
                 playerTurn = false;
             }
         } 
-        else if (!playerTurn)
+        if (!playerTurn)
         {
-            if (turnNum-1 >= spawners.Count)
+            if (turnNum >= spawners.Count)
             {
-                turnNum = 0;
+                turnNum = -1;
                 playerTurn = true;
                 nextTurn();
             }
-            else if (spawners[turnNum-1].isOccupied)
+            else if (spawners[turnNum].isOccupied)
             {
-                spawners[turnNum-1].enemy.selectSkill();
+                spawners[turnNum].enemy.selectSkill();
             }
             else
             {
@@ -138,6 +138,16 @@ public class EventController : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
     }
+
+
+
+
+
+
+
+
+
+
 
     private void displayPlayerWin()
     {
