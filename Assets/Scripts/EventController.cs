@@ -10,6 +10,7 @@ public class EventController : MonoBehaviour
     public List<Spawner> spawners;
     public List<Character> players;
     public List<HealthBar> healthbars;
+    public List<SkillButton> skillButtons;
     public GameObject battleMenu;
     public GameObject winUIPrefab;
     public GameObject loseUIPrefab;
@@ -20,8 +21,8 @@ public class EventController : MonoBehaviour
     public bool playerTurn;
     //turn number within each team.
     // 0 = player1, 1 = player2
-    public int turnNum = 0;
-
+    public int turnNum = -1;
+    public string selectedSkill = "";
     public int waveNum;
     
 
@@ -31,14 +32,18 @@ public class EventController : MonoBehaviour
         startWave(waveNum);
     }
 
+
+
     public void startWave(int wave)
     {
-        switch(wave)
+        turnNum = -1;
+        switch (wave)
         {
             case 1:
                 spawners[0].spawn("boxSlime");
                 spawners[1].spawn("boxSlimeSmall");
                 spawners[2].spawn("boxSlimeSmall");
+                spawners[4].spawn("boxSlime");
 
                 for (int i = 0; i < spawners.Count; i++)
                 {
@@ -59,29 +64,63 @@ public class EventController : MonoBehaviour
     }
 
 
+    public void displaySkills()
+    {
+        //these lists are temporary solutions. Will refactor and move this somewhere else later
+        List<string> playerOne = new List<string> { "basicAttack", "basicAttack", "slimeyAttack" };
+        List<string> playerTwo = new List<string> { "basicAttack", "basicAttack", "slimeyAttack", "slimeyAttack" };
+
+        if (turnNum == 0)
+        {
+            for (int i = 0; i < playerOne.Count; i++)
+            {
+                skillButtons[i].spawnButton(playerOne[i], "p1Attack " + i);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < playerTwo.Count; i++)
+            {
+                skillButtons[i].spawnButton(playerTwo[i], "p2Attack " + i);
+            }
+        }
+        
+    }
+
+    public void hideSkills()
+    {
+        foreach(SkillButton button in skillButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+    }
+
+
+
+
     public void nextTurn()
     {
         turnNum++;
         if (playerTurn)
         {
-            //battleMenu.SetActive(true);
+            displaySkills();
             if (turnNum >= players.Count)
             {
                 turnNum = 0;
                 playerTurn = false;
             }
         } 
-        else if (!playerTurn)
+        if (!playerTurn)
         {
-            if (turnNum-1 >= spawners.Count)
+            if (turnNum >= spawners.Count)
             {
-                turnNum = 0;
+                turnNum = -1;
                 playerTurn = true;
                 nextTurn();
             }
-            else if (spawners[turnNum-1].isOccupied)
+            else if (spawners[turnNum].isOccupied)
             {
-                spawners[turnNum-1].enemy.selectSkill();
+                spawners[turnNum].enemy.selectSkill();
             }
             else
             {
@@ -138,6 +177,16 @@ public class EventController : MonoBehaviour
         yield return new WaitForSeconds(2.0f);
 
     }
+
+
+
+
+
+
+
+
+
+
 
     private void displayPlayerWin()
     {
