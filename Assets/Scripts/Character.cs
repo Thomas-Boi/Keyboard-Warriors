@@ -7,11 +7,13 @@ using UnityEngine;
 
 public class Character : MonoBehaviour
 {
+    // Character's stats
     public string characterName;
     public float level;
     public float maxHealth;
     public float health;
-    public float mana;
+    public float maxStress;
+    public float stress;
     public float attack;
     public float defense;
     public string skills; // see useSkill method
@@ -22,18 +24,26 @@ public class Character : MonoBehaviour
     private EventController controller;
     public Spawner parent;
 
+    // Reference to character's health and stress bars
     public HealthBar healthBar;
+    public StressBar stressBar;
 
     void Awake()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
-
+        
     }
 
     void Start()
     {
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(health);
+
+        if (!isEnemy)
+        {
+            stressBar.SetMaxStress(maxStress);
+            stressBar.SetStress(stress);
+        }
     }
 
     void OnMouseEnter()
@@ -63,6 +73,11 @@ public class Character : MonoBehaviour
     {
         transform.localScale = new Vector3(1, 1, 1);
         transform.position = parent.transform.position;
+    }
+
+    public Vector3 getCharacterPosition()
+    {
+        return transform.position;
     }
 
     public static T chooseRandom<T>(Dictionary<T, int> dict)
@@ -144,6 +159,11 @@ public class Character : MonoBehaviour
         this.health = health;
     }
 
+    public void SetCharacterStress(float stress)
+    {
+        stressBar.SetStress(stress);
+        this.stress = stress;
+    }
 
     public IEnumerator waitForAnim(string animation)
     {
@@ -151,35 +171,42 @@ public class Character : MonoBehaviour
         yield return new WaitForSeconds(1);
     }
 
-
-
     public IEnumerator useSkill(string skill, Character target)
     {
+        float damage = 0;
+
         //todo: Make animation stuff a function
         switch (skill)
         {
             case "basicAttack":
-                target.health -= attack;
+                damage = attack;
+
+                target.health -= damage;
                 target.SetCharacterHealth(target.health);
                 GetComponent<Animator>().Play("Base Layer.attack", 0, 0);
                 yield return new WaitForSeconds(.5f);
                 break;
             case "slimeyAttack":
-                target.health -= (int)Math.Floor(attack * 1.2);
+                damage = (int)Math.Floor(attack * 1.2);
+
+                target.health -= damage;
                 target.SetCharacterHealth(target.health);
                 GetComponent<Animator>().Play("Base Layer.attack", 0, 0);
                 yield return new WaitForSeconds(.5f);
                 break;
-
-
                 
         }
 
-        
-        
+        //StartCoroutine(controller.DisplayDamage(target, damage));
+
+        if (!isEnemy)
+        {
+            UnityEngine.Debug.Log("Player Stress: " + stress);
+        }
         UnityEngine.Debug.Log(skill);
         UnityEngine.Debug.Log(target.characterName);
         UnityEngine.Debug.Log(target.health);
+
         if (controller.checkLife())
         {
             controller.nextTurn();

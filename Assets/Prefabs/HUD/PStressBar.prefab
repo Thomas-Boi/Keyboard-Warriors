@@ -85,7 +85,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4251662406055680344}
   - component: {fileID: 4790153833416782739}
-  - component: {fileID: 769703704613955021}
+  - component: {fileID: 5171928954821068186}
   m_Layer: 5
   m_Name: PStressBar
   m_TagString: Untagged
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &769703704613955021
+--- !u!114 &5171928954821068186
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -173,7 +173,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4251662406055680347}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2574a25fe0c15e41b5cd102e013125d, type: 3}
+  m_Script: {fileID: 11500000, guid: 5dae257ce23095346bf499abd1e5a859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 4790153833416782739}

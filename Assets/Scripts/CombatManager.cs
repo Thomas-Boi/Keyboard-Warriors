@@ -8,10 +8,12 @@ public class CombatManager : MonoBehaviour
 
     private EventController controller;
 
-    // reference to the playable character
+    // reference to the playable characters
     public Character player;
-    //private Character player2;
-    //private Character player3;
+    public Character player2;
+
+    // TODO: on certain turn number switch current controlled player over to the next one
+    private Character currentPlayer;
 
     // Reference to the UI buttons
     public Button attackButton;
@@ -21,7 +23,6 @@ public class CombatManager : MonoBehaviour
 
     void Awake()
     {
-        player = GameObject.Find("Player").GetComponent<Character>();
         controller = GameObject.Find("EventController").GetComponent<EventController>();
     }
 
@@ -36,11 +37,8 @@ public class CombatManager : MonoBehaviour
 
     void Update()
     {
-        if (player.health <= 0) {
-            player.health = 0;
 
-            // display text to say you lost battle
-        }
+
     }
 
     // Player's basic attack
@@ -48,20 +46,19 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Attack");
         StartCoroutine(StartEnemyTarget());
+
     }
 
     // Will bring up the skills sub-menu
     private void UseSkills()
     {
         Debug.Log("Skills");
-        //controller.nextTurn();
     }
 
     // Will bring up the tactics sub-menu
     public void UseTactics()
     {
         Debug.Log("Tactics");
-        //controller.nextTurn();
     }
 
     // For the time being, uses only a single item that heals the player for a set amount
@@ -69,9 +66,9 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Healing Item");
         // set amount of health back
-        float heal = player.health + 15;
-        Debug.Log(heal);
-        player.SetCharacterHealth(heal);
+        float health = player.health;
+        health += 15;
+        player.SetCharacterHealth(health);
 
         controller.nextTurn();
     }
@@ -104,6 +101,12 @@ public class CombatManager : MonoBehaviour
                     {
                         Debug.Log(target.name);
                         StartCoroutine(player.useSkill("basicAttack", target));
+
+                        // when attacking, player's stress increases
+                        float stress = player.stress;
+                        stress += 20;
+                        player.SetCharacterStress(stress);
+
                         foreach (Spawner spawn in controller.spawners)
                         {
                             if (spawn.isOccupied)
