@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Basic Attack
+  m_Text: Skill
 --- !u!1 &6476643647388921775
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,8 +91,9 @@ GameObject:
   - component: {fileID: 7543708375949576858}
   - component: {fileID: 6175876700205841625}
   - component: {fileID: 6163954805061728885}
+  - component: {fileID: 2474253740431717777}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SkillButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -199,3 +200,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2474253740431717777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6476643647388921775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e5bdaba5dbbbc640b8b8bbc5ad5ee74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill: 
+  alias: 

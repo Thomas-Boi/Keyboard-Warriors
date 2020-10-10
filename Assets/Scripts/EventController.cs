@@ -10,6 +10,7 @@ public class EventController : MonoBehaviour
     public List<Spawner> spawners;
     public List<Character> players;
     public List<HealthBar> healthbars;
+    public List<SkillButton> skillButtons;
     public GameObject battleMenu;
     public GameObject winUIPrefab;
     public GameObject loseUIPrefab;
@@ -31,6 +32,8 @@ public class EventController : MonoBehaviour
         startWave(waveNum);
     }
 
+
+
     public void startWave(int wave)
     {
         turnNum = -1;
@@ -40,6 +43,7 @@ public class EventController : MonoBehaviour
                 spawners[0].spawn("boxSlime");
                 spawners[1].spawn("boxSlimeSmall");
                 spawners[2].spawn("boxSlimeSmall");
+                spawners[4].spawn("boxSlime");
 
                 for (int i = 0; i < spawners.Count; i++)
                 {
@@ -60,11 +64,46 @@ public class EventController : MonoBehaviour
     }
 
 
+    public void displaySkills()
+    {
+        //these lists are temporary solutions. Will refactor and move this somewhere else later
+        List<string> playerOne = new List<string> { "basicAttack", "basicAttack", "slimeyAttack" };
+        List<string> playerTwo = new List<string> { "basicAttack", "basicAttack", "slimeyAttack", "slimeyAttack" };
+
+        if (turnNum == 0)
+        {
+            for (int i = 0; i < playerOne.Count; i++)
+            {
+                skillButtons[i].spawnButton(playerOne[i], "p1Attack " + i);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < playerTwo.Count; i++)
+            {
+                skillButtons[i].spawnButton(playerTwo[i], "p2Attack " + i);
+            }
+        }
+        
+    }
+
+    public void hideSkills()
+    {
+        foreach(SkillButton button in skillButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+    }
+
+
+
+
     public void nextTurn()
     {
         turnNum++;
         if (playerTurn)
         {
+            displaySkills();
             if (turnNum >= players.Count)
             {
                 turnNum = 0;

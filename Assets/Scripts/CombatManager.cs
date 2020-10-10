@@ -16,7 +16,7 @@ public class CombatManager : MonoBehaviour
     private Character currentPlayer;
 
     // Reference to the UI buttons
-    public Button attackButton;
+    
     public Button skillButton;
     public Button tacticsButton;
     public Button itemButton;
@@ -32,7 +32,7 @@ public class CombatManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attackButton.onClick.AddListener(() => UseAttack());
+        //attackButton.onClick.AddListener(() => UseAttack());
         skillButton.onClick.AddListener(() => UseSkills());
         tacticsButton.onClick.AddListener(() => UseTactics());
         itemButton.onClick.AddListener(() => UseItems());
@@ -45,19 +45,7 @@ public class CombatManager : MonoBehaviour
     }
 
     // Player's basic attack
-    private void UseAttack()
-    {
-        Debug.Log("Attack");
-        controller.selectedSkill = "basicAttack";
-
-        foreach (Spawner spawn in controller.spawners)
-        {
-            if (spawn.isOccupied)
-            {
-                spawn.enemy.isTargetable = true;
-            }
-        }
-    }
+    
 
     // Will bring up the skills sub-menu
     private void UseSkills()
