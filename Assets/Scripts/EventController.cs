@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EventController : MonoBehaviour
 {
@@ -13,7 +14,6 @@ public class EventController : MonoBehaviour
     public GameObject winUIPrefab;
     public GameObject loseUIPrefab;
     public GameObject HUD;
-
 
     // true = player turn
     // false = not player turn
@@ -114,6 +114,29 @@ public class EventController : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    // TODO: display damage on the HUD according to target object
+    public IEnumerator DisplayDamage(Character target, float damage)
+    {
+        Vector3 charPosition = target.getCharacterPosition();
+
+        GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
+        textObj.transform.SetParent(HUD.transform);
+
+        Text damageText = textObj.AddComponent<Text>();
+        damageText.text = damage.ToString();
+        damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        damageText.color = Color.black;
+        damageText.fontSize = 40;
+        damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
+        damageText.verticalOverflow = VerticalWrapMode.Overflow;
+
+
+        damageText.transform.position = new Vector3(0, 0, 0);
+
+        yield return new WaitForSeconds(2.0f);
+
     }
 
     private void displayPlayerWin()
