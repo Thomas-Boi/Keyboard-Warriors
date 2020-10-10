@@ -100,7 +100,7 @@ public class EventController : MonoBehaviour
 
     public void nextTurn()
     {
-        
+        hideSkills();
         turnNum++;
         if (playerTurn)
         {
