@@ -169,9 +169,13 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1222412418320930114, guid: 3050983a2b923aa4981641f727468c05, type: 3}
+      propertyPath: m_Name
+      value: P1StressBar
+      objectReference: {fileID: 0}
     - target: {fileID: 2972318621150206274, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_Name
-      value: PStats
+      value: P1Stats
       objectReference: {fileID: 0}
     - target: {fileID: 4279204637904776747, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_AnchorMax.x
@@ -180,6 +184,10 @@ PrefabInstance:
     - target: {fileID: 4279204637904776747, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912401204517253897, guid: 3050983a2b923aa4981641f727468c05, type: 3}
+      propertyPath: m_Name
+      value: P1HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 8762098313049180256, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_AnchorMax.x
@@ -287,9 +295,17 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1222412418320930114, guid: 3050983a2b923aa4981641f727468c05, type: 3}
+      propertyPath: m_Name
+      value: P2StressBar
+      objectReference: {fileID: 0}
     - target: {fileID: 2972318621150206274, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_Name
-      value: PStats (1)
+      value: P2Stats
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085153105478128106, guid: 3050983a2b923aa4981641f727468c05, type: 3}
+      propertyPath: m_Text
+      value: P2
       objectReference: {fileID: 0}
     - target: {fileID: 4279204637904776747, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_AnchorMax.x
@@ -298,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 4279204637904776747, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912401204517253897, guid: 3050983a2b923aa4981641f727468c05, type: 3}
+      propertyPath: m_Name
+      value: P2HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 8762098313049180256, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_AnchorMax.x
@@ -405,9 +425,17 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1222412418320930114, guid: 3050983a2b923aa4981641f727468c05, type: 3}
+      propertyPath: m_Name
+      value: P3StressBar
+      objectReference: {fileID: 0}
     - target: {fileID: 2972318621150206274, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_Name
-      value: PStats (2)
+      value: P3Stats
+      objectReference: {fileID: 0}
+    - target: {fileID: 4085153105478128106, guid: 3050983a2b923aa4981641f727468c05, type: 3}
+      propertyPath: m_Text
+      value: P3
       objectReference: {fileID: 0}
     - target: {fileID: 4279204637904776747, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_AnchorMax.x
@@ -416,6 +444,10 @@ PrefabInstance:
     - target: {fileID: 4279204637904776747, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5912401204517253897, guid: 3050983a2b923aa4981641f727468c05, type: 3}
+      propertyPath: m_Name
+      value: P3HealthBar
       objectReference: {fileID: 0}
     - target: {fileID: 8762098313049180256, guid: 3050983a2b923aa4981641f727468c05, type: 3}
       propertyPath: m_AnchorMax.x
