@@ -210,12 +210,9 @@ public class Character : MonoBehaviour
                 
         }
 
-        //StartCoroutine(controller.DisplayDamage(target, damage));
+        controller.DisplayDamage(target, damage);
+        controller.CheckStressChange(user);
 
-        if (!isEnemy)
-        {
-            UnityEngine.Debug.Log("Player Stress: " + stress);
-        }
         UnityEngine.Debug.Log(skill);
         UnityEngine.Debug.Log(target.characterName);
         UnityEngine.Debug.Log(target.health);
@@ -226,4 +223,20 @@ public class Character : MonoBehaviour
         }
     }
 
+    // Transfered code over from CombatManager
+    // todo: Items
+    public IEnumerator UseItem(Character user, Character target, string item)
+    {
+        float healAmount = 15;
+        float currentHealth = user.health;
+        user.SetCharacterHealth(currentHealth + healAmount);
+
+        yield return new WaitForSeconds(0.5f);
+    }
+
+    // todo: Tactics
+    public IEnumerator UseTactic(Character user, Character target, string tactic)
+    {
+        yield return null;
+    }
 }

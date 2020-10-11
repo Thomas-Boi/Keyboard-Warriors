@@ -97,7 +97,6 @@ public class EventController : MonoBehaviour
 
 
 
-
     public void nextTurn()
     {
         hideSkills();
@@ -110,6 +109,7 @@ public class EventController : MonoBehaviour
                 turnNum = 0;
                 playerTurn = false;
             }
+
         } 
         if (!playerTurn)
         {
@@ -156,43 +156,74 @@ public class EventController : MonoBehaviour
         return true;
     }
 
-    // TODO: display damage on the HUD according to target object
-    public IEnumerator DisplayDamage(Character target, float damage)
+    public void CheckStressChange(Character character)
+    {
+        float currentStress = character.stress;
+        float stressAmount = 30;
+
+        // when stress is full decrease character health
+        if (!character.isEnemy && character.stress == character.maxStress)
+        {
+            float currentHealth = character.health;
+            float damage = 10;
+            character.SetCharacterHealth(currentHealth - damage);
+            DisplayDamage(character, damage);
+
+        // when stress isn't full, increase it
+        } else if (!character.isEnemy && character.stress < character.maxStress)
+        {
+            character.SetCharacterStress(currentStress + stressAmount);
+        }
+        
+    }
+    
+    public void DisplayDamage(Character target, float damage)
     {
         Vector3 charPosition = target.getCharacterPosition();
+
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
 
         GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
         textObj.transform.SetParent(HUD.transform);
 
         Text damageText = textObj.AddComponent<Text>();
-        damageText.text = damage.ToString();
+        damageText.text = "-" + damage.ToString();
         damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
         damageText.color = Color.black;
-        damageText.fontSize = 40;
+        damageText.fontSize = 35;
         damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
         damageText.verticalOverflow = VerticalWrapMode.Overflow;
 
+        textObj.transform.position = screenPosition;
 
-        damageText.transform.position = new Vector3(0, 0, 0);
-
-        yield return new WaitForSeconds(2.0f);
+        StartCoroutine(FadeOutText(textObj));
 
     }
 
+    private IEnumerator FadeOutText(GameObject textObject)
+    {
+        Text text = textObject.GetComponent<Text>();
+        Color originalColour = text.color;
 
+        float fadeOutTime = 1.0f;
+        Vector3 move = new Vector3(0, 0.5f, 0);
 
+        for (float t = 0.01f; t < fadeOutTime; t += Time.deltaTime)
+        {
+            text.color = Color.Lerp(originalColour, Color.clear, Mathf.Min(1, t / fadeOutTime));
+            textObject.transform.position += move;
+            yield return null;
+        }
 
-
-
-
-
-
+        Destroy(textObject);
+    }
 
 
     private void displayPlayerWin()
     {
         GameObject wonPanel = Instantiate(winUIPrefab, HUD.transform);
     }
+
     private void displayPlayerLose()
     {
         GameObject losePanel = Instantiate(loseUIPrefab, HUD.transform);

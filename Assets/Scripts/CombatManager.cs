@@ -12,11 +12,7 @@ public class CombatManager : MonoBehaviour
     public Character player;
     public Character player2;
 
-    // TODO: on certain turn number switch current controlled player over to the next one
-    private Character currentPlayer;
-
     // Reference to the UI buttons
-    
     public Button skillButton;
     public Button tacticsButton;
     public Button itemButton;
@@ -37,9 +33,9 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         //attackButton.onClick.AddListener(() => UseAttack());
-        skillButton.onClick.AddListener(() => UseSkills());
-        tacticsButton.onClick.AddListener(() => UseTactics());
-        itemButton.onClick.AddListener(() => UseItems());
+        //skillButton.onClick.AddListener(() => UseSkills());
+        //tacticsButton.onClick.AddListener(() => UseTactics());
+        //itemButton.onClick.AddListener(() => UseItems());
     }
 
     void Update()
@@ -47,8 +43,6 @@ public class CombatManager : MonoBehaviour
 
 
     }
-
-    // Player's basic attack
     
 
     // Will bring up the skills sub-menu
@@ -77,11 +71,11 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Healing Item");
         // set amount of health back
-        float health = player.health;
-        health += 15;
-        player.SetCharacterHealth(health);
+        //float health = player.health;
+        //health += 15;
+        //player.SetCharacterHealth(health);
 
-        controller.nextTurn();
+        //controller.nextTurn();
     }
 
 }
