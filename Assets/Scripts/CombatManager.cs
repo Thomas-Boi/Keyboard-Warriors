@@ -33,9 +33,9 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         //attackButton.onClick.AddListener(() => UseAttack());
-        skillButton.onClick.AddListener(() => UseSkills());
-        tacticsButton.onClick.AddListener(() => UseTactics());
-        itemButton.onClick.AddListener(() => UseItems());
+        //skillButton.onClick.AddListener(() => UseSkills());
+        //tacticsButton.onClick.AddListener(() => UseTactics());
+        //itemButton.onClick.AddListener(() => UseItems());
     }
 
     void Update()
@@ -71,11 +71,11 @@ public class CombatManager : MonoBehaviour
     {
         Debug.Log("Healing Item");
         // set amount of health back
-        float health = player.health;
-        health += 15;
-        player.SetCharacterHealth(health);
+        //float health = player.health;
+        //health += 15;
+        //player.SetCharacterHealth(health);
 
-        controller.nextTurn();
+        //controller.nextTurn();
     }
 
 }

@@ -97,7 +97,6 @@ public class EventController : MonoBehaviour
 
 
 
-
     public void nextTurn()
     {
         hideSkills();
@@ -110,6 +109,7 @@ public class EventController : MonoBehaviour
                 turnNum = 0;
                 playerTurn = false;
             }
+
         } 
         if (!playerTurn)
         {
@@ -156,21 +156,38 @@ public class EventController : MonoBehaviour
         return true;
     }
 
-    
-    public IEnumerator DisplayDamage(Character target, float damage)
+    public void CheckStressChange(Character character)
     {
-        // get position of target
+        float currentStress = character.stress;
+        float stressAmount = 30;
+
+        // when stress is full decrease character health
+        if (!character.isEnemy && character.stress == character.maxStress)
+        {
+            float currentHealth = character.health;
+            float damage = 10;
+            character.SetCharacterHealth(currentHealth - damage);
+            DisplayDamage(character, damage);
+
+        // when stress isn't full, increase it
+        } else if (!character.isEnemy && character.stress < character.maxStress)
+        {
+            character.SetCharacterStress(currentStress + stressAmount);
+        }
+        
+    }
+    
+    public void DisplayDamage(Character target, float damage)
+    {
         Vector3 charPosition = target.getCharacterPosition();
-        //UnityEngine.Debug.Log(charPosition);
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
-        //UnityEngine.Debug.Log(screenPosition);
 
         GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
         textObj.transform.SetParent(HUD.transform);
 
         Text damageText = textObj.AddComponent<Text>();
-        damageText.text = damage.ToString();
+        damageText.text = "-" + damage.ToString();
         damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
         damageText.color = Color.black;
         damageText.fontSize = 35;
@@ -179,9 +196,26 @@ public class EventController : MonoBehaviour
 
         textObj.transform.position = screenPosition;
 
-        yield return new WaitForSeconds(.5f);
+        StartCoroutine(FadeOutText(textObj));
 
-        Destroy(textObj);
+    }
+
+    private IEnumerator FadeOutText(GameObject textObject)
+    {
+        Text text = textObject.GetComponent<Text>();
+        Color originalColour = text.color;
+
+        float fadeOutTime = 1.0f;
+        Vector3 move = new Vector3(0, 0.5f, 0);
+
+        for (float t = 0.01f; t < fadeOutTime; t += Time.deltaTime)
+        {
+            text.color = Color.Lerp(originalColour, Color.clear, Mathf.Min(1, t / fadeOutTime));
+            textObject.transform.position += move;
+            yield return null;
+        }
+
+        Destroy(textObject);
     }
 
 
