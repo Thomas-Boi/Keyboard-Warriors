@@ -75,7 +75,7 @@ public class ProgressTracker
     }
 
     // gain money for the player
-    public void GainMoney(int amount)
+    public void AddMoney(int amount)
     {
         if (amount > 0) money += amount;
     }
@@ -87,7 +87,7 @@ public class ProgressTracker
     }
 
     // gain score for the player
-    public void GainScore(int amount)
+    public void AddScore(int amount)
     {
         if (amount > 0) score += amount;
     }
