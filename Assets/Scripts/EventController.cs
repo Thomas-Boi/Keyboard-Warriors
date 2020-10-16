@@ -220,10 +220,18 @@ public class EventController : MonoBehaviour
 
     // signal that player has win
     // increment the week and display a win pop up
+    // if it's the final week and they pass, display an end scene
     private void win()
     {
         displayPlayerWin();
-        ProgressTracker.GetTracker().NextWeek();
+        var tracker = ProgressTracker.GetTracker();
+        if (tracker.CurCombatType == SceneTypeEnum.WEEKLY_COMBAT)
+        {
+            if (tracker.NextWeek() > ProgressTracker.finalWeekNum)
+            {
+                SceneLoader.LoadEndScene();
+            }
+        }
     }
 
     // signal that player has lose

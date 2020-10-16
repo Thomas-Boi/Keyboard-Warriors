@@ -10,6 +10,13 @@ public class ProgressTracker
     private int weekNum;
     private int money;
     private int score;
+    private SceneTypeEnum curCombatType;
+
+
+    // the singleton
+    private static ProgressTracker tracker;
+
+    public static int finalWeekNum = 2;
 
     // track the current week number in the semester
     public int WeekNum 
@@ -29,15 +36,25 @@ public class ProgressTracker
         get => score; 
     }
 
-    // the singleton
-    private static ProgressTracker tracker;
+    // track the combat type
+    public SceneTypeEnum CurCombatType 
+    {
+        get => curCombatType;
+        set
+        {
+            if (value == SceneTypeEnum.WEEKLY_COMBAT || value == SceneTypeEnum.EXTRA_COMBAT)
+            {
+                curCombatType = value;
+            }
+        }
+    }
 
-    public static int finalWeekNum = 6;
 
     public ProgressTracker() {
         weekNum = 1;
         money = 0;
         score = 0;
+        curCombatType = SceneTypeEnum.HOME;
     }
 
     public static ProgressTracker GetTracker()
@@ -47,12 +64,14 @@ public class ProgressTracker
     }
 
     // go to the next week but it can't be more than finalWeekNum
-    public void NextWeek()
+    // return the value of the next week
+    public int NextWeek()
     {
         if (++weekNum > finalWeekNum)
         {
             weekNum = finalWeekNum;
         }
+        return weekNum;
     }
 
     // gain money for the player

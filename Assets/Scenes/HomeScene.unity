@@ -458,6 +458,30 @@ PrefabInstance:
       propertyPath: m_Text
       value: Extra Study
       objectReference: {fileID: 0}
+    - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 69577386}
+    - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SceneLoader, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadCombatScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5911782417104794405, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Text
       value: Learn Some More
@@ -648,7 +672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -877,8 +901,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 294.85, y: 203.1}
-  m_SizeDelta: {x: -589.71875, y: -406.11737}
+  m_AnchoredPosition: {x: 277.3, y: 203.1}
+  m_SizeDelta: {x: -554.60364, y: -406.11737}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1376840987
 MonoBehaviour:
@@ -1044,8 +1068,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -62.6, y: -0.0031433}
-  m_SizeDelta: {x: 67.45148, y: 30}
+  m_AnchoredPosition: {x: -67.4, y: -0.0031433}
+  m_SizeDelta: {x: 74.71661, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673401039
 MonoBehaviour:
@@ -1184,6 +1208,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: Beastiary
       objectReference: {fileID: 0}
+    - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5911782417104794405, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Text
       value: Homework Tips
@@ -1288,6 +1316,10 @@ PrefabInstance:
     - target: {fileID: 545245735439052907, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Text
       value: Characters
+      objectReference: {fileID: 0}
+    - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5911782417104794405, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Text
@@ -1468,6 +1500,10 @@ PrefabInstance:
     - target: {fileID: 545245735439052907, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Text
       value: BCIT Store
+      objectReference: {fileID: 0}
+    - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_Interactable
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5911782417104794405, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Text
