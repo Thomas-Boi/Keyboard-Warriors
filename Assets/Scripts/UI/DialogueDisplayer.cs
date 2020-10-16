@@ -17,7 +17,7 @@ public class DialogueDisplayer : MonoBehaviour
     private DialogueStruct[] GetDialogues()
     {
         int weekNum = ProgressTracker.GetTracker().WeekNum;
-        TextAsset dialogueJson = Resources.Load<TextAsset>("Dialogue/CombatDialogues");
+        TextAsset dialogueJson = Resources.Load<TextAsset>("Dialogue/WeeklyCombatDialogues");
         var dialogueMap = JsonConvert.DeserializeObject<Dictionary<int, DialogueStruct[]>>(dialogueJson.ToString());
         return dialogueMap[weekNum];
     }

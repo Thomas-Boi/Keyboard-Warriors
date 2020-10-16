@@ -145,12 +145,12 @@ public class EventController : MonoBehaviour
         }
         if (players.Sum(p => p.health) <= 0)
         {
-            lose();
+            DisplayPlayerLose();
             return false;
         }
         if (spawners.Count(s => s.isOccupied) <= 0)
         {
-            win();
+            DisplayPlayerWin();
             return false;
         }
         return true;
@@ -218,26 +218,13 @@ public class EventController : MonoBehaviour
         Destroy(textObject);
     }
 
-    // signal that player has win
-    // increment the week and display a win pop up
-    private void win()
-    {
-        displayPlayerWin();
-        ProgressTracker.GetTracker().NextWeek();
-    }
 
-    // signal that player has lose
-    private void lose()
-    {
-        displayPlayerLose();
-    }
-
-    private void displayPlayerWin()
+    private void DisplayPlayerWin()
     {
         Instantiate(winUIPrefab, HUD.transform);
     }
 
-    private void displayPlayerLose()
+    private void DisplayPlayerLose()
     {
         Instantiate(loseUIPrefab, HUD.transform);
     }

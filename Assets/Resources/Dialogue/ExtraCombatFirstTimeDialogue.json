@@ -1,0 +1,22 @@
+[
+    {
+        "speaker": "Tony",
+        "speech": "Hey guys! It's nice to see you all again"
+    },
+    {
+        "speaker": "Bob",
+        "speech": "Tell me what you are planning Tony"
+    },
+    {
+        "speaker": "Tony",
+        "speech": "Well, I've been watching the show 'Community' and I think that it'd be a great idea to make a study group together!"
+    },
+    {
+        "speaker": "Bob",
+        "speech": "That's fair. It will certainly gives us more experience to go up against the monsters in the weekly classes"
+    },
+    {
+        "speaker": "Tony",
+        "speech": "Alright! Let's get started!!!!"
+    },
+]
