@@ -11,6 +11,7 @@ public class EventController : MonoBehaviour
     public List<Character> players;
     public List<HealthBar> healthbars;
     public List<SkillButton> skillButtons;
+
     public GameObject battleMenu;
     public GameObject winUIPrefab;
     public GameObject loseUIPrefab;
@@ -173,11 +174,6 @@ public class EventController : MonoBehaviour
             return false;
         }
         return true;
-    }
-
-    public void DisplayUsedSkill(Character target, string skill)
-    {
-
     }
 
     public void CheckStressChange(Character character)

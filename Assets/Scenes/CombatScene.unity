@@ -176,6 +176,7 @@ MonoBehaviour:
   - {fileID: 1937797393}
   - {fileID: 579059546}
   - {fileID: 603385228}
+  skillDialogue: {fileID: 8413185564977141554, guid: 6576ceea159e7204b965c47113b137ea, type: 3}
   battleMenu: {fileID: 1047038768}
   winUIPrefab: {fileID: 8095278216333887196, guid: f30ab9a281d2f514fa7a9c05fb8f0231, type: 3}
   loseUIPrefab: {fileID: 8095278216333887196, guid: 2bf709932c76fab45ac250d86418fa68, type: 3}
