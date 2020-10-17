@@ -1092,6 +1092,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2923835159818235948, guid: d9224a1314889974590c85b22f749b86, type: 3}
   m_PrefabInstance: {fileID: 743438574}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &765623454 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 784631779737990085, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+  m_PrefabInstance: {fileID: 1047907533}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &771931360 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1552254356996568095, guid: d9224a1314889974590c85b22f749b86, type: 3}
@@ -1515,6 +1520,10 @@ PrefabInstance:
       propertyPath: maxStress
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+      propertyPath: marker
+      value: 
+      objectReference: {fileID: 765623454}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
 --- !u!1001 &1156849363

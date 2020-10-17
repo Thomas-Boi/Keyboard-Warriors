@@ -22,6 +22,7 @@ public class Character : MonoBehaviour
     public bool isEnemy = true;
 
     private EventController controller;
+    public GameObject marker;
     public Spawner parent;
 
     // Reference to character's health and stress bars
@@ -31,12 +32,11 @@ public class Character : MonoBehaviour
     void Awake()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
-
-        
     }
 
     void Start()
     {
+
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(health);
 
@@ -46,6 +46,7 @@ public class Character : MonoBehaviour
             stressBar.SetStress(stress);
         }
     }
+
 
     void OnMouseEnter()
     {
@@ -86,11 +87,6 @@ public class Character : MonoBehaviour
     {
         transform.localScale = new Vector3(1, 1, 1);
         transform.position = parent.transform.position;
-    }
-
-    public Vector3 getCharacterPosition()
-    {
-        return transform.position;
     }
 
     public static T chooseRandom<T>(Dictionary<T, int> dict)
@@ -172,10 +168,19 @@ public class Character : MonoBehaviour
         this.health = health;
     }
 
+    // Set this character's current stress
     public void SetCharacterStress(float stress)
     {
         stressBar.SetStress(stress);
         this.stress = stress;
+    }
+
+    public void DisplayTurnMarker(bool enabled)
+    {
+        if (!isEnemy)
+        {
+            marker.SetActive(enabled);
+        }
     }
 
     public IEnumerator waitForAnim(string animation)
@@ -220,6 +225,7 @@ public class Character : MonoBehaviour
         if (controller.checkLife())
         {
             controller.nextTurn();
+            
         }
     }
 

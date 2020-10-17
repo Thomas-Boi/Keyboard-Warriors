@@ -53,6 +53,11 @@ public class EventController : MonoBehaviour
                     } 
                 }
 
+                for (int i = 0; i < players.Count; i++)
+                {
+                    players[i].DisplayTurnMarker(false);
+                }
+
                 nextTurn();
                 break;
                 
@@ -99,10 +104,24 @@ public class EventController : MonoBehaviour
 
     public void nextTurn()
     {
+
         hideSkills();
         turnNum++;
+        
         if (playerTurn)
         {
+
+            // disable marker of previous player
+            if ((turnNum - 1) >= 0)
+            {
+                players[turnNum - 1].DisplayTurnMarker(false);
+            }
+            // enable marker of current player
+            if (turnNum >= 0 && turnNum < players.Count)
+            {
+                players[turnNum].DisplayTurnMarker(true);
+            }
+
             displaySkills();
             if (turnNum >= players.Count)
             {
@@ -156,10 +175,15 @@ public class EventController : MonoBehaviour
         return true;
     }
 
+    public void DisplayUsedSkill(Character target, string skill)
+    {
+
+    }
+
     public void CheckStressChange(Character character)
     {
         float currentStress = character.stress;
-        float stressAmount = 30;
+        float stressAmount = 30; // static amount for now
 
         // when stress is full decrease character health
         if (!character.isEnemy && character.stress == character.maxStress)
@@ -179,7 +203,7 @@ public class EventController : MonoBehaviour
     
     public void DisplayDamage(Character target, float damage)
     {
-        Vector3 charPosition = target.getCharacterPosition();
+        Vector3 charPosition = target.transform.position;
 
         Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
 
