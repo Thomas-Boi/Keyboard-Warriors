@@ -12,6 +12,7 @@ public class EventController : MonoBehaviour
     public List<HealthBar> healthbars;
     public List<SkillButton> skillButtons;
 
+    public SkillDialogue skillDialogue;
     public GameObject battleMenu;
     public GameObject winUIPrefab;
     public GameObject loseUIPrefab;
@@ -32,7 +33,6 @@ public class EventController : MonoBehaviour
     {
         startWave(waveNum);
     }
-
 
 
     public void startWave(int wave)
@@ -176,25 +176,34 @@ public class EventController : MonoBehaviour
         return true;
     }
 
-    public void CheckStressChange(Character character)
+    public void CheckStressChange(Character user)
     {
-        float currentStress = character.stress;
+        float currentStress = user.stress;
         float stressAmount = 30; // static amount for now
 
         // when stress is full decrease character health
-        if (!character.isEnemy && character.stress == character.maxStress)
+        if (!user.isEnemy && user.stress == user.maxStress)
         {
-            float currentHealth = character.health;
+            float currentHealth = user.health;
             float damage = 10;
-            character.SetCharacterHealth(currentHealth - damage);
-            DisplayDamage(character, damage);
+            user.SetCharacterHealth(currentHealth - damage);
+            DisplayDamage(user, damage);
 
         // when stress isn't full, increase it
-        } else if (!character.isEnemy && character.stress < character.maxStress)
+        } else if (!user.isEnemy && user.stress < user.maxStress)
         {
-            character.SetCharacterStress(currentStress + stressAmount);
+            user.SetCharacterStress(currentStress + stressAmount);
         }
         
+    }
+
+    public void DisplaySkillDialogue(Character user, string skillName, float duration)
+    {
+        if (!user.isEnemy)
+        {
+            StartCoroutine(skillDialogue.DisplaySkill(skillName, duration));
+        }
+
     }
     
     public void DisplayDamage(Character target, float damage)

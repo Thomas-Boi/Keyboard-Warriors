@@ -8,20 +8,28 @@ public class SkillDialogue : MonoBehaviour
 
     public Text skillText;
 
-    public void AddSkillDialogue(GameObject HUD)
-    {
-        transform.SetParent(HUD.transform);
-    }
-
-    public void SetSkillText(string skillName)
+    private void SetSkillText(string skillName)
     {
         skillText.text = skillName;
-
     }
 
-    public void HideSkillDialogue(bool enabled)
+    private void ShowSkillDialogue(bool enabled)
     {
+        if (GameObject.Find("Dialogue(Clone)"))
+        {
+            transform.SetAsLastSibling();
+        }
         gameObject.SetActive(enabled);
+    }
+
+    public IEnumerator DisplaySkill(string skillName, float duration)
+    {
+        SetSkillText(skillName);
+        ShowSkillDialogue(true);
+
+        yield return new WaitForSeconds(duration);
+
+        ShowSkillDialogue(false);
     }
 
 }
