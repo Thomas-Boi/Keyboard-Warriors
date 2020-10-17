@@ -215,8 +215,10 @@ public class Character : MonoBehaviour
                 
         }
 
+        controller.DisplaySkillDialogue(user, skill, 1.0f);
         controller.DisplayDamage(target, damage);
         controller.CheckStressChange(user);
+        
 
         UnityEngine.Debug.Log(skill);
         UnityEngine.Debug.Log(target.characterName);

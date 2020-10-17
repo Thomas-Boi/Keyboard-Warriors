@@ -10,8 +10,6 @@ public class SkillButton : MonoBehaviour
     public string alias = "";
 
 
-
-
     void Start()
     {
 
