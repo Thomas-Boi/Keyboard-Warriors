@@ -30,13 +30,15 @@ public class EventController : MonoBehaviour
     
     private SkillManager skillManager;
 
-    public Text tooltip; //todo: Move this to a different class
+    public Text descriptionBox; 
+    public string tooltip = "";
 
     // Start is called before the first frame update
     void Start()
     {
         skillManager = GetComponent<SkillManager>();
         startWave(waveNum);
+        clearDescription();
     }
 
 
@@ -79,7 +81,7 @@ public class EventController : MonoBehaviour
     {
         //these lists are temporary solutions. Will refactor and move this somewhere else later
         List<string> playerOne = new List<string> { "basicAttack", "strongAttack" };
-        List<string> playerTwo = new List<string> { "basicAttack"};
+        List<string> playerTwo = new List<string> { "basicAttack", "strongAttack", "slimeAttack", "nothing"};
 
         if (turnNum == 0)
         {
@@ -269,6 +271,22 @@ public class EventController : MonoBehaviour
 
     public List<Character> getPlayers() {
         return players.FindAll(x => x.health > 0);
+    }
+
+
+    public void deselectAllButtons() {
+        foreach(SkillButton button in skillButtons) {
+            button.select(false);
+        }
+    }
+
+    public void clearDescription() {
+        tooltip = "";
+        descriptionBox.text = "";
+    }
+    
+    public void revertDescription() {
+        descriptionBox.text = tooltip;
     }
 
 }

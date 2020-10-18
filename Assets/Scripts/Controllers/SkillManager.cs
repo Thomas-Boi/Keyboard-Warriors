@@ -106,6 +106,7 @@ public class SkillManager : MonoBehaviour
     {
         Skill skill = getSkillByName(skillName);
         controller.hideSkills();
+        controller.clearDescription();
 
         int damage = 0;
         //todo: Make animation stuff a function

@@ -17,7 +17,7 @@
         {
             "name": "slimeAttack",
             "alias": "Slime Splash",
-            "description": "Error: Only slimes can use this. How are you reading this?",
+            "description": "How do you even have this skill? Only slimes have this",
             "targeting": "enemySingle",
             "conditions": [
                 {

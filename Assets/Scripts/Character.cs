@@ -58,7 +58,7 @@ public class Character : MonoBehaviour
             transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             transform.position = transform.position + new Vector3(0, 0.3f, 0);
         }
-        
+
 
     }
 
@@ -70,17 +70,24 @@ public class Character : MonoBehaviour
         {
             resetScale();
         }
-        
+
     }
 
     void OnMouseOver()
     {
         if (Input.GetMouseButtonDown(0) && isTargetable)
         {
-
+            controller.deselectAllButtons();
+            foreach (Spawner spawn in controller.spawners)
+            {
+                if (spawn.isOccupied)
+                {
+                    spawn.enemy.isTargetable = false;
+                }
+            }
             resetScale();
             StartCoroutine(skillManager.useSkill(controller.players[controller.turnNum], this, controller.selectedSkill));
-            isTargetable = false;
+
         }
     }
 
