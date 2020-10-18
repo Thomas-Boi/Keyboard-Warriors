@@ -151,7 +151,7 @@ MonoBehaviour:
   stress: 0
   attack: 10
   defense: 5
-  skills: 
+  ai: player
   isTargetable: 0
   isEnemy: 0
   marker: {fileID: 784631779737990085}

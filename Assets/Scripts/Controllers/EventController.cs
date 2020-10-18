@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class EventController : MonoBehaviour
 {
+    
     public List<Spawner> spawners;
     public List<Character> players;
     public List<HealthBar> healthbars;
@@ -27,10 +28,14 @@ public class EventController : MonoBehaviour
     public string selectedSkill = "";
     public int waveNum;
     
+    private SkillManager skillManager;
+
+    public string tooltip = ""; //todo: Move this to a different class
 
     // Start is called before the first frame update
     void Start()
     {
+        skillManager = GetComponent<SkillManager>();
         startWave(waveNum);
     }
 
@@ -73,21 +78,21 @@ public class EventController : MonoBehaviour
     public void displaySkills()
     {
         //these lists are temporary solutions. Will refactor and move this somewhere else later
-        List<string> playerOne = new List<string> { "basicAttack", "basicAttack", "slimeyAttack" };
-        List<string> playerTwo = new List<string> { "basicAttack", "basicAttack", "slimeyAttack", "slimeyAttack" };
+        List<string> playerOne = new List<string> { "basicAttack", "strongAttack" };
+        List<string> playerTwo = new List<string> { "basicAttack"};
 
         if (turnNum == 0)
         {
             for (int i = 0; i < playerOne.Count; i++)
             {
-                skillButtons[i].spawnButton(playerOne[i], "p1Attack " + i);
+                skillButtons[i].spawnButton(skillManager.getSkillByName(playerOne[i]));
             }
         }
         else
         {
             for (int i = 0; i < playerTwo.Count; i++)
             {
-                skillButtons[i].spawnButton(playerTwo[i], "p2Attack " + i);
+                skillButtons[i].spawnButton(skillManager.getSkillByName(playerTwo[i]));
             }
         }
         
@@ -141,7 +146,7 @@ public class EventController : MonoBehaviour
             }
             else if (spawners[turnNum].isOccupied)
             {
-                spawners[turnNum].enemy.selectSkill();
+                skillManager.aiSelectSkill(spawners[turnNum].enemy);
             }
             else
             {
@@ -178,14 +183,14 @@ public class EventController : MonoBehaviour
 
     public void CheckStressChange(Character user)
     {
-        float currentStress = user.stress;
-        float stressAmount = 30; // static amount for now
+        int currentStress = user.stress;
+        int stressAmount = 30; // static amount for now
 
         // when stress is full decrease character health
         if (!user.isEnemy && user.stress == user.maxStress)
         {
-            float currentHealth = user.health;
-            float damage = 10;
+            int currentHealth = user.health;
+            int damage = 10;
             user.SetCharacterHealth(currentHealth - damage);
             DisplayDamage(user, damage);
 
@@ -256,6 +261,14 @@ public class EventController : MonoBehaviour
     private void DisplayPlayerLose()
     {
         Instantiate(loseUIPrefab, HUD.transform);
+    }
+
+    public List<Character> getEnemies() {
+        return spawners.FindAll(x => x.isOccupied).Select(x => x.enemy).ToList();
+    }
+
+    public List<Character> getPlayers() {
+        return players.FindAll(x => x.health > 0);
     }
 
 }

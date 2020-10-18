@@ -11,7 +11,7 @@ public class Spawner : MonoBehaviour
     {
         if (!isOccupied)
         {
-            GameObject go = Instantiate(Resources.Load(prefab), transform.position, transform.rotation) as GameObject;
+            GameObject go = Instantiate(Resources.Load("Characters/" + prefab), transform.position, transform.rotation) as GameObject;
             enemy = go.GetComponent<Character>();
             enemy.parent = this;
             isOccupied = true;

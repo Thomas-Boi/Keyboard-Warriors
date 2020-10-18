@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SkillButton : MonoBehaviour
 {
     private EventController controller;
-    public string skill = "";
+    public Skill skill;
     public string alias = "";
 
 
@@ -18,25 +18,33 @@ public class SkillButton : MonoBehaviour
         
     }
 
+    void OnMouseEnter()
+    {
+
+        
+        
+
+    }
+
+
+
 
     void Awake()
     {
         gameObject.SetActive(false);
     }
 
-    public void spawnButton(string skill, string alias)
+    public void spawnButton(Skill skill)
     {
         this.skill = skill;
-        this.alias = alias;
-        GetComponentInChildren<Text>().text = alias;
+        GetComponentInChildren<Text>().text = skill.alias;
         gameObject.SetActive(true);
     }
 
     private void targetSkill()
     //todo: check skill class to determine targeting class (enemy or ally)
     {
-        UnityEngine.Debug.Log("Attack");
-        controller.selectedSkill = skill;
+        controller.selectedSkill = skill.name;
 
         foreach (Spawner spawn in controller.spawners)
         {
