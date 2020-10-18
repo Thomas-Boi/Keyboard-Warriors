@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1044370289549063012}
   m_Layer: 5
-  m_Name: PStats
+  m_Name: EStats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -0.6000061, y: 2}
+  m_AnchoredPosition: {x: -0.5999756, y: 2}
   m_SizeDelta: {x: 220, y: 180}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &4085153105478128100
@@ -142,7 +142,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5912401203023954031}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -39.378197}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.63180286, y: 0.63180286, z: 0.63180286}
   m_Children: []
   m_Father: {fileID: 5912401204517253898}

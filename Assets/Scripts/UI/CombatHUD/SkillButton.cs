@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SkillButton : MonoBehaviour
 {
     private EventController controller;
-    public string skill = "";
+    public Skill skill;
     public string alias = "";
 
 
@@ -15,8 +15,21 @@ public class SkillButton : MonoBehaviour
 
         controller = GameObject.Find("EventController").GetComponent<EventController>();
         GetComponent<Button>().onClick.AddListener(() => targetSkill());
-        
+        select(false);
     }
+
+    public void showTooltip()
+    {
+        //select(true);
+        controller.descriptionBox.text = skill.description;
+
+
+    }
+
+    public void revertTooltip() {
+        controller.revertDescription();
+    }
+
 
 
     void Awake()
@@ -24,19 +37,33 @@ public class SkillButton : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void spawnButton(string skill, string alias)
+    public void select(bool selected)
+    {
+        if (selected == true)
+        {
+            controller.deselectAllButtons();
+            GetComponent<Image>().color = Color.cyan;
+        }
+        else
+        {
+            GetComponent<Image>().color = Color.white;
+        }
+    }
+
+    public void spawnButton(Skill skill)
     {
         this.skill = skill;
-        this.alias = alias;
-        GetComponentInChildren<Text>().text = alias;
+        GetComponentInChildren<Text>().text = skill.alias;
         gameObject.SetActive(true);
     }
 
     private void targetSkill()
     //todo: check skill class to determine targeting class (enemy or ally)
     {
-        UnityEngine.Debug.Log("Attack");
-        controller.selectedSkill = skill;
+        select(true);
+        controller.descriptionBox.text = skill.description;
+        controller.tooltip = skill.description;
+        controller.selectedSkill = skill.name;
 
         foreach (Spawner spawn in controller.spawners)
         {

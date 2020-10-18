@@ -1,0 +1,46 @@
+{
+    "skills": [
+        {
+            "name": "nothing",
+            "alias": "Skips Turn",
+            "description": "Skips Turn",
+            "targeting": "self",
+            "conditions": []
+        },
+        {
+            "name": "basicAttack",
+            "alias": "Attack",
+            "description": "A basic attack. Cost: 0 Mana",
+            "targeting": "enemySingle",
+            "conditions": []
+        },
+        {
+            "name": "slimeAttack",
+            "alias": "Slime Splash",
+            "description": "How do you even have this skill? Only slimes have this",
+            "targeting": "enemySingle",
+            "conditions": [
+                {
+                    "name": "minMana",
+                    "value": 0
+                }
+            ]
+        },
+        {
+            "name": "strongAttack",
+            "alias": "Big Attack",
+            "description": "Twice as strong as a normal attack. Causes 40 stress",
+            "targeting": "enemySingle",
+            "conditions": [
+                {
+                    "name": "checkStress",
+                    "value": 40
+                },
+                {
+                    "name": "minMana",
+                    "value": 40
+                }
+            ]
+        }
+    ]
+}
