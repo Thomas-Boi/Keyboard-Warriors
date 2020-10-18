@@ -212,5 +212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5bdaba5dbbbc640b8b8bbc5ad5ee74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skill: 
+  skill:
+    name: 
+    alias: 
+    description: 
+    targeting: 
+    conditions: []
   alias: 

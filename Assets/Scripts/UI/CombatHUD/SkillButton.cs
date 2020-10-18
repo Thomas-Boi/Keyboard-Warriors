@@ -21,7 +21,7 @@ public class SkillButton : MonoBehaviour
     void OnMouseEnter()
     {
 
-        
+        controller.tooltip.text = skill.description
         
 
     }

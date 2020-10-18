@@ -30,7 +30,7 @@ public class EventController : MonoBehaviour
     
     private SkillManager skillManager;
 
-    public string tooltip = ""; //todo: Move this to a different class
+    public Text tooltip; //todo: Move this to a different class
 
     // Start is called before the first frame update
     void Start()
