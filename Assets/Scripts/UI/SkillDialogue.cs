@@ -8,6 +8,11 @@ public class SkillDialogue : MonoBehaviour
 
     public Text skillText;
 
+    void Start()
+    {
+        ShowSkillDialogue(false);
+    }
+
     private void SetSkillText(string skillName)
     {
         skillText.text = skillName;
