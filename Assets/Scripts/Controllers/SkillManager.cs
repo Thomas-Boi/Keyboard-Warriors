@@ -39,7 +39,11 @@ public class SkillManager : MonoBehaviour
         return default(T);
     }
 
-
+    //calculates damage after defense formula
+    public static int calcDamage(double damage, int defense)
+    {
+        return (int)(damage * (50d / (50d + defense)));
+    }
 
 
     public void aiSelectSkill(Character user)
@@ -89,7 +93,10 @@ public class SkillManager : MonoBehaviour
                 List<Character> targets = (user.isEnemy) ? controller.players : controller.getEnemies();
                 foreach (Character target in targets)
                 {
-                    choices.Add(target, 1);
+                    if (target.health > 0)
+                    {
+                        choices.Add(target, 1);
+                    }
                 }
                 break;
 
@@ -104,11 +111,11 @@ public class SkillManager : MonoBehaviour
 
     public IEnumerator useSkill(Character user, Character target, string skillName)
     {
+        controller.resetTargetting();
         Skill skill = getSkillByName(skillName);
         controller.hideSkills();
         controller.clearDescription();
 
-        int damage = 0;
         //todo: Make animation stuff a function
         controller.DisplaySkillDialogue(user, skill.alias, 1.0f);
         switch (skillName)
@@ -118,37 +125,33 @@ public class SkillManager : MonoBehaviour
                 break;
 
             case "basicAttack":
-                damage = user.attack;
-
-                target.health -= damage;
-                target.SetCharacterHealth(target.health);
+                target.takeDamage(calcDamage(user.attack, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 yield return new WaitForSeconds(.5f);
                 break;
 
             case "slimeAttack":
-                damage = (int)Math.Floor(user.attack * 1.5);
-
-                target.health -= damage;
-                target.SetCharacterHealth(target.health);
+                target.takeDamage(calcDamage(user.attack * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 yield return new WaitForSeconds(.5f);
                 break;
 
             case "strongAttack":
-                damage = user.attack * 2;
-
-                target.health -= damage;
-                target.SetCharacterHealth(target.health);
+                target.takeDamage(calcDamage(user.attack * 2, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.SetCharacterStress(user.stress + 30);
+                yield return new WaitForSeconds(.5f);
+                break;
+            case "healTarget":
+                target.healHealth(20 + user.attack);
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.SetCharacterStress(user.stress + 20);
                 yield return new WaitForSeconds(.5f);
                 break;
 
         }
         UnityEngine.Debug.Log(user.name);
-        
-        controller.DisplayDamage(target, damage);
-        controller.CheckStressChange(user);
+
 
 
         UnityEngine.Debug.Log(skill);

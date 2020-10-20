@@ -239,11 +239,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   characterName: Baby Cube Slime
   level: 1
-  maxHealth: 18
-  health: 18
+  maxHealth: 25
+  health: 25
   maxStress: 0
   stress: 0
-  attack: 4
+  attack: 6
   defense: 3
   ai: slime
   isTargetable: 0

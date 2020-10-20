@@ -21,6 +21,9 @@ public class Character : MonoBehaviour
     public bool isTargetable = false;
     public bool isEnemy = true;
 
+    public Vector3 origin;
+
+
     private SkillManager skillManager;
     private EventController controller;
     public GameObject marker;
@@ -34,6 +37,7 @@ public class Character : MonoBehaviour
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
         skillManager = GameObject.Find("EventController").GetComponent<SkillManager>();
+        origin = transform.position;
     }
 
     void Start()
@@ -95,21 +99,46 @@ public class Character : MonoBehaviour
     public void resetScale()
     {
         transform.localScale = new Vector3(1, 1, 1);
-        transform.position = parent.transform.position;
+        transform.position = origin;
     }
 
     // Set this character's current health
     public void SetCharacterHealth(int health)
     {
-        healthBar.SetHealth(health);
-        this.health = health;
+        
+        this.health = (health > 0) ? health : 0;
+        healthBar.SetHealth(this.health);
+    }
+
+    public void takeDamage(int damage)
+    {
+        SetCharacterHealth(health - damage);
+        controller.DisplayDamage(this, damage);
+    }
+
+    public void healHealth(int amount)
+    {
+        int heal = (amount + health <= maxHealth) ? amount : maxHealth - health;
+        SetCharacterHealth(heal + health);
+        controller.DisplayHeal(this, heal);
     }
 
     // Set this character's current stress
     public void SetCharacterStress(int stress)
     {
-        stressBar.SetStress(stress);
-        this.stress = stress;
+        if (stress > maxStress)
+        {
+            this.stress = maxStress;
+        }
+        else if (stress < 0)
+        {
+            this.stress = 0;
+        }
+        else
+        {
+            this.stress = stress;
+        }
+        stressBar.SetStress(this.stress);
     }
 
     public void DisplayTurnMarker(bool enabled)
@@ -118,12 +147,6 @@ public class Character : MonoBehaviour
         {
             marker.SetActive(enabled);
         }
-    }
-
-    public IEnumerator waitForAnim(string animation)
-    {
-        GetComponent<Animator>().Play(animation, 0, 0);
-        yield return new WaitForSeconds(1);
     }
 
 

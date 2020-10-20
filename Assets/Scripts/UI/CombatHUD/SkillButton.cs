@@ -26,7 +26,8 @@ public class SkillButton : MonoBehaviour
 
     }
 
-    public void revertTooltip() {
+    public void revertTooltip()
+    {
         controller.revertDescription();
     }
 
@@ -60,17 +61,26 @@ public class SkillButton : MonoBehaviour
     private void targetSkill()
     //todo: check skill class to determine targeting class (enemy or ally)
     {
+        controller.resetTargetting();
         select(true);
         controller.descriptionBox.text = skill.description;
         controller.tooltip = skill.description;
         controller.selectedSkill = skill.name;
 
-        foreach (Spawner spawn in controller.spawners)
+        if (skill.targeting == "enemySingle")
         {
-            if (spawn.isOccupied)
+            foreach (Character character in controller.getEnemies())
             {
-                spawn.enemy.isTargetable = true;
+                character.isTargetable = true;
             }
         }
+        else if (skill.targeting == "allySingle")
+        {
+            foreach (Character character in controller.getPlayers())
+            {
+                character.isTargetable = true;
+            }
+        }
+
     }
 }
