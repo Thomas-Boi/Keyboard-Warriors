@@ -10,7 +10,7 @@
         {
             "name": "basicAttack",
             "alias": "Attack",
-            "description": "A basic attack. Cost: 0 Mana",
+            "description": "A basic attack. No Cost",
             "targeting": "enemySingle",
             "conditions": []
         },
@@ -19,28 +19,21 @@
             "alias": "Slime Splash",
             "description": "How do you even have this skill? Only slimes have this",
             "targeting": "enemySingle",
-            "conditions": [
-                {
-                    "name": "minMana",
-                    "value": 0
-                }
-            ]
+            "conditions": []
         },
         {
             "name": "strongAttack",
             "alias": "Big Attack",
-            "description": "Twice as strong as a normal attack. Causes 40 stress",
+            "description": "Twice as strong as a normal attack. Causes 30 stress",
             "targeting": "enemySingle",
-            "conditions": [
-                {
-                    "name": "checkStress",
-                    "value": 40
-                },
-                {
-                    "name": "minMana",
-                    "value": 40
-                }
-            ]
+            "conditions": []
+        },
+        {
+            "name": "healTarget",
+            "alias": "Heal",
+            "description": "Heals a target party member. Causes 20 stress",
+            "targeting": "allySingle",
+            "conditions": []
         }
     ]
 }

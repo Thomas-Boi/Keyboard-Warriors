@@ -4,10 +4,11 @@ using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class EventController : MonoBehaviour
 {
-    
+
     public List<Spawner> spawners;
     public List<Character> players;
     public List<HealthBar> healthbars;
@@ -27,10 +28,10 @@ public class EventController : MonoBehaviour
     public int turnNum = -1;
     public string selectedSkill = "";
     public int waveNum;
-    
+
     private SkillManager skillManager;
 
-    public Text descriptionBox; 
+    public Text descriptionBox;
     public string tooltip = "";
 
     // Start is called before the first frame update
@@ -50,15 +51,16 @@ public class EventController : MonoBehaviour
             case 1:
                 spawners[0].spawn("boxSlime");
                 spawners[1].spawn("boxSlimeSmall");
-                spawners[2].spawn("boxSlimeSmall");
-                spawners[4].spawn("boxSlime");
+                spawners[2].spawn("boxSlime");
+                spawners[3].spawn("boxSlimeSmall");
+                spawners[4].spawn("boxSlimeSmall");
 
                 for (int i = 0; i < spawners.Count; i++)
                 {
                     if (spawners[i].isOccupied)
                     {
                         spawners[i].enemy.healthBar = healthbars[i];
-                    } 
+                    }
                 }
 
                 for (int i = 0; i < players.Count; i++)
@@ -68,7 +70,7 @@ public class EventController : MonoBehaviour
 
                 nextTurn();
                 break;
-                
+
 
             default:
                 UnityEngine.Debug.Log("Invalid Wave");
@@ -81,7 +83,7 @@ public class EventController : MonoBehaviour
     {
         //these lists are temporary solutions. Will refactor and move this somewhere else later
         List<string> playerOne = new List<string> { "basicAttack", "strongAttack" };
-        List<string> playerTwo = new List<string> { "basicAttack", "strongAttack", "slimeAttack", "nothing"};
+        List<string> playerTwo = new List<string> { "basicAttack", "strongAttack", "healTarget" };
 
         if (turnNum == 0)
         {
@@ -97,12 +99,12 @@ public class EventController : MonoBehaviour
                 skillButtons[i].spawnButton(skillManager.getSkillByName(playerTwo[i]));
             }
         }
-        
+
     }
 
     public void hideSkills()
     {
-        foreach(SkillButton button in skillButtons)
+        foreach (SkillButton button in skillButtons)
         {
             button.gameObject.SetActive(false);
         }
@@ -115,7 +117,7 @@ public class EventController : MonoBehaviour
 
         hideSkills();
         turnNum++;
-        
+
         if (playerTurn)
         {
 
@@ -127,17 +129,26 @@ public class EventController : MonoBehaviour
             // enable marker of current player
             if (turnNum >= 0 && turnNum < players.Count)
             {
+                CheckStressChange(players[turnNum]);
                 players[turnNum].DisplayTurnMarker(true);
+
+                if (players[turnNum].health <= 0)
+                {
+                    nextTurn();
+                }
+                else
+                {
+                    displaySkills();
+                }
             }
 
-            displaySkills();
             if (turnNum >= players.Count)
             {
                 turnNum = 0;
                 playerTurn = false;
             }
 
-        } 
+        }
         if (!playerTurn)
         {
             if (turnNum >= spawners.Count)
@@ -157,8 +168,8 @@ public class EventController : MonoBehaviour
 
         }
 
-        
-        
+
+
     }
 
     public bool checkLife()
@@ -186,22 +197,21 @@ public class EventController : MonoBehaviour
     public void CheckStressChange(Character user)
     {
         int currentStress = user.stress;
-        int stressAmount = 30; // static amount for now
+
 
         // when stress is full decrease character health
-        if (!user.isEnemy && user.stress == user.maxStress)
+        if (!user.isEnemy && user.stress >= user.maxStress)
         {
-            int currentHealth = user.health;
-            int damage = 10;
-            user.SetCharacterHealth(currentHealth - damage);
+            int damage = 30;
+            user.SetCharacterHealth(user.health - damage);
+            checkLife();
             DisplayDamage(user, damage);
-
-        // when stress isn't full, increase it
-        } else if (!user.isEnemy && user.stress < user.maxStress)
-        {
-            user.SetCharacterStress(currentStress + stressAmount);
         }
-        
+        if (!user.isEnemy)
+        {
+            user.SetCharacterStress(user.stress - 10);
+        }
+
     }
 
     public void DisplaySkillDialogue(Character user, string skillName, float duration)
@@ -212,7 +222,7 @@ public class EventController : MonoBehaviour
         }
 
     }
-    
+
     public void DisplayDamage(Character target, float damage)
     {
         Vector3 charPosition = target.transform.position;
@@ -226,6 +236,29 @@ public class EventController : MonoBehaviour
         damageText.text = "-" + damage.ToString();
         damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
         damageText.color = Color.black;
+        damageText.fontSize = 35;
+        damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
+        damageText.verticalOverflow = VerticalWrapMode.Overflow;
+
+        textObj.transform.position = screenPosition;
+
+        StartCoroutine(FadeOutText(textObj));
+
+    }
+
+    public void DisplayHeal(Character target, float damage)
+    {
+        Vector3 charPosition = target.transform.position;
+
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
+
+        GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
+        textObj.transform.SetParent(HUD.transform);
+
+        Text damageText = textObj.AddComponent<Text>();
+        damageText.text = damage.ToString();
+        damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        damageText.color = Color.green;
         damageText.fontSize = 35;
         damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
         damageText.verticalOverflow = VerticalWrapMode.Overflow;
@@ -265,28 +298,46 @@ public class EventController : MonoBehaviour
         Instantiate(loseUIPrefab, HUD.transform);
     }
 
-    public List<Character> getEnemies() {
+    public List<Character> getEnemies()
+    {
         return spawners.FindAll(x => x.isOccupied).Select(x => x.enemy).ToList();
     }
 
-    public List<Character> getPlayers() {
+    public List<Character> getPlayers()
+    {
         return players.FindAll(x => x.health > 0);
     }
 
 
-    public void deselectAllButtons() {
-        foreach(SkillButton button in skillButtons) {
+    public void deselectAllButtons()
+    {
+        foreach (SkillButton button in skillButtons)
+        {
             button.select(false);
         }
     }
 
-    public void clearDescription() {
+    public void clearDescription()
+    {
         tooltip = "";
         descriptionBox.text = "";
     }
-    
-    public void revertDescription() {
+
+    public void revertDescription()
+    {
         descriptionBox.text = tooltip;
+    }
+
+    public void resetTargetting()
+    {
+        foreach (Character character in getEnemies())
+        {
+            character.isTargetable = false;
+        }
+        foreach (Character character in getPlayers())
+        {
+            character.isTargetable = false;
+        }
     }
 
 }

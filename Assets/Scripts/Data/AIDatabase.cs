@@ -4,15 +4,15 @@ using UnityEngine;
 using System;
 
 [Serializable]
-public class AIDatabase
+public struct AIDatabase
 {
-    public List<AI> AIs = new List<AI>();
+    public List<AI> AIs;
 }
 
 
 // class for each skill
 [Serializable]
-public class AI
+public struct AI
 {
     public string name;
     public List<SkillWeight> skills; // skills available to monster
@@ -20,7 +20,7 @@ public class AI
 }
 
 [Serializable]
-public class SkillWeight
+public struct SkillWeight
 {
     public string name;
     public int weight; // chance of skill being chosen.

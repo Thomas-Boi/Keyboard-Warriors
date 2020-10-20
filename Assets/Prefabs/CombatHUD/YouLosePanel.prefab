@@ -277,7 +277,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8518272646263710791}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7161977048001933092}
+        m_TargetAssemblyTypeName: ResetGame, Assembly-CSharp
+        m_MethodName: restart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8095278216333887196
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +301,7 @@ GameObject:
   - component: {fileID: 4034140940985914498}
   - component: {fileID: 5773519140649826600}
   - component: {fileID: 8961428720406618044}
+  - component: {fileID: 7161977048001933092}
   m_Layer: 5
   m_Name: YouLosePanel
   m_TagString: Untagged
@@ -355,3 +368,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7161977048001933092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8095278216333887196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecb620352542bf4c90287077ae2eecc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
