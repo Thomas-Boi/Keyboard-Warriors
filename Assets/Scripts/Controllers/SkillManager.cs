@@ -47,8 +47,8 @@ public class SkillManager : MonoBehaviour
 
         Dictionary<string, int> choices = new Dictionary<string, int>();
 
-        AI ai = aiData.AIs.Find(x => x.name == user.ai);
-        if (ai == default(AI))
+        AI ai = aiData.AIs.FirstOrDefault(x => x.name == user.ai);
+        if (object.Equals(ai, default(AI)))
         {
             choices.Add("nothing", 1);
         }
