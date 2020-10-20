@@ -4,12 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-// holds the data on a dialogue speaker and what they says
-public struct DialogueStruct
-{
-    public string speaker;
-    public string speech;
-}
+
 
 // holds the Text elements to display a dialogue piece from characters
 public class Dialogue : MonoBehaviour
