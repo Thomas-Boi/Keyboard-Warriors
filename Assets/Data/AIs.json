@@ -1,0 +1,17 @@
+{
+    "AIs": [
+        {
+            "name": "slime",
+            "skills": [
+                {
+                    "name": "basicAttack",
+                    "weight": 1
+                },
+                {
+                    "name": "slimeAttack",
+                    "weight": 2
+                }
+            ]
+        }
+    ]
+}
