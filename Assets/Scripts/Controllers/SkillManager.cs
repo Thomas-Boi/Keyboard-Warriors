@@ -113,7 +113,7 @@ public class SkillManager : MonoBehaviour
     {
         controller.resetTargetting();
         Skill skill = getSkillByName(skillName);
-        controller.hideSkills();
+        controller.actionMenu.HideButtons();
         controller.clearDescription();
 
         //todo: Make animation stuff a function
