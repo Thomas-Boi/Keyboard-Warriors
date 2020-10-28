@@ -12,10 +12,13 @@ public class EventController : MonoBehaviour
     public List<Spawner> spawners;
     public List<Character> players;
     public List<HealthBar> healthbars;
-    public List<SkillButton> skillButtons;
+    //public List<SkillButton> skillButtons;
 
     public SkillDialogue skillDialogue;
-    public GameObject battleMenu;
+
+    public ActionMenu actionMenu; // uses the skill buttons now
+    public ChoiceMenu choiceMenu; // for the choices "Skills" "Tactics" and "Items"
+
     public GameObject winUIPrefab;
     public GameObject loseUIPrefab;
     public GameObject HUD;
@@ -78,8 +81,12 @@ public class EventController : MonoBehaviour
         }
     }
 
+    public SkillManager GetSkillManager()
+    {
+        return skillManager;
+    }
 
-    public void displaySkills()
+    /*public void displaySkills()
     {
         //these lists are temporary solutions. Will refactor and move this somewhere else later
         List<string> playerOne = new List<string> { "basicAttack", "strongAttack" };
@@ -100,22 +107,21 @@ public class EventController : MonoBehaviour
             }
         }
 
-    }
+    }*/
 
-    public void hideSkills()
+    /*public void hideSkills()
     {
         foreach (SkillButton button in skillButtons)
         {
             button.gameObject.SetActive(false);
         }
-    }
-
+    }*/
 
 
     public void nextTurn()
     {
 
-        hideSkills();
+        //hideSkills();
         turnNum++;
 
         if (playerTurn)
@@ -136,10 +142,11 @@ public class EventController : MonoBehaviour
                 {
                     nextTurn();
                 }
-                else
-                {
-                    displaySkills();
-                }
+                //else
+                //{
+                    //displaySkills();
+                    
+                //}
             }
 
             if (turnNum >= players.Count)
@@ -235,7 +242,7 @@ public class EventController : MonoBehaviour
         Text damageText = textObj.AddComponent<Text>();
         damageText.text = "-" + damage.ToString();
         damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        damageText.color = Color.black;
+        damageText.color = Color.red;
         damageText.fontSize = 35;
         damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
         damageText.verticalOverflow = VerticalWrapMode.Overflow;
@@ -311,10 +318,11 @@ public class EventController : MonoBehaviour
 
     public void deselectAllButtons()
     {
-        foreach (SkillButton button in skillButtons)
+        /*foreach (SkillButton button in skillButtons)
         {
             button.select(false);
-        }
+        }*/
+        actionMenu.DeselectAllButtons();
     }
 
     public void clearDescription()
