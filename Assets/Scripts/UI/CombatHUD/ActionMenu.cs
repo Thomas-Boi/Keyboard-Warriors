@@ -8,10 +8,18 @@ public class ActionMenu : MonoBehaviour
     // repurpose skill buttons for items and tactics later
     public List<SkillButton> buttons;
 
+    public GameObject descriptionBox;
 
-
-    public void DisplaySkillButtons(int turnNum, SkillManager skillManager)
+    void Start()
     {
+        EnableDisplay(false);
+    }
+
+    public void DisplaySkillButtons(int turnNum)
+    {
+
+        EnableDisplay(true);
+
         List<string> playerOne = new List<string> { "basicAttack", "strongAttack" };
         List<string> playerTwo = new List<string> { "basicAttack", "strongAttack", "healTarget" };
 
@@ -19,14 +27,14 @@ public class ActionMenu : MonoBehaviour
         {
             for (int i = 0; i < playerOne.Count; i++)
             {
-                buttons[i].spawnButton(skillManager.getSkillByName(playerOne[i]));
+                buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerOne[i]));
             }
         }
         else
         {
             for (int i = 0; i < playerTwo.Count; i++)
             {
-                buttons[i].spawnButton(skillManager.getSkillByName(playerTwo[i]));
+                buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerTwo[i]));
             }
         }
     }
@@ -34,11 +42,19 @@ public class ActionMenu : MonoBehaviour
     public void DisplayTacticButtons(int turnNum)
     {
         // todo: tactic buttons
+        EnableDisplay(true);
     }
 
     public void DisplayItemButtons(int turnNum)
     {
         // todo: item buttons
+        EnableDisplay(true);
+    }
+
+    private void EnableDisplay(bool enabled)
+    {
+        gameObject.SetActive(enabled);
+        descriptionBox.SetActive(enabled);
     }
 
     public void DeselectAllButtons()
