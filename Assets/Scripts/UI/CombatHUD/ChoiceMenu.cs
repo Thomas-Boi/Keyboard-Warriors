@@ -27,21 +27,20 @@ public class ChoiceMenu : MonoBehaviour
 
     private void DisplayMenuType(string type, int turnNum)
     {
+
+        actionMenu.DeselectAllButtons();
+        actionMenu.HideButtons();
+        Debug.Log(type);
+
         switch (type)
         {
             case "Skills":
-                Debug.Log(type);
-                actionMenu.HideButtons();
-                actionMenu.DisplaySkillButtons(turnNum, controller.GetSkillManager());
+                actionMenu.DisplaySkillButtons(turnNum);
                 break;
             case "Tactics":
-                Debug.Log(type);
-                actionMenu.HideButtons();
                 actionMenu.DisplayTacticButtons(turnNum);
                 break;
             case "Items":
-                Debug.Log(type);
-                actionMenu.HideButtons();
                 actionMenu.DisplayItemButtons(turnNum);
                 break;
             default:

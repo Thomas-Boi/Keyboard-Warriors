@@ -516,6 +516,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e5bdaba5dbbbc640b8b8bbc5ad5ee74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &559979705 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3952111965643356985, guid: d886c469663f59a43bced87b9259f953, type: 3}
+  m_PrefabInstance: {fileID: 5097948605574158112}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &642760735 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5643592696838185436, guid: 895f8ba5aa41b5a4d8acdb9971a40fb9, type: 3}
@@ -1135,15 +1140,6 @@ MonoBehaviour:
   - {fileID: 771931360}
   - {fileID: 958581025}
   - {fileID: 1488348376}
-  skillButtons:
-  - {fileID: 1372807269}
-  - {fileID: 363219368}
-  - {fileID: 1052284518}
-  - {fileID: 1282221443}
-  - {fileID: 402273291}
-  - {fileID: 1418905911}
-  - {fileID: 548535383}
-  - {fileID: 504314945}
   skillDialogue: {fileID: 976194122}
   actionMenu: {fileID: 1047038769}
   choiceMenu: {fileID: 853104496}
@@ -1207,6 +1203,7 @@ MonoBehaviour:
   - {fileID: 1418905911}
   - {fileID: 548535383}
   - {fileID: 504314945}
+  descriptionBox: {fileID: 559979705}
 --- !u!1001 &1047907533
 PrefabInstance:
   m_ObjectHideFlags: 0

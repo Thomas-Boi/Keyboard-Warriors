@@ -32,7 +32,7 @@ public class EventController : MonoBehaviour
     public string selectedSkill = "";
     public int waveNum;
 
-    private SkillManager skillManager;
+    public static SkillManager skillManager { get; private set; }
 
     public Text descriptionBox;
     public string tooltip = "";
@@ -79,11 +79,6 @@ public class EventController : MonoBehaviour
                 UnityEngine.Debug.Log("Invalid Wave");
                 break;
         }
-    }
-
-    public SkillManager GetSkillManager()
-    {
-        return skillManager;
     }
 
     /*public void displaySkills()
