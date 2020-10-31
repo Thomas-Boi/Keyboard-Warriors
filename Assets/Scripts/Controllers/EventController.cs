@@ -121,7 +121,7 @@ public class EventController : MonoBehaviour
 
         if (playerTurn)
         {
-
+            actionMenu.EnableDisplay(false);
             // disable marker of previous player
             if ((turnNum - 1) >= 0)
             {
@@ -153,6 +153,8 @@ public class EventController : MonoBehaviour
         }
         if (!playerTurn)
         {
+            actionMenu.EnableDisplay(false);
+
             if (turnNum >= spawners.Count)
             {
                 turnNum = -1;
@@ -313,11 +315,12 @@ public class EventController : MonoBehaviour
 
     public void deselectAllButtons()
     {
-        /*foreach (SkillButton button in skillButtons)
-        {
-            button.select(false);
-        }*/
         actionMenu.DeselectAllButtons();
+    }
+
+    public void HideButtons()
+    {
+        actionMenu.HideButtons();
     }
 
     public void clearDescription()

@@ -31,7 +31,7 @@ public class ChoiceMenu : MonoBehaviour
         actionMenu.DeselectAllButtons();
         actionMenu.HideButtons();
         Debug.Log(type);
-
+   
         switch (type)
         {
             case "Skills":

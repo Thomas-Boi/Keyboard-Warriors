@@ -42,16 +42,27 @@ public class ActionMenu : MonoBehaviour
     public void DisplayTacticButtons(int turnNum)
     {
         // todo: tactic buttons
+
+        List<string> tactics = new List<string> { "retreat", "switch", "deStress" };
+
+        for (int i = 0; i < tactics.Count; i++)
+        {
+            //buttons[i].spawnButton(EventController.skillManager.getSkillByName(tactics[i]));
+        }
+
         EnableDisplay(true);
     }
 
     public void DisplayItemButtons(int turnNum)
     {
+
+        List<string> items = new List<string> { "" };
+
         // todo: item buttons
         EnableDisplay(true);
     }
 
-    private void EnableDisplay(bool enabled)
+    public void EnableDisplay(bool enabled)
     {
         gameObject.SetActive(enabled);
         descriptionBox.SetActive(enabled);
