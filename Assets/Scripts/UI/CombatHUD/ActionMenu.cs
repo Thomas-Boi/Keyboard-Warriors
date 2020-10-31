@@ -40,8 +40,11 @@ public class ActionMenu : MonoBehaviour
         }
     }
 
-    public void DisplayTacticButtons(int turnNum)
+    public void DisplayTacticButtons()
     {
+
+        EnableDisplay(true);
+
         List<string> tactics = new List<string> { "retreat", "switch", "deStress" };
 
         for (int i = 0; i < tactics.Count; i++)
@@ -49,11 +52,13 @@ public class ActionMenu : MonoBehaviour
             // spawn tactic buttons
         }
 
-        EnableDisplay(true);
     }
 
-    public void DisplayItemButtons(int turnNum)
+    public void DisplayItemButtons()
     {
+
+        EnableDisplay(true);
+
         // temporary until Items are properly implemented
         List<string> items = new List<string> { "chocolate" };
 
@@ -62,7 +67,6 @@ public class ActionMenu : MonoBehaviour
             // spawn item buttons
         }
 
-        EnableDisplay(true);
     }
 
     public void EnableDisplay(bool enabled)
