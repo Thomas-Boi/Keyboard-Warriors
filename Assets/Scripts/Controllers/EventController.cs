@@ -12,7 +12,6 @@ public class EventController : MonoBehaviour
     public List<Spawner> spawners;
     public List<Character> players;
     public List<HealthBar> healthbars;
-    //public List<SkillButton> skillButtons;
 
     public SkillDialogue skillDialogue;
 
@@ -81,47 +80,14 @@ public class EventController : MonoBehaviour
         }
     }
 
-    /*public void displaySkills()
-    {
-        //these lists are temporary solutions. Will refactor and move this somewhere else later
-        List<string> playerOne = new List<string> { "basicAttack", "strongAttack" };
-        List<string> playerTwo = new List<string> { "basicAttack", "strongAttack", "healTarget" };
-
-        if (turnNum == 0)
-        {
-            for (int i = 0; i < playerOne.Count; i++)
-            {
-                skillButtons[i].spawnButton(skillManager.getSkillByName(playerOne[i]));
-            }
-        }
-        else
-        {
-            for (int i = 0; i < playerTwo.Count; i++)
-            {
-                skillButtons[i].spawnButton(skillManager.getSkillByName(playerTwo[i]));
-            }
-        }
-
-    }*/
-
-    /*public void hideSkills()
-    {
-        foreach (SkillButton button in skillButtons)
-        {
-            button.gameObject.SetActive(false);
-        }
-    }*/
-
 
     public void nextTurn()
     {
 
-        //hideSkills();
         turnNum++;
 
         if (playerTurn)
         {
-
             // disable marker of previous player
             if ((turnNum - 1) >= 0)
             {
@@ -137,11 +103,7 @@ public class EventController : MonoBehaviour
                 {
                     nextTurn();
                 }
-                //else
-                //{
-                    //displaySkills();
-                    
-                //}
+
             }
 
             if (turnNum >= players.Count)
@@ -153,6 +115,8 @@ public class EventController : MonoBehaviour
         }
         if (!playerTurn)
         {
+            actionMenu.EnableDisplay(false);
+
             if (turnNum >= spawners.Count)
             {
                 turnNum = -1;
@@ -199,7 +163,6 @@ public class EventController : MonoBehaviour
     public void CheckStressChange(Character user)
     {
         int currentStress = user.stress;
-
 
         // when stress is full decrease character health
         if (!user.isEnemy && user.stress >= user.maxStress)
@@ -313,11 +276,12 @@ public class EventController : MonoBehaviour
 
     public void deselectAllButtons()
     {
-        /*foreach (SkillButton button in skillButtons)
-        {
-            button.select(false);
-        }*/
         actionMenu.DeselectAllButtons();
+    }
+
+    public void HideButtons()
+    {
+        actionMenu.HideButtons();
     }
 
     public void clearDescription()

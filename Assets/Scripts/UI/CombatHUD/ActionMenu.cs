@@ -7,8 +7,9 @@ public class ActionMenu : MonoBehaviour
 {
     // repurpose skill buttons for items and tactics later
     public List<SkillButton> buttons;
-
     public GameObject descriptionBox;
+
+    private TacticsManager tacticsManager;
 
     void Start()
     {
@@ -39,19 +40,36 @@ public class ActionMenu : MonoBehaviour
         }
     }
 
-    public void DisplayTacticButtons(int turnNum)
+    public void DisplayTacticButtons()
     {
-        // todo: tactic buttons
+
         EnableDisplay(true);
+
+        List<string> tactics = new List<string> { "retreat", "switch", "deStress" };
+
+        for (int i = 0; i < tactics.Count; i++)
+        {
+            // spawn tactic buttons
+        }
+
     }
 
-    public void DisplayItemButtons(int turnNum)
+    public void DisplayItemButtons()
     {
-        // todo: item buttons
+
         EnableDisplay(true);
+
+        // temporary until Items are properly implemented
+        List<string> items = new List<string> { "chocolate" };
+
+        for (int i = 0; i < items.Count; i++)
+        {
+            // spawn item buttons
+        }
+
     }
 
-    private void EnableDisplay(bool enabled)
+    public void EnableDisplay(bool enabled)
     {
         gameObject.SetActive(enabled);
         descriptionBox.SetActive(enabled);

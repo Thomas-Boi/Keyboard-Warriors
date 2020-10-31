@@ -31,17 +31,17 @@ public class ChoiceMenu : MonoBehaviour
         actionMenu.DeselectAllButtons();
         actionMenu.HideButtons();
         Debug.Log(type);
-
+   
         switch (type)
         {
             case "Skills":
                 actionMenu.DisplaySkillButtons(turnNum);
                 break;
             case "Tactics":
-                actionMenu.DisplayTacticButtons(turnNum);
+                actionMenu.DisplayTacticButtons();
                 break;
             case "Items":
-                actionMenu.DisplayItemButtons(turnNum);
+                actionMenu.DisplayItemButtons();
                 break;
             default:
                 break;
