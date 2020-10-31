@@ -23,7 +23,6 @@ public class Character : MonoBehaviour
 
     public Vector3 origin;
 
-
     private SkillManager skillManager;
     private EventController controller;
     public GameObject marker;
@@ -149,21 +148,4 @@ public class Character : MonoBehaviour
         }
     }
 
-
-    // Transfered code over from CombatManager
-    // todo: Items
-    public IEnumerator UseItem(Character user, Character target, string item)
-    {
-        int healAmount = 15;
-        int currentHealth = user.health;
-        user.SetCharacterHealth(currentHealth + healAmount);
-
-        yield return new WaitForSeconds(0.5f);
-    }
-
-    // todo: Tactics
-    public IEnumerator UseTactic(Character user, Character target, string tactic)
-    {
-        yield return null;
-    }
 }
