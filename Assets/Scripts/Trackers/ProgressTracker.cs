@@ -8,7 +8,6 @@ using UnityEngine;
 public class ProgressTracker
 {
     private int weekNum;
-    private int money;
     private int score;
     private SceneTypeEnum curCombatType;
 
@@ -22,12 +21,6 @@ public class ProgressTracker
     public int WeekNum 
     { 
         get => weekNum; 
-    }
-
-    // track how much money the player has
-    public int Money 
-    { 
-        get => money; 
     }
 
     // track the player's score
@@ -52,7 +45,6 @@ public class ProgressTracker
 
     public ProgressTracker() {
         weekNum = 1;
-        money = 0;
         score = 0;
         curCombatType = SceneTypeEnum.HOME;
     }
@@ -72,18 +64,6 @@ public class ProgressTracker
             weekNum = finalWeekNum;
         }
         return weekNum;
-    }
-
-    // gain money for the player
-    public void AddMoney(int amount)
-    {
-        if (amount > 0) money += amount;
-    }
-
-    // spend some money 
-    public void SpendMoney(int amount)
-    {
-        if (amount <= money) money -= amount;
     }
 
     // gain score for the player

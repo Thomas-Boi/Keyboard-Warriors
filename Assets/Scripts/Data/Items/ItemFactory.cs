@@ -18,13 +18,13 @@ public class ItemFactory
     }
 
     // get the singleton or init it
-    public ItemFactory getFactory()
+    public static ItemFactory GetFactory()
     {
         if (factory == null) factory = new ItemFactory();
         return factory;
     }
 
-    public HealingItem createChocolate()
+    public HealingItem CreateChocolate()
     {
         ItemDetail chocolate = itemDetails.chocolate;
         return new HealingItem(

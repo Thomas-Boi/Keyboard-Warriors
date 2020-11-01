@@ -36,12 +36,6 @@ public class SkillManager : ActionManager
         return default(T);
     }
 
-    //calculates damage after defense formula
-    public static int calcDamage(double damage, int defense)
-    {
-        return (int)(damage * (50d / (50d + defense)));
-    }
-
 
     public void aiSelectSkill(Character user)
     {

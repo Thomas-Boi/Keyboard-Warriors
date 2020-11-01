@@ -48,10 +48,10 @@ public class ActionButton : MonoBehaviour
         }
     }
 
-    public void spawnButton(Skill skill)
+    public void spawnButton(Action action)
     {
-        this.action = skill;
-        GetComponentInChildren<Text>().text = skill.Alias;
+        this.action = action;
+        GetComponentInChildren<Text>().text = action.Alias;
         gameObject.SetActive(true);
     }
 

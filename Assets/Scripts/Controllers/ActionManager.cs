@@ -4,13 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+// manages the ActionMenu for a specific type of Action (Skills, Tactics, or Items) 
 public class ActionManager : MonoBehaviour
 {
     protected EventController controller;    
 
     protected void initController()
     {
-        if (controller == null) controller = GetComponent<EventController>();
+        controller = GetComponent<EventController>();
     }
 
     public IEnumerator useAction(Character user, Character target, Action action)
