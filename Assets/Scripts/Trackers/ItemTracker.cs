@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class ItemTracker : MonoBehaviour
+public class ItemTracker
 {
     // the singleton object
     private static ItemTracker tracker;
@@ -25,7 +25,7 @@ public class ItemTracker : MonoBehaviour
         inventory = new Dictionary<ItemsEnum, int>();
         foreach (ItemsEnum itemEnum in Enum.GetValues(typeof(ItemsEnum)))
         {
-            inventory.Add(itemEnum, 0);
+            inventory.Add(itemEnum, 1);
         }
     }
 
@@ -78,13 +78,16 @@ public class ItemTracker : MonoBehaviour
         }
     }
 
-    // get the inventory
+    // get the inventory of anything that doesn't have an amount of zero
     public Dictionary<ItemsEnum, int> GetInventory()
     {
         var copy = new Dictionary<ItemsEnum, int>();
         foreach (ItemsEnum key in inventory.Keys)
         {
-            copy.Add(key, inventory[key]);
+            if (inventory[key] != 0)
+            {
+                copy.Add(key, inventory[key]);
+            }
         }
         return copy;
     }

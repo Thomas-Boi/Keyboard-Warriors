@@ -59,12 +59,11 @@ public class ActionMenu : MonoBehaviour
 
         EnableDisplay(true);
 
-        // temporary until Items are properly implemented
-        List<string> items = new List<string> { "chocolate" };
+        List<Item> items = EventController.ItemManager.GetItems();
 
         for (int i = 0; i < items.Count; i++)
         {
-            // spawn item buttons
+            buttons[i].spawnButton(items[i]);
         }
 
     }

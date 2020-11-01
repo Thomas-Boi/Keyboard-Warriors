@@ -5,7 +5,8 @@ using UnityEngine;
 [Serializable]
 public struct ItemDetails
 {
-    public ItemDetail chocolate;
+    public ItemDetail Chocolate;
+    public ItemDetail Milkshake;
 }
 
 [Serializable]

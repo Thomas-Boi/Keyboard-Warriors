@@ -33,7 +33,7 @@ public class EventController : MonoBehaviour
 
     public static SkillManager skillManager { get; private set; }
 
-    public static ItemManager itemManager { get; private set; }
+    public static ItemManager ItemManager { get; private set; }
 
     public Text descriptionBox;
     public string tooltip = "";
@@ -42,6 +42,7 @@ public class EventController : MonoBehaviour
     void Start()
     {
         skillManager = GetComponent<SkillManager>();
+        ItemManager = GetComponent<ItemManager>();
         startWave(waveNum);
         clearDescription();
     }

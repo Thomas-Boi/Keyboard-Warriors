@@ -1216,6 +1216,7 @@ GameObject:
   - component: {fileID: 1028068659}
   - component: {fileID: 1028068658}
   - component: {fileID: 1028068657}
+  - component: {fileID: 1028068660}
   m_Layer: 0
   m_Name: EventController
   m_TagString: Untagged
@@ -1291,6 +1292,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1028068660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028068656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6353f8269b08a0e4bb71fc904aeb0cf5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1041499699 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5643592697246427120, guid: 895f8ba5aa41b5a4d8acdb9971a40fb9, type: 3}
