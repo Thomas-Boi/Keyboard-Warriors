@@ -12,8 +12,6 @@ public class SkillManager : MonoBehaviour
     private AIDatabase aiData;
     private EventController controller;
 
-
-
     void Start()
     {
         skillData = JsonUtility.FromJson<SkillDatabase>(skillJson.text);
@@ -58,11 +56,12 @@ public class SkillManager : MonoBehaviour
         }
         else
         {
-            foreach (SkillWeight skill in ai.skills)
+            foreach (SkillWeight skillWeight in ai.skills)
             {
-                if (validConditions(user, skill.name) && validTargetExists(user, skill.name))
+                Skill skill = getSkillByName(skillWeight.name);
+                if (validConditions(user, skill) && validTargetExists(user, skill))
                 {
-                    choices.Add(skill.name, skill.weight);
+                    choices.Add(skillWeight.name, skillWeight.weight);
                 }
 
             }
@@ -83,13 +82,13 @@ public class SkillManager : MonoBehaviour
         Dictionary<Character, int> choices = new Dictionary<Character, int>();
         Skill skill = getSkillByName(skillName);
 
-        switch (skill.targeting)
+        switch (skill.TargetType)
         {
-            case "self":
+            case TargetType.SELF:
                 choices.Add(user, 1);
                 break;
 
-            case "enemySingle":
+            case TargetType.ENEMY_SINGLE:
                 List<Character> targets = (user.isEnemy) ? controller.players : controller.getEnemies();
                 foreach (Character target in targets)
                 {
@@ -106,58 +105,23 @@ public class SkillManager : MonoBehaviour
         }
 
 
-        StartCoroutine(useSkill(user, chooseRandom(choices), skillName));
+        StartCoroutine(useSkill(user, chooseRandom(choices), skill));
     }
 
-    public IEnumerator useSkill(Character user, Character target, string skillName)
+    public IEnumerator useSkill(Character user, Character target, Skill skill)
     {
         controller.resetTargetting();
-        Skill skill = getSkillByName(skillName);
-        controller.HideButtons();
+        controller.actionMenu.HideButtons();
         controller.clearDescription();
 
         //todo: Make animation stuff a function
-        controller.DisplaySkillDialogue(user, skill.alias, 1.0f);
-        switch (skillName)
-        {
-            case "nothing":
-                yield return new WaitForSeconds(.5f);
-                break;
-
-            case "basicAttack":
-                target.takeDamage(calcDamage(user.attack, target.defense));
-                user.GetComponent<Animator>().Play("attack", 0, 0);
-                yield return new WaitForSeconds(.5f);
-                break;
-
-            case "slimeAttack":
-                target.takeDamage(calcDamage(user.attack * 1.5, target.defense));
-                user.GetComponent<Animator>().Play("attack", 0, 0);
-                yield return new WaitForSeconds(.5f);
-                break;
-
-            case "strongAttack":
-                target.takeDamage(calcDamage(user.attack * 2, target.defense));
-                user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress + 30);
-                yield return new WaitForSeconds(.5f);
-                break;
-            case "healTarget":
-                target.healHealth(20 + user.attack);
-                user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress + 20);
-                yield return new WaitForSeconds(.5f);
-                break;
-
-        }
+        controller.DisplaySkillDialogue(user, skill.Alias, 1.0f);
         UnityEngine.Debug.Log(user.name);
-
-
-
-        UnityEngine.Debug.Log(skill);
         UnityEngine.Debug.Log(target.characterName);
         UnityEngine.Debug.Log(target.health);
 
+
+        yield return skill.performAction(user, new Character[] { target });
         if (controller.checkLife())
         {
             controller.nextTurn();
@@ -167,17 +131,14 @@ public class SkillManager : MonoBehaviour
 
 
     // For ai to check if targets exist
-    private bool validTargetExists(Character user, string skillName)
+    private bool validTargetExists(Character user, Skill skill)
     {
-        UnityEngine.Debug.Log(skillName);
-        Skill skill = getSkillByName(skillName);
-        UnityEngine.Debug.Log(skill.targeting);
-        switch (skill.targeting)
+        switch (skill.TargetType)
         {
-            case "self":
+            case TargetType.SELF:
                 return true;
 
-            case "enemySingle":
+            case TargetType.ENEMY_SINGLE:
                 return true;
 
             default:
@@ -188,7 +149,7 @@ public class SkillManager : MonoBehaviour
     }
 
     //check if conditions are valid
-    private bool validConditions(Character user, string skillName)
+    private bool validConditions(Character user, Skill skill)
     {
         return true;
     }
@@ -197,7 +158,10 @@ public class SkillManager : MonoBehaviour
 
     public Skill getSkillByName(string name)
     {
-        return skillData.skills.Find(x => x.name == name);
+        SkillDetail details = skillData.skills.Find(x => x.name == name);
+
+        return new Skill(details.name, details.description,
+            details.targetType, details.alias, details.conditions);
     }
 
 

@@ -21,7 +21,7 @@ public class SkillButton : MonoBehaviour
     public void showTooltip()
     {
         //select(true);
-        controller.descriptionBox.text = skill.description;
+        controller.descriptionBox.text = skill.Description;
 
 
     }
@@ -54,7 +54,7 @@ public class SkillButton : MonoBehaviour
     public void spawnButton(Skill skill)
     {
         this.skill = skill;
-        GetComponentInChildren<Text>().text = skill.alias;
+        GetComponentInChildren<Text>().text = skill.Alias;
         gameObject.SetActive(true);
     }
 
@@ -63,18 +63,18 @@ public class SkillButton : MonoBehaviour
     {
         controller.resetTargetting();
         select(true);
-        controller.descriptionBox.text = skill.description;
-        controller.tooltip = skill.description;
-        controller.selectedSkill = skill.name;
+        controller.descriptionBox.text = skill.Description;
+        controller.tooltip = skill.Description;
+        controller.selectedSkill = skill;
 
-        if (skill.targeting == "enemySingle")
+        if (skill.TargetType == TargetType.ENEMY_SINGLE)
         {
             foreach (Character character in controller.getEnemies())
             {
                 character.isTargetable = true;
             }
         }
-        else if (skill.targeting == "allySingle")
+        else if (skill.TargetType == TargetType.ALLY_SINGLE)
         {
             foreach (Character character in controller.getPlayers())
             {
