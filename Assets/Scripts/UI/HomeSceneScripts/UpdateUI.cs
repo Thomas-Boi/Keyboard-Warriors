@@ -17,6 +17,6 @@ public class UpdateUI : MonoBehaviour
         var tracker = ProgressTracker.GetTracker();
         weekTxtObj.text = $"Week {tracker.WeekNum} / {ProgressTracker.finalWeekNum}";
         scoreTxtObj.text = tracker.Score.ToString();
-        moneyTxtObj.text = tracker.Money.ToString();
+        moneyTxtObj.text = ItemTracker.GetTracker().Money.ToString();
     }
 }

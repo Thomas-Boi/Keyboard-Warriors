@@ -33,6 +33,8 @@ public class EventController : MonoBehaviour
 
     public static SkillManager skillManager { get; private set; }
 
+    public static ItemManager itemManager { get; private set; }
+
     public Text descriptionBox;
     public string tooltip = "";
 

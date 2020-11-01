@@ -31,9 +31,8 @@ public class ProgressUpdater : MonoBehaviour
     // update the player's score and money
     private void UpdateProgress(int score, int money)
     {
-        var tracker = ProgressTracker.GetTracker();
-        tracker.AddScore(score);
-        tracker.AddMoney(money);
+        ProgressTracker.GetTracker().AddScore(score);
+        ItemTracker.GetTracker().AddMoney(money);
     }
 
     // get the rewards for losing then move to the next scene
