@@ -1274,7 +1274,6 @@ MonoBehaviour:
   HUD: {fileID: 163542427}
   playerTurn: 1
   turnNum: 0
-  selectedSkill: 
   waveNum: 1
   descriptionBox: {fileID: 279207050}
   tooltip: 
@@ -1342,7 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e52002aaa0d8964c81882f9ca19b565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tacticJson: {fileID: 0}
+  tacticsJson: {fileID: 0}
   skillData:
     skills: []
 --- !u!1001 &1047907533
@@ -2368,6 +2367,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 163542431}
     m_Modifications:
+    - target: {fileID: 1339360684503618420, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
+      propertyPath: m_Name
+      value: ActionButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4222089059206776959, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2455,6 +2458,30 @@ PrefabInstance:
     - target: {fileID: 4222089059838249875, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
       propertyPath: m_Name
       value: ActionMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480465730545387157, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
+      propertyPath: m_Name
+      value: ActionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875505763204598241, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
+      propertyPath: m_Name
+      value: ActionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7629247214177575876, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
+      propertyPath: m_Name
+      value: ActionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 7966913621886555066, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
+      propertyPath: m_Name
+      value: ActionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8713683052860061748, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
+      propertyPath: m_Name
+      value: ActionButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 8758181624033831739, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
+      propertyPath: m_Name
+      value: ActionButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}

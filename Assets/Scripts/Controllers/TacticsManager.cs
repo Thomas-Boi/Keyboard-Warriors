@@ -31,7 +31,10 @@ public class TacticsManager : MonoBehaviour
 
     public Skill GetTacticByName(string name)
     {
-        return skillData.skills.Find(x => x.name == name);
+        SkillDetail details = skillData.skills.Find(x => x.name == name);
+
+        return new Skill(details.name, details.description,
+            details.targetType, details.alias, details.conditions);
     }
 
 }
