@@ -28,7 +28,7 @@ public class EventController : MonoBehaviour
     //turn number within each team.
     // 0 = player1, 1 = player2
     public int turnNum = -1;
-    public Skill selectedSkill;
+    public Action selectedAction;
     public int waveNum;
 
     public static SkillManager skillManager { get; private set; }

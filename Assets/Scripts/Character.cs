@@ -89,7 +89,7 @@ public class Character : MonoBehaviour
                 }
             }
             resetScale();
-            StartCoroutine(skillManager.useSkill(controller.players[controller.turnNum], this, controller.selectedSkill));
+            StartCoroutine(skillManager.useAction(controller.players[controller.turnNum], this, controller.selectedAction));
 
         }
     }

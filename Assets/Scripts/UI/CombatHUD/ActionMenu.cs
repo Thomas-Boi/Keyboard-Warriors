@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ActionMenu : MonoBehaviour
 {
     // repurpose skill buttons for items and tactics later
-    public List<SkillButton> buttons;
+    public List<ActionButton> buttons;
     public GameObject descriptionBox;
 
     private TacticsManager tacticsManager;
@@ -77,7 +77,7 @@ public class ActionMenu : MonoBehaviour
 
     public void DeselectAllButtons()
     {
-        foreach (SkillButton button in buttons)
+        foreach (ActionButton button in buttons)
         {
             button.select(false);
         }
@@ -85,7 +85,7 @@ public class ActionMenu : MonoBehaviour
 
     public void HideButtons()
     {
-        foreach (SkillButton button in buttons)
+        foreach (ActionButton button in buttons)
         {
             button.gameObject.SetActive(false);
         }

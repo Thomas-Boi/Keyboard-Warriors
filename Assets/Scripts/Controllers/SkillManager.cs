@@ -4,19 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class SkillManager : MonoBehaviour
+public class SkillManager : ActionManager
 {
     public TextAsset skillJson;
     public TextAsset aiJson;
     public SkillDatabase skillData;
     private AIDatabase aiData;
-    private EventController controller;
 
     void Start()
     {
         skillData = JsonUtility.FromJson<SkillDatabase>(skillJson.text);
         aiData = JsonUtility.FromJson<AIDatabase>(aiJson.text);
-        controller = GetComponent<EventController>();
+        initController();
     }
 
 
@@ -105,28 +104,7 @@ public class SkillManager : MonoBehaviour
         }
 
 
-        StartCoroutine(useSkill(user, chooseRandom(choices), skill));
-    }
-
-    public IEnumerator useSkill(Character user, Character target, Skill skill)
-    {
-        controller.resetTargetting();
-        controller.actionMenu.HideButtons();
-        controller.clearDescription();
-
-        //todo: Make animation stuff a function
-        controller.DisplaySkillDialogue(user, skill.Alias, 1.0f);
-        UnityEngine.Debug.Log(user.name);
-        UnityEngine.Debug.Log(target.characterName);
-        UnityEngine.Debug.Log(target.health);
-
-
-        yield return skill.performAction(user, new Character[] { target });
-        if (controller.checkLife())
-        {
-            controller.nextTurn();
-
-        }
+        StartCoroutine(useAction(user, chooseRandom(choices), skill));
     }
 
 
