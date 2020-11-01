@@ -14,12 +14,19 @@ public abstract class Item : Action
     public float AmountPercent { get => amountPercent; }
 
     public Item(string name, string description,
-        string targetType, int cost, float amountPercent) : base(name, description, targetType, name)
+        string targetType, string alias,
+        int cost, float amountPercent) : base(name, description, targetType, alias)
     {
         this.cost = cost;
         this.amountPercent = amountPercent;
     }
 
+    // remove this item from inventory
+    protected void RemoveItemFromInventory()
+    {
+        ItemsEnum itemEnum = (ItemsEnum)Enum.Parse(typeof(ItemsEnum), name);
+        ItemTracker.GetTracker().RemoveItem(itemEnum);
+    }
 }
 
 

@@ -8,7 +8,7 @@ public class ItemFactory
     private static ItemFactory factory;
 
     // path to the itemDetails.json
-    private static readonly string itemDetailsPath = "Items/items";
+    private static readonly string itemDetailsPath = "ItemDetails/items";
     private ItemDetails itemDetails;
 
     private ItemFactory()
@@ -24,15 +24,51 @@ public class ItemFactory
         return factory;
     }
 
-    public HealingItem CreateChocolate()
+    // create an Item with the amount embedded in its alias
+    public Item CreateItem(ItemsEnum item, int amount)
     {
-        ItemDetail chocolate = itemDetails.chocolate;
+        switch(item)
+        {
+            case ItemsEnum.Chocolate:
+                return CreateHealingItem(itemDetails.Chocolate, amount);
+            case ItemsEnum.Milkshake:
+                return CreateDestressingItem(itemDetails.Milkshake, amount);
+            default:
+                return CreateHealingItem(itemDetails.Chocolate, amount);
+        }
+    }
+
+
+    private HealingItem CreateHealingItem(ItemDetail details, int amount)
+    {
+        string alias = CreateAlias(details.name, amount);
         return new HealingItem(
-            chocolate.name,
-            chocolate.description,
-            chocolate.targetType,
-            chocolate.cost,
-            chocolate.amountPercent
+            details.name,
+            details.description,
+            details.targetType,
+            alias,
+            details.cost,
+            details.amountPercent
+            );
+    }
+
+    // create an alias for the object so it contains its name and amount
+    private string CreateAlias(string name, int amount)
+    {
+        return $"{name}: {amount}";
+    }
+
+    private DestressingItem CreateDestressingItem(ItemDetail details, int amount)
+    {
+
+        string alias = CreateAlias(details.name, amount);
+        return new DestressingItem(
+            details.name,
+            details.description,
+            details.targetType,
+            alias,
+            details.cost,
+            details.amountPercent
             );
     }
 }
