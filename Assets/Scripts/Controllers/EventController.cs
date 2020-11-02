@@ -16,7 +16,6 @@ public class EventController : MonoBehaviour
     public SkillDialogue skillDialogue;
 
     public ActionMenu actionMenu; // uses the skill buttons now
-    public ChoiceMenu choiceMenu; // for the choices "Skills" "Tactics" and "Items"
 
     public GameObject winUIPrefab;
     public GameObject loseUIPrefab;
@@ -32,7 +31,7 @@ public class EventController : MonoBehaviour
     public int waveNum;
 
     public static SkillManager skillManager { get; private set; }
-
+    public static TacticsManager tacticsManager { get; private set; }
     public static ItemManager ItemManager { get; private set; }
 
     public Text descriptionBox;
@@ -42,7 +41,9 @@ public class EventController : MonoBehaviour
     void Start()
     {
         skillManager = GetComponent<SkillManager>();
+        tacticsManager = GetComponent<TacticsManager>();
         ItemManager = GetComponent<ItemManager>();
+
         startWave(waveNum);
         clearDescription();
     }
@@ -91,6 +92,7 @@ public class EventController : MonoBehaviour
 
         if (playerTurn)
         {
+            actionMenu.DisplaySkillButtons(turnNum);
             // disable marker of previous player
             if ((turnNum - 1) >= 0)
             {
@@ -277,7 +279,7 @@ public class EventController : MonoBehaviour
     }
 
 
-    public void deselectAllButtons()
+    /*public void deselectAllButtons()
     {
         actionMenu.DeselectAllButtons();
     }
@@ -285,7 +287,7 @@ public class EventController : MonoBehaviour
     public void HideButtons()
     {
         actionMenu.HideButtons();
-    }
+    }*/
 
     public void clearDescription()
     {

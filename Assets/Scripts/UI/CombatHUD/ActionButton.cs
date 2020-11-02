@@ -39,7 +39,7 @@ public class ActionButton : MonoBehaviour
     {
         if (selected == true)
         {
-            controller.deselectAllButtons();
+            controller.actionMenu.DeselectAllButtons();
             GetComponent<Image>().color = Color.cyan;
         }
         else

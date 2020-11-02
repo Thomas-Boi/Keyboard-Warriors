@@ -54,10 +54,24 @@ public class Skill : Action
                 user.SetCharacterStress(user.stress + 30);
                 yield return new WaitForSeconds(.5f);
                 break;
+
             case "healTarget":
                 target.healHealth(20 + user.attack);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.SetCharacterStress(user.stress + 20);
+                yield return new WaitForSeconds(.5f);
+                break;
+
+            case "retreat":
+                break;
+
+            case "switchRow":
+                // based on row, swit
+                yield return new WaitForSeconds(.5f);
+                break;
+
+            case "destress":
+                user.SetCharacterStress(user.stress - 20);
                 yield return new WaitForSeconds(.5f);
                 break;
 

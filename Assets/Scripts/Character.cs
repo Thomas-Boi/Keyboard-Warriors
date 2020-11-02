@@ -80,7 +80,7 @@ public class Character : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && isTargetable)
         {
-            controller.deselectAllButtons();
+            controller.actionMenu.DeselectAllButtons();
             foreach (Spawner spawn in controller.spawners)
             {
                 if (spawn.isOccupied)
