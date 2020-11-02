@@ -1389,7 +1389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e52002aaa0d8964c81882f9ca19b565, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tacticsJson: {fileID: 4900000, guid: 32e19ee4bf0a5e947a107699a06d6a74, type: 3}
+  skillJson: {fileID: 4900000, guid: 32e19ee4bf0a5e947a107699a06d6a74, type: 3}
   skillData:
     skills: []
 --- !u!114 &1041499699 stripped
