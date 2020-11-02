@@ -7,7 +7,7 @@ public class ChoiceMenu : MonoBehaviour
 {
 
     private EventController controller;
-    private ActionMenu actionMenu;
+    public ActionMenu actionMenu;
 
     public Button skills;
     public Button tactics;
@@ -17,7 +17,7 @@ public class ChoiceMenu : MonoBehaviour
     void Start()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
-        actionMenu = GameObject.Find("ActionMenu").GetComponent<ActionMenu>();
+        //actionMenu = GameObject.Find("ActionMenu").GetComponent<ActionMenu>();
 
         skills.onClick.AddListener(() => DisplayMenuType("Skills", controller.turnNum));
         tactics.onClick.AddListener(() => DisplayMenuType("Tactics", controller.turnNum));
