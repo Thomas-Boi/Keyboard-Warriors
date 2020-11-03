@@ -9,8 +9,6 @@ public class ActionMenu : MonoBehaviour
     public List<ActionButton> buttons;
     public GameObject descriptionBox;
 
-    private TacticsManager tacticsManager;
-
     void Start()
     {
         EnableDisplay(false);
@@ -45,11 +43,11 @@ public class ActionMenu : MonoBehaviour
 
         EnableDisplay(true);
 
-        List<string> tactics = new List<string> { "retreat", "switch", "deStress" };
+        List<string> tactics = new List<string> { "retreat", "switchRow", "destress" };
 
         for (int i = 0; i < tactics.Count; i++)
         {
-            // spawn tactic buttons
+            buttons[i].spawnButton(EventController.tacticsManager.GetTacticByName(tactics[i]));
         }
 
     }

@@ -34,6 +34,27 @@
             "description": "Heals a target party member. Causes 20 stress",
             "targetType": "ALLY_SINGLE",
             "conditions": []
+        },
+        {
+            "name": "retreat",
+            "alias": "Retreat",
+            "description": "Retreats from the current battle.",
+            "targetType": "SELF",
+            "conditions": []
+        },
+        {
+            "name": "switchRow",
+            "alias": "Switch Row",
+            "description": "Switches the character's current row.",
+            "targetType": "SELF",
+            "conditions": []
+        },
+        {
+            "name": "destress",
+            "alias": "De-Stress",
+            "description": "Decreases the character's current stress by 25",
+            "targetType": "SELF",
+            "conditions": []
         }
     ]
 }

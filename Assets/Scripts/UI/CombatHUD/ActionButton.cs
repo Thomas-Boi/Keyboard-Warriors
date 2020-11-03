@@ -39,7 +39,7 @@ public class ActionButton : MonoBehaviour
     {
         if (selected == true)
         {
-            controller.deselectAllButtons();
+            controller.actionMenu.DeselectAllButtons();
             GetComponent<Image>().color = Color.cyan;
         }
         else
@@ -77,6 +77,10 @@ public class ActionButton : MonoBehaviour
             {
                 character.isTargetable = true;
             }
+        } else if (action.TargetType == TargetType.SELF)
+        {
+            Character character = controller.getPlayers()[controller.turnNum];
+            character.isTargetable = true;
         }
 
     }
