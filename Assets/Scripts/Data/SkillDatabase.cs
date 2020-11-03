@@ -30,6 +30,9 @@ public class Skill : Action
     override public IEnumerator performAction(Character user, Character[] targets)
     {
         Character target = targets[0];
+
+        EventController controller = GameObject.Find("EventController").GetComponent<EventController>();
+
         switch (name)
         {
             case "nothing":
@@ -62,16 +65,21 @@ public class Skill : Action
                 yield return new WaitForSeconds(.5f);
                 break;
 
+            // Tactics
             case "retreat":
+                controller.turnNum = -1;
+                controller.DisplayPlayerLose();
                 break;
 
             case "switchRow":
-                // based on row, swit
+                user.GetComponent<Animator>().Play("attack", 0, 0);
                 yield return new WaitForSeconds(.5f);
                 break;
 
             case "destress":
-                user.SetCharacterStress(user.stress - 20);
+                // change this animation later
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.SetCharacterStress(user.stress - 25);
                 yield return new WaitForSeconds(.5f);
                 break;
 

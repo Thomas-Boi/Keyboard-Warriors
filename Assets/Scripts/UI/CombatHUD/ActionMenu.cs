@@ -47,7 +47,6 @@ public class ActionMenu : MonoBehaviour
 
         for (int i = 0; i < tactics.Count; i++)
         {
-            // spawn tactic buttons
             buttons[i].spawnButton(EventController.tacticsManager.GetTacticByName(tactics[i]));
         }
 

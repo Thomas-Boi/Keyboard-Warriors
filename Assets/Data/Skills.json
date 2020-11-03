@@ -52,7 +52,7 @@
         {
             "name": "destress",
             "alias": "De-Stress",
-            "description": "Decreases the character's current stress by 20",
+            "description": "Decreases the character's current stress by 25",
             "targetType": "SELF",
             "conditions": []
         }

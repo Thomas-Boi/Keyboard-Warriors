@@ -263,7 +263,7 @@ public class EventController : MonoBehaviour
         Instantiate(winUIPrefab, HUD.transform);
     }
 
-    private void DisplayPlayerLose()
+    public void DisplayPlayerLose()
     {
         Instantiate(loseUIPrefab, HUD.transform);
     }
@@ -277,17 +277,6 @@ public class EventController : MonoBehaviour
     {
         return players.FindAll(x => x.health > 0);
     }
-
-
-    /*public void deselectAllButtons()
-    {
-        actionMenu.DeselectAllButtons();
-    }
-
-    public void HideButtons()
-    {
-        actionMenu.HideButtons();
-    }*/
 
     public void clearDescription()
     {
