@@ -269,7 +269,7 @@ public class EventController : MonoBehaviour
             yield return null;
         }
 
-        DestroyImmediate(textObject);
+        Destroy(textObject);
     }
 
 
@@ -321,7 +321,7 @@ public class EventController : MonoBehaviour
         {
             if (spawners[i].enemy != null)
             {
-                Destroy(spawners[i].enemy);
+                Destroy(spawners[i].enemy.gameObject);
                 spawners[i].enemy = null;
             }
         }
