@@ -10,6 +10,7 @@ public class Character : MonoBehaviour
     // Character's stats
     public string characterName;
     public int level;
+    public int exp = 0;
     public int maxHealth;
     public int health;
     public int maxStress;
@@ -104,7 +105,7 @@ public class Character : MonoBehaviour
     // Set this character's current health
     public void SetCharacterHealth(int health)
     {
-        
+
         this.health = (health > 0) ? health : 0;
         healthBar.SetHealth(this.health);
     }
@@ -148,24 +149,107 @@ public class Character : MonoBehaviour
         }
     }
 
+    public static int CalcExpToLevel(int currentLevel, int currentExp)
+    {
+        return (int)((100 + currentLevel - 1) * Math.Pow(1.1, currentLevel - 1));
+    }
 
-    public static List<int> CalcNextLevel(int currentLevel, int exp)
+
+    public static List<int> CalcNextLevel(int currentLevel, int currentExp)
     {
         // Exp formula
-        int expToLevel = (int) ((100 + currentLevel - 1) * Math.Pow(1.1, currentLevel-1));
+        int expToLevel = CalcExpToLevel(currentLevel, currentExp);
 
-        if (expToLevel >= exp)
+        if (currentExp >= expToLevel)
         {
-            return CalcNextLevel(currentLevel + 1, exp - expToLevel);
+            return CalcNextLevel(currentLevel + 1, currentExp - expToLevel);
         }
         else
         {
-            return new List<int>{currentLevel, exp};
+            return new List<int> { currentLevel, currentExp };
         }
 
     }
 
+    public void LevelUp()
+    {
+        List<int> newLevel = CalcNextLevel(level, exp);
+        for (int i = level; i < newLevel[0]; i++)
+        {
+            switch (id)
+            {
+                case "dps":
+                    if (i % 10 == 0)
+                    {
+                        health += 5;
+                        attack += 5;
+                        defense += 3;
+                    }
+                    else if (i % 5 == 0)
+                    {
+                        health += 4;
+                        attack += 4;
+                        defense += 1;
+                    }
+                    else if (i % 2 == 0)
+                    {
+                        health += 3;
+                        attack += 2;
+                        defense += 1;
+                    }
+                    else
+                    {
+                        health += 2;
+                        attack += 3;
+                        defense += 2;
+                    }
+                    break;
 
+                case "tank":
+                    if (i % 10 == 0)
+                    {
+                        health += 6;
+                        attack += 3;
+                        defense += 4;
+                    }
+                    else
+                    {
+                        health += 5;
+                        attack += 2;
+                        defense += 3;
+                    }
+                    break;
+
+                case "support":
+                    if (i % 10 == 0)
+                    {
+                        health += 5;
+                        attack += 3;
+                        defense += 3;
+                    }
+                    else if (i % 2 == 0)
+                    {
+                        health += 4;
+                        attack += 3;
+                        defense += 2;
+                    }
+                    else
+                    {
+                        health += 4;
+                        attack += 3;
+                        defense += 2;
+                    }
+                    break;
+
+                default:
+                    UnityEngine.Debug.Log(id + " Not a valid id for LevelUp()");
+                    break;
+
+            }
+        }
+        level = newLevel[0];
+        exp = newLevel[1];
+    }
 
 
 
