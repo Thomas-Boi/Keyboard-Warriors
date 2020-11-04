@@ -16,7 +16,7 @@ public class Character : MonoBehaviour
     public int stress;
     public int attack;
     public int defense;
-    public string ai;
+    public string id;
 
     public bool isTargetable = false;
     public bool isEnemy = true;
@@ -147,5 +147,31 @@ public class Character : MonoBehaviour
             marker.SetActive(enabled);
         }
     }
+
+
+    public static List<int> CalcNextLevel(int currentLevel, int exp)
+    {
+        // Exp formula
+        int expToLevel = (int) ((100 + currentLevel - 1) * Math.Pow(1.1, currentLevel-1));
+
+        if (expToLevel >= exp)
+        {
+            return CalcNextLevel(currentLevel + 1, exp - expToLevel);
+        }
+        else
+        {
+            return new List<int>{currentLevel, exp};
+        }
+
+    }
+
+
+
+
+
+
+
+
+
 
 }
