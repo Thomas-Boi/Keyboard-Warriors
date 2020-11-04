@@ -245,9 +245,10 @@ MonoBehaviour:
   stress: 0
   attack: 6
   defense: 3
-  ai: slime
+  id: slime
   isTargetable: 0
   isEnemy: 1
+  origin: {x: 0, y: 0, z: 0}
   marker: {fileID: 0}
   parent: {fileID: 0}
   healthBar: {fileID: 0}

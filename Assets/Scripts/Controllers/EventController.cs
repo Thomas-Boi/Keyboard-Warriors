@@ -57,31 +57,36 @@ public class EventController : MonoBehaviour
             case 1:
                 spawners[0].spawn("boxSlime");
                 spawners[1].spawn("boxSlimeSmall");
-                spawners[2].spawn("boxSlime");
-                spawners[3].spawn("boxSlimeSmall");
-                spawners[4].spawn("boxSlimeSmall");
-
-                for (int i = 0; i < spawners.Count; i++)
-                {
-                    if (spawners[i].isOccupied)
-                    {
-                        spawners[i].enemy.healthBar = healthbars[i];
-                    }
-                }
-
-                for (int i = 0; i < players.Count; i++)
-                {
-                    players[i].DisplayTurnMarker(false);
-                }
-
-                nextTurn();
                 break;
 
+            case 2:
+                spawners[0].spawn("boxSlime");
+                spawners[1].spawn("boxSlimeSmall");
+                spawners[2].spawn("boxSlime");
+                //spawners[3].spawn("boxSlimeSmall");
+                //spawners[4].spawn("boxSlimeSmall");
+                break;
 
             default:
                 UnityEngine.Debug.Log("Invalid Wave");
-                break;
+                return;
         }
+
+
+        for (int i = 0; i < spawners.Count; i++)
+        {
+            if (spawners[i].isOccupied)
+            {
+                spawners[i].enemy.healthBar = healthbars[i];
+            }
+        }
+
+        for (int i = 0; i < players.Count; i++)
+        {
+            players[i].DisplayTurnMarker(false);
+        }
+
+        nextTurn();
     }
 
 
@@ -159,8 +164,18 @@ public class EventController : MonoBehaviour
         }
         if (spawners.Count(s => s.isOccupied) <= 0)
         {
-            DisplayPlayerWin();
-            return false;
+            if (waveNum == 1)
+            {
+                ClearSpawners();
+                waveNum = 2;
+                startWave(waveNum);
+            }
+            else
+            {
+                DisplayPlayerWin();
+                return false;
+            }
+
         }
         return true;
     }
@@ -298,6 +313,17 @@ public class EventController : MonoBehaviour
         foreach (Character character in getPlayers())
         {
             character.isTargetable = false;
+        }
+    }
+
+    public void ClearSpawners() {
+        for (int i = 0; i < spawners.Count; i++)
+        {
+            if (spawners[i].enemy != null)
+            {
+                Destroy(spawners[i].enemy.gameObject);
+                spawners[i].enemy = null;
+            }
         }
     }
 

@@ -42,7 +42,7 @@ public class SkillManager : ActionManager
 
         Dictionary<string, int> choices = new Dictionary<string, int>();
 
-        AI ai = aiData.AIs.FirstOrDefault(x => x.name == user.ai);
+        AI ai = aiData.AIs.FirstOrDefault(x => x.name == user.id);
         if (object.Equals(ai, default(AI)))
         {
             choices.Add("nothing", 1);
