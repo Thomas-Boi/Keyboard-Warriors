@@ -181,25 +181,25 @@ public class Character : MonoBehaviour
                 case "dps":
                     if (i % 10 == 0)
                     {
-                        health += 5;
+                        maxHealth += 5;
                         attack += 5;
                         defense += 3;
                     }
                     else if (i % 5 == 0)
                     {
-                        health += 4;
+                        maxHealth += 4;
                         attack += 4;
                         defense += 1;
                     }
                     else if (i % 2 == 0)
                     {
-                        health += 3;
+                        maxHealth += 3;
                         attack += 2;
                         defense += 1;
                     }
                     else
                     {
-                        health += 2;
+                        maxHealth += 2;
                         attack += 3;
                         defense += 2;
                     }
@@ -208,13 +208,13 @@ public class Character : MonoBehaviour
                 case "tank":
                     if (i % 10 == 0)
                     {
-                        health += 6;
+                        maxHealth += 6;
                         attack += 3;
                         defense += 4;
                     }
                     else
                     {
-                        health += 5;
+                        maxHealth += 5;
                         attack += 2;
                         defense += 3;
                     }
@@ -223,19 +223,19 @@ public class Character : MonoBehaviour
                 case "support":
                     if (i % 10 == 0)
                     {
-                        health += 5;
+                        maxHealth += 5;
                         attack += 3;
                         defense += 3;
                     }
                     else if (i % 2 == 0)
                     {
-                        health += 4;
+                        maxHealth += 4;
                         attack += 3;
                         defense += 2;
                     }
                     else
                     {
-                        health += 4;
+                        maxHealth += 4;
                         attack += 3;
                         defense += 2;
                     }
