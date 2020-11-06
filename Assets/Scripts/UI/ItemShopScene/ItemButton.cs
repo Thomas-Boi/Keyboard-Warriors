@@ -6,19 +6,29 @@ using UnityEngine.UI;
 public class ItemButton : MonoBehaviour
 {
 
-    public ItemDetail item;
-    public string itemName = "";
+    public Item item;
+    public string alias = "";
 
     void Awake()
     {
-        gameObject.SetActive(false);    
+        gameObject.SetActive(false);   
     }
 
-    public void SpawnButton(ItemDetail item)
+    void Start()
+    {
+          
+    }
+
+    public void SpawnButton(Item item)
     {
         this.item = item;
-        GetComponentInChildren<Text>().text = item.name;
+        GetComponentInChildren<Text>().text = item.Alias;
         gameObject.SetActive(true);
+    }
+
+    private void GetItemDetails()
+    {
+        
     }
 
 }

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ActionMenu : MonoBehaviour
 {
-    // repurpose skill buttons for items and tactics later
+
     public List<ActionButton> buttons;
     public GameObject descriptionBox;
 

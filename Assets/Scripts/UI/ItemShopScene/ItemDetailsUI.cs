@@ -10,6 +10,8 @@ public class ItemDetailsUI : MonoBehaviour
     public Text itemDescription;
     public Text moneyWarning;
 
+    public Button buyButton;
+
     void Awake()
     {
         gameObject.SetActive(false);

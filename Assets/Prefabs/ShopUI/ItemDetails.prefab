@@ -30,7 +30,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 7406610069368617574}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -111,7 +111,7 @@ RectTransform:
   m_Children:
   - {fileID: 7406610069512944549}
   m_Father: {fileID: 7406610069368617574}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -467,8 +467,8 @@ RectTransform:
   - {fileID: 7406610069247840552}
   - {fileID: 7406610068746378128}
   - {fileID: 7406610068998295504}
-  - {fileID: 7406610068551712413}
   - {fileID: 1359450668737822922}
+  - {fileID: 7406610068551712413}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -493,6 +493,7 @@ MonoBehaviour:
   itemCost: {fileID: 7406610068746378131}
   itemDescription: {fileID: 7406610068998295507}
   moneyWarning: {fileID: 7179802488090086332}
+  buyButton: {fileID: 7406610068551712412}
 --- !u!1 &7406610069512944554
 GameObject:
   m_ObjectHideFlags: 0

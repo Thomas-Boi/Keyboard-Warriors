@@ -229,17 +229,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7406610069368617574, guid: 2237311790bff874eadcabd48cb46fb9, type: 3}
   m_PrefabInstance: {fileID: 381805431}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &381805433 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1616052374823007564, guid: 2237311790bff874eadcabd48cb46fb9, type: 3}
-  m_PrefabInstance: {fileID: 381805431}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5995f6f900db554d8c7eb285b570831, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &411397857
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,7 +264,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 62.9, y: 143.74}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411397859
 MonoBehaviour:
@@ -623,7 +612,6 @@ MonoBehaviour:
   foodOption: {fileID: 833737903}
   drinksOption: {fileID: 1776406606}
   miscOption: {fileID: 1242457398}
-  itemDetailsUI: {fileID: 381805433}
 --- !u!114 &847475869
 MonoBehaviour:
   m_ObjectHideFlags: 0
