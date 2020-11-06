@@ -7,7 +7,6 @@ public class UpdateUI : MonoBehaviour
 {
     // the text objects
     public Text weekTxtObj;
-    public Text scoreTxtObj;
     public Text moneyTxtObj;
 
     // Start is called before the first frame update
@@ -16,7 +15,6 @@ public class UpdateUI : MonoBehaviour
     {
         var tracker = ProgressTracker.GetTracker();
         weekTxtObj.text = $"Week {tracker.WeekNum} / {ProgressTracker.finalWeekNum}";
-        scoreTxtObj.text = tracker.Score.ToString();
         moneyTxtObj.text = ItemTracker.GetTracker().Money.ToString();
     }
 }
