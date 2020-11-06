@@ -7,8 +7,15 @@ public class UpdateShopUI : MonoBehaviour
 {
 
     public Text moneyTxtObj;
-    public List<Button> itemOptions;
 
+    public List<ItemButton> itemButtons;
+    public Button foodOption;
+    public Button drinksOption;
+    public Button miscOption;
+
+    public ItemDetailsUI itemDetailsUI;
+
+    // trackers
     private ProgressTracker tracker;
     private ItemTracker itemTracker;
 
@@ -20,13 +27,15 @@ public class UpdateShopUI : MonoBehaviour
 
     void Update()
     {
-        UpdateMoneyText();
-
+        moneyTxtObj.text = itemTracker.Money.ToString();
     }
 
-    private void UpdateMoneyText()
+    private void DisplayItems(bool enabled)
     {
-        moneyTxtObj.text = itemTracker.Money.ToString();
+        foreach (ItemButton itemButton in itemButtons)
+        {
+            itemButton.gameObject.SetActive(enabled);
+        }
     }
 
 }
