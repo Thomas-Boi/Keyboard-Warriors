@@ -10,6 +10,7 @@ public class SceneLoader : MonoBehaviour
     static string HOME_SCENE_NAME = "HomeScene";
     static string MENU_SCENE_NAME = "MenuScene";
     static string END_SCENE_NAME = "EndScene";
+    static string ITEM_SHOP_SCENE_NAME = "ItemShopScene";
 
 
     // load the combat scene
@@ -37,6 +38,11 @@ public class SceneLoader : MonoBehaviour
     public static void LoadEndScene()
     {
         SceneManager.LoadScene(END_SCENE_NAME);
+    }
+
+    public static void LoadShopScene()
+    {
+        SceneManager.LoadScene(ITEM_SHOP_SCENE_NAME);
     }
 
 }

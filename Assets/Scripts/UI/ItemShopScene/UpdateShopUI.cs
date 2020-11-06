@@ -11,10 +11,6 @@ public class UpdateShopUI : MonoBehaviour
     void Start()
     {
         var tracker = ProgressTracker.GetTracker();
-    }
-
-    void Update()
-    {
         moneyTxtObj.text = ItemTracker.GetTracker().Money.ToString();
     }
 
