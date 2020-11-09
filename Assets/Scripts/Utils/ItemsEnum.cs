@@ -8,5 +8,20 @@ using UnityEngine;
 public enum ItemsEnum
 {
     Chocolate,
-    Milkshake
+    Hamburger,
+    Timbits,
+    Pizza,
+    Soda,
+    Milkshake,
+    Tea,
+    LightningBoltEnergyDrink,
+    FloppyDisk
+}
+
+// track the type of each item
+public enum ItemType
+{
+    Food,
+    Drink,
+    Misc
 }

@@ -31,7 +31,6 @@ public abstract class Action
         }
         catch
         {
-            Debug.Log($"Warning: {targetType} not recognised");
             enumTargetType = TargetType.ENEMY_SINGLE;
         }
 
