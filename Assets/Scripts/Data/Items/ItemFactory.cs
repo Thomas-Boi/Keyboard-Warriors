@@ -52,7 +52,6 @@ public class ItemFactory
         }
     }
 
-
     private HealingItem CreateHealingItem(ItemDetail details, int amount)
     {
         string alias = CreateAlias(details.name, amount);
@@ -62,7 +61,8 @@ public class ItemFactory
             details.targetType,
             alias,
             details.cost,
-            details.amountPercent
+            details.amountPercent,
+            details.itemType
             );
     }
 
@@ -82,7 +82,8 @@ public class ItemFactory
             details.targetType,
             alias,
             details.cost,
-            details.amountPercent
+            details.amountPercent,
+            details.itemType
             );
     }
 
@@ -96,7 +97,76 @@ public class ItemFactory
             details.targetType,
             alias,
             details.cost,
-            details.amountPercent
+            details.amountPercent,
+            details.itemType
+            );
+    }
+
+
+    // create an Item with its name as the alias
+    public Item CreateItem(ItemsEnum item)
+    {
+        switch (item)
+        {
+            case ItemsEnum.Chocolate:
+                return CreateHealingItem(itemDetails.Chocolate);
+            case ItemsEnum.Hamburger:
+                return CreateHealingItem(itemDetails.Hamburger);
+            case ItemsEnum.Timbits:
+                return CreateHealingItem(itemDetails.Timbits);
+            case ItemsEnum.Pizza:
+                return CreateHealingItem(itemDetails.Pizza);
+            case ItemsEnum.Soda:
+                return CreateDestressingItem(itemDetails.Soda);
+            case ItemsEnum.Milkshake:
+                return CreateDestressingItem(itemDetails.Milkshake);
+            case ItemsEnum.Tea:
+                return CreateDestressingItem(itemDetails.Tea);
+            case ItemsEnum.LightningBoltEnergyDrink:
+                return CreateDestressingItem(itemDetails.LightningBoltEnergyDrink);
+            case ItemsEnum.FloppyDisk:
+                return CreateReviveItem(itemDetails.FloppyDisk);
+            default:
+                return CreateHealingItem(itemDetails.Chocolate);
+        }
+    }
+
+    private HealingItem CreateHealingItem(ItemDetail details)
+    {
+        return new HealingItem(
+            details.name,
+            details.description,
+            details.targetType,
+            details.name,
+            details.cost,
+            details.amountPercent,
+            details.itemType
+            );
+    }
+
+    private DestressingItem CreateDestressingItem(ItemDetail details)
+    {
+        return new DestressingItem(
+            details.name,
+            details.description,
+            details.targetType,
+            details.name,
+            details.cost,
+            details.amountPercent,
+            details.itemType
+            );
+    }
+
+    private ReviveItem CreateReviveItem(ItemDetail details)
+    {
+        return new ReviveItem(
+            details.name,
+            details.description,
+            details.targetType,
+            details.name,
+            details.cost,
+            details.amountPercent,
+            details.itemType
             );
     }
 }

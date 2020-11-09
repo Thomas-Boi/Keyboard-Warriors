@@ -24,4 +24,5 @@ public struct ItemDetail
     public int cost;
     public float amountPercent;
     public string targetType;
+    public string itemType;
 }

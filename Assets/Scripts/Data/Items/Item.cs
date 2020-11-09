@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 // represent an Item that can be used by the player
 public abstract class Item : Action
@@ -9,16 +10,31 @@ public abstract class Item : Action
     // the percentage that the item will heal/destress by
     protected float amountPercent;
 
-    public int Cost { get => cost; }
+    // the ItemType of this Item
+    protected ItemType itemType;
 
+    public int Cost { get => cost; }
     public float AmountPercent { get => amountPercent; }
+    public ItemType ItemType { get => itemType; }
 
     public Item(string name, string description,
         string targetType, string alias,
-        int cost, float amountPercent) : base(name, description, targetType, alias)
+        int cost, float amountPercent,
+        string itemType) : base(name, description, targetType, alias)
     {
         this.cost = cost;
         this.amountPercent = amountPercent;
+        // cast the string of targetType to enum form
+        ItemType enumItemType;
+        try
+        {
+            enumItemType = (ItemType)Enum.Parse(typeof(ItemType), itemType);
+        }
+        catch
+        {
+            enumItemType = ItemType.Misc;
+        }
+        this.itemType = enumItemType;
     }
 
     // remove this item from inventory

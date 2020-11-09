@@ -17,3 +17,11 @@ public enum ItemsEnum
     LightningBoltEnergyDrink,
     FloppyDisk
 }
+
+// track the type of each item
+public enum ItemType
+{
+    Food,
+    Drink,
+    Misc
+}

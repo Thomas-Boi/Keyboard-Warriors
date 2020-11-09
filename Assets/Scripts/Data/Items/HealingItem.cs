@@ -8,8 +8,8 @@ public class HealingItem : Item
 {
     public HealingItem(string name, string description,
         string targetType, string alias,
-        int cost, float amountPercent) 
-        : base(name, description, targetType, alias, cost, amountPercent) { }
+        int cost, float amountPercent, string itemType) 
+        : base(name, description, targetType, alias, cost, amountPercent, itemType) { }
 
     override public IEnumerator performAction(Character user, Character[] targets)
     {
