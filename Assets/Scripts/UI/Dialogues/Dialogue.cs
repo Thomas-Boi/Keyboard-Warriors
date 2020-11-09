@@ -17,12 +17,18 @@ public class Dialogue : MonoBehaviour
     private DialogueStruct[] dialogues;
     private int curScriptIndex;
 
+    // hold the MenusBlocker
+    public GameObject menuBlockerPrefab;
+    private GameObject menuBlocker;
+
     // start a new series of dialogues.
     // need to call this first after instantiaing a Dialogue Prefab
-    public void SetDialogues(DialogueStruct[] dialogues)
+    // the combatHUDTransform is the UI canvas element's transform
+    public void StartDialogue(DialogueStruct[] dialogues, Transform combatHUDTransform)
     {
         this.dialogues = dialogues;
         curScriptIndex = 0;
+        menuBlocker = Instantiate(menuBlockerPrefab, combatHUDTransform);
     }
 
 
@@ -40,10 +46,12 @@ public class Dialogue : MonoBehaviour
         {
             dialogues = null;
             Destroy(gameObject);
+            Destroy(menuBlocker);
         }
         catch (NullReferenceException)
         {
             Destroy(gameObject);
+            Destroy(menuBlocker);
         }
         
     }

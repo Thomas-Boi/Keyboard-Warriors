@@ -6,7 +6,7 @@ using System.Collections.Generic;
 [Serializable]
 public struct DialogueData
 {
-    public DialogueStruct[] onStart;
+    public DialogueStruct[] onStartDialogue;
 }
 
 // holds the data on a dialogue speaker and what they says
