@@ -31,8 +31,22 @@ public class ItemFactory
         {
             case ItemsEnum.Chocolate:
                 return CreateHealingItem(itemDetails.Chocolate, amount);
+            case ItemsEnum.Hamburger:
+                return CreateHealingItem(itemDetails.Hamburger, amount);
+            case ItemsEnum.Timbits:
+                return CreateHealingItem(itemDetails.Timbits, amount);
+            case ItemsEnum.Pizza:
+                return CreateHealingItem(itemDetails.Pizza, amount);
+            case ItemsEnum.Soda:
+                return CreateDestressingItem(itemDetails.Soda, amount);
             case ItemsEnum.Milkshake:
                 return CreateDestressingItem(itemDetails.Milkshake, amount);
+            case ItemsEnum.Tea:
+                return CreateDestressingItem(itemDetails.Tea, amount);
+            case ItemsEnum.LightningBoltEnergyDrink:
+                return CreateDestressingItem(itemDetails.LightningBoltEnergyDrink, amount);
+            case ItemsEnum.FloppyDisk:
+                return CreateReviveItem(itemDetails.FloppyDisk, amount);
             default:
                 return CreateHealingItem(itemDetails.Chocolate, amount);
         }
@@ -63,6 +77,20 @@ public class ItemFactory
 
         string alias = CreateAlias(details.name, amount);
         return new DestressingItem(
+            details.name,
+            details.description,
+            details.targetType,
+            alias,
+            details.cost,
+            details.amountPercent
+            );
+    }
+
+    private ReviveItem CreateReviveItem(ItemDetail details, int amount)
+    {
+
+        string alias = CreateAlias(details.name, amount);
+        return new ReviveItem(
             details.name,
             details.description,
             details.targetType,
