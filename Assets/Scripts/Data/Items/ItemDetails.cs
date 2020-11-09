@@ -12,7 +12,7 @@ public struct ItemDetails
     public ItemDetail Soda;
     public ItemDetail Milkshake;
     public ItemDetail Tea;
-    public ItemDetail LightningBoltEnergyDrink;
+    public ItemDetail Gatorade;
     public ItemDetail FloppyDisk;
 }
 

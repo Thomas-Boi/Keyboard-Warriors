@@ -14,7 +14,7 @@ public enum ItemsEnum
     Soda,
     Milkshake,
     Tea,
-    LightningBoltEnergyDrink,
+    Gatorade,
     FloppyDisk
 }
 
