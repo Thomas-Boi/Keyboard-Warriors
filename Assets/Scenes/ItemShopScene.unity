@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7406610069368617574, guid: 2237311790bff874eadcabd48cb46fb9, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -37.57
+      value: -60.8
       objectReference: {fileID: 0}
     - target: {fileID: 7406610069368617574, guid: 2237311790bff874eadcabd48cb46fb9, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -263,7 +263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62.9, y: 143.74}
+  m_AnchoredPosition: {x: 60.9, y: 143.74}
   m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &411397859
@@ -293,7 +293,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 1
@@ -612,6 +612,7 @@ MonoBehaviour:
   foodOption: {fileID: 833737903}
   drinksOption: {fileID: 1776406606}
   miscOption: {fileID: 1242457398}
+  itemDetailsUI: {fileID: 0}
 --- !u!114 &847475869
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1503,7 +1504,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4424216081068353849, guid: 49b2470074dabcf49997908fcb87368a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 62.79
+      value: 39.2
       objectReference: {fileID: 0}
     - target: {fileID: 4424216081068353849, guid: 49b2470074dabcf49997908fcb87368a, type: 3}
       propertyPath: m_AnchoredPosition.y

@@ -9,6 +9,8 @@ public class ItemButton : MonoBehaviour
     public Item item;
     public string alias = "";
 
+    private ItemDetailsUI itemDetailsUI;
+
     void Awake()
     {
         gameObject.SetActive(false);   
@@ -16,7 +18,8 @@ public class ItemButton : MonoBehaviour
 
     void Start()
     {
-          
+        itemDetailsUI = GameObject.Find("ItemDetailsUI").GetComponent<ItemDetailsUI>();
+        GetComponent<Button>().onClick.AddListener(() => SetItemDetails());
     }
 
     public void SpawnButton(Item item)
@@ -26,9 +29,10 @@ public class ItemButton : MonoBehaviour
         gameObject.SetActive(true);
     }
 
-    private void GetItemDetails()
+    private void SetItemDetails()
     {
-        
+        itemDetailsUI.moneyWarning.gameObject.SetActive(false);
+        itemDetailsUI.item = item;
     }
 
 }

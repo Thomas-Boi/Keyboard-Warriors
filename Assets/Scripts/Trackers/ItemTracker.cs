@@ -68,6 +68,14 @@ public class ItemTracker
         }
     }
 
+    // add an item to the player's inventory with it's string name
+    public void AddItem(string item)
+    {
+        string itemNoSpace = item.Replace(" ", "");
+        ItemsEnum itemEnum = (ItemsEnum)Enum.Parse(typeof(ItemsEnum), itemNoSpace);
+        AddItem(itemEnum);
+    }
+
     // remove an item from the player's inventory
     public void RemoveItem(ItemsEnum item)
     {
