@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,19 +14,16 @@ public class UpdateShopUI : MonoBehaviour
     public Button drinksOption;
     public Button miscOption;
 
-    public ItemDetailsUI itemDetailsUI;
+    //public ItemDetailsUI itemDetailsUI;
 
-    public static List<Item> foodItems;
-    public static List<Item> drinkItems;
-    public static List<Item> miscItems;
+    private List<Item> foodItems;
+    private List<Item> drinkItems;
+    private List<Item> miscItems;
 
-    // trackers
-    private ProgressTracker tracker;
     private ItemTracker itemTracker;
 
     void Start()
     {
-        tracker = ProgressTracker.GetTracker();
         itemTracker = ItemTracker.GetTracker();
 
         InitStore();
@@ -45,15 +43,21 @@ public class UpdateShopUI : MonoBehaviour
     {
         // food items
         foodItems = new List<Item>();
-        foodItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Chocolate, 99));
+        foodItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Chocolate));
+        foodItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Hamburger));
+        foodItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Timbits));
+        foodItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Pizza));
 
         // drink items
         drinkItems = new List<Item>();
-        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Milkshake, 99));
+        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Soda));
+        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Milkshake));
+        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Tea));
+        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.LightningBoltEnergyDrink));
 
         // misc. items
         miscItems = new List<Item>();
-        // add misc items here
+        miscItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.FloppyDisk));
     }
 
     private void DisplayItems(string type)
@@ -102,10 +106,10 @@ public class UpdateShopUI : MonoBehaviour
     // misc. items that include reviving players
     private void DisplayMiscItems()
     {
-        /*for (int i = 0; i < drinkItems.Count; i++)
+        for (int i = 0; i < miscItems.Count; i++)
         {
             itemButtons[i].SpawnButton(miscItems[i]);
-        }*/
+        }
     }
 
 }
