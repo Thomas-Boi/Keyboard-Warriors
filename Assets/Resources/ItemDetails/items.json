@@ -1,7 +1,7 @@
 {
 	"Chocolate": {
 		"name": "Chocolate",
-		"description": "A delicious snack that stops players from being hangry. Restore a player's health by 25%",
+		"description": "A delicious snack that stops players from getting hangry. Restore a player's health by 25%",
 		"cost": 10,
 		"amountPercent": 0.25,
     "targetType": "ALLY_SINGLE",
@@ -50,16 +50,16 @@
 	},
 	"Tea": {
 		"name": "Tea",
-		"description": "A relaxing drink. Useful for you to unwind and take a break. Restore all players' stress by 15%",
+		"description": "A relaxing drink. Help you unwind and take a break. Restore all players' stress by 15%",
 		"cost": 15,
 		"amountPercent": 0.15,
 		"targetType": "ALLY_ALL",
     "itemType": "Drink"
 
 	},	
-	"LightningBoltEnergyDrink": {
-		"name": "Lightning Bolt Energy Drink",
-		"description": "Stressed-out while studying with your friends? Lightning Bolt will take care of that! Restore all players' stress by 30%",
+	"Gatorade": {
+		"name": "Gatorade",
+		"description": "Stressed-out while studying with your friends? Have some Gatorade! Restore all players' stress by 30%",
 		"cost": 30,
 		"amountPercent": 0.30,
 		"targetType": "ALLY_ALL",

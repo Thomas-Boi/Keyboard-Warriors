@@ -43,8 +43,8 @@ public class ItemFactory
                 return CreateDestressingItem(itemDetails.Milkshake, amount);
             case ItemsEnum.Tea:
                 return CreateDestressingItem(itemDetails.Tea, amount);
-            case ItemsEnum.LightningBoltEnergyDrink:
-                return CreateDestressingItem(itemDetails.LightningBoltEnergyDrink, amount);
+            case ItemsEnum.Gatorade:
+                return CreateDestressingItem(itemDetails.Gatorade, amount);
             case ItemsEnum.FloppyDisk:
                 return CreateReviveItem(itemDetails.FloppyDisk, amount);
             default:
@@ -122,8 +122,8 @@ public class ItemFactory
                 return CreateDestressingItem(itemDetails.Milkshake);
             case ItemsEnum.Tea:
                 return CreateDestressingItem(itemDetails.Tea);
-            case ItemsEnum.LightningBoltEnergyDrink:
-                return CreateDestressingItem(itemDetails.LightningBoltEnergyDrink);
+            case ItemsEnum.Gatorade:
+                return CreateDestressingItem(itemDetails.Gatorade);
             case ItemsEnum.FloppyDisk:
                 return CreateReviveItem(itemDetails.FloppyDisk);
             default:

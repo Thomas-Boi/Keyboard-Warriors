@@ -1,5 +1,5 @@
 {
-    "onStart": [
+    "onStartDialogue": [
         {
             "speaker": "Tony",
             "speech": "That first week wasn't so bad"

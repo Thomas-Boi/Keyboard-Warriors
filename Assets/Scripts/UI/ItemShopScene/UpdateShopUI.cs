@@ -53,7 +53,7 @@ public class UpdateShopUI : MonoBehaviour
         drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Soda));
         drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Milkshake));
         drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Tea));
-        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.LightningBoltEnergyDrink));
+        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Gatorade));
 
         // misc. items
         miscItems = new List<Item>();

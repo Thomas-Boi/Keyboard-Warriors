@@ -11,25 +11,29 @@ public class DialogueDisplayer : MonoBehaviour
     // track the dialogue data underneath
     private DialogueData dialogueData;
 
-    private void Start()
+    public void Start()
     {
         dialogueData = GetDialogues();
-        DisplayDialogue(dialogueData.onStart);
+        print(dialogueData);
+        DisplayDialogue(dialogueData.onStartDialogue);
     }
 
     private DialogueData GetDialogues()
     {
         int weekNum = ProgressTracker.GetTracker().WeekNum;
         TextAsset dialogueJson = Resources.Load<TextAsset>("Dialogue/WeeklyCombat_wk" + weekNum);
-        var dialogueMap = JsonUtility.FromJson<DialogueData>(dialogueJson.ToString());
-        return dialogueMap;
+        return JsonUtility.FromJson<DialogueData>(dialogueJson.ToString());
     }
 
     // display a Dialogue box if there's one
     public void DisplayDialogue(DialogueStruct[] dialogues)
     {
         var dialogueElem = Instantiate(dialoguePrefab, transform).GetComponent<Dialogue>();
-        dialogueElem.SetDialogues(dialogues);
+
+        // show the first dialogue
+        // after that, the onclick event handler will do the rest
+        print(dialogues);
+        dialogueElem.StartDialogue(dialogues, transform);
         dialogueElem.NextDialogue();
     }
 }

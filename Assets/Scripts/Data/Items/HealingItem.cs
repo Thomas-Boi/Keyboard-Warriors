@@ -17,14 +17,14 @@ public class HealingItem : Item
         if (targetType == TargetType.ALLY_SINGLE)
         {
             Character target = targets[0];
-            int amount = (int)(target.health * amountPercent);
+            int amount = (int)(target.maxHealth * amountPercent);
             target.healHealth(amount);
         }
         else if (targetType == TargetType.ALLY_ALL)
         {
             foreach (Character target in targets)
             {
-                int amount = (int)(target.health * amountPercent);
+                int amount = (int)(target.maxHealth * amountPercent);
                 target.healHealth(amount);
             }
         }

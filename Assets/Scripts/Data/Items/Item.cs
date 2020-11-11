@@ -40,7 +40,8 @@ public abstract class Item : Action
     // remove this item from inventory
     protected void RemoveItemFromInventory()
     {
-        ItemsEnum itemEnum = (ItemsEnum)Enum.Parse(typeof(ItemsEnum), name);
+        string noSpaceName = name.Replace(" ", "");
+        ItemsEnum itemEnum = (ItemsEnum)Enum.Parse(typeof(ItemsEnum), noSpaceName);
         ItemTracker.GetTracker().RemoveItem(itemEnum);
     }
 }

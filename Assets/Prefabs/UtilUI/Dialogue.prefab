@@ -306,3 +306,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speakerTxt: {fileID: 1783624918428612570}
   speechTxt: {fileID: 1220238761414548047}
+  menuBlockerPrefab: {fileID: 6175477116959693462, guid: f95940d0584abe940b1dd62e9e58c024, type: 3}

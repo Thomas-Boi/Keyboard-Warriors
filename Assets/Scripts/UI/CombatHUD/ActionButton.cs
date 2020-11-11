@@ -64,23 +64,30 @@ public class ActionButton : MonoBehaviour
         controller.tooltip = action.Description;
         controller.selectedAction = action;
 
-        if (action.TargetType == TargetType.ENEMY_SINGLE)
+        switch(action.TargetType)
         {
-            foreach (Character character in controller.getEnemies())
-            {
+            case TargetType.ENEMY_SINGLE:
+                foreach (Character enemy in controller.getEnemies())
+                {
+                    enemy.isTargetable = true;
+                }
+                break;
+            case TargetType.ALLY_SINGLE:
+                foreach (Character player in controller.GetAlivePlayers())
+                {
+                    player.isTargetable = true;
+                }
+                break;
+            case TargetType.ALLY_SINGLE_DEAD:
+                foreach (Character player in controller.GetDeadPlayers())
+                {
+                    player.isTargetable = true;
+                }
+                break;
+            case TargetType.SELF:
+                Character character = controller.GetAlivePlayers()[controller.turnNum];
                 character.isTargetable = true;
-            }
-        }
-        else if (action.TargetType == TargetType.ALLY_SINGLE)
-        {
-            foreach (Character character in controller.getPlayers())
-            {
-                character.isTargetable = true;
-            }
-        } else if (action.TargetType == TargetType.SELF)
-        {
-            Character character = controller.getPlayers()[controller.turnNum];
-            character.isTargetable = true;
+                break;
         }
 
     }
