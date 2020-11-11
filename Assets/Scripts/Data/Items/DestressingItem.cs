@@ -17,17 +17,15 @@ public class DestressingItem : Item
         if (targetType == TargetType.ALLY_SINGLE)
         {
             Character target = targets[0];
-            int playerStress = target.stress;
-            int amount = (int)(playerStress * amountPercent);
-            target.SetCharacterStress(playerStress - amount);
+            int amount = (int)(target.maxStress * amountPercent);
+            target.SetCharacterStress(target.stress - amount);
         }
         else if (targetType == TargetType.ALLY_ALL)
         {
             foreach (Character target in targets)
             {
-                int playerStress = target.stress;
-                int amount = (int)(playerStress * amountPercent);
-                target.SetCharacterStress(playerStress - amount);
+                int amount = (int)(target.maxStress * amountPercent);
+                target.SetCharacterStress(target.stress - amount);
             }
         }
         RemoveItemFromInventory();

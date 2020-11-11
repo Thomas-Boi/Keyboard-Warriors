@@ -13,13 +13,9 @@ public class ReviveItem : Item
 
     override public IEnumerator performAction(Character user, Character[] targets)
     {
-        if (targetType == TargetType.ALLY_SINGLE)
-        {
-            Character target = targets[0];
-            int amount = (int)(target.health * amountPercent);
-            target.healHealth(amount);
-        }
-
+        Character target = targets[0];
+        int amount = (int)(target.maxHealth * amountPercent);
+        target.healHealth(amount);
         RemoveItemFromInventory();
         yield return new WaitForSeconds(.5f);
     }

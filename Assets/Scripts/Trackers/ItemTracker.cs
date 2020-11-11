@@ -27,6 +27,17 @@ public class ItemTracker
         {
             inventory.Add(itemEnum, 1);
         }
+
+        // production code
+        //foreach (ItemsEnum itemEnum in Enum.GetValues(typeof(ItemsEnum)))
+        //{
+        //    inventory.Add(itemEnum, 0);
+        //}
+
+        //// set the starting items for the player
+        //int defaultItemAmount = 2;
+        //inventory[ItemsEnum.Chocolate] = defaultItemAmount;
+        //inventory[ItemsEnum.Soda] = defaultItemAmount;
     }
 
     public static ItemTracker GetTracker()

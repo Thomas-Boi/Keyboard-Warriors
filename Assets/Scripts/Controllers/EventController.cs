@@ -38,7 +38,7 @@ public class EventController : MonoBehaviour
     public string tooltip = "";
 
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         skillManager = GetComponent<SkillManager>();
         tacticsManager = GetComponent<TacticsManager>();
@@ -288,9 +288,16 @@ public class EventController : MonoBehaviour
         return spawners.FindAll(x => x.isOccupied).Select(x => x.enemy).ToList();
     }
 
-    public List<Character> getPlayers()
+    // return a list of players that are still alive.
+    public List<Character> GetAlivePlayers()
     {
         return players.FindAll(x => x.health > 0);
+    }
+
+    // return a list of players that are dead.
+    public List<Character> GetDeadPlayers()
+    {
+        return players.FindAll(x => x.health <= 0);
     }
 
     public void clearDescription()
@@ -310,7 +317,7 @@ public class EventController : MonoBehaviour
         {
             character.isTargetable = false;
         }
-        foreach (Character character in getPlayers())
+        foreach (Character character in players)
         {
             character.isTargetable = false;
         }

@@ -56,14 +56,11 @@ public class Character : MonoBehaviour
 
     void OnMouseEnter()
     {
-
         if (isTargetable)
         {
             transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
             transform.position = transform.position + new Vector3(0, 0.3f, 0);
         }
-
-
     }
 
 
@@ -250,12 +247,5 @@ public class Character : MonoBehaviour
         level = newLevel[0];
         exp = newLevel[1];
     }
-
-
-
-
-
-
-
 
 }
