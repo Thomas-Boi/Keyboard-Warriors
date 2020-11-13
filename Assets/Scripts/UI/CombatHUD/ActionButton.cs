@@ -72,7 +72,19 @@ public class ActionButton : MonoBehaviour
                     enemy.isTargetable = true;
                 }
                 break;
+            case TargetType.ENEMY_ALL:
+                foreach (Character enemy in controller.getEnemies())
+                {
+                    enemy.isTargetable = true;
+                }
+                break;
             case TargetType.ALLY_SINGLE:
+                foreach (Character player in controller.GetAlivePlayers())
+                {
+                    player.isTargetable = true;
+                }
+                break;
+            case TargetType.ALLY_ALL:
                 foreach (Character player in controller.GetAlivePlayers())
                 {
                     player.isTargetable = true;

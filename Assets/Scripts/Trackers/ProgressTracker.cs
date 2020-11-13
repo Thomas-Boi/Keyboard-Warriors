@@ -1,4 +1,7 @@
-﻿// track the game progress as a singleton object
+﻿using System;
+
+
+// track the game progress as a singleton object
 public class ProgressTracker
 {
     private int weekNum;

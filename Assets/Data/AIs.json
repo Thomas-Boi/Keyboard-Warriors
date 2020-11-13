@@ -12,6 +12,19 @@
                     "weight": 2
                 }
             ]
+        },
+        {
+            "name": "researchBook",
+            "skills": [
+                {
+                    "name": "basicAttack",
+                    "weight": 5
+                },
+                {
+                    "name": "bookSlam",
+                    "weight": 7
+                }
+            ]
         }
     ]
 }
