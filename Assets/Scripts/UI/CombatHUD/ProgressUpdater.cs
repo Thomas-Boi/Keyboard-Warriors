@@ -74,9 +74,9 @@ public class ProgressUpdater : MonoBehaviour
             player.LevelUp();
         }
 
-        int score = wave.exp;
         int money = wave.coins;
-        UpdateProgress(score, money);
+
+        UpdateProgress(money);
 
         if (controller.waveNum != controller.weekData.weeks.Find(x => x.weekNum == controller.weekNum).waves.Count - 1)
         {
@@ -107,18 +107,16 @@ public class ProgressUpdater : MonoBehaviour
     }
 
     // update the player's score and money
-    private void UpdateProgress(int score, int money)
+    private void UpdateProgress(int money)
     {
-        ProgressTracker.GetTracker().AddScore(score);
         ItemTracker.GetTracker().AddMoney(money);
     }
 
     // get the rewards for losing then move to the next scene
     public void GetLoseRewards()
     {
-        int score = 10;
         int money = 10;
-        UpdateProgress(score, money);
+        UpdateProgress(money);
         SceneLoader.LoadHomeScene();
     }
 }

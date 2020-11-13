@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine;
-
-// track the game progress as a singleton object
+﻿// track the game progress as a singleton object
 public class ProgressTracker
 {
     private int weekNum;
-    private int score;
     private SceneTypeEnum curCombatType;
-
 
     // the singleton
     private static ProgressTracker tracker;
@@ -21,12 +13,6 @@ public class ProgressTracker
     public int WeekNum 
     { 
         get => weekNum; 
-    }
-
-    // track the player's score
-    public int Score
-    { 
-        get => score; 
     }
 
     // track the combat type
@@ -42,11 +28,23 @@ public class ProgressTracker
         }
     }
 
+    public bool ProductionMode { get => true; }
+
+    public GamePhase StorylinePhase { get; private set; }
+
+    // track the phase of the game
+    public enum GamePhase {
+        FirstTime,
+        BeforeMidterm,
+        AfterMidterm,
+        BeforeFinals,
+        AfterFinals
+    }
 
     public ProgressTracker() {
         weekNum = 1;
-        score = 0;
         curCombatType = SceneTypeEnum.HOME;
+        StorylinePhase = GamePhase.FirstTime;
     }
 
     public static ProgressTracker GetTracker()
@@ -63,12 +61,37 @@ public class ProgressTracker
         {
             weekNum = finalWeekNum;
         }
+        checkPhase();
         return weekNum;
     }
 
-    // gain score for the player
-    public void AddScore(int amount)
+    private void checkPhase()
     {
-        if (amount > 0) score += amount;
+        // goes down and check if we need to change the phase
+        int midtermWeek = finalWeekNum / 2;
+        if (weekNum == midtermWeek)
+        {
+            StorylinePhase = GamePhase.BeforeMidterm;
+        }
+        else if (weekNum == midtermWeek)
+        {
+            StorylinePhase = GamePhase.BeforeMidterm;
+        }
+        else if (weekNum == midtermWeek + 1)
+        {
+            StorylinePhase = GamePhase.AfterMidterm;
+        }
+        else if (weekNum == finalWeekNum)
+        {
+            StorylinePhase = GamePhase.BeforeFinals;
+        }
+        else if (weekNum == finalWeekNum + 1)
+        {
+            StorylinePhase = GamePhase.AfterFinals;
+        }
+        else {
+            return;
+        }
+        SceneLoader.LoadStoryScene();
     }
 }

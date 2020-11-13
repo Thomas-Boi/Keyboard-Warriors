@@ -11,8 +11,6 @@ public class DisplayFinalProgress : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        string score = ProgressTracker.GetTracker().Score.ToString();
-        scoreTxtObj.text += score;
         string money = ItemTracker.GetTracker().Money.ToString();
         moneyTxtObj.text += money;
     }

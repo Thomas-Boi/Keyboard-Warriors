@@ -1,65 +1,17 @@
 fileFormatVersion: 2
-guid: fd65f816b1b98f84db8a48b0f689d65b
+guid: 1e92299d71dbc6a4d82231a8154da5e3
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: -3100369314251171874
-    second: Idle
+      74: 5539831331247536789
+    second: Jump
   - first:
-      74: -5988046464538286781
-    second: Slime|Action
+      74: 9190564383200214912
+    second: ProgrammingBook_mesh|Idle
   - first:
-      74: 2849010498603384823
-    second: Slime|EmptyAction
-  - first:
-      74: 4433501410815027192
-    second: Slime|EmptyAction.001
-  - first:
-      74: 3307844090894913777
-    second: Slime|EmptyAction.002
-  - first:
-      74: -7331712858718691817
-    second: Slime|Idle
-  - first:
-      74: -3701155961511093670
-    second: Slime|SlimeAction
-  - first:
-      74: -2721074764652741580
-    second: Slime|SlimeAction.001
-  - first:
-      74: -6542316430214574983
-    second: Empty|Action
-  - first:
-      74: -5572541973309549404
-    second: Empty|EmptyAction
-  - first:
-      74: 523742727469920145
-    second: Empty|EmptyAction.001
-  - first:
-      74: 6564253511010156824
-    second: Empty|EmptyAction.002
-  - first:
-      74: -7461746029302092788
-    second: Empty|Idle
-  - first:
-      74: -6120303990515384735
-    second: Empty|SlimeAction
-  - first:
-      74: -7051118968661935493
-    second: Empty|SlimeAction.001
-  - first:
-      74: 7055355079433224739
-    second: GetHit
-  - first:
-      74: 872035285637003501
-    second: Slime_mesh|Attack
-  - first:
-      74: 5858164579613741094
-    second: Slime_mesh|GetHit
-  - first:
-      74: -3670279142810147859
-    second: Slime_mesh|idle
+      74: 5226047186765217822
+    second: ProgrammingBook_mesh|Jump
   externalObjects: {}
   materials:
     materialImportMode: 1

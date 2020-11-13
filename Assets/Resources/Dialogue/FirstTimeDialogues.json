@@ -1,0 +1,44 @@
+{
+	"onStartDialogue": [
+		{
+			"speaker": "Tony",
+			"speech": "Whew, it's good to be back in BCIT. It's great to see you guys again."
+		},
+		{
+			"speaker": "Robert",
+			"speech": "Yeah, one more term guys! Just a few more weeks and we can get our diploma"
+		},
+		{
+			"speaker": "Laura",
+			"speech": "I think we should be a bit more cautious. I've heard that the last term is the hardest in the CST program. We need to study hard if we want to pass this term"
+		},
+		{
+			"speaker": "Tony",
+			"speech": "You are right. We are so close to our goal. I just need to get this diploma and my path to Google will be guaranteed"
+		},
+		{
+			"speaker": "Robert",
+			"speech": "I always thought that you are so excited in class. Now that I know that you want to work at Google, I can see why"
+		},
+		{
+			"speaker": "Laura",
+			"speech": "It doesn't matter what we want if we cannot get this diploma. No matter how hard I want to build my own business, failing this term will make deraily that plan completely."
+		},
+		{
+			"speaker": "Robert",
+			"speech": "I think you guys are a bit too hyped up. We can always retake the courses in the future. Sometimes, you guys have to take it easy. Trust me, this is speaking from 20 years of experience."
+		},
+		{
+			"speaker": "Tony",
+			"speech": "Well, no matter what happens, I'm so excited for this term! I've heard the homework is going to be tougher than anything we've faced before."
+		},
+		{
+			"speaker": "Laura",
+			"speech": "You are right. We will need to work together if we want to get through this. I'll start planning and setting up study sessions."
+		},
+		{
+			"speaker": "Robert",
+			"speech": "Thanks Laura, you're always the planner. Well, it's 1:25. We better get to class, it's going to be our first week."
+		}
+	]
+}
