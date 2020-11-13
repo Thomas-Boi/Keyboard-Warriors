@@ -9,9 +9,8 @@ public class ProgressUpdater : MonoBehaviour
     // if it's the final week and they pass, display an end scene
     public void GetWinRewards()
     {
-        int score = 50;
         int money = 100;
-        UpdateProgress(score, money);
+        UpdateProgress(money);
 
         // see if we need to progress to next week
         var tracker = ProgressTracker.GetTracker();
@@ -29,18 +28,16 @@ public class ProgressUpdater : MonoBehaviour
     }
 
     // update the player's score and money
-    private void UpdateProgress(int score, int money)
+    private void UpdateProgress(int money)
     {
-        ProgressTracker.GetTracker().AddScore(score);
         ItemTracker.GetTracker().AddMoney(money);
     }
 
     // get the rewards for losing then move to the next scene
     public void GetLoseRewards()
     {
-        int score = 10;
         int money = 10;
-        UpdateProgress(score, money);
+        UpdateProgress(money);
         SceneLoader.LoadHomeScene();
     }
 }
