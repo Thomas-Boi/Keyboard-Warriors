@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 163542430}
   - component: {fileID: 163542429}
   - component: {fileID: 163542428}
-  - component: {fileID: 163542433}
+  - component: {fileID: 163542432}
   m_Layer: 5
   m_Name: CombatHUD
   m_TagString: Untagged
@@ -596,7 +596,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &163542433
+--- !u!114 &163542432
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -605,10 +605,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 163542427}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33354b867721c5c4b93554292cc5734d, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e23c423aa2a46a47b75f383dfed133a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePrefab: {fileID: 5501575621871623659, guid: c93defa9ddcc05845a5baee249a08a75, type: 3}
+  menuBlockerPrefab: {fileID: 6175477116959693462, guid: f95940d0584abe940b1dd62e9e58c024, type: 3}
 --- !u!114 &208201394 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}

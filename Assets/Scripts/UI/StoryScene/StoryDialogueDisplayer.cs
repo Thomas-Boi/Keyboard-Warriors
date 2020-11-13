@@ -13,7 +13,12 @@ public class StoryDialogueDisplayer : DialogueDisplayer
 
     private DialogueData GetDialogues()
     {
-        string jsonName = $"{ProgressTracker.GetTracker().StorylinePhase}Dialogue";
+        string jsonName = $"{ProgressTracker.GetTracker().StorylinePhase}Dialogues";
         return base.GetDialogues(jsonName);
+    }
+
+    protected override void CleanUp()
+    {
+        SceneLoader.LoadHomeScene();
     }
 }

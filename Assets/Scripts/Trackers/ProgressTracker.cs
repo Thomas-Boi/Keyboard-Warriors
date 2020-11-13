@@ -28,6 +28,8 @@ public class ProgressTracker
         }
     }
 
+    public bool ProductionMode { get => true; }
+
     public GamePhase StorylinePhase { get; private set; }
 
     // track the phase of the game

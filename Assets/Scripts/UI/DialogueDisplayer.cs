@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class DialogueDisplayer : MonoBehaviour
@@ -10,14 +9,15 @@ public class DialogueDisplayer : MonoBehaviour
     // track the dialogue data underneath
     protected DialogueData dialogueData;
 
-    // display a Dialogue box if there's one
+    // blockMenu is for whether we want to display a panel to block the action menu
     protected void DisplayDialogue(DialogueStruct[] dialogues)
     {
         var dialogueElem = Instantiate(dialoguePrefab, transform).GetComponent<Dialogue>();
+        dialogueElem.DialogueEnds += CleanUp; // register events
 
         // show the first dialogue
         // after that, the onclick event handler will do the rest
-        dialogueElem.StartDialogue(dialogues, transform);
+        dialogueElem.StartDialogue(dialogues);
         dialogueElem.NextDialogue();
     }
 
@@ -26,5 +26,10 @@ public class DialogueDisplayer : MonoBehaviour
     {
         TextAsset dialogueJson = Resources.Load<TextAsset>($"Dialogue/{jsonName}");
         return JsonUtility.FromJson<DialogueData>(dialogueJson.ToString());
+    }
+
+    // clean up after the dialogues finishes
+    protected virtual void CleanUp()
+    {
     }
 }
