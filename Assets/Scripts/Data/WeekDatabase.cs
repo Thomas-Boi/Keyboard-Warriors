@@ -23,4 +23,7 @@ public struct Week
 public struct Wave
 {
     public List<string> enemies;
+    public int coins;
+    public int exp;
+    
 }

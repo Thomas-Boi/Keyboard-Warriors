@@ -146,16 +146,16 @@ public class Character : MonoBehaviour
         }
     }
 
-    public static int CalcExpToLevel(int currentLevel, int currentExp)
+    public static int CalcExpToLevel(int currentLevel)
     {
-        return (int)((100 + currentLevel - 1) * Math.Pow(1.1, currentLevel - 1));
+        return (int)((100 + (currentLevel - 1) * 10) * Math.Pow(1.15, currentLevel - 1));
     }
 
 
     public static List<int> CalcNextLevel(int currentLevel, int currentExp)
     {
         // Exp formula
-        int expToLevel = CalcExpToLevel(currentLevel, currentExp);
+        int expToLevel = CalcExpToLevel(currentLevel);
 
         if (currentExp >= expToLevel)
         {
@@ -168,9 +168,15 @@ public class Character : MonoBehaviour
 
     }
 
-    public void LevelUp()
+
+    public Stats CalcStats(int addExp)
     {
-        List<int> newLevel = CalcNextLevel(level, exp);
+        Stats stats = new Stats();
+        stats.health = 0;
+        stats.attack = 0;
+        stats.defense = 0;
+
+        List<int> newLevel = CalcNextLevel(level, exp + addExp);
         for (int i = level; i < newLevel[0]; i++)
         {
             switch (id)
@@ -178,63 +184,63 @@ public class Character : MonoBehaviour
                 case "dps":
                     if (i % 10 == 0)
                     {
-                        maxHealth += 5;
-                        attack += 5;
-                        defense += 3;
+                        stats.health += 5;
+                        stats.attack += 5;
+                        stats.defense += 3;
                     }
                     else if (i % 5 == 0)
                     {
-                        maxHealth += 4;
-                        attack += 4;
-                        defense += 1;
+                        stats.health += 4;
+                        stats.attack += 4;
+                        stats.defense += 1;
                     }
                     else if (i % 2 == 0)
                     {
-                        maxHealth += 3;
-                        attack += 2;
-                        defense += 1;
+                        stats.health += 3;
+                        stats.attack += 2;
+                        stats.defense += 1;
                     }
                     else
                     {
-                        maxHealth += 2;
-                        attack += 3;
-                        defense += 2;
+                        stats.health += 2;
+                        stats.attack += 3;
+                        stats.defense += 2;
                     }
                     break;
 
                 case "tank":
                     if (i % 10 == 0)
                     {
-                        maxHealth += 6;
-                        attack += 3;
-                        defense += 4;
+                        stats.health += 6;
+                        stats.attack += 3;
+                        stats.defense += 4;
                     }
                     else
                     {
-                        maxHealth += 5;
-                        attack += 2;
-                        defense += 3;
+                        stats.health += 5;
+                        stats.attack += 2;
+                        stats.defense += 3;
                     }
                     break;
 
                 case "support":
                     if (i % 10 == 0)
                     {
-                        maxHealth += 5;
-                        attack += 3;
-                        defense += 3;
+                        stats.health += 5;
+                        stats.attack += 3;
+                        stats.defense += 3;
                     }
                     else if (i % 2 == 0)
                     {
-                        maxHealth += 4;
-                        attack += 3;
-                        defense += 2;
+                        stats.health += 4;
+                        stats.attack += 3;
+                        stats.defense += 2;
                     }
                     else
                     {
-                        maxHealth += 4;
-                        attack += 3;
-                        defense += 2;
+                        stats.health += 4;
+                        stats.attack += 3;
+                        stats.defense += 2;
                     }
                     break;
 
@@ -244,8 +250,33 @@ public class Character : MonoBehaviour
 
             }
         }
-        level = newLevel[0];
-        exp = newLevel[1];
+        stats.level = newLevel[0];
+        stats.exp = newLevel[1];
+        return stats;
     }
 
+
+
+
+    public void LevelUp()
+    {
+        Stats stats = CalcStats(0);
+        level = stats.level;
+        exp = stats.exp;
+        health += stats.health;
+        maxHealth += stats.health;
+        attack += stats.attack;
+        defense += stats.defense;
+    }
+
+}
+
+[Serializable]
+public struct Stats
+{
+    public int level;
+    public int exp;
+    public int health;
+    public int attack;
+    public int defense;
 }

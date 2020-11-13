@@ -39,7 +39,7 @@ public class EventController : MonoBehaviour
     public Text descriptionBox;
     public string tooltip = "";
 
-    private WeekDatabase weekData;
+    public WeekDatabase weekData;
 
     // Start is called before the first frame update
     public void Start()
@@ -87,9 +87,9 @@ public class EventController : MonoBehaviour
                 spawners[i].spawn(enemies[i]);
                 healthbars[barNum].transform.parent.gameObject.SetActive(true);
                 spawners[i].enemy.healthBar = healthbars[barNum];
-                barNum ++;
+                barNum++;
             }
-            
+
         }
 
 
@@ -177,18 +177,8 @@ public class EventController : MonoBehaviour
         }
         if (spawners.Count(s => s.isOccupied) <= 0)
         {
-            if (waveNum != weekData.weeks.Find(x => x.weekNum == weekNum).waves.Count - 1)
-            {
-                ClearSpawners();
-                waveNum++;
-                Invoke("StartWave", .7f);
-            }
-            else
-            {
-                DisplayPlayerWin();
-                return false;
-            }
-
+            DisplayPlayerWin();
+            return false;
         }
         return true;
     }

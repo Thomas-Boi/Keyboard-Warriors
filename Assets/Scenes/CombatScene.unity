@@ -914,6 +914,22 @@ PrefabInstance:
       propertyPath: id
       value: support
       objectReference: {fileID: 0}
+    - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+      propertyPath: attack
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+      propertyPath: defense
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+      propertyPath: health
+      value: 98
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+      propertyPath: characterName
+      value: Laura
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
 --- !u!224 &743438575 stripped
@@ -1448,6 +1464,8 @@ MonoBehaviour:
   weekNum: 0
   descriptionBox: {fileID: 130366443}
   tooltip: 
+  weekData:
+    weeks: []
 --- !u!4 &1028068659
 Transform:
   m_ObjectHideFlags: 0
@@ -1581,7 +1599,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
       propertyPath: exp
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
       propertyPath: id
@@ -1590,6 +1608,18 @@ PrefabInstance:
     - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
       propertyPath: health
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+      propertyPath: attack
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+      propertyPath: defense
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
+      propertyPath: characterName
+      value: Tony
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
