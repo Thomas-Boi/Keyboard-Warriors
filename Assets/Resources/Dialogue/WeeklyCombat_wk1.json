@@ -2,15 +2,15 @@
     "onStartDialogue": [
         {
             "speaker": "Tony",
-            "speech": "It's finally the final term at BCIT! I'm going to get my diploma after all"
+            "speech": "First week's homework. These doesn't look so bad"
         },
         {
-            "speaker": "Bob",
-            "speech": "Don't be too hasty Tony, we still have to get pass the courses"
+            "speaker": "Laura",
+            "speech": "Well, it's only the first week. We can't expect much"
         },
         {
-            "speaker": "Bob",
-            "speech": "It's the final term so things will be harder for sure"
+            "speaker": "Tony",
+            "speech": "Either way, let's show those slimes who's boss around here! Let's see how well they hold against my skills"
         }
     ]
 }
