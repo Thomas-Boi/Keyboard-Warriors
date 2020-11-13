@@ -74,6 +74,7 @@ public class SkillManager : ActionManager
     {
         Dictionary<Character, int> choices = new Dictionary<Character, int>();
         Skill skill = getSkillByName(skillName);
+        
 
         switch (skill.TargetType)
         {
@@ -90,6 +91,10 @@ public class SkillManager : ActionManager
                         choices.Add(target, 1);
                     }
                 }
+                break;
+
+            case TargetType.ENEMY_ALL:
+                choices.Add(user, 1);
                 break;
 
             default:
@@ -111,6 +116,9 @@ public class SkillManager : ActionManager
                 return true;
 
             case TargetType.ENEMY_SINGLE:
+                return true;
+
+            case TargetType.ENEMY_ALL:
                 return true;
 
             default:

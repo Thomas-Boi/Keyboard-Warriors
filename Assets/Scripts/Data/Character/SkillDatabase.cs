@@ -61,10 +61,39 @@ public class Skill : Action
                 yield return new WaitForSeconds(.5f);
                 break;
 
+            case "medAttack":
+                target.takeDamage(calcDamage(user.attack * 1.5, target.defense));
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                target.GetComponent<Animator>().Play("hurt", 0, 0);
+                user.SetCharacterStress(user.stress + 10);
+                yield return new WaitForSeconds(.5f);
+                break;
+
             case "healTarget":
                 target.healHealth(20 + user.attack);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.SetCharacterStress(user.stress + 30);
+                yield return new WaitForSeconds(.5f);
+                break;
+
+            case "bookSlam":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
+                {
+                    t.takeDamage(calcDamage(user.attack * 0.6, t.defense));
+                    t.GetComponent<Animator>().Play("hurt", 0, 0);
+                }
+                yield return new WaitForSeconds(.5f);
+                break;
+
+            case "wideAttack":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.SetCharacterStress(user.stress + 40);
+                foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
+                {
+                    t.takeDamage(calcDamage(user.attack, t.defense));
+                    t.GetComponent<Animator>().Play("hurt", 0, 0);
+                }
                 yield return new WaitForSeconds(.5f);
                 break;
 
