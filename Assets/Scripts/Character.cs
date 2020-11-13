@@ -59,7 +59,7 @@ public class Character : MonoBehaviour
         if (isTargetable)
         {
             transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
-            transform.position = transform.position + new Vector3(0, 0.3f, 0);
+            transform.position = transform.position + new Vector3(0, 0.1f, 0);
         }
     }
 
@@ -109,8 +109,12 @@ public class Character : MonoBehaviour
 
     public void takeDamage(int damage)
     {
-        SetCharacterHealth(health - damage);
-        controller.DisplayDamage(this, damage);
+        int d = damage;
+        if (stress >= 70) {
+            d = (int) (d * 1.3);
+        }
+        SetCharacterHealth(health - d);
+        controller.DisplayDamage(this, d);
     }
 
     public void healHealth(int amount)

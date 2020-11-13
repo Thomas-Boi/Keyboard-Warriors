@@ -188,9 +188,9 @@ public class EventController : MonoBehaviour
         int currentStress = user.stress;
 
         // when stress is full decrease character health
-        if (!user.isEnemy && user.stress >= user.maxStress)
+        if (!user.isEnemy && user.stress >= 70)
         {
-            int damage = 30;
+            int damage = (int) user.maxHealth / 10;
             user.SetCharacterHealth(user.health - damage);
             checkLife();
             user.GetComponent<Animator>().Play("stress", 0, 0);
