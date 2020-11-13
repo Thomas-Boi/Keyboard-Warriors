@@ -13,7 +13,7 @@ public class DialogueDisplayer : MonoBehaviour
     protected void DisplayDialogue(DialogueStruct[] dialogues)
     {
         var dialogueElem = Instantiate(dialoguePrefab, transform).GetComponent<Dialogue>();
-        dialogueElem.DialogueEnds += CleanUp; // register events
+        dialogueElem.DialogueEnds += HandleDialogueEndsEvent; // register events
 
         // show the first dialogue
         // after that, the onclick event handler will do the rest
@@ -29,7 +29,7 @@ public class DialogueDisplayer : MonoBehaviour
     }
 
     // clean up after the dialogues finishes
-    protected virtual void CleanUp()
+    protected virtual void HandleDialogueEndsEvent()
     {
     }
 }

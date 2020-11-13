@@ -17,7 +17,7 @@ public class StoryDialogueDisplayer : DialogueDisplayer
         return base.GetDialogues(jsonName);
     }
 
-    protected override void CleanUp()
+    protected override void HandleDialogueEndsEvent()
     {
         SceneLoader.LoadHomeScene();
     }

@@ -5,14 +5,17 @@ using UnityEngine;
 // display the dialogue if needed
 public class WeeklyDialogueDisplayer : DialogueDisplayer
 {
-    public GameObject menuBlockerPrefab;
-    private GameObject menuBlocker;
+    public GameObject choiceMenu;
 
     public void Start()
     {
-        dialogueData = GetDialogues();
-        DisplayDialogue(dialogueData.onStartDialogue);
-        BlockMenu();
+        if (ProgressTracker.GetTracker().ProductionMode)
+        {
+            dialogueData = GetDialogues();
+            DisplayDialogue(dialogueData.onStartDialogue);
+            // hide the choice menu so player can play while dialogue is open
+            choiceMenu.SetActive(false);
+        }
     }
 
     private DialogueData GetDialogues()
@@ -21,15 +24,10 @@ public class WeeklyDialogueDisplayer : DialogueDisplayer
         return base.GetDialogues("WeeklyCombat_wk" + weekNum);
     }
 
-    private void BlockMenu()
-    {
-        menuBlocker = Instantiate(menuBlockerPrefab, transform);
-    }
-
     // clean up after the dialogues finishes
-    protected override void CleanUp()
+    protected override void HandleDialogueEndsEvent()
     {
-        Destroy(menuBlocker);
+        choiceMenu.SetActive(true);
     }
 
 }

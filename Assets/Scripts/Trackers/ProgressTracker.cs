@@ -28,7 +28,8 @@ public class ProgressTracker
         }
     }
 
-    public bool ProductionMode { get => true; }
+    // for development purpose only. 
+    public bool ProductionMode { get => false; }
 
     public GamePhase StorylinePhase { get; private set; }
 

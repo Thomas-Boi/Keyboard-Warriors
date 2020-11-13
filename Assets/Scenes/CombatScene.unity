@@ -595,7 +595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialoguePrefab: {fileID: 5501575621871623659, guid: c93defa9ddcc05845a5baee249a08a75, type: 3}
-  menuBlockerPrefab: {fileID: 6175477116959693462, guid: f95940d0584abe940b1dd62e9e58c024, type: 3}
+  choiceMenu: {fileID: 853104495}
 --- !u!114 &208201394 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7459461093499628810, guid: cec6440dbf2e25c408ee5465c1b9be88, type: 3}
