@@ -8,6 +8,7 @@ using System;
 
 public class EventController : MonoBehaviour
 {
+    public TextAsset weekJson;
 
     public List<Spawner> spawners;
     public List<Character> players;
@@ -29,6 +30,7 @@ public class EventController : MonoBehaviour
     public int turnNum = -1;
     public Action selectedAction;
     public int waveNum;
+    public int weekNum;
 
     public static SkillManager skillManager { get; private set; }
     public static TacticsManager tacticsManager { get; private set; }
@@ -37,22 +39,26 @@ public class EventController : MonoBehaviour
     public Text descriptionBox;
     public string tooltip = "";
 
+    private WeekDatabase weekData;
+
     // Start is called before the first frame update
     public void Start()
     {
+        weekData = JsonUtility.FromJson<WeekDatabase>(weekJson.text);
         skillManager = GetComponent<SkillManager>();
         tacticsManager = GetComponent<TacticsManager>();
         ItemManager = GetComponent<ItemManager>();
+        weekNum = ProgressTracker.GetTracker().WeekNum;
 
-        startWave(waveNum);
+        StartWave();
         clearDescription();
     }
 
 
-    public void startWave(int wave)
+    public void StartWave()
     {
         turnNum = -1;
-        switch (wave)
+        /* switch (wave)
         {
             case 1:
                 spawners[0].spawn("boxSlime");
@@ -70,16 +76,18 @@ public class EventController : MonoBehaviour
             default:
                 UnityEngine.Debug.Log("Invalid Wave");
                 return;
-        }
-
-
+        } */
+        List<string> enemies = weekData.weeks.Find(x => x.weekNum == weekNum).waves[waveNum].enemies;
         for (int i = 0; i < spawners.Count; i++)
         {
-            if (spawners[i].isOccupied)
+            if (i < enemies.Count && !String.IsNullOrEmpty(enemies[i]))
             {
+                spawners[i].spawn(enemies[i]);
                 spawners[i].enemy.healthBar = healthbars[i];
             }
         }
+
+
 
         for (int i = 0; i < players.Count; i++)
         {
@@ -164,11 +172,11 @@ public class EventController : MonoBehaviour
         }
         if (spawners.Count(s => s.isOccupied) <= 0)
         {
-            if (waveNum == 1)
+            if (waveNum != weekData.weeks.Find(x => x.weekNum == weekNum).waves.Count - 1)
             {
                 ClearSpawners();
-                waveNum = 2;
-                startWave(waveNum);
+                waveNum++;
+                Invoke("StartWave", .7f);
             }
             else
             {
@@ -190,6 +198,7 @@ public class EventController : MonoBehaviour
             int damage = 30;
             user.SetCharacterHealth(user.health - damage);
             checkLife();
+            user.GetComponent<Animator>().Play("stress", 0, 0);
             DisplayDamage(user, damage);
         }
         if (!user.isEnemy)
@@ -323,7 +332,8 @@ public class EventController : MonoBehaviour
         }
     }
 
-    public void ClearSpawners() {
+    public void ClearSpawners()
+    {
         for (int i = 0; i < spawners.Count; i++)
         {
             if (spawners[i].enemy != null)

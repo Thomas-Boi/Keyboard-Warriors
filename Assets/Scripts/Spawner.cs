@@ -28,6 +28,11 @@ public class Spawner : MonoBehaviour
         {
             isOccupied = false;
         }
+        Vanish();
+    }
+
+    private void Vanish() {
+        enemy.gameObject.SetActive(false);
     }
 
 

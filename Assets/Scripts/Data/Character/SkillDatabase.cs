@@ -42,18 +42,21 @@ public class Skill : Action
             case "basicAttack":
                 target.takeDamage(calcDamage(user.attack, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
+                target.GetComponent<Animator>().Play("hurt", 0, 0);
                 yield return new WaitForSeconds(.5f);
                 break;
 
             case "slimeAttack":
                 target.takeDamage(calcDamage(user.attack * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
+                target.GetComponent<Animator>().Play("hurt", 0, 0);
                 yield return new WaitForSeconds(.5f);
                 break;
 
             case "strongAttack":
                 target.takeDamage(calcDamage(user.attack * 2, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
+                target.GetComponent<Animator>().Play("hurt", 0, 0);
                 user.SetCharacterStress(user.stress + 30);
                 yield return new WaitForSeconds(.5f);
                 break;
