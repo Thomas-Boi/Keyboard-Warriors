@@ -78,13 +78,18 @@ public class EventController : MonoBehaviour
                 return;
         } */
         List<string> enemies = weekData.weeks.Find(x => x.weekNum == weekNum).waves[waveNum].enemies;
+        int barNum = 0;
         for (int i = 0; i < spawners.Count; i++)
         {
+            healthbars[i].transform.parent.gameObject.SetActive(false);
             if (i < enemies.Count && !String.IsNullOrEmpty(enemies[i]))
             {
                 spawners[i].spawn(enemies[i]);
-                spawners[i].enemy.healthBar = healthbars[i];
+                healthbars[barNum].transform.parent.gameObject.SetActive(true);
+                spawners[i].enemy.healthBar = healthbars[barNum];
+                barNum ++;
             }
+            
         }
 
 
