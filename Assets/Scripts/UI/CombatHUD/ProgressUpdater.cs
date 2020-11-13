@@ -13,7 +13,11 @@ public class ProgressUpdater : MonoBehaviour
     {
         EventController controller = GameObject.Find("EventController").GetComponent<EventController>();
         Wave wave = controller.weekData.weeks.Find(x => x.weekNum == controller.weekNum).waves[controller.waveNum];
-        coins.text = "Coins: " + ItemTracker.GetTracker().Money + " + " + wave.coins + " = " + (ItemTracker.GetTracker().Money + wave.coins);
+
+        if (coins != null)
+        {
+            coins.text = "Coins: " + ItemTracker.GetTracker().Money + " + " + wave.coins + " = " + (ItemTracker.GetTracker().Money + wave.coins);
+        }
         for (int i = 0; i < screens.Count; i++)
         {
             Character player = controller.players[i];

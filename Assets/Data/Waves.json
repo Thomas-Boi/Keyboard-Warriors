@@ -5,14 +5,19 @@
             "waves": [
                 {
                     "enemies": [
+                        null,
                         "bookSlime",
-                        "boxSlimeSmall"
+                        null,
+                        "bookSlime"
+
                     ],
                     "coins" : 100,
                     "exp" : 100
                 },
                 {
                     "enemies": [
+                        null,
+                        "bookslime",
                         "bookSlime",
                         "bookSlime"
                     ],
@@ -24,7 +29,7 @@
                         "bookSlime",
                         "bookSlime",
                         null,
-                        "boxSlimeSmall"
+                        "researchBook"
                     ],
                     "coins" : 110,
                     "exp" : 110
@@ -34,7 +39,7 @@
                         "bookSlime",
                         "bookSlime",
                         null,
-                        "boxSlimeSmall"
+                        "researchBook"
                     ],
                     "coins" : 110,
                     "exp" : 110
@@ -59,8 +64,8 @@
                         "bookSlime",
                         "bookSlime",
                         null,
-                        "boxSlimeSmall",
-                        "boxSlimeSmall"
+                        "researchBook",
+                        "researchBook"
                     ],
                     "coins" : 110,
                     "exp" : 130
