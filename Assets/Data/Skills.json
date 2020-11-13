@@ -36,6 +36,13 @@
             "conditions": []
         },
         {
+            "name": "bookSlam",
+            "alias": "Mass Attack",
+            "description": "Book only",
+            "targetType": "ENEMY_ALL",
+            "conditions": []
+        },
+        {
             "name": "retreat",
             "alias": "Retreat",
             "description": "Retreats from the current battle.",

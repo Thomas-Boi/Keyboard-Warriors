@@ -116,8 +116,13 @@ public class EventController : MonoBehaviour
             {
                 players[turnNum - 1].DisplayTurnMarker(false);
             }
+            if (turnNum < players.Count && players[turnNum].health <= 0)
+            {
+                nextTurn();
+
+            }
             // enable marker of current player
-            if (turnNum >= 0 && turnNum < players.Count)
+            else if (turnNum >= 0 && turnNum < players.Count)
             {
                 CheckStressChange(players[turnNum]);
                 players[turnNum].DisplayTurnMarker(true);
@@ -190,7 +195,7 @@ public class EventController : MonoBehaviour
         // when stress is full decrease character health
         if (!user.isEnemy && user.stress >= 70)
         {
-            int damage = (int) user.maxHealth / 10;
+            int damage = (int)user.maxHealth / 10;
             user.SetCharacterHealth(user.health - damage);
             checkLife();
             user.GetComponent<Animator>().Play("stress", 0, 0);

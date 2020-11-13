@@ -68,6 +68,16 @@ public class Skill : Action
                 yield return new WaitForSeconds(.5f);
                 break;
 
+            case "bookSlam":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
+                {
+                    t.takeDamage(calcDamage(user.attack * 0.6, t.defense));
+                    t.GetComponent<Animator>().Play("hurt", 0, 0);
+                }
+                yield return new WaitForSeconds(.5f);
+                break;
+
             // Tactics
             case "retreat":
                 controller.turnNum = -1;
