@@ -1,0 +1,45 @@
+{
+    "weeks": [
+        {
+            "weekNum": 1,
+            "waves": [
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "boxSlimeSmall"
+                    ]
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "bookSlime",
+                        null,
+                        "boxSlimeSmall"
+                    ]
+                }
+            ]
+        },
+
+        {
+            "weekNum": 2,
+            "waves": [
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "bookSlime",
+                        "bookSlime"
+                    ]
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "bookSlime",
+                        null,
+                        "boxSlimeSmall",
+                        "boxSlimeSmall"
+                    ]
+                }
+            ]
+        }
+    ]
+}
