@@ -48,6 +48,18 @@ ModelImporter:
   - first:
       74: -7051118968661935493
     second: Empty|SlimeAction.001
+  - first:
+      74: 7055355079433224739
+    second: GetHit
+  - first:
+      74: 872035285637003501
+    second: Slime_mesh|Attack
+  - first:
+      74: 5858164579613741094
+    second: Slime_mesh|GetHit
+  - first:
+      74: -3670279142810147859
+    second: Slime_mesh|idle
   externalObjects: {}
   materials:
     materialImportMode: 1
