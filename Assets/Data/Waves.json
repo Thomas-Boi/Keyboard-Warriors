@@ -7,7 +7,17 @@
                     "enemies": [
                         "bookSlime",
                         "boxSlimeSmall"
-                    ]
+                    ],
+                    "coins" : 100,
+                    "exp" : 100
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "bookSlime"
+                    ],
+                    "coins" : 110,
+                    "exp" : 110
                 },
                 {
                     "enemies": [
@@ -15,7 +25,19 @@
                         "bookSlime",
                         null,
                         "boxSlimeSmall"
-                    ]
+                    ],
+                    "coins" : 110,
+                    "exp" : 110
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "bookSlime",
+                        null,
+                        "boxSlimeSmall"
+                    ],
+                    "coins" : 110,
+                    "exp" : 110
                 }
             ]
         },
@@ -28,7 +50,9 @@
                         "bookSlime",
                         "bookSlime",
                         "bookSlime"
-                    ]
+                    ],
+                    "coins" : 110,
+                    "exp" : 120
                 },
                 {
                     "enemies": [
@@ -37,7 +61,9 @@
                         null,
                         "boxSlimeSmall",
                         "boxSlimeSmall"
-                    ]
+                    ],
+                    "coins" : 110,
+                    "exp" : 130
                 }
             ]
         }

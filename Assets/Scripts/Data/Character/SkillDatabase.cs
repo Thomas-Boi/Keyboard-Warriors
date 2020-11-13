@@ -64,7 +64,7 @@ public class Skill : Action
             case "healTarget":
                 target.healHealth(20 + user.attack);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress + 20);
+                user.SetCharacterStress(user.stress + 30);
                 yield return new WaitForSeconds(.5f);
                 break;
 
