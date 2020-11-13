@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+public delegate void EventHandler();
 
 // holds the Text elements to display a dialogue piece from characters
 public class Dialogue : MonoBehaviour
@@ -17,18 +17,16 @@ public class Dialogue : MonoBehaviour
     private DialogueStruct[] dialogues;
     private int curScriptIndex;
 
-    // hold the MenusBlocker
-    public GameObject menuBlockerPrefab;
-    private GameObject menuBlocker;
+    // event handler
+    public event EventHandler DialogueEnds;
 
     // start a new series of dialogues.
     // need to call this first after instantiaing a Dialogue Prefab
     // the combatHUDTransform is the UI canvas element's transform
-    public void StartDialogue(DialogueStruct[] dialogues, Transform combatHUDTransform)
+    public void StartDialogue(DialogueStruct[] dialogues)
     {
         this.dialogues = dialogues;
         curScriptIndex = 0;
-        menuBlocker = Instantiate(menuBlockerPrefab, combatHUDTransform);
     }
 
 
@@ -46,14 +44,19 @@ public class Dialogue : MonoBehaviour
         {
             dialogues = null;
             Destroy(gameObject);
-            Destroy(menuBlocker);
+            OnDialogueEnds();
         }
         catch (NullReferenceException)
         {
             Destroy(gameObject);
-            Destroy(menuBlocker);
+            OnDialogueEnds();
         }
         
+    }
+
+    protected virtual void OnDialogueEnds()
+    {
+        DialogueEnds();
     }
 
 }
