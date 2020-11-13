@@ -29,6 +29,21 @@
             "conditions": []
         },
         {
+            "name": "wideAttack",
+            "alias": "Wide Swing",
+            "description": "Hit all enemies for normal attack damage. Causes 40 stress",
+            "targetType": "ENEMY_ALL",
+            "conditions": []
+        },
+        {
+            "name": "medAttack",
+            "alias": "Medium Attack",
+            "description": "A slightly stronger attack. Causes 10 stress",
+            "targetType": "ENEMY_SINGLE",
+            "conditions": []
+        },
+
+        {
             "name": "healTarget",
             "alias": "Heal",
             "description": "Heals a target party member. Causes 30 stress",
