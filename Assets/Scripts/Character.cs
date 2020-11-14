@@ -173,7 +173,7 @@ public class Character : MonoBehaviour
     }
 
 
-    public Stats CalcStats(int addExp)
+    public Stats CalcStats(int addExp, int skip = -1)
     {
         Stats stats = new Stats();
         stats.health = 0;
@@ -181,6 +181,9 @@ public class Character : MonoBehaviour
         stats.defense = 0;
 
         List<int> newLevel = CalcNextLevel(level, exp + addExp);
+        if (skip != -1) {
+            newLevel[0] = skip;
+        }
         for (int i = level; i < newLevel[0]; i++)
         {
             switch (id)
@@ -262,9 +265,9 @@ public class Character : MonoBehaviour
 
 
 
-    public void LevelUp()
+    public void LevelUp(int skip = -1)
     {
-        Stats stats = CalcStats(0);
+        Stats stats = CalcStats(0, skip);
         level = stats.level;
         exp = stats.exp;
         health += stats.health;

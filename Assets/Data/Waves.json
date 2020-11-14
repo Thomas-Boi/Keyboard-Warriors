@@ -32,7 +32,7 @@
                         "researchBook"
                     ],
                     "coins" : 110,
-                    "exp" : 110
+                    "exp" : 120
                 },
                 {
                     "enemies": [
@@ -42,7 +42,7 @@
                         "researchBook"
                     ],
                     "coins" : 110,
-                    "exp" : 110
+                    "exp" : 130
                 }
             ]
         },
@@ -52,23 +52,45 @@
             "waves": [
                 {
                     "enemies": [
+                        null,
+                        "bookslime",
                         "bookSlime",
-                        "bookSlime",
-                        "bookSlime"
+                        "researchBook",
+                        "researchBook"
                     ],
                     "coins" : 110,
-                    "exp" : 120
+                    "exp" : 140
+                },
+                {
+                    "enemies": [
+                        "researchBook",
+                        "researchBook",
+                        null,
+                        "researchBook"
+                    ],
+                    "coins" : 110,
+                    "exp" : 140
                 },
                 {
                     "enemies": [
                         "bookSlime",
                         "bookSlime",
-                        null,
                         "researchBook",
                         "researchBook"
                     ],
                     "coins" : 110,
-                    "exp" : 130
+                    "exp" : 150
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "researchBook",
+                        "bookSlime",
+                        "researchBook",
+                        "researchBook"
+                    ],
+                    "coins" : 110,
+                    "exp" : 150
                 }
             ]
         }
