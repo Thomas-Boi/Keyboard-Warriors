@@ -23,21 +23,22 @@ public class ItemTracker
     {
         money = 0;
         inventory = new Dictionary<ItemsEnum, int>();
-        foreach (ItemsEnum itemEnum in Enum.GetValues(typeof(ItemsEnum)))
-        {
-            inventory.Add(itemEnum, 1);
-        }
-
-        // production code
         //foreach (ItemsEnum itemEnum in Enum.GetValues(typeof(ItemsEnum)))
         //{
-        //    inventory.Add(itemEnum, 0);
+        //    inventory.Add(itemEnum, 1);
         //}
 
-        //// set the starting items for the player
-        //int defaultItemAmount = 2;
-        //inventory[ItemsEnum.Chocolate] = defaultItemAmount;
-        //inventory[ItemsEnum.Soda] = defaultItemAmount;
+        // production code
+        foreach (ItemsEnum itemEnum in Enum.GetValues(typeof(ItemsEnum)))
+        {
+            inventory.Add(itemEnum, 0);
+        }
+
+        // set the starting items for the player
+        int defaultItemAmount = 2;
+        inventory[ItemsEnum.Chocolate] = defaultItemAmount;
+        inventory[ItemsEnum.Soda] = defaultItemAmount;
+        inventory[ItemsEnum.FloppyDisk] = defaultItemAmount;
     }
 
     public static ItemTracker GetTracker()
