@@ -50,8 +50,18 @@ public class EventController : MonoBehaviour
         ItemManager = GetComponent<ItemManager>();
         weekNum = ProgressTracker.GetTracker().WeekNum;
 
+        foreach(Character player in players) {
+            if (weekNum > 1) {
+                CharStats stats = ProgressTracker.GetTracker().charStats.FirstOrDefault(x => player.id == x.id);
+                player.exp = stats.exp;
+                player.LevelUp(stats.level);
+            }
+        }
+
+
         StartWave();
         clearDescription();
+        
     }
 
 

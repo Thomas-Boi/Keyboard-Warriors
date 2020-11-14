@@ -22,6 +22,7 @@ public class ProgressUpdater : MonoBehaviour
         {
             Character player = controller.players[i];
             Stats newStats = player.CalcStats(wave.exp);
+
             foreach (Transform child in screens[i].transform)
             {
 
@@ -82,6 +83,18 @@ public class ProgressUpdater : MonoBehaviour
 
         UpdateProgress(money);
 
+        List<CharStats> statsList = new List<CharStats>();
+        //Update the player's level
+        foreach(Character player in controller.players) {
+            CharStats stats = new CharStats();
+            stats.level = player.level;
+            stats.exp = player.exp;
+            stats.id = player.id;
+            statsList.Add(stats);
+        }
+        ProgressTracker.GetTracker().charStats = statsList;
+
+
         if (controller.waveNum != controller.weekData.weeks.Find(x => x.weekNum == controller.weekNum).waves.Count - 1)
         {
             controller.ClearSpawners();
@@ -115,6 +128,7 @@ public class ProgressUpdater : MonoBehaviour
     {
         ItemTracker.GetTracker().AddMoney(money);
     }
+
 
     // get the rewards for losing then move to the next scene
     public void GetLoseRewards()

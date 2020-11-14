@@ -1,11 +1,13 @@
 ﻿using System;
-
+using System.Collections;
+using System.Collections.Generic;
 
 // track the game progress as a singleton object
 public class ProgressTracker
 {
     private int weekNum;
     private SceneTypeEnum curCombatType;
+    public List<CharStats> charStats;
 
     // the singleton
     private static ProgressTracker tracker;
@@ -97,4 +99,13 @@ public class ProgressTracker
         }
         SceneLoader.LoadStoryScene();
     }
+}
+
+
+
+[Serializable]
+public struct CharStats{
+    public string id;
+    public int level;
+    public int exp;
 }
