@@ -1,16 +1,36 @@
 {
     "onStartDialogue": [
         {
-            "speaker": "Tony",
-            "speech": "First week's homework. These doesn't look so bad"
+            "speaker": "Robert",
+            "speech": "This is a nice study room that you got for us, Laura."
         },
         {
             "speaker": "Laura",
-            "speech": "Well, it's only the first week. We can't expect much"
+            "speech": "Thanks, unfortunately I couldn't get us the old room. Lots of people are doing study groups this term."
         },
         {
             "speaker": "Tony",
-            "speech": "Either way, let's show those slimes who's boss around here! Let's see how well they hold against my skills"
+            "speech": "Well, either way, let's take a look at the homework that we have this week."
+        },
+        {
+            "speaker": "Tony",
+            "speech": "So this is the first week's homework? There aren't any coding questions at all."
+        },
+        {
+            "speaker": "Laura",
+            "speech": "Well, it's only the first week. There's only two courses we have to deal with right now. We can't expect much." 
+        },
+        {
+            "speaker": "Robert",
+            "speech": "Yeah, things will get more difficult in the future for sure. Just be thankful that we only have these to get started."
+        },
+        {
+            "speaker": "Tony",
+            "speech": "Yeah, that's true I supposed. Either way, let's show those slimes who's boss around here!"
+        },
+        {
+            "speaker": "Tony",
+            "speech": "Let's see how well they hold against my skills."
         }
     ]
 }

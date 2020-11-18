@@ -22,10 +22,6 @@ public class ActionManager : MonoBehaviour
 
         //todo: Make animation stuff a function
         controller.DisplaySkillDialogue(user, action.Alias, 1.0f);
-        UnityEngine.Debug.Log(user.name);
-        UnityEngine.Debug.Log(target.characterName);
-        UnityEngine.Debug.Log(target.health);
-
 
         yield return action.performAction(user, new Character[] { target });
         if (controller.checkLife())

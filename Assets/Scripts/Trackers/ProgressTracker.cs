@@ -5,19 +5,18 @@ using System.Collections.Generic;
 // track the game progress as a singleton object
 public class ProgressTracker
 {
-    private int weekNum;
     private SceneTypeEnum curCombatType;
     public List<CharStats> charStats;
 
     // the singleton
     private static ProgressTracker tracker;
 
-    public static int finalWeekNum = 2;
+    public static int finalWeekNum = 6;
 
     // track the current week number in the semester
     public int WeekNum 
     { 
-        get => weekNum; 
+        get; private set;
     }
 
     // track the combat type
@@ -48,7 +47,7 @@ public class ProgressTracker
     }
 
     public ProgressTracker() {
-        weekNum = 1;
+        WeekNum = 1;
         curCombatType = SceneTypeEnum.HOME;
         StorylinePhase = GamePhase.FirstTime;
     }
@@ -63,35 +62,28 @@ public class ProgressTracker
     // return the value of the next week
     public int NextWeek()
     {
-        if (++weekNum > finalWeekNum)
-        {
-            weekNum = finalWeekNum;
-        }
+        WeekNum++;
         checkPhase();
-        return weekNum;
+        return WeekNum;
     }
 
     private void checkPhase()
     {
         // goes down and check if we need to change the phase
         int midtermWeek = finalWeekNum / 2;
-        if (weekNum == midtermWeek)
+        if (WeekNum == midtermWeek)
         {
             StorylinePhase = GamePhase.BeforeMidterm;
         }
-        else if (weekNum == midtermWeek)
-        {
-            StorylinePhase = GamePhase.BeforeMidterm;
-        }
-        else if (weekNum == midtermWeek + 1)
+        else if (WeekNum == midtermWeek + 1)
         {
             StorylinePhase = GamePhase.AfterMidterm;
         }
-        else if (weekNum == finalWeekNum)
+        else if (WeekNum == finalWeekNum)
         {
             StorylinePhase = GamePhase.BeforeFinals;
         }
-        else if (weekNum == finalWeekNum + 1)
+        else if (WeekNum == finalWeekNum + 1)
         {
             StorylinePhase = GamePhase.AfterFinals;
         }
