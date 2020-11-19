@@ -1,0 +1,158 @@
+fileFormatVersion: 2
+guid: fd65f816b1b98f84db8a48b0f689d65b
+ModelImporter:
+  serializedVersion: 20101
+  internalIDToNameTable:
+  - first:
+      74: -3100369314251171874
+    second: Idle
+  - first:
+      74: -5988046464538286781
+    second: Slime|Action
+  - first:
+      74: 2849010498603384823
+    second: Slime|EmptyAction
+  - first:
+      74: 4433501410815027192
+    second: Slime|EmptyAction.001
+  - first:
+      74: 3307844090894913777
+    second: Slime|EmptyAction.002
+  - first:
+      74: -7331712858718691817
+    second: Slime|Idle
+  - first:
+      74: -3701155961511093670
+    second: Slime|SlimeAction
+  - first:
+      74: -2721074764652741580
+    second: Slime|SlimeAction.001
+  - first:
+      74: -6542316430214574983
+    second: Empty|Action
+  - first:
+      74: -5572541973309549404
+    second: Empty|EmptyAction
+  - first:
+      74: 523742727469920145
+    second: Empty|EmptyAction.001
+  - first:
+      74: 6564253511010156824
+    second: Empty|EmptyAction.002
+  - first:
+      74: -7461746029302092788
+    second: Empty|Idle
+  - first:
+      74: -6120303990515384735
+    second: Empty|SlimeAction
+  - first:
+      74: -7051118968661935493
+    second: Empty|SlimeAction.001
+  - first:
+      74: 7055355079433224739
+    second: GetHit
+  - first:
+      74: 872035285637003501
+    second: Slime_mesh|Attack
+  - first:
+      74: 5858164579613741094
+    second: Slime_mesh|GetHit
+  - first:
+      74: -3670279142810147859
+    second: Slime_mesh|idle
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

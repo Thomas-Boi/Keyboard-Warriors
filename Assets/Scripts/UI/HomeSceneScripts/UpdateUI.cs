@@ -7,8 +7,9 @@ public class UpdateUI : MonoBehaviour
 {
     // the text objects
     public Text weekTxtObj;
-    public Text scoreTxtObj;
     public Text moneyTxtObj;
+
+    public List<Button> panels;
 
     // Start is called before the first frame update
     // update the player's progress on the HomeScene
@@ -16,7 +17,15 @@ public class UpdateUI : MonoBehaviour
     {
         var tracker = ProgressTracker.GetTracker();
         weekTxtObj.text = $"Week {tracker.WeekNum} / {ProgressTracker.finalWeekNum}";
-        scoreTxtObj.text = tracker.Score.ToString();
-        moneyTxtObj.text = tracker.Money.ToString();
+        moneyTxtObj.text = ItemTracker.GetTracker().Money.ToString();
+
+        if (tracker.ProductionMode && tracker.StorylinePhase == ProgressTracker.GamePhase.FirstTime)
+        {
+            foreach (Button panel in panels)
+            {
+                if (panel.name == "GoToClassPanel") continue;
+                panel.interactable = false;
+            }
+        }
     }
 }

@@ -6,6 +6,34 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     public Slider slider;
+    public Text hpText;
+    public bool isEnemy;
+
+    private string hpStr;
+
+    void Start()
+    {
+        if (isEnemy)
+        {
+            hpText.gameObject.SetActive(false);
+        }
+    }
+
+    void Update()
+    {
+        if (!isEnemy)
+        {
+            UpdateHPString();
+        }
+    }
+
+    private void UpdateHPString()
+    {
+        int curHp = (int)slider.value;
+        int maxHp = (int)slider.maxValue;
+        string hpStr = curHp + " / " + maxHp;
+        hpText.text = hpStr;
+    }
 
     public void SetMaxHealth(float health)
     {

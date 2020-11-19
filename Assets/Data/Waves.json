@@ -1,0 +1,98 @@
+{
+    "weeks": [
+        {
+            "weekNum": 1,
+            "waves": [
+                {
+                    "enemies": [
+                        null,
+                        "bookSlime",
+                        null,
+                        "bookSlime"
+
+                    ],
+                    "coins" : 100,
+                    "exp" : 100
+                },
+                {
+                    "enemies": [
+                        null,
+                        "bookslime",
+                        "bookSlime",
+                        "bookSlime"
+                    ],
+                    "coins" : 110,
+                    "exp" : 110
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "bookSlime",
+                        null,
+                        "researchBook"
+                    ],
+                    "coins" : 110,
+                    "exp" : 120
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "bookSlime",
+                        null,
+                        "researchBook"
+                    ],
+                    "coins" : 110,
+                    "exp" : 130
+                }
+            ]
+        },
+
+        {
+            "weekNum": 2,
+            "waves": [
+                {
+                    "enemies": [
+                        null,
+                        "bookslime",
+                        "bookSlime",
+                        "researchBook",
+                        "researchBook"
+                    ],
+                    "coins" : 110,
+                    "exp" : 140
+                },
+                {
+                    "enemies": [
+                        "researchBook",
+                        "researchBook",
+                        null,
+                        "researchBook"
+                    ],
+                    "coins" : 110,
+                    "exp" : 140
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "bookSlime",
+                        "researchBook",
+                        "researchBook"
+                    ],
+                    "coins" : 110,
+                    "exp" : 150
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "researchBook",
+                        "bookSlime",
+                        "researchBook",
+                        "researchBook"
+                    ],
+                    "coins" : 110,
+                    "exp" : 150
+                }
+            ]
+        }
+    ]
+}

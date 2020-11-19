@@ -1,0 +1,77 @@
+{
+	"Chocolate": {
+		"name": "Chocolate",
+		"description": "A delicious snack that stops players from getting hangry. Restore a player's health by 25%",
+		"cost": 10,
+		"amountPercent": 0.25,
+    "targetType": "ALLY_SINGLE",
+    "itemType": "Food"
+	},	
+	"Hamburger": {
+		"name": "Hamburger",
+		"description": "Don't worry, you will burn off those extra calories by being stressed out. Restore a player's health by 50%",
+		"cost": 20,
+		"amountPercent": 0.50,
+		"targetType": "ALLY_SINGLE",
+    "itemType": "Food"
+	},	
+	"Timbits": {
+		"name": "Timbits",
+		"description": "Bite-size snacks. Great for sharing with your friends. Restore all players' health by 15%",
+		"cost": 15,
+		"amountPercent": 0.15,
+		"targetType": "ALLY_ALL",
+    "itemType": "Food"
+	},	
+	"Pizza": {
+		"name": "Pizza",
+		"description": "The go-to food for last-minute group cramming sessions. Restore all players' health by 30%",
+		"cost": 30,
+		"amountPercent": 0.30,
+		"targetType": "ALLY_ALL",
+    "itemType": "Food"
+	},	
+	"Soda": {
+		"name": "Soda",
+		"description": "Sugar will calm you down, trust me, I watched Taken. Restore a player's stress by 25%",
+		"cost": 10,
+		"amountPercent": 0.25,
+		"targetType": "ALLY_SINGLE",
+    "itemType": "Drink"
+	},	
+	"Milkshake": {
+		"name": "Milkshake",
+		"description": "A deluxe drinks that you can enjoy while chilling with friends. Restore a player's stress by 50%",
+		"cost": 20,
+		"amountPercent": 0.50,
+		"targetType": "ALLY_SINGLE",
+    "itemType": "Drink"
+
+	},
+	"Tea": {
+		"name": "Tea",
+		"description": "A relaxing drink. Help you unwind and take a break. Restore all players' stress by 15%",
+		"cost": 15,
+		"amountPercent": 0.15,
+		"targetType": "ALLY_ALL",
+    "itemType": "Drink"
+
+	},	
+	"Gatorade": {
+		"name": "Gatorade",
+		"description": "Stressed-out while studying with your friends? Have some Gatorade! Restore all players' stress by 30%",
+		"cost": 30,
+		"amountPercent": 0.30,
+		"targetType": "ALLY_ALL",
+    "itemType": "Drink"
+
+  },
+	"FloppyDisk": {
+		"name": "Floppy Disk",
+		"description": "Revive a player with power of Boomer Technology. Restore that player's health to 20%",
+		"cost": 25,
+		"amountPercent": 0.20,
+		"targetType": "ALLY_SINGLE_DEAD",
+    "itemType": "Misc"
+  }
+}

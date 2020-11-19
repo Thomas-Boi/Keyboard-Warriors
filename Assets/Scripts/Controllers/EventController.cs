@@ -8,14 +8,16 @@ using System;
 
 public class EventController : MonoBehaviour
 {
+    public TextAsset weekJson;
 
     public List<Spawner> spawners;
     public List<Character> players;
     public List<HealthBar> healthbars;
-    public List<SkillButton> skillButtons;
 
     public SkillDialogue skillDialogue;
-    public GameObject battleMenu;
+
+    public ActionMenu actionMenu; // uses the skill buttons now
+
     public GameObject winUIPrefab;
     public GameObject loseUIPrefab;
     public GameObject HUD;
@@ -26,108 +28,111 @@ public class EventController : MonoBehaviour
     //turn number within each team.
     // 0 = player1, 1 = player2
     public int turnNum = -1;
-    public string selectedSkill = "";
+    public Action selectedAction;
     public int waveNum;
+    public int weekNum;
 
-    private SkillManager skillManager;
+    public static SkillManager skillManager { get; private set; }
+    public static TacticsManager tacticsManager { get; private set; }
+    public static ItemManager ItemManager { get; private set; }
 
     public Text descriptionBox;
     public string tooltip = "";
 
+    public WeekDatabase weekData;
+
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        weekData = JsonUtility.FromJson<WeekDatabase>(weekJson.text);
         skillManager = GetComponent<SkillManager>();
-        startWave(waveNum);
+        tacticsManager = GetComponent<TacticsManager>();
+        ItemManager = GetComponent<ItemManager>();
+        weekNum = ProgressTracker.GetTracker().WeekNum;
+
+        foreach(Character player in players) {
+            if (weekNum > 1) {
+                CharStats stats = ProgressTracker.GetTracker().charStats.FirstOrDefault(x => player.id == x.id);
+                player.exp = stats.exp;
+                player.LevelUp(stats.level);
+            }
+        }
+
+
+        StartWave();
         clearDescription();
+        
     }
 
 
-    public void startWave(int wave)
+    public void StartWave()
     {
         turnNum = -1;
-        switch (wave)
+        /* switch (wave)
         {
             case 1:
                 spawners[0].spawn("boxSlime");
                 spawners[1].spawn("boxSlimeSmall");
-                spawners[2].spawn("boxSlime");
-                spawners[3].spawn("boxSlimeSmall");
-                spawners[4].spawn("boxSlimeSmall");
-
-                for (int i = 0; i < spawners.Count; i++)
-                {
-                    if (spawners[i].isOccupied)
-                    {
-                        spawners[i].enemy.healthBar = healthbars[i];
-                    }
-                }
-
-                for (int i = 0; i < players.Count; i++)
-                {
-                    players[i].DisplayTurnMarker(false);
-                }
-
-                nextTurn();
                 break;
 
+            case 2:
+                spawners[0].spawn("boxSlime");
+                spawners[1].spawn("boxSlimeSmall");
+                spawners[2].spawn("boxSlime");
+                //spawners[3].spawn("boxSlimeSmall");
+                //spawners[4].spawn("boxSlimeSmall");
+                break;
 
             default:
                 UnityEngine.Debug.Log("Invalid Wave");
-                break;
-        }
-    }
-
-
-    public void displaySkills()
-    {
-        //these lists are temporary solutions. Will refactor and move this somewhere else later
-        List<string> playerOne = new List<string> { "basicAttack", "strongAttack" };
-        List<string> playerTwo = new List<string> { "basicAttack", "strongAttack", "healTarget" };
-
-        if (turnNum == 0)
+                return;
+        } */
+        List<string> enemies = weekData.weeks.Find(x => x.weekNum == weekNum).waves[waveNum].enemies;
+        int barNum = 0;
+        for (int i = 0; i < spawners.Count; i++)
         {
-            for (int i = 0; i < playerOne.Count; i++)
+            healthbars[i].transform.parent.gameObject.SetActive(false);
+            if (i < enemies.Count && !String.IsNullOrEmpty(enemies[i]))
             {
-                skillButtons[i].spawnButton(skillManager.getSkillByName(playerOne[i]));
+                spawners[i].spawn(enemies[i]);
+                healthbars[barNum].transform.parent.gameObject.SetActive(true);
+                spawners[i].enemy.healthBar = healthbars[barNum];
+                barNum++;
             }
+
         }
-        else
+
+
+
+        for (int i = 0; i < players.Count; i++)
         {
-            for (int i = 0; i < playerTwo.Count; i++)
-            {
-                skillButtons[i].spawnButton(skillManager.getSkillByName(playerTwo[i]));
-            }
+            players[i].DisplayTurnMarker(false);
         }
 
+        nextTurn();
     }
-
-    public void hideSkills()
-    {
-        foreach (SkillButton button in skillButtons)
-        {
-            button.gameObject.SetActive(false);
-        }
-    }
-
 
 
     public void nextTurn()
     {
 
-        hideSkills();
         turnNum++;
 
         if (playerTurn)
         {
-
+            actionMenu.DisplaySkillButtons(turnNum);
             // disable marker of previous player
             if ((turnNum - 1) >= 0)
             {
                 players[turnNum - 1].DisplayTurnMarker(false);
             }
+            if (turnNum < players.Count && players[turnNum].health <= 0)
+            {
+                nextTurn();
+
+            }
             // enable marker of current player
-            if (turnNum >= 0 && turnNum < players.Count)
+            else if (turnNum >= 0 && turnNum < players.Count)
             {
                 CheckStressChange(players[turnNum]);
                 players[turnNum].DisplayTurnMarker(true);
@@ -136,10 +141,7 @@ public class EventController : MonoBehaviour
                 {
                     nextTurn();
                 }
-                else
-                {
-                    displaySkills();
-                }
+
             }
 
             if (turnNum >= players.Count)
@@ -151,6 +153,8 @@ public class EventController : MonoBehaviour
         }
         if (!playerTurn)
         {
+            actionMenu.EnableDisplay(false);
+
             if (turnNum >= spawners.Count)
             {
                 turnNum = -1;
@@ -198,13 +202,13 @@ public class EventController : MonoBehaviour
     {
         int currentStress = user.stress;
 
-
         // when stress is full decrease character health
-        if (!user.isEnemy && user.stress >= user.maxStress)
+        if (!user.isEnemy && user.stress >= 70)
         {
-            int damage = 30;
+            int damage = (int)user.maxHealth / 10;
             user.SetCharacterHealth(user.health - damage);
             checkLife();
+            user.GetComponent<Animator>().Play("stress", 0, 0);
             DisplayDamage(user, damage);
         }
         if (!user.isEnemy)
@@ -235,7 +239,7 @@ public class EventController : MonoBehaviour
         Text damageText = textObj.AddComponent<Text>();
         damageText.text = "-" + damage.ToString();
         damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        damageText.color = Color.black;
+        damageText.color = Color.red;
         damageText.fontSize = 35;
         damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
         damageText.verticalOverflow = VerticalWrapMode.Overflow;
@@ -293,7 +297,7 @@ public class EventController : MonoBehaviour
         Instantiate(winUIPrefab, HUD.transform);
     }
 
-    private void DisplayPlayerLose()
+    public void DisplayPlayerLose()
     {
         Instantiate(loseUIPrefab, HUD.transform);
     }
@@ -303,18 +307,16 @@ public class EventController : MonoBehaviour
         return spawners.FindAll(x => x.isOccupied).Select(x => x.enemy).ToList();
     }
 
-    public List<Character> getPlayers()
+    // return a list of players that are still alive.
+    public List<Character> GetAlivePlayers()
     {
         return players.FindAll(x => x.health > 0);
     }
 
-
-    public void deselectAllButtons()
+    // return a list of players that are dead.
+    public List<Character> GetDeadPlayers()
     {
-        foreach (SkillButton button in skillButtons)
-        {
-            button.select(false);
-        }
+        return players.FindAll(x => x.health <= 0);
     }
 
     public void clearDescription()
@@ -334,9 +336,21 @@ public class EventController : MonoBehaviour
         {
             character.isTargetable = false;
         }
-        foreach (Character character in getPlayers())
+        foreach (Character character in players)
         {
             character.isTargetable = false;
+        }
+    }
+
+    public void ClearSpawners()
+    {
+        for (int i = 0; i < spawners.Count; i++)
+        {
+            if (spawners[i].enemy != null)
+            {
+                Destroy(spawners[i].enemy.gameObject);
+                spawners[i].enemy = null;
+            }
         }
     }
 
