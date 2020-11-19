@@ -1,13 +1,11 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DialogueDisplayer : MonoBehaviour
 {
     // track the UI
     public GameObject dialoguePrefab;
-
-    // track the dialogue data underneath
-    protected DialogueData dialogueData;
 
     // blockMenu is for whether we want to display a panel to block the action menu
     protected void DisplayDialogue(DialogueStruct[] dialogues)

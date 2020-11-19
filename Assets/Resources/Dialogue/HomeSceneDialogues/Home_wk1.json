@@ -1,0 +1,20 @@
+{
+  "onStartDialogue": [
+    {
+      "speaker": "Help",
+      "speech": "Welcome to the Home Scene."
+    },
+    {
+      "speaker": "Help",
+      "speech": "This is where you can go to class, do some extra study or buy some stuff from our BCIT Store."
+    },
+    {
+      "speaker": "Help",
+      "speech": "For this first week, let's go to class first."
+    },
+    {
+      "speaker": "Help",
+      "speech": "Click the 'Go To Class' Panel below."
+    }
+  ]
+}

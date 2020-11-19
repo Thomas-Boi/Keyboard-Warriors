@@ -153,6 +153,7 @@ GameObject:
   - component: {fileID: 69577382}
   - component: {fileID: 69577386}
   - component: {fileID: 69577387}
+  - component: {fileID: 69577388}
   m_Layer: 5
   m_Name: HomeUI
   m_TagString: Untagged
@@ -279,6 +280,19 @@ MonoBehaviour:
   - {fileID: 1278243513}
   - {fileID: 275808397}
   - {fileID: 1129178990}
+--- !u!114 &69577388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69577381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1346deb0fa7a8f459f17804ba67aeed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialoguePrefab: {fileID: 5501575621871623659, guid: c93defa9ddcc05845a5baee249a08a75, type: 3}
 --- !u!114 &194666815 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}

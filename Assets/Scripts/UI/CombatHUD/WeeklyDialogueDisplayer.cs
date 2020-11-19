@@ -11,7 +11,7 @@ public class WeeklyDialogueDisplayer : DialogueDisplayer
     {
         if (ProgressTracker.GetTracker().ProductionMode)
         {
-            dialogueData = GetDialogues();
+            DialogueData dialogueData = GetDialogues();
             DisplayDialogue(dialogueData.onStartDialogue);
             // hide the choice menu so player can play while dialogue is open
             choiceMenu.SetActive(false);
@@ -21,7 +21,7 @@ public class WeeklyDialogueDisplayer : DialogueDisplayer
     private DialogueData GetDialogues()
     {
         int weekNum = ProgressTracker.GetTracker().WeekNum;
-        return base.GetDialogues("WeeklyCombat_wk" + weekNum);
+        return base.GetDialogues("WeeklyDialogues/WeeklyCombat_wk" + weekNum);
     }
 
     // clean up after the dialogues finishes

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 // display the dialogue if needed
-public class StoryDialogueDisplayer : DialogueDisplayer
+public class HomeDialogueDisplayer : DialogueDisplayer
 {
     public void Start()
     {
@@ -13,12 +13,7 @@ public class StoryDialogueDisplayer : DialogueDisplayer
 
     private DialogueData GetDialogues()
     {
-        string jsonName = $"StoryDialogues/{ProgressTracker.GetTracker().StorylinePhase}";
+        string jsonName = $"HomeSceneDialogues/Home_wk{ProgressTracker.GetTracker().WeekNum}";
         return base.GetDialogues(jsonName);
-    }
-
-    protected override void HandleDialogueEndsEvent()
-    {
-        SceneLoader.LoadHomeScene();
     }
 }
