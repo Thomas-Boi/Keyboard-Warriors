@@ -1,0 +1,28 @@
+{
+  "onStartDialogue": [
+    {
+      "speaker": "Help",
+      "speech": "Congratulation on finishing your first week."
+    },
+    {
+      "speaker": "Help",
+      "speech": "You have unlocked 'Extra Study' and 'BCIT Store'."
+    },
+    {
+      "speaker": "Help",
+      "speech": "If you ever need extra experience or money, do some 'Extra Study' with your study group."
+    },
+    {
+      "speaker": "Help",
+      "speech": "The enemies will scale to your character so you will always be prepared for what the actual class has for you."
+    },
+    {
+      "speaker": "Help",
+      "speech": "If you need extra food or drinks during class, check out the 'BCIT Store'."
+    },
+    {
+      "speaker": "Help",
+      "speech": "You can get anything from delicious hamburgers to ice cold milkshakes. All of them will help you in battle."
+    }
+  ]
+}

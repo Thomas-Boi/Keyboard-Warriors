@@ -1,0 +1,36 @@
+{
+	"onStartDialogue": [
+    {
+      "speaker": "Narrator",
+      "speech": "Midterm Week"
+    },
+		{
+			"speaker": "Robert",
+			"speech": "Wow, half of the term already went by. This is going better than I thought."
+		},
+		{
+			"speaker": "Tony",
+			"speech": "I thought it was a little bit easy to be honest. I want a challenge for this midterm."
+		},
+		{
+			"speaker": "Laura",
+			"speech": "Be careful what you wish for Tony. You never know what the instructors might throw at us for the midterm."
+		},
+		{
+			"speaker": "Tony",
+			"speech": "To be honest, I'm not too worried. We did pretty well the first couple weeks. I think we are ready to take on the midterm."
+		},
+		{
+			"speaker": "Robert",
+			"speech": "That's easy for you to say. I hate those coding questions, especially hand-written ones."
+		},
+		{
+			"speaker": "Laura",
+			"speech": "Well, we'll get through this together. Right now though, we better get to class or else we will be late for the exam."
+		},
+		{
+			"speaker": "Tony",
+			"speech": "Yeah, let's get going guys! We got this!"
+		}
+	]
+}

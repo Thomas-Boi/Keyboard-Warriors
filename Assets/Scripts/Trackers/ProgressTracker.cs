@@ -11,7 +11,7 @@ public class ProgressTracker
     // the singleton
     private static ProgressTracker tracker;
 
-    public static int finalWeekNum = 6;
+    public static int finalWeekNum = 5;
 
     // track the current week number in the semester
     public int WeekNum 
@@ -63,14 +63,14 @@ public class ProgressTracker
     public int NextWeek()
     {
         WeekNum++;
-        checkPhase();
+        CheckPhase();
         return WeekNum;
     }
 
-    private void checkPhase()
+    private void CheckPhase()
     {
         // goes down and check if we need to change the phase
-        int midtermWeek = finalWeekNum / 2;
+        int midtermWeek = (int) Math.Ceiling((double)finalWeekNum / 2);
         if (WeekNum == midtermWeek)
         {
             StorylinePhase = GamePhase.BeforeMidterm;
