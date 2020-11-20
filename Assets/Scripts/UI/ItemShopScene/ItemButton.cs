@@ -8,6 +8,7 @@ public class ItemButton : MonoBehaviour
 
     public Item item;
     public string alias = "";
+    public bool buying = true;
 
     private ItemDetailsUI itemDetailsUI;
 
@@ -19,7 +20,7 @@ public class ItemButton : MonoBehaviour
     void Start()
     {
         itemDetailsUI = GameObject.Find("ItemDetailsUI").GetComponent<ItemDetailsUI>();
-        GetComponent<Button>().onClick.AddListener(() => SetItemDetails());
+        GetComponent<Button>().onClick.AddListener(() => itemDetailsUI.SetItemDetails(item));
     }
 
     public void SpawnButton(Item item)
@@ -27,12 +28,6 @@ public class ItemButton : MonoBehaviour
         this.item = item;
         GetComponentInChildren<Text>().text = item.Alias;
         gameObject.SetActive(true);
-    }
-
-    private void SetItemDetails()
-    {
-        itemDetailsUI.moneyWarning.gameObject.SetActive(false);
-        itemDetailsUI.item = item;
     }
 
 }

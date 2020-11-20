@@ -13,6 +13,7 @@ public class ItemDetailsUI : MonoBehaviour
     public Button buyButton;
 
     public Item item;
+    public bool buying = true;
 
     private ItemTracker itemTracker;
 
@@ -42,19 +43,23 @@ public class ItemDetailsUI : MonoBehaviour
 
     void Update()
     {
-
-        UpdateItemDetails();
-        
+        UpdateItemDetails(); 
     }
 
     public void UpdateItemDetails()
     {
-        if (item != null)
+        if (item != null && buying)
         {
             itemName.text = item.Name;
             itemCost.text = "Cost: " + item.Cost;
             itemDescription.text = item.Description;
             buyButton.gameObject.SetActive(true);
+        } else if (item != null && !buying)
+        {
+            itemName.text = item.Name;
+            itemCost.text = "";
+            itemDescription.text = item.Description;
+            buyButton.gameObject.SetActive(false);
         } else
         {
             itemName.text = "";
@@ -64,14 +69,18 @@ public class ItemDetailsUI : MonoBehaviour
         }
     }
 
+    public void SetItemDetails(Item item)
+    {
+        moneyWarning.gameObject.SetActive(false);
+        this.item = item;
+    }
+
     public void PurchaseItem()
     {
-        // if player doesn't have enough money
+        
         if (itemTracker.Money < item.Cost)
         {
             moneyWarning.gameObject.SetActive(true);
-        
-        // player has money
         } else
         {
             itemTracker.AddItem(item.Name);

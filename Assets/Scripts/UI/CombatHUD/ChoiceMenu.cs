@@ -9,17 +9,16 @@ public class ChoiceMenu : MonoBehaviour
     private EventController controller;
 
     public Button skills;
-    public Button tactics;
     public Button items;
+    public Button retreat;
 
     void Start()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
 
         skills.onClick.AddListener(() => DisplayMenuType("Skills", controller.turnNum));
-        tactics.onClick.AddListener(() => DisplayMenuType("Retreat"));
         items.onClick.AddListener(() => DisplayMenuType("Items"));
-
+        retreat.onClick.AddListener(() => DisplayMenuType("Retreat"));
     }
 
     private void DisplayMenuType(string type, int turnNum = 0)
@@ -33,11 +32,11 @@ public class ChoiceMenu : MonoBehaviour
             case "Skills":
                 controller.actionMenu.DisplaySkillButtons(turnNum);
                 break;
-            case "Retreat":
-                controller.actionMenu.DisplayRetreatConfirmation();
-                break;
             case "Items":
                 controller.actionMenu.DisplayItemButtons();
+                break;
+            case "Retreat":
+                controller.actionMenu.DisplayRetreatConfirmation();
                 break;
 
         }

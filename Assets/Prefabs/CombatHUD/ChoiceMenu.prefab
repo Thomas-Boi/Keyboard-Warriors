@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5643592697420496663}
+  - component: {fileID: 3137757029369072160}
   m_Layer: 5
   m_Name: ChoiceMenu
   m_TagString: Untagged
@@ -39,6 +40,21 @@ RectTransform:
   m_AnchoredPosition: {x: -174.27, y: 0}
   m_SizeDelta: {x: 87.938324, y: 80}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &3137757029369072160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5643592696312073387}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e74d0e361333c63498e2deafadb7e944, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skills: {fileID: 5643592697281412090}
+  items: {fileID: 5643592696838185436}
+  retreat: {fileID: 5643592697246427120}
 --- !u!1 &5643592696323166436
 GameObject:
   m_ObjectHideFlags: 0
@@ -409,7 +425,7 @@ GameObject:
   - component: {fileID: 5643592697109308492}
   - component: {fileID: 5643592697246427120}
   m_Layer: 5
-  m_Name: TacticButton
+  m_Name: RetreatButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
