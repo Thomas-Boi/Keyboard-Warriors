@@ -97,24 +97,6 @@ public class Skill : Action
                 yield return new WaitForSeconds(.5f);
                 break;
 
-            // Tactics
-            case "retreat":
-                controller.turnNum = -1;
-                controller.DisplayPlayerLose();
-                break;
-
-            case "switchRow":
-                user.GetComponent<Animator>().Play("attack", 0, 0);
-                yield return new WaitForSeconds(.5f);
-                break;
-
-            case "destress":
-                // change this animation later
-                user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress - 25);
-                yield return new WaitForSeconds(.5f);
-                break;
-
         }
     }
 }
