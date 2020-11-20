@@ -51,6 +51,8 @@ public class UpdateShopUI : MonoBehaviour
     private void DisplayItems(string type)
     {
         itemDetailsUI.item = null;
+        itemDetailsUI.buying = true;
+
         HideItemButtons();
 
         switch (type)
@@ -65,7 +67,7 @@ public class UpdateShopUI : MonoBehaviour
                 DisplayMiscItems();
                 break;
             case "Inv":
-                //DisplayPlayerInventory();
+                DisplayPlayerInventory();
                 break;
         }
     }
@@ -78,7 +80,12 @@ public class UpdateShopUI : MonoBehaviour
         }
     }
 
-    // food items that heal players
+    private void EnableBuying(bool enabled)
+    {
+        
+    }
+
+    // display available food items
     private void DisplayFoodItems()
     {
         List<Item> foodItems = storeItems.FindAll(x => x.ItemType == ItemType.Food);
@@ -89,8 +96,8 @@ public class UpdateShopUI : MonoBehaviour
             
         }
     }
-
-    // drink items that destress players
+    
+    // display available drink items
     private void DisplayDrinkItems()
     {
         List<Item> drinkItems = storeItems.FindAll(x => x.ItemType == ItemType.Drink);
@@ -100,7 +107,7 @@ public class UpdateShopUI : MonoBehaviour
         }
     }
 
-    // misc. items that include reviving players
+    // display available misc. items
     private void DisplayMiscItems()
     {
         List<Item> miscItems = storeItems.FindAll(x => x.ItemType == ItemType.Misc);
@@ -112,6 +119,7 @@ public class UpdateShopUI : MonoBehaviour
 
     private void DisplayPlayerInventory()
     {
+        itemDetailsUI.buying = false; 
         List<Item> playerItems = EventController.ItemManager.GetItems();
 
         for (int i = 0; i < playerItems.Count; i++)

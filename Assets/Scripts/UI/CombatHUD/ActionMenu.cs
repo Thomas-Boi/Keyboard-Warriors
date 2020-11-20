@@ -13,7 +13,6 @@ public class ActionMenu : MonoBehaviour
 
     void Start()
     {
-
         EnableDisplay(false);
     }
 

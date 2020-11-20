@@ -895,17 +895,6 @@ PrefabInstance:
       objectReference: {fileID: 1438823678}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
---- !u!114 &642760735 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5643592696838185436, guid: 895f8ba5aa41b5a4d8acdb9971a40fb9, type: 3}
-  m_PrefabInstance: {fileID: 5643592696406254019}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1211,21 +1200,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5643592696312073387, guid: 895f8ba5aa41b5a4d8acdb9971a40fb9, type: 3}
   m_PrefabInstance: {fileID: 5643592696406254019}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &853104496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 853104495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e74d0e361333c63498e2deafadb7e944, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skills: {fileID: 1010489913}
-  tactics: {fileID: 1041499699}
-  items: {fileID: 642760735}
 --- !u!1 &908947092
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,17 +1519,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24abd5facf4285945835fd943fc249c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1010489913 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5643592697281412090, guid: 895f8ba5aa41b5a4d8acdb9971a40fb9, type: 3}
-  m_PrefabInstance: {fileID: 5643592696406254019}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1028068656
 GameObject:
   m_ObjectHideFlags: 0
@@ -1674,17 +1637,6 @@ MonoBehaviour:
   skillJson: {fileID: 4900000, guid: 32e19ee4bf0a5e947a107699a06d6a74, type: 3}
   skillData:
     skills: []
---- !u!114 &1041499699 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5643592697246427120, guid: 895f8ba5aa41b5a4d8acdb9971a40fb9, type: 3}
-  m_PrefabInstance: {fileID: 5643592696406254019}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1047907533
 PrefabInstance:
   m_ObjectHideFlags: 0
