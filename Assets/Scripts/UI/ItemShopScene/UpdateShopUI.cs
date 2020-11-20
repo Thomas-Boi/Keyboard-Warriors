@@ -16,8 +16,9 @@ public class UpdateShopUI : MonoBehaviour
     public Button miscOption;
     public Button inventoryOption;
 
-    private List<Item> storeItems;
+    public ItemDetailsUI itemDetailsUI;
 
+    private List<Item> storeItems;
     private ItemTracker itemTracker;
 
     void Start()
@@ -49,7 +50,9 @@ public class UpdateShopUI : MonoBehaviour
 
     private void DisplayItems(string type)
     {
+        itemDetailsUI.item = null;
         HideItemButtons();
+
         switch (type)
         {
             case "Food":
@@ -109,11 +112,11 @@ public class UpdateShopUI : MonoBehaviour
 
     private void DisplayPlayerInventory()
     {
-        List<Item> items = EventController.ItemManager.GetItems();
+        List<Item> playerItems = EventController.ItemManager.GetItems();
 
-        for (int i = 0; i < items.Count; i++)
+        for (int i = 0; i < playerItems.Count; i++)
         {
-            itemButtons[i].SpawnButton(items[i]);
+            itemButtons[i].SpawnButton(playerItems[i]);
         }
     }
 
