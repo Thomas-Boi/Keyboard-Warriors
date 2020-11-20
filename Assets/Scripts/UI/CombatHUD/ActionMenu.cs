@@ -7,16 +7,18 @@ public class ActionMenu : MonoBehaviour
 {
 
     public List<ActionButton> buttons;
+
     public GameObject descriptionBox;
+    public GameObject retreatConfirmationPrefab;
 
     void Start()
     {
+
         EnableDisplay(false);
     }
 
     public void DisplaySkillButtons(int turnNum)
     {
-
         EnableDisplay(true);
 
         List<string> playerOne = new List<string> { "basicAttack", "strongAttack", "wideAttack"};
@@ -38,17 +40,10 @@ public class ActionMenu : MonoBehaviour
         }
     }
 
-    public void DisplayTacticButtons()
+    public void DisplayRetreatConfirmation()
     {
 
-        EnableDisplay(true);
-
-        List<string> tactics = new List<string> { "retreat", "switchRow", "destress" };
-
-        for (int i = 0; i < tactics.Count; i++)
-        {
-            buttons[i].spawnButton(EventController.tacticsManager.GetTacticByName(tactics[i]));
-        }
+        EnableDisplay(false, true);
 
     }
 
@@ -66,10 +61,11 @@ public class ActionMenu : MonoBehaviour
 
     }
 
-    public void EnableDisplay(bool enabled)
+    public void EnableDisplay(bool enabled, bool retEnabled = false)
     {
         gameObject.SetActive(enabled);
         descriptionBox.SetActive(enabled);
+        retreatConfirmationPrefab.SetActive(retEnabled);
     }
 
     public void DeselectAllButtons()

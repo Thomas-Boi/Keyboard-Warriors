@@ -33,7 +33,6 @@ public class EventController : MonoBehaviour
     public int weekNum;
 
     public static SkillManager skillManager { get; private set; }
-    public static TacticsManager tacticsManager { get; private set; }
     public static ItemManager ItemManager { get; private set; }
 
     public Text descriptionBox;
@@ -46,7 +45,6 @@ public class EventController : MonoBehaviour
     {
         weekData = JsonUtility.FromJson<WeekDatabase>(weekJson.text);
         skillManager = GetComponent<SkillManager>();
-        tacticsManager = GetComponent<TacticsManager>();
         ItemManager = GetComponent<ItemManager>();
         weekNum = ProgressTracker.GetTracker().WeekNum;
 

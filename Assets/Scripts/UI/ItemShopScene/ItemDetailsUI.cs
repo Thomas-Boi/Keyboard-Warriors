@@ -66,10 +66,12 @@ public class ItemDetailsUI : MonoBehaviour
 
     public void PurchaseItem()
     {
-
+        // if player doesn't have enough money
         if (itemTracker.Money < item.Cost)
         {
             moneyWarning.gameObject.SetActive(true);
+        
+        // player has money
         } else
         {
             itemTracker.AddItem(item.Name);

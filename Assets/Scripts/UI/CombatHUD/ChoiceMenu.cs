@@ -12,37 +12,34 @@ public class ChoiceMenu : MonoBehaviour
     public Button tactics;
     public Button items;
 
-
     void Start()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
 
         skills.onClick.AddListener(() => DisplayMenuType("Skills", controller.turnNum));
-        tactics.onClick.AddListener(() => DisplayMenuType("Tactics", controller.turnNum));
-        items.onClick.AddListener(() => DisplayMenuType("Items", controller.turnNum));
+        tactics.onClick.AddListener(() => DisplayMenuType("Retreat"));
+        items.onClick.AddListener(() => DisplayMenuType("Items"));
 
     }
 
-    private void DisplayMenuType(string type, int turnNum)
+    private void DisplayMenuType(string type, int turnNum = 0)
     {
 
         controller.actionMenu.DeselectAllButtons();
         controller.actionMenu.HideButtons();
-        Debug.Log(type);
    
         switch (type)
         {
             case "Skills":
                 controller.actionMenu.DisplaySkillButtons(turnNum);
                 break;
-            case "Tactics":
-                controller.actionMenu.DisplayTacticButtons();
+            case "Retreat":
+                controller.actionMenu.DisplayRetreatConfirmation();
                 break;
             case "Items":
                 controller.actionMenu.DisplayItemButtons();
                 break;
-            default:
-                break;
+
         }
     }
 

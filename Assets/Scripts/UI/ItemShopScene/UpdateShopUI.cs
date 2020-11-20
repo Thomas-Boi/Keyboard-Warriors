@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,24 +14,23 @@ public class UpdateShopUI : MonoBehaviour
     public Button foodOption;
     public Button drinksOption;
     public Button miscOption;
+    public Button inventoryOption;
 
-    //public ItemDetailsUI itemDetailsUI;
+    public ItemDetailsUI itemDetailsUI;
 
-    private List<Item> foodItems;
-    private List<Item> drinkItems;
-    private List<Item> miscItems;
-
+    private List<Item> storeItems;
     private ItemTracker itemTracker;
 
     void Start()
     {
         itemTracker = ItemTracker.GetTracker();
 
-        InitStore();
+        InitStoreInventory();
 
         foodOption.onClick.AddListener(() => DisplayItems("Food"));
         drinksOption.onClick.AddListener(() => DisplayItems("Drink"));
         miscOption.onClick.AddListener(() => DisplayItems("Misc"));
+        inventoryOption.onClick.AddListener(() => DisplayItems("Inv"));
     }
 
     void Update()
@@ -38,31 +38,21 @@ public class UpdateShopUI : MonoBehaviour
         moneyTxtObj.text = itemTracker.Money.ToString();
     }
 
-    // todo; find a more effective way to add items on start
-    private void InitStore()
+    private void InitStoreInventory()
     {
-        // food items
-        foodItems = new List<Item>();
-        foodItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Chocolate));
-        foodItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Hamburger));
-        foodItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Timbits));
-        foodItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Pizza));
-
-        // drink items
-        drinkItems = new List<Item>();
-        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Soda));
-        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Milkshake));
-        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Tea));
-        drinkItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.Gatorade));
-
-        // misc. items
-        miscItems = new List<Item>();
-        miscItems.Add(ItemFactory.GetFactory().CreateItem(ItemsEnum.FloppyDisk));
+        storeItems = new List<Item>();
+        var itemVals = Enum.GetValues(typeof(ItemsEnum)).Cast<ItemsEnum>();
+        foreach (var item in itemVals)
+        {
+            storeItems.Add(ItemFactory.GetFactory().CreateItem(item));  
+        }
     }
 
     private void DisplayItems(string type)
     {
+        itemDetailsUI.item = null;
         HideItemButtons();
+
         switch (type)
         {
             case "Food":
@@ -73,6 +63,9 @@ public class UpdateShopUI : MonoBehaviour
                 break;
             case "Misc":
                 DisplayMiscItems();
+                break;
+            case "Inv":
+                //DisplayPlayerInventory();
                 break;
         }
     }
@@ -88,15 +81,19 @@ public class UpdateShopUI : MonoBehaviour
     // food items that heal players
     private void DisplayFoodItems()
     {
+        List<Item> foodItems = storeItems.FindAll(x => x.ItemType == ItemType.Food);
+
         for (int i = 0; i < foodItems.Count; i++)
         {
             itemButtons[i].SpawnButton(foodItems[i]);
+            
         }
     }
 
     // drink items that destress players
     private void DisplayDrinkItems()
     {
+        List<Item> drinkItems = storeItems.FindAll(x => x.ItemType == ItemType.Drink);
         for (int i = 0; i < drinkItems.Count; i++)
         {
             itemButtons[i].SpawnButton(drinkItems[i]);
@@ -106,9 +103,20 @@ public class UpdateShopUI : MonoBehaviour
     // misc. items that include reviving players
     private void DisplayMiscItems()
     {
+        List<Item> miscItems = storeItems.FindAll(x => x.ItemType == ItemType.Misc);
         for (int i = 0; i < miscItems.Count; i++)
         {
             itemButtons[i].SpawnButton(miscItems[i]);
+        }
+    }
+
+    private void DisplayPlayerInventory()
+    {
+        List<Item> playerItems = EventController.ItemManager.GetItems();
+
+        for (int i = 0; i < playerItems.Count; i++)
+        {
+            itemButtons[i].SpawnButton(playerItems[i]);
         }
     }
 
