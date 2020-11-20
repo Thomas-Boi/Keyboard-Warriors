@@ -46,6 +46,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4424216081068353849}
     m_Modifications:
+    - target: {fileID: 1324775751953624815, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324775751953624815, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1324775753507296152, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
       propertyPath: m_Name
       value: ItemButton (2)
@@ -100,7 +108,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1324775753507296153, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 1324775753507296153, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
       propertyPath: m_SizeDelta.x
@@ -148,6 +156,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4424216081068353849}
     m_Modifications:
+    - target: {fileID: 1324775751953624815, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324775751953624815, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1324775753507296152, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
       propertyPath: m_Name
       value: ItemButton
@@ -250,6 +266,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4424216081068353849}
     m_Modifications:
+    - target: {fileID: 1324775751953624815, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324775751953624815, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1324775753507296152, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
       propertyPath: m_Name
       value: ItemButton (3)
@@ -304,7 +328,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1324775753507296153, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -50
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 1324775753507296153, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
       propertyPath: m_SizeDelta.x
@@ -352,6 +376,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4424216081068353849}
     m_Modifications:
+    - target: {fileID: 1324775751953624815, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1324775751953624815, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1324775753507296152, guid: 8de75ba48223bc04f8c5731ec57bab70, type: 3}
       propertyPath: m_Name
       value: ItemButton (1)
