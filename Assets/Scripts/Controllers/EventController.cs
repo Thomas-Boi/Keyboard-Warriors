@@ -105,6 +105,7 @@ public class EventController : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
         {
             players[i].DisplayTurnMarker(false);
+            players[i].HighlightPlayerName(false);
         }
 
         nextTurn();
@@ -123,6 +124,7 @@ public class EventController : MonoBehaviour
             if ((turnNum - 1) >= 0)
             {
                 players[turnNum - 1].DisplayTurnMarker(false);
+                players[turnNum - 1].HighlightPlayerName(false);
             }
             if (turnNum < players.Count && players[turnNum].health <= 0)
             {
@@ -134,6 +136,7 @@ public class EventController : MonoBehaviour
             {
                 CheckStressChange(players[turnNum]);
                 players[turnNum].DisplayTurnMarker(true);
+                players[turnNum].HighlightPlayerName(true);
 
                 if (players[turnNum].health <= 0)
                 {
@@ -207,7 +210,8 @@ public class EventController : MonoBehaviour
             user.SetCharacterHealth(user.health - damage);
             checkLife();
             user.GetComponent<Animator>().Play("stress", 0, 0);
-            DisplayDamage(user, damage);
+            //DisplayDamage(user, damage);
+            DisplayHealthChange(user, damage, Color.red);
         }
         if (!user.isEnemy)
         {
@@ -225,7 +229,7 @@ public class EventController : MonoBehaviour
 
     }
 
-    public void DisplayDamage(Character target, float damage)
+    /*public void DisplayDamage(Character target, float damage)
     {
         Vector3 charPosition = target.transform.position;
 
@@ -269,6 +273,30 @@ public class EventController : MonoBehaviour
 
         StartCoroutine(FadeOutText(textObj));
 
+    }*/
+
+    // when character is to take damage, make text color red
+    // or when they are being healed, make text color green
+    public void DisplayHealthChange(Character target, float amount, Color color)
+    {
+        Vector3 charPosition = target.transform.position;
+
+        Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
+
+        GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
+        textObj.transform.SetParent(HUD.transform);
+
+        Text damageText = textObj.AddComponent<Text>();
+        damageText.text = amount.ToString();
+        damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
+        damageText.color = color;
+        damageText.fontSize = 40;
+        damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
+        damageText.verticalOverflow = VerticalWrapMode.Overflow;
+
+        textObj.transform.position = screenPosition;
+
+        StartCoroutine(FadeOutText(textObj));
     }
 
     private IEnumerator FadeOutText(GameObject textObject)
@@ -276,7 +304,7 @@ public class EventController : MonoBehaviour
         Text text = textObject.GetComponent<Text>();
         Color originalColour = text.color;
 
-        float fadeOutTime = 1.0f;
+        float fadeOutTime = 1.5f;
         Vector3 move = new Vector3(0, 0.5f, 0);
 
         for (float t = 0.01f; t < fadeOutTime; t += Time.deltaTime)

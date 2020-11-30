@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
@@ -28,6 +29,9 @@ public class Character : MonoBehaviour
     private EventController controller;
     public GameObject marker;
     public Spawner parent;
+
+    // Reference to character's text name on the UI
+    public Text nameText;
 
     // Reference to character's health and stress bars
     public HealthBar healthBar;
@@ -114,14 +118,16 @@ public class Character : MonoBehaviour
             d = (int) (d * 1.3);
         }
         SetCharacterHealth(health - d);
-        controller.DisplayDamage(this, d);
+        //controller.DisplayDamage(this, d);
+        controller.DisplayHealthChange(this, d, Color.red);
     }
 
     public void healHealth(int amount)
     {
         int heal = (amount + health <= maxHealth) ? amount : maxHealth - health;
         SetCharacterHealth(heal + health);
-        controller.DisplayHeal(this, heal);
+        //controller.DisplayHeal(this, heal);
+        controller.DisplayHealthChange(this, heal, Color.green);
     }
 
     // Set this character's current stress
@@ -147,6 +153,18 @@ public class Character : MonoBehaviour
         if (!isEnemy)
         {
             marker.SetActive(enabled);
+        }
+    }
+
+    public void HighlightPlayerName(bool isTurn)
+    {
+        if (isTurn)
+        {
+            nameText.color = Color.red;
+        }
+        else
+        {
+            nameText.color = Color.white;
         }
     }
 
