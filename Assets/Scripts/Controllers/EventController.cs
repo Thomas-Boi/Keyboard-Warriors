@@ -51,8 +51,10 @@ public class EventController : MonoBehaviour
         ItemManager = GetComponent<ItemManager>();
         weekNum = ProgressTracker.GetTracker().WeekNum;
 
-        foreach(Character player in players) {
-            if (weekNum > 1) {
+        foreach (Character player in players)
+        {
+            if (weekNum > 1)
+            {
                 CharStats stats = ProgressTracker.GetTracker().charStats.FirstOrDefault(x => player.id == x.id);
                 player.exp = stats.exp;
                 player.LevelUp(stats.level);
@@ -62,7 +64,7 @@ public class EventController : MonoBehaviour
 
         StartWave();
         clearDescription();
-        
+
     }
 
 
@@ -348,10 +350,12 @@ public class EventController : MonoBehaviour
         foreach (Character character in getEnemies())
         {
             character.isTargetable = false;
+            EventController.SetLayerRecursively(character.gameObject, 0);
         }
         foreach (Character character in players)
         {
             character.isTargetable = false;
+            EventController.SetLayerRecursively(character.gameObject, 0);
         }
     }
 
@@ -364,6 +368,25 @@ public class EventController : MonoBehaviour
                 Destroy(spawners[i].enemy.gameObject);
                 spawners[i].enemy = null;
             }
+        }
+    }
+
+    public static void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        if (null == obj)
+        {
+            return;
+        }
+
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            if (null == child)
+            {
+                continue;
+            }
+            SetLayerRecursively(child.gameObject, newLayer);
         }
     }
 

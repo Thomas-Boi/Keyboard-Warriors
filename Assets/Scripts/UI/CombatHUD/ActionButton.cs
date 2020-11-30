@@ -64,7 +64,7 @@ public class ActionButton : MonoBehaviour
         controller.tooltip = action.Description;
         controller.selectedAction = action;
 
-        switch(action.TargetType)
+        switch (action.TargetType)
         {
             case TargetType.ENEMY_SINGLE:
                 foreach (Character enemy in controller.getEnemies())
@@ -100,6 +100,29 @@ public class ActionButton : MonoBehaviour
                 Character character = controller.GetAlivePlayers()[controller.turnNum];
                 character.isTargetable = true;
                 break;
+        }
+
+        foreach (Character enemy in controller.getEnemies())
+        {
+            if (!enemy.isTargetable)
+            {
+                EventController.SetLayerRecursively(enemy.gameObject, 8);
+
+            }
+            else {
+                EventController.SetLayerRecursively(enemy.gameObject, 0);
+            }
+        }
+        foreach (Character player in controller.players)
+        {
+            if (!player.isTargetable)
+            {
+                EventController.SetLayerRecursively(player.gameObject, 8);
+
+            }
+            else {
+                EventController.SetLayerRecursively(player.gameObject, 0);
+            }
         }
 
     }
