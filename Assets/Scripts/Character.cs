@@ -33,6 +33,9 @@ public class Character : MonoBehaviour
     // Reference to character's text name on the UI
     public Text nameText;
 
+    // Reference to characters nametag above the character
+    public GameObject nameTag;
+
     // Reference to character's health and stress bars
     public HealthBar healthBar;
     public StressBar stressBar;
@@ -42,6 +45,15 @@ public class Character : MonoBehaviour
         controller = GameObject.Find("EventController").GetComponent<EventController>();
         skillManager = GameObject.Find("EventController").GetComponent<SkillManager>();
         origin = transform.position;
+        if (!isEnemy)
+        {
+            Quaternion rotation = new Quaternion(0, 0, 0, 0);
+            nameTag = GameObject.Instantiate(Resources.Load("NameTag"), transform.position, rotation) as GameObject;
+            nameTag.GetComponentInChildren<TextMesh>().text = characterName;
+        }
+
+
+
     }
 
     void Start()
@@ -55,6 +67,8 @@ public class Character : MonoBehaviour
             stressBar.SetMaxStress(maxStress);
             stressBar.SetStress(stress);
         }
+
+
     }
 
 
@@ -97,6 +111,7 @@ public class Character : MonoBehaviour
     }
 
 
+
     public void resetScale()
     {
         transform.localScale = new Vector3(1, 1, 1);
@@ -114,8 +129,9 @@ public class Character : MonoBehaviour
     public void takeDamage(int damage)
     {
         int d = damage;
-        if (stress >= 70) {
-            d = (int) (d * 1.3);
+        if (stress >= 70)
+        {
+            d = (int)(d * 1.3);
         }
         SetCharacterHealth(health - d);
         //controller.DisplayDamage(this, d);
@@ -199,7 +215,8 @@ public class Character : MonoBehaviour
         stats.defense = 0;
 
         List<int> newLevel = CalcNextLevel(level, exp + addExp);
-        if (skip != -1) {
+        if (skip != -1)
+        {
             newLevel[0] = skip;
         }
         for (int i = level; i < newLevel[0]; i++)
