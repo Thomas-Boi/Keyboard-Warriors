@@ -274,6 +274,8 @@ public class Character : MonoBehaviour
         maxHealth += stats.health;
         attack += stats.attack;
         defense += stats.defense;
+        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(health);
     }
 
 }
