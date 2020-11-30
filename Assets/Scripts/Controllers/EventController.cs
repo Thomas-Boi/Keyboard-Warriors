@@ -12,7 +12,10 @@ public class EventController : MonoBehaviour
 
     public List<Spawner> spawners;
     public List<Character> players;
+
+    //Enemy UI
     public List<HealthBar> healthbars;
+    public List<Text> nameTexts;
 
     public SkillDialogue skillDialogue;
 
@@ -66,25 +69,7 @@ public class EventController : MonoBehaviour
     public void StartWave()
     {
         turnNum = -1;
-        /* switch (wave)
-        {
-            case 1:
-                spawners[0].spawn("boxSlime");
-                spawners[1].spawn("boxSlimeSmall");
-                break;
 
-            case 2:
-                spawners[0].spawn("boxSlime");
-                spawners[1].spawn("boxSlimeSmall");
-                spawners[2].spawn("boxSlime");
-                //spawners[3].spawn("boxSlimeSmall");
-                //spawners[4].spawn("boxSlimeSmall");
-                break;
-
-            default:
-                UnityEngine.Debug.Log("Invalid Wave");
-                return;
-        } */
         List<string> enemies = weekData.weeks.Find(x => x.weekNum == weekNum).waves[waveNum].enemies;
         int barNum = 0;
         for (int i = 0; i < spawners.Count; i++)
@@ -95,6 +80,8 @@ public class EventController : MonoBehaviour
                 spawners[i].spawn(enemies[i]);
                 healthbars[barNum].transform.parent.gameObject.SetActive(true);
                 spawners[i].enemy.healthBar = healthbars[barNum];
+                spawners[i].enemy.nameText = nameTexts[barNum];
+                nameTexts[barNum].text = spawners[i].enemy.characterName;
                 barNum++;
             }
 
