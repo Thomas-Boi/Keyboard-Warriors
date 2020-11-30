@@ -12,7 +12,10 @@ public class EventController : MonoBehaviour
 
     public List<Spawner> spawners;
     public List<Character> players;
+
+    //Enemy UI
     public List<HealthBar> healthbars;
+    public List<Text> nameTexts;
 
     public SkillDialogue skillDialogue;
 
@@ -48,8 +51,10 @@ public class EventController : MonoBehaviour
         ItemManager = GetComponent<ItemManager>();
         weekNum = ProgressTracker.GetTracker().WeekNum;
 
-        foreach(Character player in players) {
-            if (weekNum > 1) {
+        foreach (Character player in players)
+        {
+            if (weekNum > 1)
+            {
                 CharStats stats = ProgressTracker.GetTracker().charStats.FirstOrDefault(x => player.id == x.id);
                 player.exp = stats.exp;
                 player.LevelUp(stats.level);
@@ -59,32 +64,14 @@ public class EventController : MonoBehaviour
 
         StartWave();
         clearDescription();
-        
+
     }
 
 
     public void StartWave()
     {
         turnNum = -1;
-        /* switch (wave)
-        {
-            case 1:
-                spawners[0].spawn("boxSlime");
-                spawners[1].spawn("boxSlimeSmall");
-                break;
 
-            case 2:
-                spawners[0].spawn("boxSlime");
-                spawners[1].spawn("boxSlimeSmall");
-                spawners[2].spawn("boxSlime");
-                //spawners[3].spawn("boxSlimeSmall");
-                //spawners[4].spawn("boxSlimeSmall");
-                break;
-
-            default:
-                UnityEngine.Debug.Log("Invalid Wave");
-                return;
-        } */
         List<string> enemies = weekData.weeks.Find(x => x.weekNum == weekNum).waves[waveNum].enemies;
         int barNum = 0;
         for (int i = 0; i < spawners.Count; i++)
@@ -95,6 +82,8 @@ public class EventController : MonoBehaviour
                 spawners[i].spawn(enemies[i]);
                 healthbars[barNum].transform.parent.gameObject.SetActive(true);
                 spawners[i].enemy.healthBar = healthbars[barNum];
+                spawners[i].enemy.nameText = nameTexts[barNum];
+                nameTexts[barNum].text = spawners[i].enemy.characterName;
                 barNum++;
             }
 
@@ -361,10 +350,12 @@ public class EventController : MonoBehaviour
         foreach (Character character in getEnemies())
         {
             character.isTargetable = false;
+            EventController.SetLayerRecursively(character.gameObject, 0);
         }
         foreach (Character character in players)
         {
             character.isTargetable = false;
+            EventController.SetLayerRecursively(character.gameObject, 0);
         }
     }
 
@@ -377,6 +368,25 @@ public class EventController : MonoBehaviour
                 Destroy(spawners[i].enemy.gameObject);
                 spawners[i].enemy = null;
             }
+        }
+    }
+
+    public static void SetLayerRecursively(GameObject obj, int newLayer)
+    {
+        if (null == obj)
+        {
+            return;
+        }
+
+        obj.layer = newLayer;
+
+        foreach (Transform child in obj.transform)
+        {
+            if (null == child)
+            {
+                continue;
+            }
+            SetLayerRecursively(child.gameObject, newLayer);
         }
     }
 
