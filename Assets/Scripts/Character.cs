@@ -143,6 +143,7 @@ public class Character : MonoBehaviour
                 atkUp = duration;
                 if (atkUp > 0)
                 {
+                    nameTag.transform.Find("AtkUp").GetComponent<TextMesh>().text = "Atk Up (" + atkUp + ")";
                     nameTag.transform.Find("AtkUp").gameObject.SetActive(true);
                 }
                 else

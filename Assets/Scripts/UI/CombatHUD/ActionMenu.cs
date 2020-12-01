@@ -21,7 +21,8 @@ public class ActionMenu : MonoBehaviour
         EnableDisplay(true);
 
         List<string> playerOne = new List<string> { "basicAttack", "strongAttack", "wideAttack"};
-        List<string> playerTwo = new List<string> { "basicAttack", "medAttack", "healTarget" };
+        List<string> playerTwo = new List<string> { "basicAttack", "buffAtk", "healTarget" };
+        List<string> playerThree = new List<string> { "basicAttack", "medAttack" };
 
         if (turnNum == 0)
         {

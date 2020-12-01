@@ -124,6 +124,8 @@ public class EventController : MonoBehaviour
             else if (turnNum >= 0 && turnNum < players.Count)
             {
                 CheckStressChange(players[turnNum]);
+                players[turnNum].SetStatus("atkUp", players[turnNum].atkUp - 1);
+                players[turnNum].SetStatus("StressDown", players[turnNum].stressDown - 1);
                 players[turnNum].DisplayTurnMarker(true);
                 players[turnNum].HighlightPlayerName(true);
 
