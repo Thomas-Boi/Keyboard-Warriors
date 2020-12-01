@@ -675,7 +675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2582816862002697939}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17, y: -25.8, z: 25.80916}
+  m_LocalPosition: {x: -22.26, y: -25.8, z: 17.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6351996700090439126}
@@ -716,6 +716,7 @@ MonoBehaviour:
   nameTag: {fileID: 0}
   healthBar: {fileID: 0}
   stressBar: {fileID: 0}
+  animator: {fileID: 0}
 --- !u!95 &1038327965671083206
 Animator:
   serializedVersion: 3
@@ -2054,7 +2055,7 @@ Transform:
   - {fileID: 202273538584431970}
   m_Father: {fileID: 3306985684259046984}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -89.98021, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
 --- !u!1 &9116300250349796433
 GameObject:
   m_ObjectHideFlags: 0

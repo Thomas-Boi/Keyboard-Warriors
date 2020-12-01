@@ -39,6 +39,7 @@ public class Character : MonoBehaviour
     // Reference to character's health and stress bars
     public HealthBar healthBar;
     public StressBar stressBar;
+    public Animator animator;
 
     void Awake()
     {
@@ -51,7 +52,8 @@ public class Character : MonoBehaviour
             nameTag = GameObject.Instantiate(Resources.Load("NameTag"), transform.position, rotation) as GameObject;
             nameTag.GetComponentInChildren<TextMesh>().text = characterName;
         }
-
+        animator = GetComponent<Animator>();
+        animator.SetInteger("health", health);
 
 
     }
@@ -61,6 +63,7 @@ public class Character : MonoBehaviour
 
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(health);
+
 
         if (!isEnemy)
         {
@@ -76,8 +79,9 @@ public class Character : MonoBehaviour
     {
         if (isTargetable)
         {
-            transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
-            transform.position = transform.position + new Vector3(0, 0.1f, 0);
+            transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            animator.Play("hover");
+            //transform.position = transform.position + new Vector3(0, 0.1f, 0);
         }
     }
 
@@ -116,6 +120,8 @@ public class Character : MonoBehaviour
     {
         transform.localScale = new Vector3(1, 1, 1);
         transform.position = origin;
+        animator.Play("empty");
+        
     }
 
     // Set this character's current health
@@ -124,6 +130,10 @@ public class Character : MonoBehaviour
 
         this.health = (health > 0) ? health : 0;
         healthBar.SetHealth(this.health);
+        if (!isEnemy) {
+            animator.SetInteger("health", this.health);
+        }
+        
     }
 
     public void takeDamage(int damage)
@@ -134,6 +144,7 @@ public class Character : MonoBehaviour
             d = (int)(d * 1.3);
         }
         SetCharacterHealth(health - d);
+        
         //controller.DisplayDamage(this, d);
         controller.DisplayHealthChange(this, d, Color.red);
     }
@@ -142,6 +153,10 @@ public class Character : MonoBehaviour
     {
         int heal = (amount + health <= maxHealth) ? amount : maxHealth - health;
         SetCharacterHealth(heal + health);
+        if (!isEnemy)
+        {
+            healthBar.SetHealth(this.health);
+        }
         //controller.DisplayHeal(this, heal);
         controller.DisplayHealthChange(this, heal, Color.green);
     }

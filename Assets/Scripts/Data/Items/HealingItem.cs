@@ -22,10 +22,11 @@ public class HealingItem : Item
         }
         else if (targetType == TargetType.ALLY_ALL)
         {
-            foreach (Character target in targets)
+            EventController controller = GameObject.Find("EventController").GetComponent<EventController>();
+            foreach (Character player in controller.GetAlivePlayers())
             {
-                int amount = (int)(target.maxHealth * amountPercent);
-                target.healHealth(amount);
+                int amount = (int)(player.maxHealth * amountPercent);
+                player.healHealth(amount);
             }
         }
 

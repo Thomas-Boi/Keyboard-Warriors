@@ -43,14 +43,14 @@ public class Skill : Action
                 target.takeDamage(calcDamage(user.attack, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "slimeAttack":
                 target.takeDamage(calcDamage(user.attack * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "strongAttack":
@@ -58,7 +58,7 @@ public class Skill : Action
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
                 user.SetCharacterStress(user.stress + 30);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "medAttack":
@@ -66,14 +66,14 @@ public class Skill : Action
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
                 user.SetCharacterStress(user.stress + 10);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "healTarget":
                 target.healHealth(20 + user.attack);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.SetCharacterStress(user.stress + 30);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "bookSlam":
@@ -83,7 +83,7 @@ public class Skill : Action
                     t.takeDamage(calcDamage(user.attack * 0.6, t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "wideAttack":
@@ -94,7 +94,7 @@ public class Skill : Action
                     t.takeDamage(calcDamage(user.attack, t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
         }
