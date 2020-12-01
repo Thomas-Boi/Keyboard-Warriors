@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465184172761748311}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.6, z: -0.13}
+  m_LocalPosition: {x: 0.074, y: 2.543, z: -0.13}
   m_LocalScale: {x: 0.04, y: 0.04, z: 0.04}
   m_Children: []
   m_Father: {fileID: 2232839929913890780}
@@ -81,7 +81,7 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465184172761748311}
-  m_Text: Stressed!!!
+  m_Text: STRESSED!!
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
