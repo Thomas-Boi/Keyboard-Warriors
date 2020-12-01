@@ -51,6 +51,13 @@
             "conditions": []
         },
         {
+            "name": "buffAtk",
+            "alias": "Attack Buff",
+            "description": "Increases Attack by 50% for one turn. Causes 20 stress",
+            "targetType": "ALLY_SINGLE",
+            "conditions": []
+        },
+        {
             "name": "bookSlam",
             "alias": "Mass Attack",
             "description": "Book only",
