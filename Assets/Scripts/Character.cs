@@ -41,6 +41,11 @@ public class Character : MonoBehaviour
     public StressBar stressBar;
     public Animator animator;
 
+
+    // buffs/debuffs
+    public int atkUp = 0;
+    public int stressDown = 0;
+
     void Awake()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
@@ -50,7 +55,7 @@ public class Character : MonoBehaviour
         {
             Quaternion rotation = new Quaternion(0, 0, 0, 0);
             nameTag = GameObject.Instantiate(Resources.Load("NameTag"), transform.position, rotation) as GameObject;
-            nameTag.GetComponentInChildren<TextMesh>().text = characterName;
+            nameTag.transform.Find("Name").GetComponent<TextMesh>().text = characterName;
         }
         animator = GetComponent<Animator>();
         animator.SetInteger("health", health);
@@ -114,15 +119,51 @@ public class Character : MonoBehaviour
         }
     }
 
-
+    public int GetAttack() {
+        if (atkUp > 0) {
+            return (int) Math.Ceiling(attack * 1.5);
+        } else {
+            return attack;
+        }
+    }
 
     public void resetScale()
     {
         transform.localScale = new Vector3(1, 1, 1);
         transform.position = origin;
         animator.Play("empty");
-        
+
     }
+
+    public void SetStatus(string status, int duration)
+    {
+        switch (status)
+        {
+            case "atkUp":
+                atkUp = duration;
+                if (atkUp > 0)
+                {
+                    nameTag.transform.Find("AtkUp").gameObject.SetActive(true);
+                }
+                else
+                {
+                    nameTag.transform.Find("AtkUp").gameObject.SetActive(false);
+                }
+                break;
+            case "stressDown":
+                stressDown = duration;
+                if (stressDown > 0)
+                {
+                    nameTag.transform.Find("StressDown").gameObject.SetActive(true);
+                }
+                else
+                {
+                    nameTag.transform.Find("StressDown").gameObject.SetActive(false);
+                }
+                break;
+        }
+    }
+
 
     // Set this character's current health
     public void SetCharacterHealth(int health)
@@ -130,10 +171,11 @@ public class Character : MonoBehaviour
 
         this.health = (health > 0) ? health : 0;
         healthBar.SetHealth(this.health);
-        if (!isEnemy) {
+        if (!isEnemy)
+        {
             animator.SetInteger("health", this.health);
         }
-        
+
     }
 
     public void takeDamage(int damage)
@@ -144,7 +186,7 @@ public class Character : MonoBehaviour
             d = (int)(d * 1.3);
         }
         SetCharacterHealth(health - d);
-        
+
         //controller.DisplayDamage(this, d);
         controller.DisplayHealthChange(this, d, Color.red);
     }
@@ -177,6 +219,17 @@ public class Character : MonoBehaviour
             this.stress = stress;
         }
         stressBar.SetStress(this.stress);
+
+        if (this.stress >= 70)
+        {
+            nameTag.transform.Find("Stressed").gameObject.SetActive(true);
+            animator.Play("stressed");
+        }
+        else
+        {
+            nameTag.transform.Find("Stressed").gameObject.SetActive(false);
+            animator.Play("notstressed");
+        }
     }
 
     public void DisplayTurnMarker(bool enabled)
