@@ -9,7 +9,7 @@ public class HealthBar : MonoBehaviour
     public Text hpText;
     public bool isEnemy;
 
-    private string hpStr;
+    //private string hpStr;
 
     void Start()
     {
