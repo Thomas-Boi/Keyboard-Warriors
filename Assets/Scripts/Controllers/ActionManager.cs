@@ -21,9 +21,12 @@ public class ActionManager : MonoBehaviour
         controller.clearDescription();
 
         controller.DisplaySkillDialogue(user, action.Alias, 1.0f);
+        if (controller.playerTurn)
+        {
+            user.SetStatus("atkUp", user.atkUp - 1);
+            user.SetStatus("StressDown", user.stressDown - 1);
+        }
 
-        user.SetStatus("atkUp", user.atkUp - 1);
-        user.SetStatus("StressDown", user.stressDown - 1);
 
         yield return action.performAction(user, new Character[] { target });
         if (controller.checkLife())
