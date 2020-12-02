@@ -12,7 +12,7 @@ public class StressBar : MonoBehaviour
 
     void Update()
     {
-        //UpdateStressString();
+        UpdateStressString();
     }
 
     private void UpdateStressString()
