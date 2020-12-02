@@ -87,6 +87,8 @@ public class Character : MonoBehaviour
         {
             transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
             animator.Play("hover");
+            nameText.color = Color.yellow;
+
             //transform.position = transform.position + new Vector3(0, 0.1f, 0);
         }
     }
@@ -125,10 +127,14 @@ public class Character : MonoBehaviour
         nameText.text = characterName;
     }
 
-    public int GetAttack() {
-        if (atkUp > 0) {
-            return (int) Math.Ceiling(attack * 1.5);
-        } else {
+    public int GetAttack()
+    {
+        if (atkUp > 0)
+        {
+            return (int)Math.Ceiling(attack * 1.5);
+        }
+        else
+        {
             return attack;
         }
     }
@@ -138,6 +144,11 @@ public class Character : MonoBehaviour
         transform.localScale = new Vector3(1, 1, 1);
         transform.position = origin;
         animator.Play("empty");
+        HighlightPlayerName(false);
+        if (controller.playerTurn)
+        {
+            controller.players[controller.turnNum].HighlightPlayerName(true);
+        }
 
     }
 
@@ -237,6 +248,19 @@ public class Character : MonoBehaviour
             nameTag.transform.Find("Stressed").gameObject.SetActive(false);
             animator.Play("notstressed");
         }
+    }
+
+    public void AddStress(int stress)
+    {
+        if (stressDown > 0)
+        {
+            SetCharacterStress(((stress - 1) / 2) + 1 + this.stress);
+        }
+        else
+        {
+            SetCharacterStress(stress + this.stress);
+        }
+
     }
 
     public void DisplayTurnMarker(bool enabled)
