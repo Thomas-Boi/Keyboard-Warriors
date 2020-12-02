@@ -40,79 +40,67 @@ public class Skill : Action
                 break;
 
             case "basicAttack":
-                target.takeDamage(calcDamage(user.attack, target.defense));
+                target.takeDamage(calcDamage(user.GetAttack(), target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "slimeAttack":
-                target.takeDamage(calcDamage(user.attack * 1.5, target.defense));
+                target.takeDamage(calcDamage(user.GetAttack() * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "strongAttack":
-                target.takeDamage(calcDamage(user.attack * 2, target.defense));
+                target.takeDamage(calcDamage(user.GetAttack() * 2, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                user.SetCharacterStress(user.stress + 30);
-                yield return new WaitForSeconds(.5f);
+                user.AddStress(30);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "medAttack":
-                target.takeDamage(calcDamage(user.attack * 1.5, target.defense));
+                target.takeDamage(calcDamage(user.GetAttack() * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                user.SetCharacterStress(user.stress + 10);
-                yield return new WaitForSeconds(.5f);
+                user.AddStress(10);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "healTarget":
-                target.healHealth(20 + user.attack);
+                target.healHealth(20 + user.GetAttack());
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress + 30);
-                yield return new WaitForSeconds(.5f);
+                user.AddStress(30);
+                yield return new WaitForSeconds(.8f);
+                break;
+            case "buffAtk":
+                target.SetStatus("atkUp", 2);
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.AddStress(30);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "bookSlam":
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
                 {
-                    t.takeDamage(calcDamage(user.attack * 0.6, t.defense));
+                    t.takeDamage(calcDamage(user.GetAttack() * 0.6, t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
             case "wideAttack":
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress + 40);
+                user.AddStress(40);
                 foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
                 {
-                    t.takeDamage(calcDamage(user.attack, t.defense));
+                    t.takeDamage(calcDamage(user.GetAttack(), t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
-                yield return new WaitForSeconds(.5f);
-                break;
-
-            // Tactics
-            case "retreat":
-                controller.turnNum = -1;
-                controller.DisplayPlayerLose();
-                break;
-
-            case "switchRow":
-                user.GetComponent<Animator>().Play("attack", 0, 0);
-                yield return new WaitForSeconds(.5f);
-                break;
-
-            case "destress":
-                // change this animation later
-                user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress - 25);
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.8f);
                 break;
 
         }

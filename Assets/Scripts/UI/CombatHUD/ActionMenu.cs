@@ -7,7 +7,9 @@ public class ActionMenu : MonoBehaviour
 {
 
     public List<ActionButton> buttons;
+
     public GameObject descriptionBox;
+    public GameObject retreatConfirmationPrefab;
 
     void Start()
     {
@@ -16,11 +18,11 @@ public class ActionMenu : MonoBehaviour
 
     public void DisplaySkillButtons(int turnNum)
     {
-
         EnableDisplay(true);
 
         List<string> playerOne = new List<string> { "basicAttack", "strongAttack", "wideAttack"};
-        List<string> playerTwo = new List<string> { "basicAttack", "medAttack", "healTarget" };
+        List<string> playerTwo = new List<string> { "basicAttack", "buffAtk"};
+        List<string> playerThree = new List<string> { "basicAttack", "medAttack", "healTarget" };
 
         if (turnNum == 0)
         {
@@ -29,26 +31,26 @@ public class ActionMenu : MonoBehaviour
                 buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerOne[i]));
             }
         }
-        else
+        else if (turnNum == 1)
         {
             for (int i = 0; i < playerTwo.Count; i++)
             {
                 buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerTwo[i]));
             }
         }
+        else
+        {
+            for (int i = 0; i < playerThree.Count; i++)
+            {
+                buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerThree[i]));
+            }
+        }
     }
 
-    public void DisplayTacticButtons()
+    public void DisplayRetreatConfirmation()
     {
 
-        EnableDisplay(true);
-
-        List<string> tactics = new List<string> { "retreat", "switchRow", "destress" };
-
-        for (int i = 0; i < tactics.Count; i++)
-        {
-            buttons[i].spawnButton(EventController.tacticsManager.GetTacticByName(tactics[i]));
-        }
+        EnableDisplay(false, true);
 
     }
 
@@ -66,10 +68,11 @@ public class ActionMenu : MonoBehaviour
 
     }
 
-    public void EnableDisplay(bool enabled)
+    public void EnableDisplay(bool enabled, bool retEnabled = false)
     {
         gameObject.SetActive(enabled);
         descriptionBox.SetActive(enabled);
+        retreatConfirmationPrefab.SetActive(retEnabled);
     }
 
     public void DeselectAllButtons()

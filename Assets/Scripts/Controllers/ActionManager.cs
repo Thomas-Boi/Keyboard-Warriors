@@ -7,7 +7,7 @@ using System.Linq;
 // manages the ActionMenu for a specific type of Action (Skills, Tactics, or Items) 
 public class ActionManager : MonoBehaviour
 {
-    protected EventController controller;    
+    protected EventController controller;
 
     protected void initController()
     {
@@ -20,8 +20,13 @@ public class ActionManager : MonoBehaviour
         controller.actionMenu.HideButtons();
         controller.clearDescription();
 
-        //todo: Make animation stuff a function
         controller.DisplaySkillDialogue(user, action.Alias, 1.0f);
+        if (controller.playerTurn)
+        {
+            user.SetStatus("atkUp", user.atkUp - 1);
+            user.SetStatus("StressDown", user.stressDown - 1);
+        }
+
 
         yield return action.performAction(user, new Character[] { target });
         if (controller.checkLife())

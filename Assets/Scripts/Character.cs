@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
@@ -29,15 +30,37 @@ public class Character : MonoBehaviour
     public GameObject marker;
     public Spawner parent;
 
+    // Reference to character's text name on the UI
+    public Text nameText;
+
+    // Reference to characters nametag above the character
+    public GameObject nameTag;
+
     // Reference to character's health and stress bars
     public HealthBar healthBar;
     public StressBar stressBar;
+    public Animator animator;
+
+
+    // buffs/debuffs
+    public int atkUp = 0;
+    public int stressDown = 0;
 
     void Awake()
     {
         controller = GameObject.Find("EventController").GetComponent<EventController>();
         skillManager = GameObject.Find("EventController").GetComponent<SkillManager>();
         origin = transform.position;
+        if (!isEnemy)
+        {
+            Quaternion rotation = new Quaternion(0, 0, 0, 0);
+            nameTag = GameObject.Instantiate(Resources.Load("NameTag"), transform.position, rotation) as GameObject;
+            nameTag.transform.Find("Name").GetComponent<TextMesh>().text = characterName;
+        }
+        animator = GetComponent<Animator>();
+        animator.SetInteger("health", health);
+
+
     }
 
     void Start()
@@ -46,11 +69,15 @@ public class Character : MonoBehaviour
         healthBar.SetMaxHealth(maxHealth);
         healthBar.SetHealth(health);
 
+
         if (!isEnemy)
         {
+            SetNameText();
             stressBar.SetMaxStress(maxStress);
             stressBar.SetStress(stress);
         }
+
+
     }
 
 
@@ -58,8 +85,11 @@ public class Character : MonoBehaviour
     {
         if (isTargetable)
         {
-            transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
-            transform.position = transform.position + new Vector3(0, 0.1f, 0);
+            transform.localScale = new Vector3(1.2f, 1.2f, 1.2f);
+            animator.Play("hover");
+            nameText.color = Color.yellow;
+
+            //transform.position = transform.position + new Vector3(0, 0.1f, 0);
         }
     }
 
@@ -92,12 +122,66 @@ public class Character : MonoBehaviour
         }
     }
 
+    private void SetNameText()
+    {
+        nameText.text = characterName;
+    }
+
+    public int GetAttack()
+    {
+        if (atkUp > 0)
+        {
+            return (int)Math.Ceiling(attack * 1.5);
+        }
+        else
+        {
+            return attack;
+        }
+    }
 
     public void resetScale()
     {
         transform.localScale = new Vector3(1, 1, 1);
         transform.position = origin;
+        animator.Play("empty");
+        HighlightPlayerName(false);
+        if (controller.playerTurn)
+        {
+            controller.players[controller.turnNum].HighlightPlayerName(true);
+        }
+
     }
+
+    public void SetStatus(string status, int duration)
+    {
+        switch (status)
+        {
+            case "atkUp":
+                atkUp = duration;
+                if (atkUp > 0)
+                {
+                    nameTag.transform.Find("AtkUp").GetComponent<TextMesh>().text = "Atk Up (" + atkUp + ")";
+                    nameTag.transform.Find("AtkUp").gameObject.SetActive(true);
+                }
+                else
+                {
+                    nameTag.transform.Find("AtkUp").gameObject.SetActive(false);
+                }
+                break;
+            case "stressDown":
+                stressDown = duration;
+                if (stressDown > 0)
+                {
+                    nameTag.transform.Find("StressDown").gameObject.SetActive(true);
+                }
+                else
+                {
+                    nameTag.transform.Find("StressDown").gameObject.SetActive(false);
+                }
+                break;
+        }
+    }
+
 
     // Set this character's current health
     public void SetCharacterHealth(int health)
@@ -105,23 +189,36 @@ public class Character : MonoBehaviour
 
         this.health = (health > 0) ? health : 0;
         healthBar.SetHealth(this.health);
+        if (!isEnemy)
+        {
+            animator.SetInteger("health", this.health);
+        }
+
     }
 
     public void takeDamage(int damage)
     {
         int d = damage;
-        if (stress >= 70) {
-            d = (int) (d * 1.3);
+        if (stress >= 70)
+        {
+            d = (int)(d * 1.3);
         }
         SetCharacterHealth(health - d);
-        controller.DisplayDamage(this, d);
+
+        //controller.DisplayDamage(this, d);
+        controller.DisplayHealthChange(this, d, Color.red);
     }
 
     public void healHealth(int amount)
     {
         int heal = (amount + health <= maxHealth) ? amount : maxHealth - health;
         SetCharacterHealth(heal + health);
-        controller.DisplayHeal(this, heal);
+        if (!isEnemy)
+        {
+            healthBar.SetHealth(this.health);
+        }
+        //controller.DisplayHeal(this, heal);
+        controller.DisplayHealthChange(this, heal, Color.green);
     }
 
     // Set this character's current stress
@@ -140,6 +237,30 @@ public class Character : MonoBehaviour
             this.stress = stress;
         }
         stressBar.SetStress(this.stress);
+
+        if (this.stress >= 70)
+        {
+            nameTag.transform.Find("Stressed").gameObject.SetActive(true);
+            animator.Play("stressed");
+        }
+        else
+        {
+            nameTag.transform.Find("Stressed").gameObject.SetActive(false);
+            animator.Play("notstressed");
+        }
+    }
+
+    public void AddStress(int stress)
+    {
+        if (stressDown > 0)
+        {
+            SetCharacterStress(((stress - 1) / 2) + 1 + this.stress);
+        }
+        else
+        {
+            SetCharacterStress(stress + this.stress);
+        }
+
     }
 
     public void DisplayTurnMarker(bool enabled)
@@ -147,6 +268,18 @@ public class Character : MonoBehaviour
         if (!isEnemy)
         {
             marker.SetActive(enabled);
+        }
+    }
+
+    public void HighlightPlayerName(bool isTurn)
+    {
+        if (isTurn)
+        {
+            nameText.color = Color.red;
+        }
+        else
+        {
+            nameText.color = Color.white;
         }
     }
 
@@ -181,7 +314,8 @@ public class Character : MonoBehaviour
         stats.defense = 0;
 
         List<int> newLevel = CalcNextLevel(level, exp + addExp);
-        if (skip != -1) {
+        if (skip != -1)
+        {
             newLevel[0] = skip;
         }
         for (int i = level; i < newLevel[0]; i++)
@@ -274,6 +408,8 @@ public class Character : MonoBehaviour
         maxHealth += stats.health;
         attack += stats.attack;
         defense += stats.defense;
+        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(health);
     }
 
 }

@@ -19,11 +19,18 @@ public class UpdateUI : MonoBehaviour
         weekTxtObj.text = $"Week {tracker.WeekNum} / {ProgressTracker.finalWeekNum}";
         moneyTxtObj.text = ItemTracker.GetTracker().Money.ToString();
 
-        if (tracker.ProductionMode && tracker.StorylinePhase == ProgressTracker.GamePhase.FirstTime)
+        if (tracker.ProductionMode)
         {
             foreach (Button panel in panels)
             {
-                if (panel.name == "GoToClassPanel") continue;
+                if (tracker.WeekNum == 1)
+                {
+                    if (panel.name == "GoToClassPanel") continue;
+                }
+                else if (tracker.WeekNum == 2)
+                {
+                    if (panel.name == "GoToClassPanel" || panel.name == "ExtraStudyPanel" || panel.name == "BCITStorePanel") continue;
+                }
                 panel.interactable = false;
             }
         }

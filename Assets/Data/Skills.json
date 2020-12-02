@@ -51,31 +51,17 @@
             "conditions": []
         },
         {
+            "name": "buffAtk",
+            "alias": "Attack Buff",
+            "description": "Increases Attack by 50% for two turns. Causes 30 stress",
+            "targetType": "ALLY_SINGLE",
+            "conditions": []
+        },
+        {
             "name": "bookSlam",
             "alias": "Mass Attack",
             "description": "Book only",
             "targetType": "ENEMY_ALL",
-            "conditions": []
-        },
-        {
-            "name": "retreat",
-            "alias": "Retreat",
-            "description": "Retreats from the current battle.",
-            "targetType": "SELF",
-            "conditions": []
-        },
-        {
-            "name": "switchRow",
-            "alias": "Switch Row",
-            "description": "Switches the character's current row.",
-            "targetType": "SELF",
-            "conditions": []
-        },
-        {
-            "name": "destress",
-            "alias": "De-Stress",
-            "description": "Decreases the character's current stress by 25",
-            "targetType": "SELF",
             "conditions": []
         }
     ]

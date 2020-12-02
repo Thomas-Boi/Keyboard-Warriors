@@ -1191,7 +1191,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 545245735439052907, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Text
-      value: Beastiary
+      value: Homework
       objectReference: {fileID: 0}
     - target: {fileID: 908147567704961586, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Interactable
@@ -1199,7 +1199,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5911782417104794405, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Text
-      value: Homework Tips
+      value: Guide to Homework
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911782417104794405, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911782417104794405, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5911782417104794405, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7126931787223736812, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 8707354187459825384, guid: dfa88b6069fd6e842975715164d3067a, type: 3}
       propertyPath: m_Name
