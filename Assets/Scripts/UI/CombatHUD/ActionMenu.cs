@@ -21,8 +21,8 @@ public class ActionMenu : MonoBehaviour
         EnableDisplay(true);
 
         List<string> playerOne = new List<string> { "basicAttack", "strongAttack", "wideAttack"};
-        List<string> playerTwo = new List<string> { "basicAttack", "buffAtk", "healTarget" };
-        List<string> playerThree = new List<string> { "basicAttack", "medAttack" };
+        List<string> playerTwo = new List<string> { "basicAttack", "buffAtk"};
+        List<string> playerThree = new List<string> { "basicAttack", "medAttack", "healTarget" };
 
         if (turnNum == 0)
         {
@@ -31,11 +31,18 @@ public class ActionMenu : MonoBehaviour
                 buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerOne[i]));
             }
         }
-        else
+        else if (turnNum == 1)
         {
             for (int i = 0; i < playerTwo.Count; i++)
             {
                 buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerTwo[i]));
+            }
+        }
+        else
+        {
+            for (int i = 0; i < playerThree.Count; i++)
+            {
+                buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerThree[i]));
             }
         }
     }

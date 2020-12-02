@@ -53,7 +53,7 @@
         {
             "name": "buffAtk",
             "alias": "Attack Buff",
-            "description": "Increases Attack by 50% for two turns. Causes 20 stress",
+            "description": "Increases Attack by 50% for two turns. Causes 30 stress",
             "targetType": "ALLY_SINGLE",
             "conditions": []
         },
