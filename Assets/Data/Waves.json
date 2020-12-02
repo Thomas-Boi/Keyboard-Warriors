@@ -5,8 +5,8 @@
             "waves": [
                 {
                     "enemies": [
-                        null,
-                        "bookSlime",
+                        "researchBook",
+                        "researchBook",
                         null,
                         "bookSlime"
 
