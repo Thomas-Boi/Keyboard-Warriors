@@ -72,6 +72,7 @@ public class Character : MonoBehaviour
 
         if (!isEnemy)
         {
+            SetNameText();
             stressBar.SetMaxStress(maxStress);
             stressBar.SetStress(stress);
         }
@@ -117,6 +118,11 @@ public class Character : MonoBehaviour
             StartCoroutine(skillManager.useAction(controller.players[controller.turnNum], this, controller.selectedAction));
 
         }
+    }
+
+    private void SetNameText()
+    {
+        nameText.text = characterName;
     }
 
     public int GetAttack() {
