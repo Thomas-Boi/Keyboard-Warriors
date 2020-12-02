@@ -57,7 +57,7 @@ public class Skill : Action
                 target.takeDamage(calcDamage(user.GetAttack() * 2, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                user.SetCharacterStress(user.stress + 30);
+                user.AddStress(30);
                 yield return new WaitForSeconds(.8f);
                 break;
 
@@ -65,20 +65,20 @@ public class Skill : Action
                 target.takeDamage(calcDamage(user.GetAttack() * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                user.SetCharacterStress(user.stress + 10);
+                user.AddStress(10);
                 yield return new WaitForSeconds(.8f);
                 break;
 
             case "healTarget":
                 target.healHealth(20 + user.GetAttack());
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress + 30);
+                user.AddStress(30);
                 yield return new WaitForSeconds(.8f);
                 break;
             case "buffAtk":
                 target.SetStatus("atkUp", 2);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress + 30);
+                user.AddStress(30);
                 yield return new WaitForSeconds(.8f);
                 break;
 
@@ -94,7 +94,7 @@ public class Skill : Action
 
             case "wideAttack":
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.SetCharacterStress(user.stress + 40);
+                user.AddStress(40);
                 foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
                 {
                     t.takeDamage(calcDamage(user.GetAttack(), t.defense));
