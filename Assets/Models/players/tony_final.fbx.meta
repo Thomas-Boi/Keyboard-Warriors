@@ -2,7 +2,25 @@ fileFormatVersion: 2
 guid: 5292928f833f2f046a1815c776ada237
 ModelImporter:
   serializedVersion: 20101
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      74: 8406360129791286164
+    second: idle
+  - first:
+      74: 7936135409852533068
+    second: Tony_rig.001|idle
+  - first:
+      74: -4553443546207736653
+    second: Tony_rig.001|idle.001
+  - first:
+      74: 1384354502512676676
+    second: Tony_rig.001|Tony_rig.002Action
+  - first:
+      74: 5024338949572729140
+    second: Tony_rig.001|TakeDamage_L_base_human_RIG.blend
+  - first:
+      74: -3523278675988276534
+    second: Tony_rig.001|idle_L_base_human_RIG.blend
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -30,7 +48,36 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: idle.001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 79
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
     lODScreenPercentages: []
