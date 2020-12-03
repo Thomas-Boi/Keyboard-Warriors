@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a36f56add7d212b4980da936e881bc2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Research Book
+  characterName: Textbook
   level: 2
   exp: 0
   maxHealth: 55
