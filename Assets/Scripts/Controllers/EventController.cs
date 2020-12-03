@@ -25,6 +25,8 @@ public class EventController : MonoBehaviour
     public GameObject loseUIPrefab;
     public GameObject HUD;
 
+    public Text waveTxt;
+
     // true = player turn
     // false = not player turn
     public bool playerTurn;
@@ -64,7 +66,6 @@ public class EventController : MonoBehaviour
 
         StartWave();
         clearDescription();
-
     }
 
 
@@ -98,6 +99,7 @@ public class EventController : MonoBehaviour
         }
 
         nextTurn();
+        SetWaveText();
     }
 
 
@@ -390,4 +392,9 @@ public class EventController : MonoBehaviour
         }
     }
 
+    private void SetWaveText()
+    {
+        int wavesInThisWeek = weekData.weeks.Find(x => x.weekNum == weekNum).waves.Count;
+        waveTxt.text = $"Wave: {waveNum + 1}/{wavesInThisWeek}";
+    }
 }
