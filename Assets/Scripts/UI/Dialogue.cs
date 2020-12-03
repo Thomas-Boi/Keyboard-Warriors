@@ -12,6 +12,7 @@ public class Dialogue : MonoBehaviour
     // refs to UI elements
     public Text speakerTxt;
     public Text speechTxt;
+    public Image profilePic;
 
     // hold the dialogues
     private DialogueStruct[] dialogues;
@@ -37,8 +38,17 @@ public class Dialogue : MonoBehaviour
         try 
         {
             DialogueStruct dialogueObj = dialogues[curScriptIndex++];
-            speakerTxt.text = dialogueObj.speaker;
             speechTxt.text = dialogueObj.speech;
+            speakerTxt.text = dialogueObj.speaker;
+            if (dialogueObj.speaker == "Help")
+            {
+                profilePic.sprite = Resources.Load<Sprite>($"Profiles/question_marks");
+            }
+            else
+            {
+                profilePic.sprite = Resources.Load<Sprite>($"Profiles/{dialogueObj.speaker.ToLower()}");
+            }
+
         } 
         catch (IndexOutOfRangeException)
         {

@@ -1,21 +1,17 @@
 fileFormatVersion: 2
-guid: 1e92299d71dbc6a4d82231a8154da5e3
+guid: 06835d2abd7b0624886b05d373c928a5
 ModelImporter:
   serializedVersion: 20101
   internalIDToNameTable:
   - first:
-      74: 5539831331247536789
-    second: Jump
-  - first:
-      74: 9190564383200214912
-    second: ProgrammingBook_mesh|Idle
-  - first:
-      74: 5226047186765217822
-    second: ProgrammingBook_mesh|Jump
-  - first:
       74: -623603649343465320
-    second: research_book_idle
-  externalObjects: {}
+    second: slime_idle
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: slime_tex
+    second: {fileID: 2100000, guid: 911ecbc7a57bc65419b0fb086179d9f0, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -44,11 +40,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: research_book_idle
+      name: slime_idle
       takeName: Scene
       internalID: 0
       firstFrame: 0
-      lastFrame: 70
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

@@ -1,9 +1,5 @@
 {
 	"onStartDialogue": [
-    {
-      "speaker": "Narrator",
-      "speech": "British Columbia Institute of Technology (BCIT), Burnaby Campus\nProgram: Computer System Techonology Diploma\nTerm: 4 (Final)"
-    },
 		{
 			"speaker": "Tony",
 			"speech": "Hey everyone, it's great to see you guys again!"
@@ -56,5 +52,11 @@
 			"speaker": "Tony",
 			"speech": "Yeah, let's get to class guys. It's time to learn some more code!!"
 		}
-	]
+  ],
+  "tutorial": [
+    {
+			"speaker": "Help",
+			"speech": "Click on the 'Skills' button below and click on a skill. You can use that skill on targets that are not grayed out"
+    }
+  ]
 }

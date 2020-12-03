@@ -12,7 +12,14 @@ public class SceneLoader : MonoBehaviour
     static string END_SCENE_NAME = "EndScene";
     static string ITEM_SHOP_SCENE_NAME = "ItemShopScene";
     static string STORY_SCENE_NAME = "StoryScene";
+    static string BCIT_SCENE_NAME = "BCITScene";
 
+    // load the combat scene
+    // combatType is an int value that corresponds to a value in the CombatTypeEnum
+    public static void LoadBCITScene()
+    {
+        SceneManager.LoadScene(BCIT_SCENE_NAME);
+    }
 
     // load the combat scene
     // combatType is an int value that corresponds to a value in the CombatTypeEnum
