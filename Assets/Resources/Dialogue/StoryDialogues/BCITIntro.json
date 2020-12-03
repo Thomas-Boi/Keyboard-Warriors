@@ -1,0 +1,8 @@
+{
+	"onStartDialogue": [
+    {
+      "speaker": "Help",
+      "speech": "British Columbia Institute of Technology (BCIT), Burnaby Campus\nProgram: Computer System Techonology Diploma (CST)\nTerm: 4 (Final term)"
+    }
+  ]
+}

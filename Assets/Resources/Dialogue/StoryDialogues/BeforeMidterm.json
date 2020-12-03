@@ -1,7 +1,7 @@
 {
 	"onStartDialogue": [
     {
-      "speaker": "Narrator",
+      "speaker": "Help",
       "speech": "Midterm Week"
     },
 		{

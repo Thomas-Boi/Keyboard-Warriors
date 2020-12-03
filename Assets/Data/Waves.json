@@ -5,8 +5,8 @@
             "waves": [
                 {
                     "enemies": [
-                        "researchBook",
-                        "researchBook",
+                        null,
+                        "bookSlime",
                         null,
                         "bookSlime"
 
@@ -23,16 +23,6 @@
                     ],
                     "coins" : 110,
                     "exp" : 110
-                },
-                {
-                    "enemies": [
-                        "bookSlime",
-                        "bookSlime",
-                        null,
-                        "researchBook"
-                    ],
-                    "coins" : 110,
-                    "exp" : 120
                 },
                 {
                     "enemies": [
