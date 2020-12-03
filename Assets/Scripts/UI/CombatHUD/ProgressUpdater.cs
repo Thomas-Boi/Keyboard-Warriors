@@ -71,8 +71,6 @@ public class ProgressUpdater : MonoBehaviour
         Wave wave = controller.weekData.weeks.Find(x => x.weekNum == controller.weekNum).waves[controller.waveNum];
 
 
-
-
         foreach (Character player in controller.players)
         {
             player.exp += wave.exp;
@@ -104,9 +102,6 @@ public class ProgressUpdater : MonoBehaviour
         }
         else
         {
-
-
-
             // see if we need to progress to next week
             var tracker = ProgressTracker.GetTracker();
             if (tracker.CurCombatType == SceneTypeEnum.WEEKLY_COMBAT)

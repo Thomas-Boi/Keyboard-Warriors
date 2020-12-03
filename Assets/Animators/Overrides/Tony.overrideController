@@ -8,6 +8,4 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: Tony
   m_Controller: {fileID: 9100000, guid: 6b65cb1e3801baf46a92ecc75eb85436, type: 2}
-  m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 17e40310854daaa47a4e5f094d487bbe, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: ec66d0562ad977f4c8a21dfb008f218d, type: 2}
+  m_Clips: []

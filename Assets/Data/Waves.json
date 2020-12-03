@@ -11,7 +11,7 @@
                         "bookSlime"
 
                     ],
-                    "coins" : 100,
+                    "coins" : 80,
                     "exp" : 100
                 },
                 {
@@ -21,7 +21,7 @@
                         "bookSlime",
                         "bookSlime"
                     ],
-                    "coins" : 110,
+                    "coins" : 80,
                     "exp" : 110
                 },
                 {
@@ -31,7 +31,7 @@
                         null,
                         "researchBook"
                     ],
-                    "coins" : 110,
+                    "coins" : 100,
                     "exp" : 130
                 }
             ]
