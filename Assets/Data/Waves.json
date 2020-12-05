@@ -5,7 +5,7 @@
             "waves": [
                 {
                     "enemies": [
-                        null,
+                        "codeBug",
                         "bookSlime",
                         null,
                         "bookSlime"
