@@ -7,8 +7,8 @@
                     "enemies": [
                         null,
                         "bookSlime",
-                        null,
-                        "bookSlime"
+                        "bookSlime",
+                        null
 
                     ],
                     "coins" : 80,

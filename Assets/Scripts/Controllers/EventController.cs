@@ -44,6 +44,7 @@ public class EventController : MonoBehaviour
     public string tooltip = "";
 
     public WeekDatabase weekData;
+    private int wavesInWeek;
 
     // Start is called before the first frame update
     public void Start()
@@ -52,6 +53,7 @@ public class EventController : MonoBehaviour
         skillManager = GetComponent<SkillManager>();
         ItemManager = GetComponent<ItemManager>();
         weekNum = ProgressTracker.GetTracker().WeekNum;
+        wavesInWeek = weekData.weeks.Find(x => x.weekNum == weekNum).waves.Count;
 
         foreach (Character player in players)
         {
@@ -394,7 +396,6 @@ public class EventController : MonoBehaviour
 
     private void SetWaveText()
     {
-        int wavesInThisWeek = weekData.weeks.Find(x => x.weekNum == weekNum).waves.Count;
-        waveTxt.text = $"Wave: {waveNum + 1}/{wavesInThisWeek}";
+        waveTxt.text = $"Wave {waveNum + 1} / {wavesInWeek}";
     }
 }

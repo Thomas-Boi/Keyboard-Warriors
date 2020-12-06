@@ -6,8 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: slime
+  m_Name: python
   m_Controller: {fileID: 9100000, guid: 6b65cb1e3801baf46a92ecc75eb85436, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 17e40310854daaa47a4e5f094d487bbe, type: 2}
-    m_OverrideClip: {fileID: -623603649343465320, guid: 06835d2abd7b0624886b05d373c928a5, type: 3}
+    m_OverrideClip: {fileID: -623603649343465320, guid: 575fa76a7bc408742b19c0387fd6b879, type: 3}
