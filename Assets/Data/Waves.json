@@ -5,10 +5,10 @@
             "waves": [
                 {
                     "enemies": [
-                        "presentationAudience",
-                        "bookSlime",
                         null,
-                        "bookSlime"
+                        "bookSlime",
+                        "bookSlime",
+                        null
 
                     ],
                     "coins" : 80,
