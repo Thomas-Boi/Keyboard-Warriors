@@ -6,10 +6,6 @@
                 {
                     "name": "basicAttack",
                     "weight": 1
-                },
-                {
-                    "name": "slimeAttack",
-                    "weight": 3
                 }
             ]
         },
