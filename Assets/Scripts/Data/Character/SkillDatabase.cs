@@ -32,25 +32,23 @@ public class Skill : Action
         Character target = targets[0];
 
         EventController controller = GameObject.Find("EventController").GetComponent<EventController>();
-
+        bool playedMusic = false;
         switch (name)
         {
             case "nothing":
-                yield return new WaitForSeconds(.5f);
+                user.GetComponent<Animator>().Play("stressed", 0, 0);
                 break;
 
             case "basicAttack":
                 target.takeDamage(calcDamage(user.GetAttack(), target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                yield return new WaitForSeconds(.8f);
                 break;
 
             case "slimeAttack":
                 target.takeDamage(calcDamage(user.GetAttack() * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                yield return new WaitForSeconds(.8f);
                 break;
 
             case "strongAttack":
@@ -58,7 +56,6 @@ public class Skill : Action
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
                 user.AddStress(20);
-                yield return new WaitForSeconds(.8f);
                 break;
 
             case "medAttack":
@@ -66,14 +63,14 @@ public class Skill : Action
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
                 user.AddStress(10);
-                yield return new WaitForSeconds(.8f);
                 break;
 
             case "healTarget":
                 target.healHealth(20 + user.GetAttack() * 0.5);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(30);
-                yield return new WaitForSeconds(.8f);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
                 break;
 
             case "healStress":
@@ -81,7 +78,8 @@ public class Skill : Action
                 target.SetCharacterStress(user.stress - 40);
                 controller.DisplayHealthChange(target, -40, Color.white);
                 user.AddStress(25);
-                yield return new WaitForSeconds(.8f);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
                 break;
 
             case "weakHealStress":
@@ -89,7 +87,8 @@ public class Skill : Action
                 target.SetCharacterStress(user.stress - 20);
                 controller.DisplayHealthChange(target, -20, Color.white);
                 user.AddStress(10);
-                yield return new WaitForSeconds(.8f);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
                 break;
 
             case "teamHealStress":
@@ -100,22 +99,23 @@ public class Skill : Action
                     controller.DisplayHealthChange(t, - 20, Color.white);
                 }
                 user.AddStress(35);
-
-
-                yield return new WaitForSeconds(.8f);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
                 break;
 
             case "buffAtk":
                 target.SetStatus("atkUp", 1);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(30);
-                yield return new WaitForSeconds(.8f);
+                controller.audioController.PlayBuff();
+                playedMusic = true;
                 break;
             case "selfBuffAtk":
                 target.SetStatus("atkUp", 1);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(25);
-                yield return new WaitForSeconds(.8f);
+                controller.audioController.PlayBuff();
+                playedMusic = true;
                 break;
 
             case "bookSlam":
@@ -125,7 +125,6 @@ public class Skill : Action
                     t.takeDamage(calcDamage(user.GetAttack() * 0.6, t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
-                yield return new WaitForSeconds(.8f);
                 break;
 
             case "wideAttack":
@@ -135,7 +134,6 @@ public class Skill : Action
                     t.takeDamage(calcDamage(user.GetAttack() * 0.9, t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
-                yield return new WaitForSeconds(.8f);
                 user.AddStress(45);
                 break;
             case "weakWideAttack":
@@ -145,11 +143,16 @@ public class Skill : Action
                     t.takeDamage(calcDamage(user.GetAttack() * 0.8, t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
-                yield return new WaitForSeconds(.8f);
                 user.AddStress(45);
                 break;
-
         }
+
+
+        if (!playedMusic)
+        {
+            controller.audioController.PlayHit();
+        }
+        yield return new WaitForSeconds(.8f);
     }
 }
 

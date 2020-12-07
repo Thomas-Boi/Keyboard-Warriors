@@ -31,6 +31,7 @@ public class HealingItem : Item
         }
 
         RemoveItemFromInventory();
+        PlayItemSound();
         yield return new WaitForSeconds(.5f);
     }
 }
