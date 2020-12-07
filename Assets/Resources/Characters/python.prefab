@@ -400,7 +400,7 @@ MonoBehaviour:
   health: 150
   maxStress: 0
   stress: 0
-  attack: 20
+  attack: 15
   defense: 17
   id: python
   isTargetable: 0

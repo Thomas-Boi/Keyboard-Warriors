@@ -101,7 +101,7 @@
         {
             "name": "selfBuffAtk",
             "alias": "Self Study",
-            "description": "Increases Attack by 50% for the next turn. Causes 25 stress",
+            "description": "Increases Attack by 50% for the next 2 turns. Causes 25 stress",
             "targetType": "SELF",
             "conditions": []
         },
