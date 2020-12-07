@@ -1595,6 +1595,10 @@ PrefabInstance:
       propertyPath: retreatConfirmationPrefab
       value: 
       objectReference: {fileID: 1438823678}
+    - target: {fileID: 7898455913478663616, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 1028068658}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b685e8e8beb2bde47b99f582ee3d432e, type: 3}
 --- !u!1 &659986160

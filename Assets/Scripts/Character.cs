@@ -338,7 +338,7 @@ public class Character : MonoBehaviour
                     else if (i % 2 == 0)
                     {
                         stats.health += 3;
-                        stats.attack += 2;
+                        stats.attack += 3;
                         stats.defense += 1;
                     }
                     else
@@ -369,17 +369,17 @@ public class Character : MonoBehaviour
                     {
                         stats.health += 5;
                         stats.attack += 3;
-                        stats.defense += 3;
+                        stats.defense += 2;
                     }
                     else if (i % 2 == 0)
                     {
-                        stats.health += 4;
-                        stats.attack += 3;
+                        stats.health += 3;
+                        stats.attack += 2;
                         stats.defense += 2;
                     }
                     else
                     {
-                        stats.health += 4;
+                        stats.health += 3;
                         stats.attack += 3;
                         stats.defense += 2;
                     }

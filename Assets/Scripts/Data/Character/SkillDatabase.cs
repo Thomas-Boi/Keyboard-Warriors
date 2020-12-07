@@ -73,6 +73,18 @@ public class Skill : Action
                 playedMusic = true;
                 break;
 
+            case "healTeam":
+                
+                foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
+                {
+                    target.healHealth(15 + user.GetAttack() * 0.3);
+                }
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.AddStress(45);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
+                break;
+
             case "healStress":
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.SetCharacterStress(user.stress - 40);
@@ -96,9 +108,9 @@ public class Skill : Action
                 foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
                 {
                     t.SetCharacterStress(user.stress - 20);
-                    controller.DisplayHealthChange(t, - 20, Color.white);
+                    controller.DisplayHealthChange(t, -20, Color.white);
                 }
-                user.AddStress(35);
+                user.AddStress(45);
                 controller.audioController.PlayHeal();
                 playedMusic = true;
                 break;
@@ -144,6 +156,15 @@ public class Skill : Action
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
                 user.AddStress(45);
+                break;
+            case "strongWideAttack":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
+                {
+                    t.takeDamage(calcDamage(user.GetAttack() * 1.5, t.defense));
+                    t.GetComponent<Animator>().Play("hurt", 0, 0);
+                }
+                user.AddStress(70);
                 break;
         }
 
