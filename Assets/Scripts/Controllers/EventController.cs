@@ -46,6 +46,8 @@ public class EventController : MonoBehaviour
     public WeekDatabase weekData;
     private int wavesInWeek;
 
+    public AudioController audioController;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -203,6 +205,7 @@ public class EventController : MonoBehaviour
             int damage = (int) Math.Floor(((Double) user.maxHealth * ((10 + (((Double) user.stress - 70) / 2)) / 100)));
             user.SetCharacterHealth(user.health - damage);
             checkLife();
+            audioController.PlayPlayerStress(user.characterName);
             user.GetComponent<Animator>().Play("stress", 0, 0);
             //DisplayDamage(user, damage);
             DisplayHealthChange(user, damage, Color.red);
