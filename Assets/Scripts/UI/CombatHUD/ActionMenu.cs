@@ -20,9 +20,9 @@ public class ActionMenu : MonoBehaviour
     {
         EnableDisplay(true);
 
-        List<string> playerOne = new List<string> { "basicAttack", "strongAttack", "wideAttack"};
-        List<string> playerTwo = new List<string> { "basicAttack", "buffAtk"};
-        List<string> playerThree = new List<string> { "basicAttack", "medAttack", "healTarget" };
+        List<string> playerOne = new List<string> { "basicAttack", "strongAttack", "wideAttack", "selfBuffAtk"};
+        List<string> playerTwo = new List<string> { "basicAttack", "weakWideAttack", "weakHealStress","healStress", "teamHealStress"};
+        List<string> playerThree = new List<string> { "basicAttack", "medAttack", "healTarget", "buffAtk" };
 
         if (turnNum == 0)
         {
