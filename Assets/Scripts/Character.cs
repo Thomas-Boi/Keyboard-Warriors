@@ -209,9 +209,9 @@ public class Character : MonoBehaviour
         controller.DisplayHealthChange(this, d, Color.red);
     }
 
-    public void healHealth(int amount)
+    public void healHealth(double amount)
     {
-        int heal = (amount + health <= maxHealth) ? amount : maxHealth - health;
+        int heal = (amount + health <= maxHealth) ? (int) amount : maxHealth - health;
         SetCharacterHealth(heal + health);
         if (!isEnemy)
         {

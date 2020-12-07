@@ -199,7 +199,8 @@ public class EventController : MonoBehaviour
         // when stress is full decrease character health
         if (!user.isEnemy && user.stress >= 70)
         {
-            int damage = (int)user.maxHealth / 10;
+            // Scale stress damage from 10%-25% depending on stress
+            int damage = (int) Math.Floor(((Double) user.maxHealth * ((10 + (((Double) user.stress - 70) / 2)) / 100)));
             user.SetCharacterHealth(user.health - damage);
             checkLife();
             user.GetComponent<Animator>().Play("stress", 0, 0);
@@ -221,52 +222,6 @@ public class EventController : MonoBehaviour
         }
 
     }
-
-    /*public void DisplayDamage(Character target, float damage)
-    {
-        Vector3 charPosition = target.transform.position;
-
-        Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
-
-        GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
-        textObj.transform.SetParent(HUD.transform);
-
-        Text damageText = textObj.AddComponent<Text>();
-        damageText.text = "-" + damage.ToString();
-        damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        damageText.color = Color.red;
-        damageText.fontSize = 35;
-        damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
-        damageText.verticalOverflow = VerticalWrapMode.Overflow;
-
-        textObj.transform.position = screenPosition;
-
-        StartCoroutine(FadeOutText(textObj));
-
-    }
-
-    public void DisplayHeal(Character target, float damage)
-    {
-        Vector3 charPosition = target.transform.position;
-
-        Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
-
-        GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
-        textObj.transform.SetParent(HUD.transform);
-
-        Text damageText = textObj.AddComponent<Text>();
-        damageText.text = damage.ToString();
-        damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        damageText.color = Color.green;
-        damageText.fontSize = 35;
-        damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
-        damageText.verticalOverflow = VerticalWrapMode.Overflow;
-
-        textObj.transform.position = screenPosition;
-
-        StartCoroutine(FadeOutText(textObj));
-
-    }*/
 
     // when character is to take damage, make text color red
     // or when they are being healed, make text color green

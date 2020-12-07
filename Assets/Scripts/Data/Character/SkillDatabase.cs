@@ -54,10 +54,10 @@ public class Skill : Action
                 break;
 
             case "strongAttack":
-                target.takeDamage(calcDamage(user.GetAttack() * 2, target.defense));
+                target.takeDamage(calcDamage(user.GetAttack() * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                user.AddStress(30);
+                user.AddStress(20);
                 yield return new WaitForSeconds(.8f);
                 break;
 
@@ -70,15 +70,51 @@ public class Skill : Action
                 break;
 
             case "healTarget":
-                target.healHealth(20 + user.GetAttack());
+                target.healHealth(20 + user.GetAttack() * 0.5);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(30);
                 yield return new WaitForSeconds(.8f);
                 break;
+
+            case "healStress":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                target.SetCharacterStress(user.stress - 40);
+                controller.DisplayHealthChange(target, -40, Color.white);
+                user.AddStress(25);
+                yield return new WaitForSeconds(.8f);
+                break;
+
+            case "weakHealStress":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                target.SetCharacterStress(user.stress - 20);
+                controller.DisplayHealthChange(target, -20, Color.white);
+                user.AddStress(10);
+                yield return new WaitForSeconds(.8f);
+                break;
+
+            case "teamHealStress":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
+                {
+                    t.SetCharacterStress(user.stress - 20);
+                    controller.DisplayHealthChange(t, - 20, Color.white);
+                }
+                user.AddStress(35);
+
+
+                yield return new WaitForSeconds(.8f);
+                break;
+
             case "buffAtk":
-                target.SetStatus("atkUp", 2);
+                target.SetStatus("atkUp", 1);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(30);
+                yield return new WaitForSeconds(.8f);
+                break;
+            case "selfBuffAtk":
+                target.SetStatus("atkUp", 1);
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.AddStress(25);
                 yield return new WaitForSeconds(.8f);
                 break;
 
@@ -94,13 +130,23 @@ public class Skill : Action
 
             case "wideAttack":
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.AddStress(40);
                 foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
                 {
-                    t.takeDamage(calcDamage(user.GetAttack(), t.defense));
+                    t.takeDamage(calcDamage(user.GetAttack() * 0.9, t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
                 yield return new WaitForSeconds(.8f);
+                user.AddStress(45);
+                break;
+            case "weakWideAttack":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
+                {
+                    t.takeDamage(calcDamage(user.GetAttack() * 0.8, t.defense));
+                    t.GetComponent<Animator>().Play("hurt", 0, 0);
+                }
+                yield return new WaitForSeconds(.8f);
+                user.AddStress(45);
                 break;
 
         }
