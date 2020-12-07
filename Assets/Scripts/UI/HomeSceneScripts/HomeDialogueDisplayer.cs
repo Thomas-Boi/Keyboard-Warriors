@@ -13,6 +13,11 @@ public class HomeDialogueDisplayer : DialogueDisplayer
         {
             return;
         }
+
+        if (ProgressTracker.GetTracker().WeekNum > 2)
+        {
+            return;
+        }
         DialogueData dialogueData = GetDialogues();
         DisplayDialogue(dialogueData.onStartDialogue);
         weekAlreadyDisplayed = ProgressTracker.GetTracker().WeekNum;
