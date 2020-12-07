@@ -341,7 +341,7 @@ MonoBehaviour:
   health: 180
   maxStress: 0
   stress: 0
-  attack: 18
+  attack: 14
   defense: 23
   id: presentationAudience
   isTargetable: 0

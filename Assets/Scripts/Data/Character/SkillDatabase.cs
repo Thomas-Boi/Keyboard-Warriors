@@ -77,7 +77,7 @@ public class Skill : Action
                 
                 foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
                 {
-                    target.healHealth(15 + user.GetAttack() * 0.4);
+                    target.healHealth(15 + user.GetAttack() * 0.5);
                 }
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(45);
@@ -123,7 +123,7 @@ public class Skill : Action
                 playedMusic = true;
                 break;
             case "selfBuffAtk":
-                target.SetStatus("atkUp", 1);
+                target.SetStatus("atkUp", 2);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(25);
                 controller.audioController.PlayBuff();

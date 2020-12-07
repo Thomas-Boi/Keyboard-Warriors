@@ -333,17 +333,17 @@ public class Character : MonoBehaviour
                     {
                         stats.health += 4;
                         stats.attack += 4;
-                        stats.defense += 1;
+                        stats.defense += 2;
                     }
                     else if (i % 2 == 0)
                     {
-                        stats.health += 3;
+                        stats.health += 4;
                         stats.attack += 3;
                         stats.defense += 1;
                     }
                     else
                     {
-                        stats.health += 2;
+                        stats.health += 3;
                         stats.attack += 3;
                         stats.defense += 2;
                     }
@@ -369,19 +369,19 @@ public class Character : MonoBehaviour
                     {
                         stats.health += 5;
                         stats.attack += 3;
-                        stats.defense += 2;
+                        stats.defense += 3;
                     }
                     else if (i % 2 == 0)
                     {
                         stats.health += 3;
                         stats.attack += 2;
-                        stats.defense += 2;
+                        stats.defense += 3;
                     }
                     else
                     {
                         stats.health += 3;
                         stats.attack += 3;
-                        stats.defense += 2;
+                        stats.defense += 3;
                     }
                     break;
 

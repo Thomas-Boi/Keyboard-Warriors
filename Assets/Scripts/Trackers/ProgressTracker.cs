@@ -11,7 +11,7 @@ public class ProgressTracker
     // the singleton
     private static ProgressTracker tracker;
 
-    public static int finalWeekNum = 2;
+    public static int finalWeekNum = 5;
 
     // track the current week number in the semester
     public int WeekNum 

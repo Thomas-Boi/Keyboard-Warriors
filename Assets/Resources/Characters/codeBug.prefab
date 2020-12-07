@@ -1082,7 +1082,7 @@ MonoBehaviour:
   maxStress: 0
   stress: 0
   attack: 15
-  defense: 13
+  defense: 12
   id: codeBug
   isTargetable: 0
   isEnemy: 1
