@@ -9,10 +9,9 @@
                         "bookSlime",
                         null,
                         null
-
                     ],
-                    "coins" : 80,
-                    "exp" : 100
+                    "coins": 80,
+                    "exp": 100
                 },
                 {
                     "enemies": [
@@ -21,8 +20,8 @@
                         "bookSlime",
                         "bookSlime"
                     ],
-                    "coins" : 80,
-                    "exp" : 110
+                    "coins": 80,
+                    "exp": 110
                 },
                 {
                     "enemies": [
@@ -31,12 +30,11 @@
                         null,
                         "researchBook"
                     ],
-                    "coins" : 100,
-                    "exp" : 130
+                    "coins": 100,
+                    "exp": 130
                 }
             ]
         },
-
         {
             "weekNum": 2,
             "waves": [
@@ -48,8 +46,8 @@
                         "researchBook",
                         "researchBook"
                     ],
-                    "coins" : 110,
-                    "exp" : 140
+                    "coins": 110,
+                    "exp": 140
                 },
                 {
                     "enemies": [
@@ -58,8 +56,8 @@
                         "bookSlime",
                         "bookSlime"
                     ],
-                    "coins" : 110,
-                    "exp" : 140
+                    "coins": 110,
+                    "exp": 140
                 },
                 {
                     "enemies": [
@@ -68,8 +66,8 @@
                         "codeBug",
                         "codeBug"
                     ],
-                    "coins" : 110,
-                    "exp" : 150
+                    "coins": 110,
+                    "exp": 150
                 },
                 {
                     "enemies": [
@@ -79,8 +77,8 @@
                         "codeBug",
                         "codeZombie"
                     ],
-                    "coins" : 210,
-                    "exp" : 300
+                    "coins": 210,
+                    "exp": 300
                 }
             ]
         },
@@ -95,8 +93,8 @@
                         "codeZombie",
                         "bookSlime"
                     ],
-                    "coins" : 110,
-                    "exp" : 140
+                    "coins": 110,
+                    "exp": 140
                 },
                 {
                     "enemies": [
@@ -106,8 +104,8 @@
                         "codeBug",
                         "codeBug"
                     ],
-                    "coins" : 110,
-                    "exp" : 140
+                    "coins": 110,
+                    "exp": 140
                 },
                 {
                     "enemies": [
@@ -117,12 +115,11 @@
                         "codeBug",
                         "codeZombie"
                     ],
-                    "coins" : 210,
-                    "exp" : 300
+                    "coins": 210,
+                    "exp": 300
                 }
             ]
         },
-
         {
             "weekNum": 4,
             "waves": [
@@ -133,8 +130,8 @@
                         "codeBug",
                         "codeBug"
                     ],
-                    "coins" : 110,
-                    "exp" : 140
+                    "coins": 110,
+                    "exp": 140
                 },
                 {
                     "enemies": [
@@ -144,8 +141,8 @@
                         "codeBug",
                         "codeBug"
                     ],
-                    "coins" : 170,
-                    "exp" : 140
+                    "coins": 170,
+                    "exp": 140
                 },
                 {
                     "enemies": [
@@ -154,8 +151,8 @@
                         "codeZombie",
                         "codeZombie"
                     ],
-                    "coins" : 140,
-                    "exp" : 150
+                    "coins": 140,
+                    "exp": 150
                 },
                 {
                     "enemies": [
@@ -165,12 +162,11 @@
                         "codeZombie",
                         "codeZombie"
                     ],
-                    "coins" : 110,
-                    "exp" : 300
+                    "coins": 110,
+                    "exp": 300
                 }
             ]
         },
-
         {
             "weekNum": 5,
             "waves": [
@@ -182,8 +178,8 @@
                         "researchBook",
                         "researchBook"
                     ],
-                    "coins" : 110,
-                    "exp" : 290
+                    "coins": 110,
+                    "exp": 290
                 },
                 {
                     "enemies": [
@@ -193,16 +189,17 @@
                         "codeZombie",
                         "codeZombie"
                     ],
-                    "coins" : 110,
-                    "exp" : 290
+                    "coins": 110,
+                    "exp": 290
                 },
                 {
                     "enemies": [
                         "python",
+                        null,
                         "presentationAudience"
                     ],
-                    "coins" : 110,
-                    "exp" : 300
+                    "coins": 110,
+                    "exp": 300
                 }
             ]
         }
