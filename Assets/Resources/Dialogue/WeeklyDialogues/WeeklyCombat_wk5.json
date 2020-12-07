@@ -2,11 +2,43 @@
     "onStartDialogue": [
         {
             "speaker": "Tony",
-            "speech": "That first week wasn't so bad"
+            "speech": "Wow, I can't believe it's the final week already. How time flies..."
         },
         {
             "speaker": "Robert",
-            "speech": "Yeah, that was easy. However, we will be catch off guard if are not careful"
+            "speech": "Yeah, I am so ready to get this over with. All those studying is making me feel old."
+        },
+        {
+            "speaker": "Tony",
+            "speech": "You mean older than you already are eh?"
+        },
+        {
+            "speaker": "Robert",
+            "speech": "Wow Tony, I thought you are my friend."
+        },
+        {
+            "speaker": "Laura",
+            "speech": "As much as I like this friendly banter, I have to remind you guys that the exam is starting in a few minutes."
+        },
+        {
+            "speaker": "Laura",
+            "speech": "We cannot to afford to be complacent. Everything depends on this week. This is what decides whether we get our diploma."
+        },
+        {
+            "speaker": "Tony",
+            "speech": "You know, for the first time in this semester. I think we really got this. With your healing skills, Robert's motivations, and my coding skills, I think we will pass with flying colors."
+        },
+        {
+            "speaker": "Robert",
+            "speech": "Thanks for the word of encouragement Tony. I think we can be friends again now."
+        },
+        {
+            "speaker": "Tony",
+            "speech": "Sweet. You know, maybe the real diploma is the friendship that we find along the way..."
+        },
+        {
+            "speaker": "Laura",
+            "speech": "Maybe it really is. Well, it's time for the exam guys. I hope you guys are ready to roll."
         }
     ]
 }

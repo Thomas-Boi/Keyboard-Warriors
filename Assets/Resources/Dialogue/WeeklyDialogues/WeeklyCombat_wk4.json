@@ -2,11 +2,39 @@
     "onStartDialogue": [
         {
             "speaker": "Tony",
-            "speech": "That first week wasn't so bad"
+            "speech": "We are so close to the end of the semester. Only a few more reviews and we will be done with BCIT!"
         },
         {
             "speaker": "Robert",
-            "speech": "Yeah, that was easy. However, we will be catch off guard if are not careful"
-        }
+            "speech": "Geeze Tony, I thought that love coding and BCIT. Are you already tired of school?"
+        },
+        {
+            "speaker": "Tony",
+            "speech": "Kinda. I'm not gonna lie, the whole semester has been pretty tough. The program has really tested me to my limits."
+        },
+        {
+            "speaker": "Laura",
+            "speech": "I agree, I just can't wait to finish the program. There are a bunch of new startups happening and I can't afford to wait any longer."
+        },
+        {
+            "speaker": "Robert",
+            "speech": "Well, that means we have to finish this week to get to the finals first."
+        },
+        {
+            "speaker": "Laura",
+            "speech": "That's true. We have to focus on this gigantic pile of homework first. We also have to practice our presentation as well. "
+        },
+        {
+            "speaker": "Tony",
+            "speech": "I'll get the fake audience setup. Gotta be ready for that anxiety-inducing presentation."
+        },
+        {
+            "speaker": "Robert",
+            "speech": "Don't worry about it too much guys. I'll help you guys out."
+        },
+        {
+            "speaker": "Tony",
+            "speech": "Alright, let's do this."
+        },
     ]
 }

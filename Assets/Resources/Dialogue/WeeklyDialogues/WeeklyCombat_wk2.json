@@ -2,11 +2,27 @@
     "onStartDialogue": [
         {
             "speaker": "Tony",
-            "speech": "That first week wasn't so bad"
+            "speech": "That first week wasn't so bad. We just blew through those homework."
         },
         {
             "speaker": "Robert",
-            "speech": "Yeah, that was easy. However, we will be catch off guard if are not careful"
+            "speech": "Yeah, that was easy. However, we will be catch off guard if are not careful."
+        },
+        {
+            "speaker": "Laura",
+            "speech": "This is the first week that we are going have to code. It's going to be interesting."
+        },
+        {
+            "speaker": "Tony",
+            "speech": "Well I love coding so it shouldn't be too hard. Besides, we are getting more experience. The more that we level up, the stronger we become."
+        },
+        {
+            "speaker": "Robert",
+            "speech": "Not to mention that we learn new skills too. That will make completing these homework a lot easier."
+        },
+        {
+            "speaker": "Laura",
+            "speech": "Either way, let's get studying guys. Midterm is next week and we have a lot of things to do."
         }
     ]
 }
