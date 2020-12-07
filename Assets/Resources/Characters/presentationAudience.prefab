@@ -337,8 +337,8 @@ MonoBehaviour:
   characterName: Audience
   level: 6
   exp: 0
-  maxHealth: 180
-  health: 180
+  maxHealth: 140
+  health: 140
   maxStress: 0
   stress: 0
   attack: 14
