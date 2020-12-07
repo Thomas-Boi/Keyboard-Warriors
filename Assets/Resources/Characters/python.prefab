@@ -396,8 +396,8 @@ MonoBehaviour:
   characterName: Python
   level: 2
   exp: 0
-  maxHealth: 150
-  health: 150
+  maxHealth: 100
+  health: 100
   maxStress: 0
   stress: 0
   attack: 15

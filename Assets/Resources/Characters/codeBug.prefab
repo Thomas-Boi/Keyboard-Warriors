@@ -1077,8 +1077,8 @@ MonoBehaviour:
   characterName: Code Bug
   level: 3
   exp: 0
-  maxHealth: 45
-  health: 45
+  maxHealth: 40
+  health: 40
   maxStress: 0
   stress: 0
   attack: 15
