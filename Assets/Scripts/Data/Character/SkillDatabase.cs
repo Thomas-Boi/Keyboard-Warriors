@@ -66,7 +66,7 @@ public class Skill : Action
                 break;
 
             case "healTarget":
-                target.healHealth(20 + user.GetAttack() * 0.5);
+                target.healHealth(20 + user.GetAttack() * 0.7);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(30);
                 controller.audioController.PlayHeal();
@@ -77,7 +77,7 @@ public class Skill : Action
                 
                 foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
                 {
-                    target.healHealth(15 + user.GetAttack() * 0.3);
+                    target.healHealth(15 + user.GetAttack() * 0.4);
                 }
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(45);
@@ -124,6 +124,16 @@ public class Skill : Action
                 break;
             case "selfBuffAtk":
                 target.SetStatus("atkUp", 1);
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.AddStress(25);
+                controller.audioController.PlayBuff();
+                playedMusic = true;
+                break;
+            case "teamBuffAtk":
+                foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
+                {
+                    target.SetStatus("atkUp", 1);
+                }
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(25);
                 controller.audioController.PlayBuff();
