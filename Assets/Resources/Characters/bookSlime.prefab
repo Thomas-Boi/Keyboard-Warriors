@@ -350,8 +350,8 @@ MonoBehaviour:
   characterName: Book Slime
   level: 1
   exp: 0
-  maxHealth: 39
-  health: 39
+  maxHealth: 37
+  health: 37
   maxStress: 0
   stress: 0
   attack: 9
