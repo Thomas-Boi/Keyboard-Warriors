@@ -28,6 +28,7 @@ public class DestressingItem : Item
                 target.SetCharacterStress(target.stress - amount);
             }
         }
+        PlayItemSound();
         RemoveItemFromInventory();
         yield return new WaitForSeconds(.5f);
     }
