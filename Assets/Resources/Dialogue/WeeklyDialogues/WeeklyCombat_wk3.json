@@ -1,12 +1,17 @@
 {
     "onStartDialogue": [
         {
-            "speaker": "Tony",
-            "speech": "That first week wasn't so bad"
+            "speaker": "Robert",
+            "speech": "Be on your guard guys, we have a coding exam this week."
         },
         {
-            "speaker": "Robert",
-            "speech": "Yeah, that was easy. However, we will be catch off guard if are not careful"
+            "speaker": "Laura",
+            "speech": "Well, we've been doing Python for the entire semester. It's about time that we see how well we actually know the language."
+        },
+        {
+            "speaker": "Tony",
+            "speech": "Well, I don't know about you guys but I'm ready for a challenge. Bring it on Python, let's see what you have."
         }
+        
     ]
 }
