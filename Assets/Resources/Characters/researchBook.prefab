@@ -350,8 +350,8 @@ MonoBehaviour:
   characterName: Textbook
   level: 2
   exp: 0
-  maxHealth: 48
-  health: 48
+  maxHealth: 47
+  health: 47
   maxStress: 0
   stress: 0
   attack: 10

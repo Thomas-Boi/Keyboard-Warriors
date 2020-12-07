@@ -77,7 +77,7 @@ public class Skill : Action
                 
                 foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
                 {
-                    target.healHealth(15 + user.GetAttack() * 0.5);
+                    t.healHealth(15 + user.GetAttack() * 0.5);
                 }
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(45);
