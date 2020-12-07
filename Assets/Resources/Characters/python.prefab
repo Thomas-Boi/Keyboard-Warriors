@@ -396,11 +396,11 @@ MonoBehaviour:
   characterName: Python
   level: 2
   exp: 0
-  maxHealth: 55
-  health: 55
+  maxHealth: 150
+  health: 150
   maxStress: 0
   stress: 0
-  attack: 8
+  attack: 40
   defense: 17
   id: python
   isTargetable: 0

@@ -1075,14 +1075,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Code Bug
-  level: 2
+  level: 3
   exp: 0
-  maxHealth: 55
-  health: 55
+  maxHealth: 45
+  health: 45
   maxStress: 0
   stress: 0
-  attack: 8
-  defense: 17
+  attack: 15
+  defense: 13
   id: codeBug
   isTargetable: 0
   isEnemy: 1
