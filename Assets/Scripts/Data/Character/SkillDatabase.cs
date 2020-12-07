@@ -32,33 +32,30 @@ public class Skill : Action
         Character target = targets[0];
 
         EventController controller = GameObject.Find("EventController").GetComponent<EventController>();
-
+        bool playedMusic = false;
         switch (name)
         {
             case "nothing":
-                yield return new WaitForSeconds(.5f);
+                user.GetComponent<Animator>().Play("stressed", 0, 0);
                 break;
 
             case "basicAttack":
                 target.takeDamage(calcDamage(user.GetAttack(), target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                yield return new WaitForSeconds(.8f);
                 break;
 
             case "slimeAttack":
                 target.takeDamage(calcDamage(user.GetAttack() * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                yield return new WaitForSeconds(.8f);
                 break;
 
             case "strongAttack":
-                target.takeDamage(calcDamage(user.GetAttack() * 2, target.defense));
+                target.takeDamage(calcDamage(user.GetAttack() * 1.5, target.defense));
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
-                user.AddStress(30);
-                yield return new WaitForSeconds(.8f);
+                user.AddStress(20);
                 break;
 
             case "medAttack":
@@ -66,20 +63,81 @@ public class Skill : Action
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 target.GetComponent<Animator>().Play("hurt", 0, 0);
                 user.AddStress(10);
-                yield return new WaitForSeconds(.8f);
                 break;
 
             case "healTarget":
-                target.healHealth(20 + user.GetAttack());
+                target.healHealth(20 + user.GetAttack() * 0.7);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 user.AddStress(30);
-                yield return new WaitForSeconds(.8f);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
                 break;
+
+            case "healTeam":
+                
+                foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
+                {
+                    t.healHealth(15 + user.GetAttack() * 0.5);
+                }
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.AddStress(45);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
+                break;
+
+            case "healStress":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                target.SetCharacterStress(target.stress - 40);
+                controller.DisplayHealthChange(target, -40, Color.white);
+                user.AddStress(25);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
+                break;
+
+            case "weakHealStress":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                target.SetCharacterStress(target.stress - 20);
+                controller.DisplayHealthChange(target, -20, Color.white);
+                user.AddStress(10);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
+                break;
+
+            case "teamHealStress":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
+                {
+                    t.SetCharacterStress(t.stress - 20);
+                    controller.DisplayHealthChange(t, -20, Color.white);
+                }
+                user.AddStress(45);
+                controller.audioController.PlayHeal();
+                playedMusic = true;
+                break;
+
             case "buffAtk":
+                target.SetStatus("atkUp", 1);
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.AddStress(30);
+                controller.audioController.PlayBuff();
+                playedMusic = true;
+                break;
+            case "selfBuffAtk":
                 target.SetStatus("atkUp", 2);
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.AddStress(30);
-                yield return new WaitForSeconds(.8f);
+                user.AddStress(25);
+                controller.audioController.PlayBuff();
+                playedMusic = true;
+                break;
+            case "teamBuffAtk":
+                foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
+                {
+                    target.SetStatus("atkUp", 1);
+                }
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                user.AddStress(25);
+                controller.audioController.PlayBuff();
+                playedMusic = true;
                 break;
 
             case "bookSlam":
@@ -89,21 +147,43 @@ public class Skill : Action
                     t.takeDamage(calcDamage(user.GetAttack() * 0.6, t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
-                yield return new WaitForSeconds(.8f);
                 break;
 
             case "wideAttack":
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                user.AddStress(40);
                 foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
                 {
-                    t.takeDamage(calcDamage(user.GetAttack(), t.defense));
+                    t.takeDamage(calcDamage(user.GetAttack() * 0.9, t.defense));
                     t.GetComponent<Animator>().Play("hurt", 0, 0);
                 }
-                yield return new WaitForSeconds(.8f);
+                user.AddStress(45);
                 break;
-
+            case "weakWideAttack":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
+                {
+                    t.takeDamage(calcDamage(user.GetAttack() * 0.8, t.defense));
+                    t.GetComponent<Animator>().Play("hurt", 0, 0);
+                }
+                user.AddStress(45);
+                break;
+            case "strongWideAttack":
+                user.GetComponent<Animator>().Play("attack", 0, 0);
+                foreach (Character t in ((user.isEnemy) ? controller.GetAlivePlayers() : controller.getEnemies()))
+                {
+                    t.takeDamage(calcDamage(user.GetAttack() * 1.5, t.defense));
+                    t.GetComponent<Animator>().Play("hurt", 0, 0);
+                }
+                user.AddStress(70);
+                break;
         }
+
+
+        if (!playedMusic)
+        {
+            controller.audioController.PlayHit();
+        }
+        yield return new WaitForSeconds(.8f);
     }
 }
 

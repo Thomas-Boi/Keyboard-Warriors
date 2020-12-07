@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Diagnostics;
+using UnityEngine;
 
 // represent an Item that can be used by the player
 public abstract class Item : Action
@@ -44,6 +46,14 @@ public abstract class Item : Action
         ItemsEnum itemEnum = (ItemsEnum)Enum.Parse(typeof(ItemsEnum), noSpaceName);
         ItemTracker.GetTracker().RemoveItem(itemEnum);
     }
+
+    public void PlayItemSound()
+    {
+        var audioController = GameObject.Find("AudioController").GetComponent<AudioController>();
+        audioController.PlayHeal();
+    }
+
+
 }
 
 

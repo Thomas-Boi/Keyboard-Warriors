@@ -34,7 +34,7 @@ public class ProgressUpdater : MonoBehaviour
                 {
                     string text = "EXP Gained: " + wave.exp + "\n";
 
-                    text += "EXP to next: " + (Character.CalcExpToLevel(newStats.level) - newStats.exp) + " exp";
+                    text += "EXP to next level: " + (Character.CalcExpToLevel(newStats.level) - newStats.exp) + " exp";
 
                     child.GetComponent<Text>().text = text;
                 }
@@ -59,6 +59,84 @@ public class ProgressUpdater : MonoBehaviour
                     child.GetComponent<Text>().text = text;
 
                 }
+                else if (child.name == "Note")
+                {
+                    // Skill gain messages
+                    //todo: Check skills and use their alias instead of hardcoded stirngs
+                    string text = "LEARNED NEW SKILL:\n";
+                    if (newStats.level > player.level)
+                    {
+                        if (player.id == "dps")
+                        {
+                            switch (newStats.level)
+                            {
+                                case 2:
+                                    text += "Heavy Attack";
+                                    break;
+                                case 4:
+                                    text += "Mass Attack";
+                                    break;
+                                case 5:
+                                    text += "Self Study";
+                                    break;
+                                case 8:
+                                    text += "strongWideAttack";
+                                    break;
+                                default:
+                                    text = "";
+                                    break;
+                            }
+                        }
+                        else if (player.id == "tank")
+                        {
+                            switch (newStats.level)
+                            {
+                                case 2:
+                                    text += "Calm";
+                                    break;
+                                case 4:
+                                    text += "Finish Up";
+                                    break;
+                                case 5:
+                                    text += "Motivation";
+                                    break;
+                                case 7:
+                                    text += "Rally";
+                                    break;
+                                default:
+                                    text = "";
+                                    break;
+                            }
+
+                        }
+                        else if (player.id == "support")
+                        {
+                            switch (newStats.level)
+                            {
+                                case 2:
+                                    text += "Heal";
+                                    break;
+                                case 4:
+                                    text += "Medium Attack";
+                                    break;
+                                case 6:
+                                    text += "Plan Ahead";
+                                    break;
+                                case 8:
+                                    text += "Party Heal";
+                                    break;
+                                default:
+                                    text = "";
+                                    break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        text = "";
+                    }
+                    child.GetComponent<Text>().text = text;
+                }
             }
         }
     }
@@ -69,8 +147,6 @@ public class ProgressUpdater : MonoBehaviour
     {
         EventController controller = GameObject.Find("EventController").GetComponent<EventController>();
         Wave wave = controller.weekData.weeks.Find(x => x.weekNum == controller.weekNum).waves[controller.waveNum];
-
-
 
 
         foreach (Character player in controller.players)
@@ -85,7 +161,8 @@ public class ProgressUpdater : MonoBehaviour
 
         List<CharStats> statsList = new List<CharStats>();
         //Update the player's level
-        foreach(Character player in controller.players) {
+        foreach (Character player in controller.players)
+        {
             CharStats stats = new CharStats();
             stats.level = player.level;
             stats.exp = player.exp;
@@ -104,9 +181,6 @@ public class ProgressUpdater : MonoBehaviour
         }
         else
         {
-
-
-
             // see if we need to progress to next week
             var tracker = ProgressTracker.GetTracker();
             if (tracker.CurCombatType == SceneTypeEnum.WEEKLY_COMBAT)

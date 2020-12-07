@@ -17,6 +17,7 @@ public class ReviveItem : Item
         int amount = (int)(target.maxHealth * amountPercent);
         target.healHealth(amount);
         RemoveItemFromInventory();
+        PlayItemSound();
         yield return new WaitForSeconds(.5f);
     }
 }

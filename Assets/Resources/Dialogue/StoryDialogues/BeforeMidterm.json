@@ -1,7 +1,7 @@
 {
 	"onStartDialogue": [
     {
-      "speaker": "Narrator",
+      "speaker": "Help",
       "speech": "Midterm Week"
     },
 		{
@@ -32,5 +32,12 @@
 			"speaker": "Tony",
 			"speech": "Yeah, let's get going guys! We got this!"
 		}
-	]
+  ],
+  "tutorial": [
+    {
+      "speaker": "Help",
+      "speech": "Click on the 'Skills' button below and click on a skill. You can use that skill on targets that are not grayed out"
+    }
+  ]
+
 }

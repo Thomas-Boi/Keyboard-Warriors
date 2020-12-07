@@ -20,6 +20,8 @@ public class ActionManager : MonoBehaviour
         controller.actionMenu.HideButtons();
         controller.clearDescription();
 
+        user.resetScale();
+
         controller.DisplaySkillDialogue(user, action.Alias, 1.0f);
         if (controller.playerTurn)
         {

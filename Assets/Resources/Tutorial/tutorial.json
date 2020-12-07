@@ -1,0 +1,17 @@
+{
+  "tutorials": [
+    "This is the combat scene. This is where you will do your homework by beating them to death.",
+    "On the left sides are your characters: Tony, Robert, and Laura. Each turn, you will control these characters sequentially and utilize their skills to defeat your homework.",
+    "On the right sides are your dreaded homework monsters. They will pose a challenge in your journey to finish your semester and get a diploma. Beat them to death so you can hand them in for marks.",
+    "Every character and monster has a health bar. If a monster' health bar reaches 0, they die. If a player's health bar reaches 0, they become unconscious and you won't be able to use them for the rest of the week",
+    "Every character has a stress bar. This is how much work these poor students can handle. If the stress bar goes above 70%, your characters will start taking damage each turn. They will also take more damage from enemies when hit. Luckily, all characters will decrease their own stress at the beginning of their next turn by 10",
+    "Each characters will have the same choices: Skills, Items, or Retreat.",
+    "Skills are unique to each character. They might deal damage against your enemies, heal you, or decrease your stress. Hover over a skill to learn more about what they do. Be careful to not make your characters stress out too much. That's bad for their health",
+    "Items are one-time use objects that provide powerful abilities. Once you use them, they are gone forever.... at least until you buy them again in your shop.",
+    "Retreat is a special ability. If you feel that your characters cannot defeat the enemies at their current stage, retreat! Go and buy some more items or level them up by getting them some extra study time.",
+    "This is a wave. Every week, you will have to face up to 5 waves of homework. Each wave will have up to 5 monsters. Defeat them all to progress to the next week.",
+    "Whenever you beat a wave, your characters will gain experience and some BCIT money! If they gain enough experience, they will level up and unlock new skills that you can use in battle.",
+    "With their BCIT money, you can go into the Item shop and get extra item for your battle.",
+    "These monsters are the only thing that stands between you and your diploma. Do you have what it takes graduate BCIT?" 
+  ]
+}

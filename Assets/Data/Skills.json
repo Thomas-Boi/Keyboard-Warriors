@@ -23,15 +23,29 @@
         },
         {
             "name": "strongAttack",
-            "alias": "Big Attack",
-            "description": "Twice as strong as a normal attack. Causes 30 stress",
+            "alias": "Heavy Attack",
+            "description": "Swing your keyboard for high damage. Causes 20 stress.",
             "targetType": "ENEMY_SINGLE",
             "conditions": []
         },
         {
             "name": "wideAttack",
-            "alias": "Wide Swing",
-            "description": "Hit all enemies for normal attack damage. Causes 40 stress",
+            "alias": "Mass Attack",
+            "description": "Hit all enemies for medium damage. Causes 45 stress",
+            "targetType": "ENEMY_ALL",
+            "conditions": []
+        },
+        {
+            "name": "strongWideAttack",
+            "alias": "All Nighter",
+            "description": "Hit all enemies for high damage. Causes 70 stress",
+            "targetType": "ENEMY_ALL",
+            "conditions": []
+        },
+        {
+            "name": "weakWideAttack",
+            "alias": "Finish Up",
+            "description": "Hit all enemies for low damage. Causes 30 stress",
             "targetType": "ENEMY_ALL",
             "conditions": []
         },
@@ -42,19 +56,60 @@
             "targetType": "ENEMY_SINGLE",
             "conditions": []
         },
-
         {
-            "name": "healTarget",
-            "alias": "Heal",
-            "description": "Heals a target party member. Causes 30 stress",
+            "name": "healTeam",
+            "alias": "Party Heal",
+            "description": "Heals the whole party. Health recovered is based off attack. Causes 35 stress",
             "targetType": "ALLY_SINGLE",
             "conditions": []
         },
         {
-            "name": "buffAtk",
-            "alias": "Attack Buff",
-            "description": "Increases Attack by 50% for two turns. Causes 30 stress",
+            "name": "healTarget",
+            "alias": "Heal",
+            "description": "Heals a target party member. Health recovered is based off attack. Causes 25 stress",
             "targetType": "ALLY_SINGLE",
+            "conditions": []
+        },
+        {
+            "name": "weakHealStress",
+            "alias": "Calm",
+            "description": "Reduce stress for a target party member by 20. Causes 10 stress",
+            "targetType": "ALLY_SINGLE",
+            "conditions": []
+        },
+        {
+            "name": "healStress",
+            "alias": "Motivation",
+            "description": "Reduce stress for a target party member by 40. Causes 25 stress",
+            "targetType": "ALLY_SINGLE",
+            "conditions": []
+        },
+        {
+            "name": "teamHealStress",
+            "alias": "Rally",
+            "description": "Reduce stress for everyone in the team by 20. Causes 45 stress",
+            "targetType": "ALLY_ALL",
+            "conditions": []
+        },
+        {
+            "name": "buffAtk",
+            "alias": "Plan Ahead",
+            "description": "Increases Attack by 50% for their next turn. Causes 30 stress",
+            "targetType": "ALLY_SINGLE",
+            "conditions": []
+        },
+        {
+            "name": "selfBuffAtk",
+            "alias": "Self Study",
+            "description": "Increases Attack by 50% for the next 2 turns. Causes 25 stress",
+            "targetType": "SELF",
+            "conditions": []
+        },
+        {
+            "name": "teamBuffAtk",
+            "alias": "Self Study",
+            "description": "Increases Attack by 50% for the next turn. Causes 25 stress",
+            "targetType": "ALLY_ALL",
             "conditions": []
         },
         {

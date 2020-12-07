@@ -356,7 +356,7 @@ MonoBehaviour:
   health: 120
   maxStress: 100
   stress: 0
-  attack: 11
+  attack: 13
   defense: 15
   id: tank
   isTargetable: 0

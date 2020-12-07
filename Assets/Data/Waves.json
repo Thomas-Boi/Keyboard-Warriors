@@ -8,11 +8,10 @@
                         null,
                         "bookSlime",
                         null,
-                        "bookSlime"
-
+                        null
                     ],
-                    "coins" : 100,
-                    "exp" : 100
+                    "coins": 80,
+                    "exp": 100
                 },
                 {
                     "enemies": [
@@ -21,8 +20,8 @@
                         "bookSlime",
                         "bookSlime"
                     ],
-                    "coins" : 110,
-                    "exp" : 110
+                    "coins": 80,
+                    "exp": 110
                 },
                 {
                     "enemies": [
@@ -31,66 +30,176 @@
                         null,
                         "researchBook"
                     ],
-                    "coins" : 110,
-                    "exp" : 120
-                },
-                {
-                    "enemies": [
-                        "bookSlime",
-                        "bookSlime",
-                        null,
-                        "researchBook"
-                    ],
-                    "coins" : 110,
-                    "exp" : 130
+                    "coins": 100,
+                    "exp": 130
                 }
             ]
         },
-
         {
             "weekNum": 2,
             "waves": [
                 {
                     "enemies": [
-                        null,
+                        "bookSlime",
+                        "bookSlime",
+                        "bookSlime",
+                        "researchBook",
+                        "researchBook"
+                    ],
+                    "coins": 110,
+                    "exp": 140
+                },
+                {
+                    "enemies": [
+                        "codeZombie",
+                        "bookSlime",
+                        "bookSlime",
+                        "bookSlime"
+                    ],
+                    "coins": 110,
+                    "exp": 140
+                },
+                {
+                    "enemies": [
+                        "codeZombie",
+                        "codeZombie",
+                        "codeBug",
+                        "codeBug"
+                    ],
+                    "coins": 110,
+                    "exp": 150
+                },
+                {
+                    "enemies": [
+                        "bookSlime",
+                        "codeBug",
+                        "bookSlime",
+                        "codeBug",
+                        "codeZombie"
+                    ],
+                    "coins": 210,
+                    "exp": 300
+                }
+            ]
+        },
+        {
+            "weekNum": 3,
+            "waves": [
+                {
+                    "enemies": [
+                        "researchBook",
+                        "codeBug",
+                        "codeBug",
+                        "codeZombie",
+                        "bookSlime"
+                    ],
+                    "coins": 110,
+                    "exp": 140
+                },
+                {
+                    "enemies": [
+                        "codeZombie",
+                        "researchBook",
+                        "researchBook",
+                        "codeBug",
+                        "codeBug"
+                    ],
+                    "coins": 110,
+                    "exp": 140
+                },
+                {
+                    "enemies": [
+                        "python",
+                        "codeBug",
+                        "codeZombie",
+                        "codeBug",
+                        "codeZombie"
+                    ],
+                    "coins": 210,
+                    "exp": 300
+                }
+            ]
+        },
+        {
+            "weekNum": 4,
+            "waves": [
+                {
+                    "enemies": [
+                        "bookSlime",
                         "bookslime",
-                        "bookSlime",
-                        "researchBook",
-                        "researchBook"
+                        "codeBug",
+                        "codeBug"
                     ],
-                    "coins" : 110,
-                    "exp" : 140
+                    "coins": 110,
+                    "exp": 140
+                },
+                {
+                    "enemies": [
+                        "codeZombie",
+                        "researchBook",
+                        "researchBook",
+                        "codeBug",
+                        "codeBug"
+                    ],
+                    "coins": 170,
+                    "exp": 140
                 },
                 {
                     "enemies": [
                         "researchBook",
                         "researchBook",
+                        "codeZombie",
+                        "codeZombie"
+                    ],
+                    "coins": 140,
+                    "exp": 150
+                },
+                {
+                    "enemies": [
+                        "researchBook",
+                        "researchBook",
+                        "presentationAudience",
+                        "codeZombie",
+                        "codeZombie"
+                    ],
+                    "coins": 110,
+                    "exp": 300
+                }
+            ]
+        },
+        {
+            "weekNum": 5,
+            "waves": [
+                {
+                    "enemies": [
+                        "researchBook",
+                        "researchBook",
+                        "presentationAudience",
+                        "researchBook",
+                        "researchBook"
+                    ],
+                    "coins": 110,
+                    "exp": 290
+                },
+                {
+                    "enemies": [
                         null,
-                        "researchBook"
+                        "codeZombie",
+                        "python",
+                        "codeZombie",
+                        "codeZombie"
                     ],
-                    "coins" : 110,
-                    "exp" : 140
+                    "coins": 110,
+                    "exp": 290
                 },
                 {
                     "enemies": [
-                        "bookSlime",
-                        "bookSlime",
-                        "researchBook",
-                        "researchBook"
+                        "python",
+                        null,
+                        "presentationAudience"
                     ],
-                    "coins" : 110,
-                    "exp" : 150
-                },
-                {
-                    "enemies": [
-                        "bookSlime",
-                        "researchBook",
-                        "bookSlime",
-                        "researchBook",
-                        "researchBook"
-                    ],
-                    "coins" : 110,
-                    "exp" : 150
+                    "coins": 110,
+                    "exp": 300
                 }
             ]
         }

@@ -5,10 +5,22 @@ using UnityEngine;
 // display the dialogue if needed
 public class HomeDialogueDisplayer : DialogueDisplayer
 {
+    private static int weekAlreadyDisplayed = 0;
+
     public void Start()
     {
+        if (ProgressTracker.GetTracker().WeekNum == weekAlreadyDisplayed)
+        {
+            return;
+        }
+
+        if (ProgressTracker.GetTracker().WeekNum > 2)
+        {
+            return;
+        }
         DialogueData dialogueData = GetDialogues();
         DisplayDialogue(dialogueData.onStartDialogue);
+        weekAlreadyDisplayed = ProgressTracker.GetTracker().WeekNum;
     }
 
     private DialogueData GetDialogues()

@@ -25,6 +25,8 @@ public class EventController : MonoBehaviour
     public GameObject loseUIPrefab;
     public GameObject HUD;
 
+    public Text waveTxt;
+
     // true = player turn
     // false = not player turn
     public bool playerTurn;
@@ -42,6 +44,9 @@ public class EventController : MonoBehaviour
     public string tooltip = "";
 
     public WeekDatabase weekData;
+    private int wavesInWeek;
+
+    public AudioController audioController;
 
     // Start is called before the first frame update
     public void Start()
@@ -50,6 +55,7 @@ public class EventController : MonoBehaviour
         skillManager = GetComponent<SkillManager>();
         ItemManager = GetComponent<ItemManager>();
         weekNum = ProgressTracker.GetTracker().WeekNum;
+        wavesInWeek = weekData.weeks.Find(x => x.weekNum == weekNum).waves.Count;
 
         foreach (Character player in players)
         {
@@ -64,7 +70,6 @@ public class EventController : MonoBehaviour
 
         StartWave();
         clearDescription();
-
     }
 
 
@@ -98,6 +103,7 @@ public class EventController : MonoBehaviour
         }
 
         nextTurn();
+        SetWaveText();
     }
 
 
@@ -195,9 +201,11 @@ public class EventController : MonoBehaviour
         // when stress is full decrease character health
         if (!user.isEnemy && user.stress >= 70)
         {
-            int damage = (int)user.maxHealth / 10;
+            // Scale stress damage from 10%-25% depending on stress
+            int damage = (int) Math.Floor(((Double) user.maxHealth * ((10 + (((Double) user.stress - 70) / 2)) / 100)));
             user.SetCharacterHealth(user.health - damage);
             checkLife();
+            audioController.PlayPlayerStress(user.characterName);
             user.GetComponent<Animator>().Play("stress", 0, 0);
             //DisplayDamage(user, damage);
             DisplayHealthChange(user, damage, Color.red);
@@ -217,52 +225,6 @@ public class EventController : MonoBehaviour
         }
 
     }
-
-    /*public void DisplayDamage(Character target, float damage)
-    {
-        Vector3 charPosition = target.transform.position;
-
-        Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
-
-        GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
-        textObj.transform.SetParent(HUD.transform);
-
-        Text damageText = textObj.AddComponent<Text>();
-        damageText.text = "-" + damage.ToString();
-        damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        damageText.color = Color.red;
-        damageText.fontSize = 35;
-        damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
-        damageText.verticalOverflow = VerticalWrapMode.Overflow;
-
-        textObj.transform.position = screenPosition;
-
-        StartCoroutine(FadeOutText(textObj));
-
-    }
-
-    public void DisplayHeal(Character target, float damage)
-    {
-        Vector3 charPosition = target.transform.position;
-
-        Vector2 screenPosition = Camera.main.WorldToScreenPoint(charPosition);
-
-        GameObject textObj = new GameObject("DamageText", typeof(RectTransform));
-        textObj.transform.SetParent(HUD.transform);
-
-        Text damageText = textObj.AddComponent<Text>();
-        damageText.text = damage.ToString();
-        damageText.font = Resources.GetBuiltinResource<Font>("Arial.ttf");
-        damageText.color = Color.green;
-        damageText.fontSize = 35;
-        damageText.horizontalOverflow = HorizontalWrapMode.Overflow;
-        damageText.verticalOverflow = VerticalWrapMode.Overflow;
-
-        textObj.transform.position = screenPosition;
-
-        StartCoroutine(FadeOutText(textObj));
-
-    }*/
 
     // when character is to take damage, make text color red
     // or when they are being healed, make text color green
@@ -390,4 +352,8 @@ public class EventController : MonoBehaviour
         }
     }
 
+    private void SetWaveText()
+    {
+        waveTxt.text = $"Wave {waveNum + 1} / {wavesInWeek}";
+    }
 }

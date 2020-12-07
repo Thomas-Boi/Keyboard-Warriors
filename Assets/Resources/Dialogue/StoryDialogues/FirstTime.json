@@ -1,9 +1,5 @@
 {
 	"onStartDialogue": [
-    {
-      "speaker": "Narrator",
-      "speech": "British Columbia Institute of Technology (BCIT), Burnaby Campus\nProgram: Computer System Techonology Diploma\nTerm: 4 (Final)"
-    },
 		{
 			"speaker": "Tony",
 			"speech": "Hey everyone, it's great to see you guys again!"
@@ -17,10 +13,6 @@
 			"speech": "Yup, I'm glad that we are almost finished. Just a few more weeks and we will get our diploma."
 		},
 		{
-			"speaker": "Tony",
-			"speech": "Not gonna lie, I wouldn't mind staying for a few more terms. The program has been pretty cool so far (except for that one course)."
-		},
-		{
 			"speaker": "Robert",
 			"speech": "Well, I just want to get it done and spend more time with my family. The work load has been gigantic. I hope that whichever job I get won't be as busy as BCIT."
 		},
@@ -30,11 +22,11 @@
 		},
 		{
 			"speaker": "Robert",
-			"speech": "It always astound me how energetic you guys are. Must be the power of youth eh? I just want a change in career while you want to be a businesswoman and Tony wants to work for a big tech company."
+			"speech": "It always astound me how energetic you guys are. You want to be a businesswoman and Tony wants to work for a big tech company."
 		},
 		{
 			"speaker": "Tony",
-			"speech": "Not just any big tech companies, the top 3 at least. Google, Amazon, Facebook,... I don't mind working for startups but I want to be where the smartest programmers are. I want to code big and important things."
+			"speech": "Not just any big tech companies, the top 3 at least. Google, Amazon, Facebook,... I want to be where the smartest programmers are."
 		},
 		{
 			"speaker": "Laura",
@@ -46,15 +38,15 @@
     },
 		{
 			"speaker": "Robert",
-			"speech": "Laura, can you start setting group studies sessions? Just let us know when and where they are when you have it."
+			"speech": "Laura, can you start setting group studies sessions? Just let us know the schedule when you have it."
 		},
 		{
 			"speaker": "Laura",
-			"speech": "Already on it. I'll have the schedule and handle the room booking for the rest of the term. Speaking of schedule, I think our class is starting soon."
+			"speech": "Already on it. Speaking of schedule, I think our class is starting soon."
 		},
 		{
 			"speaker": "Tony",
 			"speech": "Yeah, let's get to class guys. It's time to learn some more code!!"
 		}
-	]
+  ]
 }
