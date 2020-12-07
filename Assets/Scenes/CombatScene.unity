@@ -4045,14 +4045,6 @@ PrefabInstance:
       propertyPath: stressBar
       value: 
       objectReference: {fileID: 115572261}
-    - target: {fileID: 7459461093499628810, guid: fccdbb5b9cb9c3949abe055e091f733d, type: 3}
-      propertyPath: maxHealth
-      value: 98
-      objectReference: {fileID: 0}
-    - target: {fileID: 7459461093499628810, guid: fccdbb5b9cb9c3949abe055e091f733d, type: 3}
-      propertyPath: health
-      value: 98
-      objectReference: {fileID: 0}
     - target: {fileID: 7601424400425347235, guid: fccdbb5b9cb9c3949abe055e091f733d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 4.244704

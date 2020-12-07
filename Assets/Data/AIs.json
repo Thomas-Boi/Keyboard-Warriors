@@ -9,7 +9,7 @@
                 },
                 {
                     "name": "slimeAttack",
-                    "weight": 2
+                    "weight": 3
                 }
             ]
         },
@@ -18,11 +18,51 @@
             "skills": [
                 {
                     "name": "basicAttack",
-                    "weight": 5
+                    "weight": 3
                 },
                 {
                     "name": "bookSlam",
                     "weight": 7
+                }
+            ]
+        },
+        {
+            "name": "codeZombie",
+            "skills": [
+                {
+                    "name": "basicAttack",
+                    "weight": 10
+                },
+                {
+                    "name": "healTarget",
+                    "weight": 5
+                }
+            ]
+        },
+        {
+            "name": "codeBug",
+            "skills": [
+                {
+                    "name": "basicAttack",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "name": "presentationAudience",
+            "skills": [
+                {
+                    "name": "basicAttack",
+                    "weight": 1
+                }
+            ]
+        },
+        {
+            "name": "python",
+            "skills": [
+                {
+                    "name": "basicAttack",
+                    "weight": 1
                 }
             ]
         }

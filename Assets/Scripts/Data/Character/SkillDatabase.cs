@@ -87,7 +87,7 @@ public class Skill : Action
 
             case "healStress":
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                target.SetCharacterStress(user.stress - 40);
+                target.SetCharacterStress(target.stress - 40);
                 controller.DisplayHealthChange(target, -40, Color.white);
                 user.AddStress(25);
                 controller.audioController.PlayHeal();
@@ -107,7 +107,7 @@ public class Skill : Action
                 user.GetComponent<Animator>().Play("attack", 0, 0);
                 foreach (Character t in ((user.isEnemy) ? controller.getEnemies() : controller.GetAlivePlayers()))
                 {
-                    t.SetCharacterStress(user.stress - 20);
+                    t.SetCharacterStress(t.stress - 20);
                     controller.DisplayHealthChange(t, -20, Color.white);
                 }
                 user.AddStress(45);

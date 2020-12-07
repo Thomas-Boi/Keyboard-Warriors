@@ -24,7 +24,7 @@
         {
             "name": "strongAttack",
             "alias": "Heavy Attack",
-            "description": "Swing your keyboard for high damage. Causes 30 stress.",
+            "description": "Swing your keyboard for high damage. Causes 20 stress.",
             "targetType": "ENEMY_SINGLE",
             "conditions": []
         },
@@ -58,14 +58,14 @@
         },
         {
             "name": "healTeam",
-            "alias": "Heal",
+            "alias": "Party Heal",
             "description": "Heals the whole party. Health recovered is based off attack. Causes 35 stress",
             "targetType": "ALLY_SINGLE",
             "conditions": []
         },
         {
             "name": "healTarget",
-            "alias": "Party Heal",
+            "alias": "Heal",
             "description": "Heals a target party member. Health recovered is based off attack. Causes 25 stress",
             "targetType": "ALLY_SINGLE",
             "conditions": []

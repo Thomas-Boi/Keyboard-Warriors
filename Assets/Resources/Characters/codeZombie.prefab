@@ -425,14 +425,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Code Zombie
-  level: 2
+  level: 3
   exp: 0
-  maxHealth: 55
-  health: 55
+  maxHealth: 60
+  health: 60
   maxStress: 0
   stress: 0
-  attack: 8
-  defense: 17
+  attack: 14
+  defense: 15
   id: codeZombie
   isTargetable: 0
   isEnemy: 1

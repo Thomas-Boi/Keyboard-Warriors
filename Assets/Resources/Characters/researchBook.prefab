@@ -354,7 +354,7 @@ MonoBehaviour:
   health: 55
   maxStress: 0
   stress: 0
-  attack: 8
+  attack: 11
   defense: 17
   id: researchBook
   isTargetable: 0
