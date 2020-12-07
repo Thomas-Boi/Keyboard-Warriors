@@ -79,19 +79,8 @@
                         "codeBug",
                         "codeZombie"
                     ],
-                    "coins" : 110,
-                    "exp" : 150
-                },
-                {
-                    "enemies": [
-                        "codeZombie",
-                        "researchBook",
-                        "researchBook",
-                        "codeBug",
-                        "codeZombie"
-                    ],
-                    "coins" : 110,
-                    "exp" : 150
+                    "coins" : 210,
+                    "exp" : 300
                 }
             ]
         },
@@ -124,23 +113,12 @@
                     "enemies": [
                         "python",
                         "codeBug",
-                        "codeBug",
-                        "codeBug",
-                        "codeBug"
-                    ],
-                    "coins" : 110,
-                    "exp" : 150
-                },
-                {
-                    "enemies": [
-                        "python",
-                        "codeBug",
                         "codeZombie",
                         "codeBug",
                         "codeZombie"
                     ],
-                    "coins" : 110,
-                    "exp" : 150
+                    "coins" : 210,
+                    "exp" : 300
                 }
             ]
         },
@@ -166,19 +144,8 @@
                         "codeBug",
                         "codeBug"
                     ],
-                    "coins" : 110,
+                    "coins" : 170,
                     "exp" : 140
-                },
-                {
-                    "enemies": [
-                        "researchBook",
-                        "researchBook",
-                        "researchBook",
-                        "researchBook",
-                        "researchBook"
-                    ],
-                    "coins" : 110,
-                    "exp" : 150
                 },
                 {
                     "enemies": [
@@ -187,7 +154,7 @@
                         "codeZombie",
                         "codeZombie"
                     ],
-                    "coins" : 110,
+                    "coins" : 140,
                     "exp" : 150
                 },
                 {
@@ -199,7 +166,7 @@
                         "codeZombie"
                     ],
                     "coins" : 110,
-                    "exp" : 150
+                    "exp" : 300
                 }
             ]
         },
@@ -216,7 +183,7 @@
                         "researchBook"
                     ],
                     "coins" : 110,
-                    "exp" : 140
+                    "exp" : 290
                 },
                 {
                     "enemies": [
@@ -227,40 +194,15 @@
                         "codeZombie"
                     ],
                     "coins" : 110,
-                    "exp" : 140
+                    "exp" : 290
                 },
                 {
                     "enemies": [
-                        "researchBook",
-                        "researchBook",
-                        "presentationAudience",
-                        "codeZombie",
-                        "codeZombie"
-                    ],
-                    "coins" : 110,
-                    "exp" : 150
-                },
-                {
-                    "enemies": [
-                        "researchBook",
-                        "codeZombie",
-                        "python",
-                        "codeBug",
-                        "codeBug"
-                    ],
-                    "coins" : 110,
-                    "exp" : 150
-                },
-                {
-                    "enemies": [
-                        "researchBook",
-                        "codeZombie",
-                        "codeZombie",
                         "python",
                         "presentationAudience"
                     ],
                     "coins" : 110,
-                    "exp" : 150
+                    "exp" : 300
                 }
             ]
         }

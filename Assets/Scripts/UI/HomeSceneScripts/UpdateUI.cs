@@ -21,6 +21,11 @@ public class UpdateUI : MonoBehaviour
 
         if (tracker.ProductionMode)
         {
+            if (tracker.WeekNum > 2)
+            {
+                return;
+            }
+
             foreach (Button panel in panels)
             {
                 if (tracker.WeekNum == 1)

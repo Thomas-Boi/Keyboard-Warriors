@@ -15,7 +15,7 @@ public class TutorialDisplayer : MonoBehaviour
     {
         index = 0;
 
-        TextAsset tutorialJson = Resources.Load<TextAsset>($"Tutorial/tutorial}");
+        TextAsset tutorialJson = Resources.Load<TextAsset>($"Tutorial/tutorial");
         tutorials = JsonUtility.FromJson<TutorialData>(tutorialJson.ToString()).tutorials;
 
         
