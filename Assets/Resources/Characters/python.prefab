@@ -394,7 +394,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Python
-  level: 2
+  level: 10
   exp: 0
   maxHealth: 100
   health: 100

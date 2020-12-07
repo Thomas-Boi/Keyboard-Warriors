@@ -682,7 +682,7 @@ MonoBehaviour:
   maxStress: 100
   stress: 0
   attack: 16
-  defense: 9
+  defense: 12
   id: dps
   isTargetable: 0
   isEnemy: 0
