@@ -96,7 +96,7 @@ public class Skill : Action
 
             case "weakHealStress":
                 user.GetComponent<Animator>().Play("attack", 0, 0);
-                target.SetCharacterStress(user.stress - 20);
+                target.SetCharacterStress(target.stress - 20);
                 controller.DisplayHealthChange(target, -20, Color.white);
                 user.AddStress(10);
                 controller.audioController.PlayHeal();
