@@ -427,8 +427,8 @@ MonoBehaviour:
   characterName: Code Zombie
   level: 3
   exp: 0
-  maxHealth: 55
-  health: 55
+  maxHealth: 52
+  health: 52
   maxStress: 0
   stress: 0
   attack: 11
