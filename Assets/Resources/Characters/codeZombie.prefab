@@ -431,7 +431,7 @@ MonoBehaviour:
   health: 60
   maxStress: 0
   stress: 0
-  attack: 14
+  attack: 12
   defense: 15
   id: codeZombie
   isTargetable: 0

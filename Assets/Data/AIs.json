@@ -62,6 +62,10 @@
             "skills": [
                 {
                     "name": "basicAttack",
+                    "weight": 4
+                },
+                {
+                    "name": "teamBuffAtk",
                     "weight": 1
                 }
             ]

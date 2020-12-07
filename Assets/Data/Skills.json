@@ -106,6 +106,13 @@
             "conditions": []
         },
         {
+            "name": "teamBuffAtk",
+            "alias": "Self Study",
+            "description": "Increases Attack by 50% for the next turn. Causes 25 stress",
+            "targetType": "ALLY_ALL",
+            "conditions": []
+        },
+        {
             "name": "bookSlam",
             "alias": "Mass Attack",
             "description": "Book only",
