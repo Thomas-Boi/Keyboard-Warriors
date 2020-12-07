@@ -10,41 +10,91 @@ public class ActionMenu : MonoBehaviour
 
     public GameObject descriptionBox;
     public GameObject retreatConfirmationPrefab;
+    public EventController controller;
 
     void Start()
     {
         EnableDisplay(false);
+        controller = GameObject.Find("EventController").GetComponent<EventController>();
     }
 
     public void DisplaySkillButtons(int turnNum)
     {
+        //todo: Store skills as arrays on characters instead of doing this
         EnableDisplay(true);
+        /* 
+                List<string> playerOne = new List<string> { "basicAttack", "strongAttack", "wideAttack", "selfBuffAtk"};
+                List<string> playerTwo = new List<string> { "basicAttack", "weakWideAttack", "weakHealStress","healStress", "teamHealStress"};
+                List<string> playerThree = new List<string> { "basicAttack", "medAttack", "healTarget", "buffAtk" };
+         */
 
-        List<string> playerOne = new List<string> { "basicAttack", "strongAttack", "wideAttack", "selfBuffAtk"};
-        List<string> playerTwo = new List<string> { "basicAttack", "weakWideAttack", "weakHealStress","healStress", "teamHealStress"};
-        List<string> playerThree = new List<string> { "basicAttack", "medAttack", "healTarget", "buffAtk" };
+        List<string> skills = new List<string> { "basicAttack" };
+        if (turnNum < controller.players.Count)
+        {
+            int level = controller.players[turnNum].level;
 
-        if (turnNum == 0)
-        {
-            for (int i = 0; i < playerOne.Count; i++)
+            if (turnNum == 0)
             {
-                buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerOne[i]));
+                if (level >= 2)
+                {
+                    skills.Add("strongAttack");
+                }
+                if (level >= 4)
+                {
+                    skills.Add("wideAttack");
+                }
+                if (level >= 5)
+                {
+                    skills.Add("selfBuffAtk");
+                }
+                if (level >= 8)
+                {
+                    skills.Add("strongWideAttack");
+                }
+
+            }
+            else if (turnNum == 1)
+            {
+                if (level >= 2)
+                {
+                    skills.Add("weakHealStress");
+                }
+                if (level >= 4) {
+                    skills.Add("weakWideAttack");
+                }
+                if (level >= 5) {
+                    skills.Add("healStress");
+                }
+                if (level >= 7) {
+                    skills.Add("teamHealStress");
+                }
+            }
+            else
+            {
+                if (level >= 2)
+                {
+                    skills.Add("healTarget");
+                }
+                if (level >= 4)
+                {
+                    skills.Add("medAttack");
+                }
+                if (level >= 6)
+                {
+                    skills.Add("buffAtk");
+                }
+                if (level >= 8)
+                {
+                    skills.Add("healTeam");
+                }
+            }
+
+            for (int i = 0; i < skills.Count; i++)
+            {
+                buttons[i].spawnButton(EventController.skillManager.getSkillByName(skills[i]));
             }
         }
-        else if (turnNum == 1)
-        {
-            for (int i = 0; i < playerTwo.Count; i++)
-            {
-                buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerTwo[i]));
-            }
-        }
-        else
-        {
-            for (int i = 0; i < playerThree.Count; i++)
-            {
-                buttons[i].spawnButton(EventController.skillManager.getSkillByName(playerThree[i]));
-            }
-        }
+
     }
 
     public void DisplayRetreatConfirmation()
